@@ -1,0 +1,14 @@
+C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\bin\Release\NetMailSample.exe.config
+C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\bin\Release\NetMailSample.exe
+C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\bin\Release\NetMailSample.pdb
+C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\obj\Release\SystemNetMailProject.csprojResolveAssemblyReference.cache
+C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\obj\Release\NetMailSample.Forms.frmAddHeaders.resources
+C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\obj\Release\NetMailSample.Forms.frmAlternateView.resources
+C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\obj\Release\NetMailSample.Forms.frmEditContentType.resources
+C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\obj\Release\NetMailSample.Forms.frmMessageOptions.resources
+C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\obj\Release\NetMailSample.frmMain.resources
+C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\obj\Release\NetMailSample.Properties.Resources.resources
+C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\obj\Release\SystemNetMailProject.csproj.GenerateResource.Cache
+C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\obj\Release\NetMailSample.exe
+C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\obj\Release\NetMailSample.pdb
+C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\obj\Release\NetMailSample.Forms.frmAbout.resources

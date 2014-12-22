@@ -1,0 +1,45 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="NetMailSample.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ReadRcpt" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="BodyEncoding" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ASCII</Value>
+    </Setting>
+    <Setting Name="SubjectEncoding" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ASCII</Value>
+    </Setting>
+    <Setting Name="HeaderEncoding" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ASCII</Value>
+    </Setting>
+    <Setting Name="MsgPriority" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Normal</Value>
+    </Setting>
+    <Setting Name="AltViewHtml" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="AltViewPlain" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="htmlBodyTransferEncoding" Type="System.String" Scope="User">
+      <Value Profile="(Default)">QuotedPrintable</Value>
+    </Setting>
+    <Setting Name="AltViewCal" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="BodyHtml" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="plainBodyTransferEncoding" Type="System.String" Scope="User">
+      <Value Profile="(Default)">QuotedPrintable</Value>
+    </Setting>
+    <Setting Name="vCalBodyTransferEncoding" Type="System.String" Scope="User">
+      <Value Profile="(Default)">QuotedPrintable</Value>
+    </Setting>
+    <Setting Name="SendSyncTimeout" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,45 @@
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSample\NetMailSample\bin\Debug\NetMailSample.exe.config
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSample\NetMailSample\bin\Debug\NetMailSample.exe
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSample\NetMailSample\bin\Debug\NetMailSample.pdb
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSample\NetMailSample\obj\Debug\SystemNetMailProject.csprojResolveAssemblyReference.cache
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSample\NetMailSample\obj\Debug\NetMailSample.Forms.frmAddHeaders.resources
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSample\NetMailSample\obj\Debug\NetMailSample.Properties.Resources.resources
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSample\NetMailSample\obj\Debug\SystemNetMailProject.csproj.GenerateResource.Cache
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSample\NetMailSample\obj\Debug\NetMailSample.exe
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSample\NetMailSample\obj\Debug\NetMailSample.pdb
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSample\NetMailSample\obj\Debug\Interop.ADODB.dll
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSample\NetMailSample\obj\Debug\Interop.CDO.dll
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSample\NetMailSample\obj\Debug\SystemNetMailProject.csproj.ResolveComReference.cache
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSampleOLD\NetMailSample\bin\Debug\NetMailSample.exe.config
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSampleOLD\NetMailSample\obj\Debug\Interop.ADODB.dll
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSampleOLD\NetMailSample\obj\Debug\Interop.CDO.dll
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSampleOLD\NetMailSample\obj\Debug\SystemNetMailProject.csproj.ResolveComReference.cache
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSampleOLD\NetMailSample\obj\Debug\NetMailSample.exe
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSampleOLD\NetMailSample\obj\Debug\NetMailSample.pdb
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSampleOLD\NetMailSample\bin\Debug\NetMailSample.exe
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSampleOLD\NetMailSample\bin\Debug\NetMailSample.pdb
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSampleOLD\NetMailSample\obj\Debug\SystemNetMailProject.csprojResolveAssemblyReference.cache
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSampleOLD\NetMailSample\obj\Debug\NetMailSample.Forms.frmAddHeaders.resources
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSampleOLD\NetMailSample\obj\Debug\NetMailSample.frmCDOMain.resources
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSampleOLD\NetMailSample\obj\Debug\NetMailSample.frmSNMMain.resources
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSampleOLD\NetMailSample\obj\Debug\NetMailSample.frmStartup.resources
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSampleOLD\NetMailSample\obj\Debug\NetMailSample.frmSWMMain.resources
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSampleOLD\NetMailSample\obj\Debug\NetMailSample.Properties.Resources.resources
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSampleOLD\NetMailSample\obj\Debug\SystemNetMailProject.csproj.GenerateResource.Cache
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSample\NetMailSample\obj\Debug\NetMailSample.Forms.frmAlternateView.resources
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSample\NetMailSample\obj\Debug\NetMailSample.Forms.frmEditContentType.resources
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSample\NetMailSample\obj\Debug\NetMailSample.frmMain.resources
+C:\Users\brandes\Documents\Visual Studio 2013\Projects\NetMailSample\NetMailSample\obj\Debug\NetMailSample.Forms.frmMessageOptions.resources
+C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\bin\Debug\NetMailSample.exe.config
+C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\bin\Debug\NetMailSample.exe
+C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\bin\Debug\NetMailSample.pdb
+C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\obj\Debug\NetMailSample.Forms.frmAddHeaders.resources
+C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\obj\Debug\NetMailSample.Forms.frmAlternateView.resources
+C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\obj\Debug\NetMailSample.Forms.frmEditContentType.resources
+C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\obj\Debug\NetMailSample.Forms.frmMessageOptions.resources
+C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\obj\Debug\NetMailSample.frmMain.resources
+C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\obj\Debug\NetMailSample.Properties.Resources.resources
+C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\obj\Debug\SystemNetMailProject.csproj.GenerateResource.Cache
+C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\obj\Debug\NetMailSample.exe
+C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\obj\Debug\NetMailSample.pdb
+C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\obj\Debug\SystemNetMailProject.csprojResolveAssemblyReference.cache
