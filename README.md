@@ -1,9 +1,9 @@
 netmailsender
 =============
 
-NetMail Sender is a tool to help test the System.Net.Mail API.  It is basically an email sender and it contains most of the options available in the Net.Mail API.
+NetMail Sender is a tool to help test the System.Net.Mail API.  It is basically an email sender and it contains most of the options available in the System.Net.Mail API.
 
-System.Net.Mail features include:
+features include:
 
 •	Send email
 •	Add custom header(s)
