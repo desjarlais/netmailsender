@@ -39,16 +39,16 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numUpDnSendTimeOut = new System.Windows.Forms.NumericUpDown();
             this.chkReadRcpt = new System.Windows.Forms.CheckBox();
             this.chkBodyHtml = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cboMsgPriority = new System.Windows.Forms.ComboBox();
-            this.numUpDnSendTimeOut = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDnSendTimeOut)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -74,7 +74,8 @@
             "Unicode",
             "UTF32",
             "UTF7",
-            "UTF8"});
+            "UTF8",
+            "Default"});
             this.cboSubjectEncoding.Location = new System.Drawing.Point(126, 63);
             this.cboSubjectEncoding.Name = "cboSubjectEncoding";
             this.cboSubjectEncoding.Size = new System.Drawing.Size(201, 21);
@@ -89,7 +90,8 @@
             "Unicode",
             "UTF32",
             "UTF7",
-            "UTF8"});
+            "UTF8",
+            "Default"});
             this.cboHeaderEncoding.Location = new System.Drawing.Point(126, 37);
             this.cboHeaderEncoding.Name = "cboHeaderEncoding";
             this.cboHeaderEncoding.Size = new System.Drawing.Size(201, 21);
@@ -104,7 +106,8 @@
             "Unicode",
             "UTF32",
             "UTF7",
-            "UTF8"});
+            "UTF8",
+            "Default"});
             this.cboBodyEncoding.Location = new System.Drawing.Point(126, 13);
             this.cboBodyEncoding.Name = "cboBodyEncoding";
             this.cboBodyEncoding.Size = new System.Drawing.Size(201, 21);
@@ -171,6 +174,32 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Options";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(193, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Send Timeout";
+            // 
+            // numUpDnSendTimeOut
+            // 
+            this.numUpDnSendTimeOut.Location = new System.Drawing.Point(270, 18);
+            this.numUpDnSendTimeOut.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.numUpDnSendTimeOut.Name = "numUpDnSendTimeOut";
+            this.numUpDnSendTimeOut.Size = new System.Drawing.Size(57, 20);
+            this.numUpDnSendTimeOut.TabIndex = 3;
+            this.numUpDnSendTimeOut.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
             // chkReadRcpt
             // 
             this.chkReadRcpt.AutoSize = true;
@@ -214,37 +243,11 @@
             this.cboMsgPriority.TabIndex = 0;
             this.cboMsgPriority.Text = "Normal";
             // 
-            // numUpDnSendTimeOut
-            // 
-            this.numUpDnSendTimeOut.Location = new System.Drawing.Point(270, 18);
-            this.numUpDnSendTimeOut.Maximum = new decimal(new int[] {
-            200,
-            0,
-            0,
-            0});
-            this.numUpDnSendTimeOut.Name = "numUpDnSendTimeOut";
-            this.numUpDnSendTimeOut.Size = new System.Drawing.Size(57, 20);
-            this.numUpDnSendTimeOut.TabIndex = 3;
-            this.numUpDnSendTimeOut.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(193, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Send Timeout";
-            // 
             // frmMessageOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(361, 230);
+            this.ClientSize = new System.Drawing.Size(348, 230);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnCancel);
@@ -261,8 +264,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numUpDnSendTimeOut)).EndInit();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

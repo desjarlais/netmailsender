@@ -171,6 +171,7 @@ namespace NetMailSample
                     // set transfer encoding
                     htmlView.TransferEncoding = MessageUtilities.GetTransferEncoding(Properties.Settings.Default.htmlBodyTransferEncoding);
                     mail.AlternateViews.Add(htmlView);
+                    htmlView.Dispose();
                 }
 
                 // add Plain Text AltView
@@ -180,6 +181,7 @@ namespace NetMailSample
                     AlternateView plainView = AlternateView.CreateAlternateViewFromString(Properties.Settings.Default.AltViewPlain, sPlainContentType);
                     plainView.TransferEncoding = MessageUtilities.GetTransferEncoding(Properties.Settings.Default.plainBodyTransferEncoding);
                     mail.AlternateViews.Add(plainView);
+                    plainView.Dispose();
                 }
 
                 // add vCal AltView
@@ -191,6 +193,7 @@ namespace NetMailSample
                     AlternateView calView = AlternateView.CreateAlternateViewFromString(Properties.Settings.Default.AltViewCal, ct);
                     calView.TransferEncoding = MessageUtilities.GetTransferEncoding(Properties.Settings.Default.vCalBodyTransferEncoding);
                     mail.AlternateViews.Add(calView);
+                    calView.Dispose();
                 }
 
                 // add custom headers
@@ -307,6 +310,7 @@ namespace NetMailSample
                 txtBoxErrorLog.Clear();
                 noErrFound = false;
                 _logger.Log("Error: " + ioe.Message);
+                _logger.Log("StackTrace: " + ioe.StackTrace);
             }
             catch (FormatException fe)
             {
@@ -314,6 +318,7 @@ namespace NetMailSample
                 txtBoxErrorLog.Clear();
                 noErrFound = false;
                 _logger.Log("Error: " + fe.Message);
+                _logger.Log("StackTrace: " + fe.StackTrace);
             }
             catch (Exception ex)
             {

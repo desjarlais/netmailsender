@@ -12,3 +12,17 @@ C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\obj
 C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\obj\Release\NetMailSample.exe
 C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\obj\Release\NetMailSample.pdb
 C:\Users\brandes\Source\Workspaces\netmailsender\NetMailSample\NetMailSample\obj\Release\NetMailSample.Forms.frmAbout.resources
+F:\GitHub\netmailsender\netmailsender\NetMailSample\bin\Release\NetMailSample.exe.config
+F:\GitHub\netmailsender\netmailsender\NetMailSample\obj\Release\NetMailSample.exe
+F:\GitHub\netmailsender\netmailsender\NetMailSample\obj\Release\NetMailSample.pdb
+F:\GitHub\netmailsender\netmailsender\NetMailSample\bin\Release\NetMailSample.exe
+F:\GitHub\netmailsender\netmailsender\NetMailSample\bin\Release\NetMailSample.pdb
+F:\GitHub\netmailsender\netmailsender\NetMailSample\obj\Release\SystemNetMailProject.csprojResolveAssemblyReference.cache
+F:\GitHub\netmailsender\netmailsender\NetMailSample\obj\Release\NetMailSample.Forms.frmAbout.resources
+F:\GitHub\netmailsender\netmailsender\NetMailSample\obj\Release\NetMailSample.Forms.frmAddHeaders.resources
+F:\GitHub\netmailsender\netmailsender\NetMailSample\obj\Release\NetMailSample.Forms.frmAlternateView.resources
+F:\GitHub\netmailsender\netmailsender\NetMailSample\obj\Release\NetMailSample.Forms.frmEditContentType.resources
+F:\GitHub\netmailsender\netmailsender\NetMailSample\obj\Release\NetMailSample.Forms.frmMessageOptions.resources
+F:\GitHub\netmailsender\netmailsender\NetMailSample\obj\Release\NetMailSample.frmMain.resources
+F:\GitHub\netmailsender\netmailsender\NetMailSample\obj\Release\NetMailSample.Properties.Resources.resources
+F:\GitHub\netmailsender\netmailsender\NetMailSample\obj\Release\SystemNetMailProject.csproj.GenerateResource.Cache

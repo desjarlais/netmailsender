@@ -59,8 +59,10 @@ namespace NetMailSample.Common
                     return Encoding.UTF32;
                 case "UTF7":
                     return Encoding.UTF7;
-                default:
+                case "ASCII":
                     return Encoding.ASCII;
+                default:
+                    return Encoding.Default;
             }
         }
 
