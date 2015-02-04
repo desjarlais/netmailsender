@@ -84,8 +84,12 @@
             this.numUpDnSeconds = new System.Windows.Forms.NumericUpDown();
             this.lblNumSeconds = new System.Windows.Forms.Label();
             this.btnAltView = new System.Windows.Forms.Button();
-            this.btnMessageOptions = new System.Windows.Forms.Button();
-            this.btnAbout = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileLoadSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileSaveSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileOptions = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.grpMailMessage.SuspendLayout();
             this.grpSmtpSettings.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -95,11 +99,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dGridHeaders)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDnSeconds)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSendEmail
             // 
-            this.btnSendEmail.Location = new System.Drawing.Point(874, 531);
+            this.btnSendEmail.Location = new System.Drawing.Point(873, 545);
             this.btnSendEmail.Name = "btnSendEmail";
             this.btnSendEmail.Size = new System.Drawing.Size(88, 23);
             this.btnSendEmail.TabIndex = 20;
@@ -167,7 +172,7 @@
             this.grpMailMessage.Controls.Add(this.label4);
             this.grpMailMessage.Controls.Add(this.txtBoxTo);
             this.grpMailMessage.Controls.Add(this.label3);
-            this.grpMailMessage.Location = new System.Drawing.Point(12, 187);
+            this.grpMailMessage.Location = new System.Drawing.Point(12, 202);
             this.grpMailMessage.Name = "grpMailMessage";
             this.grpMailMessage.Size = new System.Drawing.Size(530, 323);
             this.grpMailMessage.TabIndex = 3;
@@ -264,7 +269,7 @@
             this.grpSmtpSettings.Controls.Add(this.lblPassword);
             this.grpSmtpSettings.Controls.Add(this.label1);
             this.grpSmtpSettings.Controls.Add(this.lblUserSmtp);
-            this.grpSmtpSettings.Location = new System.Drawing.Point(12, 12);
+            this.grpSmtpSettings.Location = new System.Drawing.Point(12, 27);
             this.grpSmtpSettings.Name = "grpSmtpSettings";
             this.grpSmtpSettings.Size = new System.Drawing.Size(530, 169);
             this.grpSmtpSettings.TabIndex = 4;
@@ -392,7 +397,7 @@
             // 
             this.groupBox1.Controls.Add(this.btnOpenLogFile);
             this.groupBox1.Controls.Add(this.txtBoxErrorLog);
-            this.groupBox1.Location = new System.Drawing.Point(548, 12);
+            this.groupBox1.Location = new System.Drawing.Point(548, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(414, 169);
             this.groupBox1.TabIndex = 5;
@@ -426,7 +431,7 @@
             this.groupBox3.Controls.Add(this.dGridAttachments);
             this.groupBox3.Controls.Add(this.btnInsertAttachment);
             this.groupBox3.Controls.Add(this.btnDeleteAttachment);
-            this.groupBox3.Location = new System.Drawing.Point(548, 330);
+            this.groupBox3.Location = new System.Drawing.Point(548, 345);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(414, 180);
             this.groupBox3.TabIndex = 0;
@@ -520,7 +525,7 @@
             this.groupBox2.Controls.Add(this.dGridHeaders);
             this.groupBox2.Controls.Add(this.btnDeleteHeader);
             this.groupBox2.Controls.Add(this.btnAddHeaders);
-            this.groupBox2.Location = new System.Drawing.Point(548, 187);
+            this.groupBox2.Location = new System.Drawing.Point(548, 202);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(414, 137);
             this.groupBox2.TabIndex = 17;
@@ -585,7 +590,7 @@
             this.groupBox4.Controls.Add(this.btnStartSendLoop);
             this.groupBox4.Controls.Add(this.numUpDnSeconds);
             this.groupBox4.Controls.Add(this.lblNumSeconds);
-            this.groupBox4.Location = new System.Drawing.Point(12, 517);
+            this.groupBox4.Location = new System.Drawing.Point(12, 532);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(564, 43);
             this.groupBox4.TabIndex = 18;
@@ -655,7 +660,7 @@
             // 
             // btnAltView
             // 
-            this.btnAltView.Location = new System.Drawing.Point(749, 531);
+            this.btnAltView.Location = new System.Drawing.Point(748, 545);
             this.btnAltView.Name = "btnAltView";
             this.btnAltView.Size = new System.Drawing.Size(119, 23);
             this.btnAltView.TabIndex = 19;
@@ -663,33 +668,60 @@
             this.btnAltView.UseVisualStyleBackColor = true;
             this.btnAltView.Click += new System.EventHandler(this.btnAltView_Click);
             // 
-            // btnMessageOptions
+            // menuStrip1
             // 
-            this.btnMessageOptions.Location = new System.Drawing.Point(666, 531);
-            this.btnMessageOptions.Name = "btnMessageOptions";
-            this.btnMessageOptions.Size = new System.Drawing.Size(77, 23);
-            this.btnMessageOptions.TabIndex = 28;
-            this.btnMessageOptions.Text = "Options";
-            this.btnMessageOptions.UseVisualStyleBackColor = true;
-            this.btnMessageOptions.Click += new System.EventHandler(this.btnMessageOptions_Click);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(974, 24);
+            this.menuStrip1.TabIndex = 30;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // btnAbout
+            // toolStripMenuItem1
             // 
-            this.btnAbout.Location = new System.Drawing.Point(593, 531);
-            this.btnAbout.Name = "btnAbout";
-            this.btnAbout.Size = new System.Drawing.Size(67, 23);
-            this.btnAbout.TabIndex = 29;
-            this.btnAbout.Text = "About";
-            this.btnAbout.UseVisualStyleBackColor = true;
-            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuFileLoadSettings,
+            this.mnuFileSaveSettings,
+            this.mnuFileOptions,
+            this.mnuFileAbout});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
+            this.toolStripMenuItem1.Text = "&File";
+            // 
+            // mnuFileLoadSettings
+            // 
+            this.mnuFileLoadSettings.Name = "mnuFileLoadSettings";
+            this.mnuFileLoadSettings.Size = new System.Drawing.Size(152, 22);
+            this.mnuFileLoadSettings.Text = "&Load Settings";
+            this.mnuFileLoadSettings.Click += new System.EventHandler(this.mnuFileLoadSettings_Click);
+            // 
+            // mnuFileSaveSettings
+            // 
+            this.mnuFileSaveSettings.Name = "mnuFileSaveSettings";
+            this.mnuFileSaveSettings.Size = new System.Drawing.Size(152, 22);
+            this.mnuFileSaveSettings.Text = "&Save Settings";
+            this.mnuFileSaveSettings.Click += new System.EventHandler(this.mnuFileSaveSettings_Click);
+            // 
+            // mnuFileOptions
+            // 
+            this.mnuFileOptions.Name = "mnuFileOptions";
+            this.mnuFileOptions.Size = new System.Drawing.Size(152, 22);
+            this.mnuFileOptions.Text = "&Options";
+            this.mnuFileOptions.Click += new System.EventHandler(this.mnuFileOptions_Click);
+            // 
+            // mnuFileAbout
+            // 
+            this.mnuFileAbout.Name = "mnuFileAbout";
+            this.mnuFileAbout.Size = new System.Drawing.Size(152, 22);
+            this.mnuFileAbout.Text = "&About";
+            this.mnuFileAbout.Click += new System.EventHandler(this.mnuFileAbout_Click);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(974, 567);
-            this.Controls.Add(this.btnAbout);
-            this.Controls.Add(this.btnMessageOptions);
+            this.ClientSize = new System.Drawing.Size(974, 583);
             this.Controls.Add(this.btnAltView);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
@@ -698,8 +730,10 @@
             this.Controls.Add(this.grpSmtpSettings);
             this.Controls.Add(this.grpMailMessage);
             this.Controls.Add(this.btnSendEmail);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -718,7 +752,10 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDnSeconds)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -770,7 +807,6 @@
         private System.Windows.Forms.Label lblNumSeconds;
         private System.Windows.Forms.Button btnAltView;
         private System.Windows.Forms.CheckBox chkPasswordRequired;
-        private System.Windows.Forms.Button btnMessageOptions;
         private System.Windows.Forms.DataGridView dGridAttachments;
         private System.Windows.Forms.Button btnEditContentType;
         private System.Windows.Forms.CheckBox chkTimeBasedSend;
@@ -780,7 +816,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colContentId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colInline;
         private System.Windows.Forms.Button btnOpenLogFile;
-        private System.Windows.Forms.Button btnAbout;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileLoadSettings;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileSaveSettings;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileOptions;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileAbout;
     }
 }
 

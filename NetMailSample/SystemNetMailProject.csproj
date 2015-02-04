@@ -71,8 +71,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\ConnectionSettings.cs" />
     <Compile Include="Common\DotNetVersion.cs" />
     <Compile Include="Common\FileUtilities.cs" />
+    <Compile Include="Common\SerialHelper.cs" />
+    <Compile Include="Common\UserIoHelper.cs" />
     <Compile Include="Forms\frmAbout.cs">
       <SubType>Form</SubType>
     </Compile>

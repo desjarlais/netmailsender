@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Net.Mail;
 using System.Net.Mime;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace NetMailSample.Common
 {

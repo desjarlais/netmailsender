@@ -165,13 +165,14 @@ namespace NetMailSample
                             lr.ContentId = rowInl.ItemArray[1].ToString();
                             lr.ContentType.MediaType = rowInl.ItemArray[2].ToString();
                             htmlView.LinkedResources.Add(lr);
+                            lr.Dispose();
                         }
                     }
 
                     // set transfer encoding
                     htmlView.TransferEncoding = MessageUtilities.GetTransferEncoding(Properties.Settings.Default.htmlBodyTransferEncoding);
                     mail.AlternateViews.Add(htmlView);
-                    htmlView.Dispose();
+                    htmlView.Dispose();                   
                 }
 
                 // add Plain Text AltView
@@ -224,6 +225,7 @@ namespace NetMailSample
                             data.ContentDisposition.DispositionType = DispositionTypeNames.Attachment;
                         }
                         mail.Attachments.Add(data);
+                        data.Dispose();
                     }
                 }
 
@@ -610,18 +612,6 @@ namespace NetMailSample
         }
 
         /// <summary>
-        /// display the message options form
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnMessageOptions_Click(object sender, EventArgs e)
-        {
-            Forms.frmMessageOptions mEncoding = new Forms.frmMessageOptions();
-            mEncoding.Owner = this;
-            mEncoding.ShowDialog(this);
-        }
-
-        /// <summary>
         /// display the edit content type form
         /// the constructor for this form takes a string value which allows the previous value
         /// to be returned if the user cancels the dialog
@@ -778,16 +768,163 @@ namespace NetMailSample
             }
         }
 
-        /// <summary>
-        /// display the about form
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnAbout_Click(object sender, EventArgs e)
+        private void mnuFileLoadSettings_Click(object sender, EventArgs e)
+        {
+            string sFile = string.Empty;
+            string sFilter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
+            string sConnectionSettings = string.Empty;
+
+            ConnectionSettings oConnectionSetting = null;
+            string sFileContents = string.Empty;
+
+            if (UserIoHelper.PickLoadFromFile(AppDomain.CurrentDomain.BaseDirectory, "*.xml", ref sFile, sFilter))
+            {
+                try
+                {
+                    sFileContents = System.IO.File.ReadAllText(sFile);
+                    oConnectionSetting = SerialHelper.DeserializeObjectFromString<ConnectionSettings>(sFileContents);
+                    if (oConnectionSetting == null)
+                        throw new Exception("Settings file cannot be deserialized.");
+                    SetFormFromConnectionSettings(oConnectionSetting);
+                }
+                catch (Exception ex)
+                {
+                    txtBoxErrorLog.Clear();
+                    txtBoxErrorLog.Text = ex.ToString() + "Error Loading File";
+                }
+
+            }
+            oConnectionSetting = null;
+        }
+
+        private void mnuFileSaveSettings_Click(object sender, EventArgs e)
+        {
+            string sFile = string.Empty;
+            string sFilter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
+
+            string sConnectionSettings = string.Empty;
+            ConnectionSettings oConnectionSetting = new ConnectionSettings();
+
+            SetConnectionSettingsFromForm(ref oConnectionSetting);
+
+            if (UserIoHelper.PickSaveFileToFolder(AppDomain.CurrentDomain.BaseDirectory, "Email Settings.xml", ref sFile, sFilter))
+            {
+                sConnectionSettings = SerialHelper.SerializeObjectToString<ConnectionSettings>(oConnectionSetting);
+                if (sConnectionSettings != string.Empty)
+                {
+                    try
+                    {
+                        System.IO.File.WriteAllText(sFile, sConnectionSettings);
+                    }
+                    catch (Exception ex)
+                    {
+                        txtBoxErrorLog.Clear();
+                        txtBoxErrorLog.Text = ex.Message + "Error Saving File";
+                    }
+                }
+            }
+        }
+
+        private void mnuFileOptions_Click(object sender, EventArgs e)
+        {
+            Forms.frmMessageOptions mEncoding = new Forms.frmMessageOptions();
+            mEncoding.Owner = this;
+            mEncoding.ShowDialog(this);
+        }
+
+        private void mnuFileAbout_Click(object sender, EventArgs e)
         {
             Forms.frmAbout frm = new Forms.frmAbout();
             frm.ShowDialog(this);
             frm.Dispose();
+        }
+
+        private void SetFormFromConnectionSettings(ConnectionSettings oConnectionSetting)
+        {
+            try
+            {
+                this.txtBoxEmailAddress.Text = FixSetting(oConnectionSetting.User);
+                this.txtBoxDomain.Text = FixSetting(oConnectionSetting.Domain);
+                this.txtBoxSubject.Text = FixSetting(oConnectionSetting.MessageSubject);
+                this.txtBoxTo.Text = FixSetting(oConnectionSetting.MessageTo);
+                this.txtBoxCC.Text = FixSetting(oConnectionSetting.MessageCC);
+                this.txtBoxBCC.Text = FixSetting(oConnectionSetting.MessageBcc);
+                this.richTxtBody.Text = FixSetting(oConnectionSetting.MessageBody);
+
+                if (oConnectionSetting.SendByPort == true)
+                {
+                    this.rdoSendByPort.Checked = true;
+                    this.cboPort.Text = oConnectionSetting.Port;
+                    this.cboServer.Text = oConnectionSetting.Server;
+                }
+                else
+                {
+                    this.rdoSendByPickupFolder.Checked = true;
+                    this.chkBoxSpecificPickupFolder.Checked = oConnectionSetting.CustomPickupLocation;
+                    this.txtPickupFolder.Text = FixSetting(oConnectionSetting.PickupLocation);
+                }
+            }
+            catch (Exception ex)
+            {
+                txtBoxErrorLog.Clear();
+                txtBoxErrorLog.Text = ex.Message + "Error loading settings into form";
+            }
+
+        }
+
+        private string FixSetting(string sSetting)
+        {
+            if (sSetting == null)
+                return "";
+            else
+                return sSetting;
+        }
+
+        private void SetConnectionSettingsFromForm(ref ConnectionSettings oConnectionSetting)
+        {
+            oConnectionSetting.User = this.txtBoxEmailAddress.Text;
+            oConnectionSetting.Domain = this.txtBoxDomain.Text;
+            oConnectionSetting.UseSSL = this.chkEnableSSL.Checked;
+            oConnectionSetting.PasswordRequired = this.chkPasswordRequired.Checked;
+            oConnectionSetting.MessageTo = this.txtBoxTo.Text;
+            oConnectionSetting.MessageCC = this.txtBoxCC.Text;
+            oConnectionSetting.MessageBcc = this.txtBoxBCC.Text;
+            oConnectionSetting.MessageSubject = this.txtBoxSubject.Text;
+            oConnectionSetting.MessageBody = this.richTxtBody.Text;
+            
+            oConnectionSetting.Port = this.cboPort.Text;
+            oConnectionSetting.Server = this.cboServer.Text;
+            oConnectionSetting.SendByPort = this.rdoSendByPort.Checked;
+            oConnectionSetting.CustomPickupLocation = this.chkBoxSpecificPickupFolder.Checked;
+            oConnectionSetting.PickupLocation = this.txtPickupFolder.Text;
+        }
+
+        private void btnSaveSettings_Click(object sender, EventArgs e)
+        {
+            string sFile = string.Empty;
+            string sFilter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
+
+            string sConnectionSettings = string.Empty;
+            ConnectionSettings oConnectionSetting = new ConnectionSettings();
+
+            SetConnectionSettingsFromForm(ref oConnectionSetting);
+
+            if (UserIoHelper.PickSaveFileToFolder(Application.UserAppDataPath, "Email Settings.xml", ref sFile, sFilter))
+            {
+                sConnectionSettings = SerialHelper.SerializeObjectToString<ConnectionSettings>(oConnectionSetting);
+                if (sConnectionSettings != string.Empty)
+                {
+                    try
+                    {
+                        System.IO.File.WriteAllText(sFile, sConnectionSettings);
+                    }
+                    catch (Exception ex)
+                    {
+                        txtBoxErrorLog.Clear();
+                        txtBoxErrorLog.Text = ex.Message + "Error Saving File";
+                    }
+                }
+            }
         }
     }
 }

@@ -59,7 +59,7 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(6, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(334, 93);
             this.groupBox1.TabIndex = 0;
@@ -143,7 +143,7 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(184, 197);
+            this.btnOK.Location = new System.Drawing.Point(190, 197);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 8;
@@ -153,7 +153,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(265, 197);
+            this.btnCancel.Location = new System.Drawing.Point(271, 197);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 1;
@@ -167,7 +167,7 @@
             this.groupBox2.Controls.Add(this.numUpDnSendTimeOut);
             this.groupBox2.Controls.Add(this.chkReadRcpt);
             this.groupBox2.Controls.Add(this.chkBodyHtml);
-            this.groupBox2.Location = new System.Drawing.Point(6, 111);
+            this.groupBox2.Location = new System.Drawing.Point(12, 111);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(334, 51);
             this.groupBox2.TabIndex = 8;
@@ -223,7 +223,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.cboMsgPriority);
-            this.groupBox3.Location = new System.Drawing.Point(6, 168);
+            this.groupBox3.Location = new System.Drawing.Point(12, 168);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(172, 52);
             this.groupBox3.TabIndex = 2;
@@ -247,7 +247,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(348, 230);
+            this.ClientSize = new System.Drawing.Size(368, 230);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnCancel);
