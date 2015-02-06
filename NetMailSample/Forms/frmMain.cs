@@ -898,33 +898,5 @@ namespace NetMailSample
             oConnectionSetting.CustomPickupLocation = this.chkBoxSpecificPickupFolder.Checked;
             oConnectionSetting.PickupLocation = this.txtPickupFolder.Text;
         }
-
-        private void btnSaveSettings_Click(object sender, EventArgs e)
-        {
-            string sFile = string.Empty;
-            string sFilter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
-
-            string sConnectionSettings = string.Empty;
-            ConnectionSettings oConnectionSetting = new ConnectionSettings();
-
-            SetConnectionSettingsFromForm(ref oConnectionSetting);
-
-            if (UserIoHelper.PickSaveFileToFolder(Application.UserAppDataPath, "Email Settings.xml", ref sFile, sFilter))
-            {
-                sConnectionSettings = SerialHelper.SerializeObjectToString<ConnectionSettings>(oConnectionSetting);
-                if (sConnectionSettings != string.Empty)
-                {
-                    try
-                    {
-                        System.IO.File.WriteAllText(sFile, sConnectionSettings);
-                    }
-                    catch (Exception ex)
-                    {
-                        txtBoxErrorLog.Clear();
-                        txtBoxErrorLog.Text = ex.Message + "Error Saving File";
-                    }
-                }
-            }
-        }
     }
 }
