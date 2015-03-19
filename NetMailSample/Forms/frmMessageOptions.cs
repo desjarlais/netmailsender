@@ -15,6 +15,8 @@ namespace NetMailSample.Forms
                 // set the individual options for the form based on the app settings
                 if (Properties.Settings.Default.BodyHtml == true) { chkBodyHtml.Checked = true; }
                 if (Properties.Settings.Default.ReadRcpt == true) { chkReadRcpt.Checked = true; }
+                if (Properties.Settings.Default.DelNotifOnSuccess == true) { chkOnSuccess.Checked = true; }
+                if (Properties.Settings.Default.DelNotifOnFailure == true) { chkOnFailure.Checked = true; }
 
                 switch (Properties.Settings.Default.MsgPriority)
                 {
@@ -52,7 +54,9 @@ namespace NetMailSample.Forms
             Properties.Settings.Default.SubjectEncoding = cboSubjectEncoding.Text;
             Properties.Settings.Default.BodyHtml = chkBodyHtml.Checked;
             Properties.Settings.Default.ReadRcpt = chkReadRcpt.Checked;
-            Properties.Settings.Default.MsgPriority = cboMsgPriority.Text;            
+            Properties.Settings.Default.MsgPriority = cboMsgPriority.Text;
+            Properties.Settings.Default.DelNotifOnFailure = chkOnFailure.Checked;
+            Properties.Settings.Default.DelNotifOnSuccess = chkOnSuccess.Checked;
             this.Close();
         }
 

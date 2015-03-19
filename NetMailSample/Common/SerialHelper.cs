@@ -11,6 +11,12 @@ namespace NetMailSample.Common
 {
     public class SerialHelper
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public static string SerializeObjectToString<T>(T obj)
         {
             string sXML = string.Empty;
@@ -44,6 +50,12 @@ namespace NetMailSample.Common
             return sXML;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="xml"></param>
+        /// <returns></returns>
         public static T DeserializeObjectFromString<T>(string xml)
         {
             XmlSerializer oXmlSerializer = null;

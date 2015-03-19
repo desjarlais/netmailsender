@@ -45,10 +45,14 @@
             this.chkBodyHtml = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cboMsgPriority = new System.Windows.Forms.ComboBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.chkOnFailure = new System.Windows.Forms.CheckBox();
+            this.chkOnSuccess = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDnSendTimeOut)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -61,7 +65,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(334, 93);
+            this.groupBox1.Size = new System.Drawing.Size(352, 93);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Encoding";
@@ -143,7 +147,7 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(190, 197);
+            this.btnOK.Location = new System.Drawing.Point(208, 231);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 8;
@@ -153,7 +157,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(271, 197);
+            this.btnCancel.Location = new System.Drawing.Point(289, 231);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 1;
@@ -169,7 +173,7 @@
             this.groupBox2.Controls.Add(this.chkBodyHtml);
             this.groupBox2.Location = new System.Drawing.Point(12, 111);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(334, 51);
+            this.groupBox2.Size = new System.Drawing.Size(352, 51);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Options";
@@ -223,9 +227,9 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.cboMsgPriority);
-            this.groupBox3.Location = new System.Drawing.Point(12, 168);
+            this.groupBox3.Location = new System.Drawing.Point(190, 173);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(172, 52);
+            this.groupBox3.Size = new System.Drawing.Size(174, 48);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Priority";
@@ -239,15 +243,47 @@
             "High"});
             this.cboMsgPriority.Location = new System.Drawing.Point(6, 17);
             this.cboMsgPriority.Name = "cboMsgPriority";
-            this.cboMsgPriority.Size = new System.Drawing.Size(126, 21);
+            this.cboMsgPriority.Size = new System.Drawing.Size(150, 21);
             this.cboMsgPriority.TabIndex = 0;
             this.cboMsgPriority.Text = "Normal";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.chkOnSuccess);
+            this.groupBox4.Controls.Add(this.chkOnFailure);
+            this.groupBox4.Location = new System.Drawing.Point(12, 173);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(172, 48);
+            this.groupBox4.TabIndex = 9;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Delivery Notifications";
+            // 
+            // chkOnFailure
+            // 
+            this.chkOnFailure.AutoSize = true;
+            this.chkOnFailure.Location = new System.Drawing.Point(6, 19);
+            this.chkOnFailure.Name = "chkOnFailure";
+            this.chkOnFailure.Size = new System.Drawing.Size(71, 17);
+            this.chkOnFailure.TabIndex = 3;
+            this.chkOnFailure.Text = "OnFailure";
+            this.chkOnFailure.UseVisualStyleBackColor = true;
+            // 
+            // chkOnSuccess
+            // 
+            this.chkOnSuccess.AutoSize = true;
+            this.chkOnSuccess.Location = new System.Drawing.Point(83, 19);
+            this.chkOnSuccess.Name = "chkOnSuccess";
+            this.chkOnSuccess.Size = new System.Drawing.Size(81, 17);
+            this.chkOnSuccess.TabIndex = 4;
+            this.chkOnSuccess.Text = "OnSuccess";
+            this.chkOnSuccess.UseVisualStyleBackColor = true;
             // 
             // frmMessageOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(368, 230);
+            this.ClientSize = new System.Drawing.Size(376, 265);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnCancel);
@@ -266,6 +302,8 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDnSendTimeOut)).EndInit();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -288,5 +326,8 @@
         private System.Windows.Forms.ComboBox cboMsgPriority;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numUpDnSendTimeOut;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.CheckBox chkOnSuccess;
+        private System.Windows.Forms.CheckBox chkOnFailure;
     }
 }

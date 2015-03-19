@@ -7,6 +7,7 @@ using System.Net.Mime;
 using System.Windows.Forms;
 using NetMailSample.Common;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace NetMailSample
 {
@@ -240,6 +241,18 @@ namespace NetMailSample
                 msgSubject = txtBoxSubject.Text;
                 mail.Body = richTxtBody.Text;
                 mail.IsBodyHtml = Properties.Settings.Default.BodyHtml;
+                
+                // add delivery notifications
+                if (Properties.Settings.Default.DelNotifOnFailure == true)
+                {
+                    mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
+                }
+
+                if (Properties.Settings.Default.DelNotifOnSuccess == true)
+                {
+                    mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnSuccess;
+                }
+
 
                 // check for credentials
                 string sUser = txtBoxEmailAddress.Text.Trim();
@@ -270,7 +283,7 @@ namespace NetMailSample
                         }
                         else
                         {
-                            throw new DirectoryNotFoundException("The specified directory does not exist.");
+                            throw new DirectoryNotFoundException(@"The specified directory """ + txtPickupFolder.Text + @""" does not exist.");
                         }
                     }
                     else
@@ -284,7 +297,7 @@ namespace NetMailSample
                 smtp.Port = Int32.Parse(cboPort.Text.Trim());
                 smtp.Host = cboServer.Text;
                 smtp.Timeout = Properties.Settings.Default.SendSyncTimeout;
-
+                
                 // send email
                 smtp.Send(mail);
             }
@@ -326,7 +339,7 @@ namespace NetMailSample
             {
                 txtBoxErrorLog.Clear();
                 noErrFound = false;
-                _logger.Log("Error:" + ex.Message);
+                _logger.Log("Error: " + ex.Message);
                 _logger.Log("StackTrace: " + ex.StackTrace);
             }
             finally
@@ -768,6 +781,13 @@ namespace NetMailSample
             }
         }
 
+        /// <summary>
+        /// this button handles displaying the File Open dialog and loading the settings from an existing xml file
+        /// useriohelper is for displaying the dialog and serialhelper is for parsing out the xml for settings
+        /// once the settings have been parsed from the xml file, setformfromconnectionsettings is called to populate the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mnuFileLoadSettings_Click(object sender, EventArgs e)
         {
             string sFile = string.Empty;
@@ -797,6 +817,14 @@ namespace NetMailSample
             oConnectionSetting = null;
         }
 
+        /// <summary>
+        /// save the current form settings to an xml file
+        /// useriohelper is for displaying the save dialog
+        /// setconnectionsettingsfromform handles which settings need to be saved
+        /// then serialhelper streams that information to the file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mnuFileSaveSettings_Click(object sender, EventArgs e)
         {
             string sFile = string.Empty;
@@ -825,6 +853,7 @@ namespace NetMailSample
             }
         }
 
+        // display File Options dialog
         private void mnuFileOptions_Click(object sender, EventArgs e)
         {
             Forms.frmMessageOptions mEncoding = new Forms.frmMessageOptions();
@@ -832,6 +861,7 @@ namespace NetMailSample
             mEncoding.ShowDialog(this);
         }
 
+        // display File About dialog
         private void mnuFileAbout_Click(object sender, EventArgs e)
         {
             Forms.frmAbout frm = new Forms.frmAbout();
@@ -839,6 +869,7 @@ namespace NetMailSample
             frm.Dispose();
         }
 
+        // apply settings for the form
         private void SetFormFromConnectionSettings(ConnectionSettings oConnectionSetting)
         {
             try
@@ -869,9 +900,9 @@ namespace NetMailSample
                 txtBoxErrorLog.Clear();
                 txtBoxErrorLog.Text = ex.Message + "Error loading settings into form";
             }
-
         }
 
+        // string function to make sure we aren't using null values, empty values are fine
         private string FixSetting(string sSetting)
         {
             if (sSetting == null)
@@ -880,6 +911,7 @@ namespace NetMailSample
                 return sSetting;
         }
 
+        // specifiy the connection settings
         private void SetConnectionSettingsFromForm(ref ConnectionSettings oConnectionSetting)
         {
             oConnectionSetting.User = this.txtBoxEmailAddress.Text;

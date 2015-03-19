@@ -9,6 +9,14 @@ namespace NetMailSample.Common
 {
     public class UserIoHelper
     {
+        /// <summary>
+        /// this function is used to get the save settings file location
+        /// </summary>
+        /// <param name="InitialDirectory"></param>
+        /// <param name="SuggestedName"></param>
+        /// <param name="SelectedFile"></param>
+        /// <param name="FileFilter"></param>
+        /// <returns></returns>
         public static bool PickSaveFileToFolder(string InitialDirectory, string SuggestedName, ref string SelectedFile, string FileFilter)
         {
             bool bRet = false;
@@ -20,7 +28,7 @@ namespace NetMailSample.Common
             fsd.Filter = FileFilter; 
             fsd.FilterIndex = 1;
             fsd.RestoreDirectory = false;
-            fsd.Title = "Save File To Folder";
+            fsd.Title = "Save Settings To File";
 
             if (fsd.ShowDialog() == DialogResult.OK)
             {
@@ -31,6 +39,14 @@ namespace NetMailSample.Common
             return bRet;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="InitialDirectory"></param>
+        /// <param name="SuggestedName"></param>
+        /// <param name="SelectedFile"></param>
+        /// <param name="FileFilter"></param>
+        /// <returns></returns>
         public static bool PickLoadFromFile(string InitialDirectory, string SuggestedName, ref string SelectedFile, string FileFilter)
         {
             bool bRet = false;
