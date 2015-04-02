@@ -1,0 +1,327 @@
+03/19/15 5:53:22 PM ==> The .NET Runtime = 4.0.30319.34209
+03/19/15 5:53:22 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/24/15 2:52:07 PM ==> The .NET Runtime = 4.0.30319.34209
+03/24/15 2:52:07 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/24/15 2:56:17 PM ==> The .NET Runtime = 4.0.30319.34209
+03/24/15 2:56:17 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/24/15 2:58:11 PM ==> The .NET Runtime = 4.0.30319.34209
+03/24/15 2:58:11 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/24/15 2:59:30 PM ==> The .NET Runtime = 4.0.30319.34209
+03/24/15 2:59:30 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/24/15 3:01:23 PM ==> The .NET Runtime = 4.0.30319.34209
+03/24/15 3:01:23 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/24/15 8:34:49 PM ==> The .NET Runtime = 4.0.30319.34209
+03/24/15 8:34:49 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/25/15 1:25:00 PM ==> The .NET Runtime = 4.0.30319.34209
+03/25/15 1:25:00 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/25/15 1:26:06 PM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+03/25/15 1:26:15 PM ==> Message subject = test subject
+03/25/15 1:26:15 PM ==> Message send = SUCCESS
+03/30/15 10:05:58 AM ==> The .NET Runtime = 4.0.30319.34209
+03/30/15 10:05:58 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/30/15 10:08:40 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+03/30/15 10:08:40 AM ==> Error: The specified directory "test" does not exist.
+03/30/15 10:08:40 AM ==> StackTrace:    at NetMailSample.frmMain.SendEmail() in f:\Codeplex\NetMailSample\NetMailSample\Forms\frmMain.cs:line 288
+03/30/15 10:09:14 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+03/30/15 10:09:44 AM ==> Error: The specified directory "test" does not exist.
+03/30/15 10:09:44 AM ==> StackTrace:    at NetMailSample.frmMain.SendEmail() in f:\Codeplex\NetMailSample\NetMailSample\Forms\frmMain.cs:line 288
+03/30/15 10:09:48 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+03/30/15 10:09:53 AM ==> Error: The operation has timed out.
+03/30/15 10:09:53 AM ==> StackTrace:    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at NetMailSample.frmMain.SendEmail() in f:\Codeplex\NetMailSample\NetMailSample\Forms\frmMain.cs:line 302
+03/30/15 10:09:53 AM ==> Status Code: GeneralFailure
+03/30/15 10:09:53 AM ==> Description:The transaction could not occur. You receive this error when the specified SMTP host cannot be found.
+03/30/15 10:10:14 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+03/30/15 10:10:19 AM ==> Error: The operation has timed out.
+03/30/15 10:10:19 AM ==> StackTrace:    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at NetMailSample.frmMain.SendEmail() in f:\Codeplex\NetMailSample\NetMailSample\Forms\frmMain.cs:line 302
+03/30/15 10:10:19 AM ==> Status Code: GeneralFailure
+03/30/15 10:10:19 AM ==> Description:The transaction could not occur. You receive this error when the specified SMTP host cannot be found.
+03/30/15 10:10:38 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+03/30/15 10:10:40 AM ==> Error: The operation has timed out.
+03/30/15 10:10:40 AM ==> StackTrace:    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at NetMailSample.frmMain.SendEmail() in f:\Codeplex\NetMailSample\NetMailSample\Forms\frmMain.cs:line 302
+03/30/15 10:10:40 AM ==> Status Code: GeneralFailure
+03/30/15 10:10:40 AM ==> Description:The transaction could not occur. You receive this error when the specified SMTP host cannot be found.
+03/30/15 10:10:47 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+03/30/15 10:10:48 AM ==> Error: The operation has timed out.
+03/30/15 10:10:48 AM ==> StackTrace:    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at NetMailSample.frmMain.SendEmail() in f:\Codeplex\NetMailSample\NetMailSample\Forms\frmMain.cs:line 302
+03/30/15 10:10:48 AM ==> Status Code: GeneralFailure
+03/30/15 10:10:48 AM ==> Description:The transaction could not occur. You receive this error when the specified SMTP host cannot be found.
+03/30/15 10:11:15 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+03/30/15 10:11:15 AM ==> Error: The operation has timed out.
+03/30/15 10:11:15 AM ==> StackTrace:    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at NetMailSample.frmMain.SendEmail() in f:\Codeplex\NetMailSample\NetMailSample\Forms\frmMain.cs:line 302
+03/30/15 10:11:15 AM ==> Status Code: GeneralFailure
+03/30/15 10:11:15 AM ==> Description:The transaction could not occur. You receive this error when the specified SMTP host cannot be found.
+03/30/15 10:11:24 AM ==> The .NET Runtime = 4.0.30319.34209
+03/30/15 10:11:24 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/30/15 10:16:18 AM ==> The .NET Runtime = 4.0.30319.34209
+03/30/15 10:16:18 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/30/15 10:17:17 AM ==> The .NET Runtime = 4.0.30319.34209
+03/30/15 10:17:17 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/30/15 10:17:42 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+03/30/15 10:17:42 AM ==> Error: The specified directory "test" does not exist.
+03/30/15 10:17:42 AM ==> StackTrace:    at NetMailSample.frmMain.SendEmail() in f:\Codeplex\NetMailSample\NetMailSample\Forms\frmMain.cs:line 288
+03/30/15 10:17:47 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+03/30/15 10:17:50 AM ==> Error: The operation has timed out.
+03/30/15 10:17:50 AM ==> StackTrace:    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at NetMailSample.frmMain.SendEmail() in f:\Codeplex\NetMailSample\NetMailSample\Forms\frmMain.cs:line 302
+03/30/15 10:17:50 AM ==> Status Code: GeneralFailure
+03/30/15 10:17:50 AM ==> Description:The transaction could not occur. You receive this error when the specified SMTP host cannot be found.
+03/30/15 10:17:59 AM ==> The .NET Runtime = 4.0.30319.34209
+03/30/15 10:17:59 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/30/15 10:18:18 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+03/30/15 10:18:20 AM ==> Error: The operation has timed out.
+03/30/15 10:18:20 AM ==> StackTrace:    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at NetMailSample.frmMain.SendEmail() in f:\Codeplex\NetMailSample\NetMailSample\Forms\frmMain.cs:line 302
+03/30/15 10:18:20 AM ==> Status Code: GeneralFailure
+03/30/15 10:18:20 AM ==> Description:The transaction could not occur. You receive this error when the specified SMTP host cannot be found.
+03/30/15 10:18:54 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+03/30/15 10:19:54 AM ==> Error: The operation has timed out.
+03/30/15 10:19:54 AM ==> StackTrace:    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at NetMailSample.frmMain.SendEmail() in f:\Codeplex\NetMailSample\NetMailSample\Forms\frmMain.cs:line 302
+03/30/15 10:19:54 AM ==> Status Code: GeneralFailure
+03/30/15 10:19:54 AM ==> Description:The transaction could not occur. You receive this error when the specified SMTP host cannot be found.
+03/30/15 10:29:47 AM ==> The .NET Runtime = 4.0.30319.34209
+03/30/15 10:29:47 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/30/15 10:30:09 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+03/30/15 10:30:13 AM ==> Message subject = test subject
+03/30/15 10:30:13 AM ==> Message send = SUCCESS
+03/30/15 10:30:36 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+03/30/15 10:30:38 AM ==> Error: The operation has timed out.
+03/30/15 10:30:38 AM ==> StackTrace:    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at NetMailSample.frmMain.SendEmail() in f:\Codeplex\NetMailSample\NetMailSample\Forms\frmMain.cs:line 302
+03/30/15 10:30:38 AM ==> Status Code: GeneralFailure
+03/30/15 10:30:38 AM ==> Description:The transaction could not occur. You receive this error when the specified SMTP host cannot be found.
+03/30/15 10:31:10 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+03/30/15 10:34:59 AM ==> Error: The operation has timed out.
+03/30/15 10:34:59 AM ==> StackTrace:    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at NetMailSample.frmMain.SendEmail() in f:\Codeplex\NetMailSample\NetMailSample\Forms\frmMain.cs:line 302
+03/30/15 10:34:59 AM ==> Status Code: GeneralFailure
+03/30/15 10:34:59 AM ==> Description:The transaction could not occur. You receive this error when the specified SMTP host cannot be found.
+03/30/15 10:35:14 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+03/30/15 10:35:27 AM ==> Error: Failure sending mail.
+03/30/15 10:35:27 AM ==> StackTrace:    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at NetMailSample.frmMain.SendEmail() in f:\Codeplex\NetMailSample\NetMailSample\Forms\frmMain.cs:line 302
+03/30/15 10:35:27 AM ==> Status Code: GeneralFailure
+03/30/15 10:35:27 AM ==> Description:The transaction could not occur. You receive this error when the specified SMTP host cannot be found.
+03/30/15 10:35:58 AM ==> The .NET Runtime = 4.0.30319.34209
+03/30/15 10:35:58 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/30/15 10:36:52 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+03/30/15 10:36:52 AM ==> Error: The specified directory "test" does not exist.
+03/30/15 10:36:52 AM ==> StackTrace:    at NetMailSample.frmMain.SendEmail() in f:\Codeplex\NetMailSample\NetMailSample\Forms\frmMain.cs:line 288
+03/30/15 10:37:01 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+03/30/15 10:37:03 AM ==> Error: The operation has timed out.
+03/30/15 10:37:03 AM ==> StackTrace:    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at NetMailSample.frmMain.SendEmail() in f:\Codeplex\NetMailSample\NetMailSample\Forms\frmMain.cs:line 302
+03/30/15 10:37:03 AM ==> Status Code: GeneralFailure
+03/30/15 10:37:03 AM ==> Description:The transaction could not occur. You receive this error when the specified SMTP host cannot be found.
+03/30/15 10:40:58 AM ==> The .NET Runtime = 4.0.30319.34209
+03/30/15 10:40:58 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/30/15 10:43:07 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+03/30/15 10:43:10 AM ==> Error: The operation has timed out.
+03/30/15 10:43:10 AM ==> StackTrace:    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at NetMailSample.frmMain.SendEmail() in f:\Codeplex\NetMailSample\NetMailSample\Forms\frmMain.cs:line 302
+03/30/15 10:43:10 AM ==> Status Code: GeneralFailure
+03/30/15 10:43:10 AM ==> Description:The transaction could not occur. You receive this error when the specified SMTP host cannot be found.
+03/30/15 10:44:26 AM ==> The .NET Runtime = 4.0.30319.34209
+03/30/15 10:44:26 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/30/15 10:45:04 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+03/30/15 10:45:10 AM ==> Message subject = test subject
+03/30/15 10:45:10 AM ==> Message send = SUCCESS
+03/30/15 10:46:12 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+03/30/15 10:46:14 AM ==> Error: The operation has timed out.
+03/30/15 10:46:14 AM ==> StackTrace:    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at NetMailSample.frmMain.SendEmail() in f:\Codeplex\NetMailSample\NetMailSample\Forms\frmMain.cs:line 302
+03/30/15 10:46:14 AM ==> Status Code: GeneralFailure
+03/30/15 10:46:14 AM ==> Description:The transaction could not occur. You receive this error when the specified SMTP host cannot be found.
+03/30/15 10:46:40 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+03/30/15 10:46:40 AM ==> Error: Failure sending mail.
+03/30/15 10:46:40 AM ==> StackTrace:    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at NetMailSample.frmMain.SendEmail() in f:\Codeplex\NetMailSample\NetMailSample\Forms\frmMain.cs:line 302
+03/30/15 10:46:40 AM ==> Status Code: GeneralFailure
+03/30/15 10:46:40 AM ==> Description:The transaction could not occur. You receive this error when the specified SMTP host cannot be found.
+03/30/15 10:49:40 AM ==> The .NET Runtime = 4.0.30319.34209
+03/30/15 10:49:40 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/30/15 1:47:59 PM ==> The .NET Runtime = 4.0.30319.34209
+03/30/15 1:47:59 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/30/15 1:48:27 PM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+03/30/15 1:48:29 PM ==> Error: The operation has timed out.
+03/30/15 1:48:29 PM ==> StackTrace:    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at NetMailSample.frmMain.SendEmail() in f:\Codeplex\NetMailSample\NetMailSample\Forms\frmMain.cs:line 302
+03/30/15 1:48:29 PM ==> Status Code: GeneralFailure
+03/30/15 1:48:29 PM ==> Description:The transaction could not occur. You receive this error when the specified SMTP host cannot be found.
+03/30/15 1:55:33 PM ==> The .NET Runtime = 4.0.30319.34209
+03/30/15 1:55:33 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/30/15 2:27:42 PM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+03/30/15 2:27:45 PM ==> Error: The operation has timed out.
+03/30/15 2:27:45 PM ==> StackTrace:    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at NetMailSample.frmMain.SendEmail() in f:\Codeplex\NetMailSample\NetMailSample\Forms\frmMain.cs:line 302
+03/30/15 2:27:45 PM ==> Status Code: GeneralFailure
+03/30/15 2:27:45 PM ==> Description:The transaction could not occur. You receive this error when the specified SMTP host cannot be found.
+03/31/15 4:42:13 PM ==> The .NET Runtime = 4.0.30319.34209
+03/31/15 4:42:13 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/31/15 5:04:15 PM ==> The .NET Runtime = 4.0.30319.34209
+03/31/15 5:04:15 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/31/15 5:06:29 PM ==> The .NET Runtime = 4.0.30319.34209
+03/31/15 5:06:29 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/31/15 5:19:49 PM ==> The .NET Runtime = 4.0.30319.34209
+03/31/15 5:19:49 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/31/15 5:28:25 PM ==> The .NET Runtime = 4.0.30319.34209
+03/31/15 5:28:25 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/31/15 5:51:52 PM ==> The .NET Runtime = 4.0.30319.34209
+03/31/15 5:51:52 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/31/15 5:52:09 PM ==> Adding To addresses: brandondesjarlais@outlook.com
+03/31/15 5:52:12 PM ==> Message subject = test
+03/31/15 5:52:12 PM ==> Message send = SUCCESS
+03/31/15 5:52:28 PM ==> The .NET Runtime = 4.0.30319.34209
+03/31/15 5:52:28 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/31/15 5:52:43 PM ==> The .NET Runtime = 4.0.30319.34209
+03/31/15 5:52:43 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/31/15 5:53:16 PM ==> The .NET Runtime = 4.0.30319.34209
+03/31/15 5:53:16 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/31/15 9:23:47 PM ==> The .NET Runtime = 4.0.30319.34209
+03/31/15 9:23:47 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/31/15 9:24:32 PM ==> Adding To addresses: brandondesjarlais@outlook.com
+03/31/15 9:24:34 PM ==> Error: The operation has timed out.
+03/31/15 9:24:34 PM ==> StackTrace:    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at NetMailSample.frmMain.SendEmail() in f:\Codeplex\NetMailSample\NetMailSample\Forms\frmMain.cs:line 302
+03/31/15 9:24:34 PM ==> Status Code: GeneralFailure
+03/31/15 9:24:34 PM ==> Description:The transaction could not occur. You receive this error when the specified SMTP host cannot be found.
+03/31/15 9:25:43 PM ==> The .NET Runtime = 4.0.30319.34209
+03/31/15 9:25:43 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/31/15 9:26:02 PM ==> Adding To addresses: brandondesjarlais@outlook.com
+03/31/15 9:26:05 PM ==> Message subject = test
+03/31/15 9:26:05 PM ==> Message send = SUCCESS
+03/31/15 9:31:27 PM ==> The .NET Runtime = 4.0.30319.34209
+03/31/15 9:31:27 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+03/31/15 9:32:09 PM ==> Adding To addresses: brandondesjarlais@outlook.com
+03/31/15 9:32:11 PM ==> Error: The operation has timed out.
+03/31/15 9:32:11 PM ==> StackTrace:    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at NetMailSample.frmMain.SendEmail() in f:\Codeplex\NetMailSample\NetMailSample\Forms\frmMain.cs:line 302
+03/31/15 9:32:11 PM ==> Status Code: GeneralFailure
+03/31/15 9:32:11 PM ==> Description:The transaction could not occur. You receive this error when the specified SMTP host cannot be found.
+04/01/15 10:50:01 AM ==> The .NET Runtime = 4.0.30319.34209
+04/01/15 10:50:01 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/01/15 10:50:34 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+04/01/15 10:50:38 AM ==> Message subject = test
+04/01/15 10:50:38 AM ==> Message send = SUCCESS
+04/01/15 10:51:59 AM ==> The .NET Runtime = 4.0.30319.34209
+04/01/15 10:51:59 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/01/15 10:52:34 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+04/01/15 10:52:38 AM ==> Message subject = test subject
+04/01/15 10:52:38 AM ==> Message send = SUCCESS
+04/01/15 11:27:20 AM ==> The .NET Runtime = 4.0.30319.34209
+04/01/15 11:27:20 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/01/15 11:28:41 AM ==> The .NET Runtime = 4.0.30319.34209
+04/01/15 11:28:41 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/01/15 11:29:40 AM ==> The .NET Runtime = 4.0.30319.34209
+04/01/15 11:29:40 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/01/15 11:30:21 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+04/01/15 11:30:21 AM ==> Message subject = test subject
+04/01/15 11:30:21 AM ==> Message send = SUCCESS
+04/01/15 11:31:48 AM ==> The .NET Runtime = 4.0.30319.34209
+04/01/15 11:31:48 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/01/15 11:32:13 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+04/01/15 11:32:13 AM ==> Message subject = test subject
+04/01/15 11:32:13 AM ==> Message send = SUCCESS
+04/01/15 11:36:06 AM ==> The .NET Runtime = 4.0.30319.34209
+04/01/15 11:36:06 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/01/15 11:37:52 AM ==> The .NET Runtime = 4.0.30319.34209
+04/01/15 11:37:52 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/01/15 11:40:05 AM ==> The .NET Runtime = 4.0.30319.34209
+04/01/15 11:40:05 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/01/15 11:49:05 AM ==> The .NET Runtime = 4.0.30319.34209
+04/01/15 11:49:05 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/01/15 11:51:19 AM ==> The .NET Runtime = 4.0.30319.34209
+04/01/15 11:51:19 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/01/15 11:52:34 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+04/01/15 11:52:34 AM ==> Message subject = test subject
+04/01/15 11:52:34 AM ==> Message send = SUCCESS
+04/01/15 11:52:42 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+04/01/15 11:52:42 AM ==> Message subject = test subject
+04/01/15 11:52:42 AM ==> Message send = SUCCESS
+04/01/15 11:52:53 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+04/01/15 11:52:53 AM ==> Message subject = test subject
+04/01/15 11:52:53 AM ==> Message send = SUCCESS
+04/01/15 11:53:05 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+04/01/15 11:53:05 AM ==> Message subject = test subject
+04/01/15 11:53:05 AM ==> Message send = SUCCESS
+04/01/15 11:54:22 AM ==> The .NET Runtime = 4.0.30319.34209
+04/01/15 11:54:22 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/01/15 11:56:13 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+04/01/15 11:56:17 AM ==> Message subject = test subject
+04/01/15 11:56:17 AM ==> Message send = SUCCESS
+04/01/15 11:58:06 AM ==> The .NET Runtime = 4.0.30319.34209
+04/01/15 11:58:06 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/01/15 11:59:07 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+04/01/15 11:59:11 AM ==> Message subject = test subject
+04/01/15 11:59:11 AM ==> Message send = SUCCESS
+04/01/15 12:01:57 PM ==> The .NET Runtime = 4.0.30319.34209
+04/01/15 12:01:57 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/01/15 2:09:09 PM ==> The .NET Runtime = 4.0.30319.34209
+04/01/15 2:09:09 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/01/15 2:47:45 PM ==> The .NET Runtime = 4.0.30319.34209
+04/01/15 2:47:45 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/01/15 3:01:56 PM ==> The .NET Runtime = 4.0.30319.34209
+04/01/15 3:01:56 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/01/15 3:03:19 PM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+04/01/15 3:03:19 PM ==> Message subject = test subject
+04/01/15 3:03:19 PM ==> Message send = SUCCESS
+04/01/15 3:03:59 PM ==> The .NET Runtime = 4.0.30319.34209
+04/01/15 3:03:59 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/01/15 3:04:57 PM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+04/01/15 3:05:02 PM ==> Message subject = test subject
+04/01/15 3:05:02 PM ==> Message send = SUCCESS
+04/01/15 3:06:37 PM ==> The .NET Runtime = 4.0.30319.34209
+04/01/15 3:06:37 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/01/15 3:07:47 PM ==> The .NET Runtime = 4.0.30319.34209
+04/01/15 3:07:47 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/01/15 3:08:23 PM ==> The .NET Runtime = 4.0.30319.34209
+04/01/15 3:08:23 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/01/15 3:09:26 PM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+04/01/15 3:09:30 PM ==> Message subject = test subject
+04/01/15 3:09:30 PM ==> Message send = SUCCESS
+04/01/15 3:11:20 PM ==> The .NET Runtime = 4.0.30319.34209
+04/01/15 3:11:20 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/01/15 3:11:53 PM ==> The .NET Runtime = 4.0.30319.34209
+04/01/15 3:11:53 PM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/02/15 10:38:51 AM ==> The .NET Runtime = 4.0.30319.34209
+04/02/15 10:38:51 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/02/15 10:39:55 AM ==> The .NET Runtime = 4.0.30319.34209
+04/02/15 10:39:55 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/02/15 10:43:09 AM ==> The .NET Runtime = 4.0.30319.34209
+04/02/15 10:43:09 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/02/15 10:44:33 AM ==> The .NET Runtime = 4.0.30319.34209
+04/02/15 10:44:33 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/02/15 10:45:55 AM ==> The .NET Runtime = 4.0.30319.34209
+04/02/15 10:45:55 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/02/15 10:46:30 AM ==> The .NET Runtime = 4.0.30319.34209
+04/02/15 10:46:30 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/02/15 10:48:26 AM ==> The .NET Runtime = 4.0.30319.34209
+04/02/15 10:48:26 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/02/15 10:48:46 AM ==> The .NET Runtime = 4.0.30319.34209
+04/02/15 10:48:46 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/02/15 10:50:09 AM ==> Adding To addresses: brandon.desjarlais@hotmail.com
+04/02/15 10:50:14 AM ==> Message subject = test subject
+04/02/15 10:50:14 AM ==> Message send = SUCCESS
+04/02/15 11:02:32 AM ==> The .NET Runtime = 4.0.30319.34209
+04/02/15 11:02:32 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/02/15 11:03:58 AM ==> The .NET Runtime = 4.0.30319.34209
+04/02/15 11:03:58 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/02/15 11:06:38 AM ==> The .NET Runtime = 4.0.30319.34209
+04/02/15 11:06:38 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/02/15 11:07:56 AM ==> The .NET Runtime = 4.0.30319.34209
+04/02/15 11:07:56 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/02/15 11:12:04 AM ==> The .NET Runtime = 4.0.30319.34209
+04/02/15 11:12:04 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/02/15 11:12:38 AM ==> The .NET Runtime = 4.0.30319.34209
+04/02/15 11:12:38 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/02/15 11:13:36 AM ==> The .NET Runtime = 4.0.30319.34209
+04/02/15 11:13:36 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/02/15 11:16:02 AM ==> The .NET Runtime = 4.0.30319.34209
+04/02/15 11:16:02 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650
+04/02/15 11:19:10 AM ==> The .NET Runtime = 4.0.30319.34209
+04/02/15 11:19:10 AM ==> Installed .NET Framework = 4.5.2 - Version = 4.5.51650

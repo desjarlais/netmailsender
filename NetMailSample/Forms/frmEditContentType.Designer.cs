@@ -34,10 +34,10 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.cboContentType = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtCid = new System.Windows.Forms.TextBox();
             this.cboInline = new System.Windows.Forms.CheckBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,6 +107,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Attachment Options";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(6, 111);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(225, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Note: inline attachment sets BodyHTML = true";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -134,16 +144,6 @@
             this.cboInline.Text = "Inline Attachment";
             this.cboInline.UseVisualStyleBackColor = true;
             this.cboInline.CheckedChanged += new System.EventHandler(this.cboInline_CheckedChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 111);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(225, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Note: inline attachment sets BodyHTML = true";
             // 
             // frmEditContentType
             // 

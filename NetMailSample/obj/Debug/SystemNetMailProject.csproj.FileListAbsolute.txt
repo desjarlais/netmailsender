@@ -12,6 +12,3 @@ F:\Codeplex\NetMailSample\NetMailSample\obj\Debug\NetMailSample.Properties.Resou
 F:\Codeplex\NetMailSample\NetMailSample\obj\Debug\SystemNetMailProject.csproj.GenerateResource.Cache
 F:\Codeplex\NetMailSample\NetMailSample\obj\Debug\NetMailSample.exe
 F:\Codeplex\NetMailSample\NetMailSample\obj\Debug\NetMailSample.pdb
-F:\GitHub\netmailsender\netmailsender\NetMailSample\bin\Debug\NetMailSample.exe.config
-F:\GitHub\netmailsender\netmailsender\NetMailSample\obj\Debug\NetMailSample.exe
-F:\GitHub\netmailsender\netmailsender\NetMailSample\obj\Debug\NetMailSample.pdb

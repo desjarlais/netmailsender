@@ -89,7 +89,9 @@
             this.mnuFileLoadSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFileSaveSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFileOptions = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuFileAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.feedbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grpMailMessage.SuspendLayout();
             this.grpSmtpSettings.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -177,7 +179,7 @@
             this.grpMailMessage.Size = new System.Drawing.Size(530, 323);
             this.grpMailMessage.TabIndex = 3;
             this.grpMailMessage.TabStop = false;
-            this.grpMailMessage.Text = "Mail Message - seperate multiple addresses with comma";
+            this.grpMailMessage.Text = "Mail Message - separate multiple addresses with comma";
             // 
             // richTxtBody
             // 
@@ -371,6 +373,7 @@
             // 
             this.cboServer.FormattingEnabled = true;
             this.cboServer.Items.AddRange(new object[] {
+            "smtp-mail.outlook.com ",
             "smtp.live.com",
             "outlook.office365.com",
             "smtp.gmail.com",
@@ -671,7 +674,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(974, 24);
@@ -683,8 +687,7 @@
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuFileLoadSettings,
             this.mnuFileSaveSettings,
-            this.mnuFileOptions,
-            this.mnuFileAbout});
+            this.mnuFileOptions});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
             this.toolStripMenuItem1.Text = "&File";
@@ -692,30 +695,46 @@
             // mnuFileLoadSettings
             // 
             this.mnuFileLoadSettings.Name = "mnuFileLoadSettings";
-            this.mnuFileLoadSettings.Size = new System.Drawing.Size(152, 22);
+            this.mnuFileLoadSettings.Size = new System.Drawing.Size(145, 22);
             this.mnuFileLoadSettings.Text = "&Load Settings";
             this.mnuFileLoadSettings.Click += new System.EventHandler(this.mnuFileLoadSettings_Click);
             // 
             // mnuFileSaveSettings
             // 
             this.mnuFileSaveSettings.Name = "mnuFileSaveSettings";
-            this.mnuFileSaveSettings.Size = new System.Drawing.Size(152, 22);
+            this.mnuFileSaveSettings.Size = new System.Drawing.Size(145, 22);
             this.mnuFileSaveSettings.Text = "&Save Settings";
             this.mnuFileSaveSettings.Click += new System.EventHandler(this.mnuFileSaveSettings_Click);
             // 
             // mnuFileOptions
             // 
             this.mnuFileOptions.Name = "mnuFileOptions";
-            this.mnuFileOptions.Size = new System.Drawing.Size(152, 22);
+            this.mnuFileOptions.Size = new System.Drawing.Size(145, 22);
             this.mnuFileOptions.Text = "&Options";
             this.mnuFileOptions.Click += new System.EventHandler(this.mnuFileOptions_Click);
             // 
-            // mnuFileAbout
+            // toolStripMenuItem2
             // 
-            this.mnuFileAbout.Name = "mnuFileAbout";
-            this.mnuFileAbout.Size = new System.Drawing.Size(152, 22);
-            this.mnuFileAbout.Text = "&About";
-            this.mnuFileAbout.Click += new System.EventHandler(this.mnuFileAbout_Click);
+            this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStrip,
+            this.feedbackToolStripMenuItem});
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(44, 20);
+            this.toolStripMenuItem2.Text = "&Help";
+            // 
+            // aboutToolStrip
+            // 
+            this.aboutToolStrip.Name = "aboutToolStrip";
+            this.aboutToolStrip.Size = new System.Drawing.Size(124, 22);
+            this.aboutToolStrip.Text = "&About";
+            this.aboutToolStrip.Click += new System.EventHandler(this.aboutToolStrip_Click);
+            // 
+            // feedbackToolStripMenuItem
+            // 
+            this.feedbackToolStripMenuItem.Name = "feedbackToolStripMenuItem";
+            this.feedbackToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.feedbackToolStripMenuItem.Text = "F&eedback";
+            this.feedbackToolStripMenuItem.Click += new System.EventHandler(this.feedbackToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -821,7 +840,9 @@
         private System.Windows.Forms.ToolStripMenuItem mnuFileLoadSettings;
         private System.Windows.Forms.ToolStripMenuItem mnuFileSaveSettings;
         private System.Windows.Forms.ToolStripMenuItem mnuFileOptions;
-        private System.Windows.Forms.ToolStripMenuItem mnuFileAbout;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStrip;
+        private System.Windows.Forms.ToolStripMenuItem feedbackToolStripMenuItem;
     }
 }
 

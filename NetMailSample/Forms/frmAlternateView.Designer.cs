@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAlternateView));
             this.btnAddAlternateViews = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -48,16 +51,27 @@
             this.btnConvertEncoding = new System.Windows.Forms.Button();
             this.cboTransferEncoding = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnCalSample = new System.Windows.Forms.Button();
-            this.cboAltViewContentType = new System.Windows.Forms.ComboBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.txtAltViewBody = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cboAltViewContentType = new System.Windows.Forms.ComboBox();
+            this.btnCalSample = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabHTML = new System.Windows.Forms.TabPage();
+            this.tabCalendar = new System.Windows.Forms.TabPage();
+            this.tabPlain = new System.Windows.Forms.TabPage();
+            this.btnInsertHTML = new System.Windows.Forms.Button();
+            this.txtHTMLAltViewBody = new System.Windows.Forms.TextBox();
+            this.txtCalendarAltViewBody = new System.Windows.Forms.TextBox();
+            this.txtPlainAltViewBody = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGridInlineAttachments)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabHTML.SuspendLayout();
+            this.tabCalendar.SuspendLayout();
+            this.tabPlain.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAddAlternateViews
@@ -155,7 +169,7 @@
             this.groupBox2.Controls.Add(this.btnLinkedResBrowse);
             this.groupBox2.Location = new System.Drawing.Point(403, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(416, 393);
+            this.groupBox2.Size = new System.Drawing.Size(416, 400);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Message Attachments";
@@ -164,7 +178,7 @@
             // 
             this.btnModifyContentType.Image = global::NetMailSample.Properties.Resources.EditTitleString_357;
             this.btnModifyContentType.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnModifyContentType.Location = new System.Drawing.Point(9, 364);
+            this.btnModifyContentType.Location = new System.Drawing.Point(8, 371);
             this.btnModifyContentType.Name = "btnModifyContentType";
             this.btnModifyContentType.Size = new System.Drawing.Size(57, 23);
             this.btnModifyContentType.TabIndex = 11;
@@ -177,7 +191,7 @@
             // 
             this.btnDeleteAttachment.Image = global::NetMailSample.Properties.Resources.Clearallrequests_8816;
             this.btnDeleteAttachment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDeleteAttachment.Location = new System.Drawing.Point(72, 364);
+            this.btnDeleteAttachment.Location = new System.Drawing.Point(71, 371);
             this.btnDeleteAttachment.Name = "btnDeleteAttachment";
             this.btnDeleteAttachment.Size = new System.Drawing.Size(61, 23);
             this.btnDeleteAttachment.TabIndex = 10;
@@ -190,16 +204,40 @@
             // 
             this.dGridInlineAttachments.AllowUserToAddRows = false;
             this.dGridInlineAttachments.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGridInlineAttachments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dGridInlineAttachments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGridInlineAttachments.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colFilePath,
             this.colCid,
             this.colContentType});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGridInlineAttachments.DefaultCellStyle = dataGridViewCellStyle2;
             this.dGridInlineAttachments.Location = new System.Drawing.Point(9, 76);
             this.dGridInlineAttachments.MultiSelect = false;
             this.dGridInlineAttachments.Name = "dGridInlineAttachments";
             this.dGridInlineAttachments.ReadOnly = true;
-            this.dGridInlineAttachments.Size = new System.Drawing.Size(396, 282);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGridInlineAttachments.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dGridInlineAttachments.Size = new System.Drawing.Size(396, 289);
             this.dGridInlineAttachments.TabIndex = 0;
             // 
             // colFilePath
@@ -250,22 +288,30 @@
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.cboTransferEncoding);
             this.groupBox3.Controls.Add(this.cboAltViewContentType);
-            this.groupBox3.Location = new System.Drawing.Point(403, 411);
+            this.groupBox3.Location = new System.Drawing.Point(403, 418);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(342, 81);
+            this.groupBox3.Size = new System.Drawing.Size(342, 74);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Alt View Settings";
             // 
-            // btnCalSample
+            // label2
             // 
-            this.btnCalSample.Location = new System.Drawing.Point(142, 451);
-            this.btnCalSample.Name = "btnCalSample";
-            this.btnCalSample.Size = new System.Drawing.Size(114, 23);
-            this.btnCalSample.TabIndex = 12;
-            this.btnCalSample.Text = "Insert vCal Sample";
-            this.btnCalSample.UseVisualStyleBackColor = true;
-            this.btnCalSample.Click += new System.EventHandler(this.btnCalSample_Click);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 50);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(145, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Content Transform Encoding:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Content-Type:";
             // 
             // cboAltViewContentType
             // 
@@ -280,11 +326,22 @@
             this.cboAltViewContentType.TabIndex = 0;
             this.cboAltViewContentType.Text = "HTML";
             // 
+            // btnCalSample
+            // 
+            this.btnCalSample.Location = new System.Drawing.Point(142, 451);
+            this.btnCalSample.Name = "btnCalSample";
+            this.btnCalSample.Size = new System.Drawing.Size(114, 23);
+            this.btnCalSample.TabIndex = 12;
+            this.btnCalSample.Text = "Insert vCal Sample";
+            this.btnCalSample.UseVisualStyleBackColor = true;
+            this.btnCalSample.Click += new System.EventHandler(this.btnCalSample_Click);
+            // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.tabControl1);
+            this.groupBox5.Controls.Add(this.btnInsertHTML);
             this.groupBox5.Controls.Add(this.btnCalSample);
             this.groupBox5.Controls.Add(this.btnConvertEncoding);
-            this.groupBox5.Controls.Add(this.txtAltViewBody);
             this.groupBox5.Location = new System.Drawing.Point(12, 12);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(385, 480);
@@ -292,32 +349,85 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Alt View Body";
             // 
-            // txtAltViewBody
+            // tabControl1
             // 
-            this.txtAltViewBody.Location = new System.Drawing.Point(3, 16);
-            this.txtAltViewBody.Multiline = true;
-            this.txtAltViewBody.Name = "txtAltViewBody";
-            this.txtAltViewBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtAltViewBody.Size = new System.Drawing.Size(376, 429);
-            this.txtAltViewBody.TabIndex = 0;
+            this.tabControl1.Controls.Add(this.tabHTML);
+            this.tabControl1.Controls.Add(this.tabCalendar);
+            this.tabControl1.Controls.Add(this.tabPlain);
+            this.tabControl1.Location = new System.Drawing.Point(6, 19);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(373, 422);
+            this.tabControl1.TabIndex = 12;
             // 
-            // label1
+            // tabHTML
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Content-Type:";
+            this.tabHTML.Controls.Add(this.txtHTMLAltViewBody);
+            this.tabHTML.Location = new System.Drawing.Point(4, 22);
+            this.tabHTML.Name = "tabHTML";
+            this.tabHTML.Padding = new System.Windows.Forms.Padding(3);
+            this.tabHTML.Size = new System.Drawing.Size(365, 396);
+            this.tabHTML.TabIndex = 1;
+            this.tabHTML.Text = "HTML";
+            this.tabHTML.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // tabCalendar
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 50);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(145, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Content Transform Encoding:";
+            this.tabCalendar.Controls.Add(this.txtCalendarAltViewBody);
+            this.tabCalendar.Location = new System.Drawing.Point(4, 22);
+            this.tabCalendar.Name = "tabCalendar";
+            this.tabCalendar.Padding = new System.Windows.Forms.Padding(3);
+            this.tabCalendar.Size = new System.Drawing.Size(365, 396);
+            this.tabCalendar.TabIndex = 0;
+            this.tabCalendar.Text = "Calendar";
+            this.tabCalendar.UseVisualStyleBackColor = true;
+            // 
+            // tabPlain
+            // 
+            this.tabPlain.Controls.Add(this.txtPlainAltViewBody);
+            this.tabPlain.Location = new System.Drawing.Point(4, 22);
+            this.tabPlain.Name = "tabPlain";
+            this.tabPlain.Size = new System.Drawing.Size(365, 396);
+            this.tabPlain.TabIndex = 2;
+            this.tabPlain.Text = "Plain";
+            this.tabPlain.UseVisualStyleBackColor = true;
+            // 
+            // btnInsertHTML
+            // 
+            this.btnInsertHTML.Location = new System.Drawing.Point(262, 451);
+            this.btnInsertHTML.Name = "btnInsertHTML";
+            this.btnInsertHTML.Size = new System.Drawing.Size(117, 23);
+            this.btnInsertHTML.TabIndex = 12;
+            this.btnInsertHTML.Text = "Insert HTML Sample";
+            this.btnInsertHTML.UseVisualStyleBackColor = true;
+            this.btnInsertHTML.Click += new System.EventHandler(this.btnInsertHTML_Click);
+            // 
+            // txtHTMLAltViewBody
+            // 
+            this.txtHTMLAltViewBody.Location = new System.Drawing.Point(6, 3);
+            this.txtHTMLAltViewBody.Multiline = true;
+            this.txtHTMLAltViewBody.Name = "txtHTMLAltViewBody";
+            this.txtHTMLAltViewBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtHTMLAltViewBody.Size = new System.Drawing.Size(352, 385);
+            this.txtHTMLAltViewBody.TabIndex = 0;
+            // 
+            // txtCalendarAltViewBody
+            // 
+            this.txtCalendarAltViewBody.Location = new System.Drawing.Point(7, 5);
+            this.txtCalendarAltViewBody.Multiline = true;
+            this.txtCalendarAltViewBody.Name = "txtCalendarAltViewBody";
+            this.txtCalendarAltViewBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtCalendarAltViewBody.Size = new System.Drawing.Size(352, 385);
+            this.txtCalendarAltViewBody.TabIndex = 0;
+            // 
+            // txtPlainAltViewBody
+            // 
+            this.txtPlainAltViewBody.Location = new System.Drawing.Point(4, 5);
+            this.txtPlainAltViewBody.Multiline = true;
+            this.txtPlainAltViewBody.Name = "txtPlainAltViewBody";
+            this.txtPlainAltViewBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtPlainAltViewBody.Size = new System.Drawing.Size(352, 385);
+            this.txtPlainAltViewBody.TabIndex = 0;
             // 
             // frmAlternateView
             // 
@@ -342,7 +452,13 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabHTML.ResumeLayout(false);
+            this.tabHTML.PerformLayout();
+            this.tabCalendar.ResumeLayout(false);
+            this.tabCalendar.PerformLayout();
+            this.tabPlain.ResumeLayout(false);
+            this.tabPlain.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -369,10 +485,17 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ComboBox cboAltViewContentType;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.TextBox txtAltViewBody;
+        private System.Windows.Forms.TextBox txtHTMLAltViewBody;
         private System.Windows.Forms.Button btnCalSample;
         private System.Windows.Forms.Button btnConvertEncoding;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnInsertHTML;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabCalendar;
+        private System.Windows.Forms.TabPage tabPlain;
+        private System.Windows.Forms.TabPage tabHTML;
+        private System.Windows.Forms.TextBox txtCalendarAltViewBody;
+        private System.Windows.Forms.TextBox txtPlainAltViewBody;
     }
 }

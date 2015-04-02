@@ -17,11 +17,13 @@ namespace NetMailSample.Forms
         /// form constructor
         /// </summary>
         /// <param name="subject"></param>
-        public frmAlternateView(string subject)
+        public frmAlternateView()
         {
             InitializeComponent();
             cboTransferEncoding.Text = Properties.Settings.Default.htmlBodyTransferEncoding;
-            tempSubject = subject;
+            txtCalendarAltViewBody.Text = Properties.Settings.Default.AltViewCal;
+            txtHTMLAltViewBody.Text = Properties.Settings.Default.AltViewHtml;
+            txtPlainAltViewBody.Text = Properties.Settings.Default.AltViewPlain;
         }
 
         /// <summary>
@@ -36,21 +38,22 @@ namespace NetMailSample.Forms
             {
                 case "vCalendar":
                     StringBuilder sb = new StringBuilder();
-                    string[] lines = txtAltViewBody.Lines;
-
+                    string[] lines = txtCalendarAltViewBody.Lines;
+                    
                     for(int i = 0; i < lines.GetUpperBound(0); i++)
                     {
                         sb.AppendLine((lines[i]));
                     }
-                    Properties.Settings.Default.AltViewCal = sb.ToString();
+
+                    Properties.Settings.Default.AltViewCal = sb.ToString();                
                     Properties.Settings.Default.vCalBodyTransferEncoding = cboTransferEncoding.Text;
                     break;
                 case "PlainText":
-                    Properties.Settings.Default.AltViewPlain = txtAltViewBody.Text;
+                    Properties.Settings.Default.AltViewPlain = txtHTMLAltViewBody.Text;
                     Properties.Settings.Default.plainBodyTransferEncoding = cboTransferEncoding.Text;
                     break;
                 default:
-                    Properties.Settings.Default.AltViewHtml = txtAltViewBody.Text;
+                    Properties.Settings.Default.AltViewHtml = txtPlainAltViewBody.Text;
                     Properties.Settings.Default.htmlBodyTransferEncoding = cboTransferEncoding.Text;
                     AddInlineTableForAttachments();
                     break;
@@ -208,15 +211,15 @@ namespace NetMailSample.Forms
         private void btnCalSample_Click(object sender, EventArgs e)
         {
             cboAltViewContentType.Text = "vCalendar";
-            cboTransferEncoding.Text = "Base64";
+            cboTransferEncoding.Text = "QuotedPrintable";
 
             DateTime dtStart = DateTime.Now.AddHours(1);
             DateTime dtEnd = DateTime.Now.AddHours(2);
             string msgBody = "Test Message Body";
-            string msgSubject = tempSubject;
+            string msgSubject = "Test Subject";
             string msgTo = "ToEmail@email.com";
             string msgFrom = "FromEmail@email.com";
-            string msgDispName = "FNLN";
+            string msgDispName = "FName LName";
 
             StringBuilder sbCal = new StringBuilder();
             sbCal.Append("BEGIN:VCALENDAR\r\n");
@@ -239,7 +242,8 @@ namespace NetMailSample.Forms
             sbCal.Append("END:VEVENT\r\n");
             sbCal.Append("END:VCALENDAR\r\n");
             
-            txtAltViewBody.Text = sbCal.ToString();
+            txtCalendarAltViewBody.Text = sbCal.ToString();
+            tabControl1.SelectedTab = tabCalendar;
         }
 
         /// <summary>
@@ -251,14 +255,33 @@ namespace NetMailSample.Forms
         {
             try
             {
-                byte[] encodedBytes = Convert.FromBase64String(txtAltViewBody.Text);
+                byte[] encodedBytes = Convert.FromBase64String(txtHTMLAltViewBody.Text);
                 string result = Encoding.UTF8.GetString(encodedBytes);
-                txtAltViewBody.Text = result;
+                txtHTMLAltViewBody.Text = result;
             }
             catch (Exception)
             {
                 return;
             }
+        }
+
+        /// <summary>
+        /// Insert a sample HTML body
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnInsertHTML_Click(object sender, EventArgs e)
+        {
+            cboAltViewContentType.Text = "HTML";
+            cboTransferEncoding.Text = "QuotedPrintable";
+
+            string body = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">";
+            body += "<HTML><HEAD><META http-equiv=Content-Type content=\"text/html; charset=iso-8859-1\">";
+            body += "</HEAD><BODY><DIV><FONT face=Arial color=#ff0000 size=2>this is some HTML text";
+            body += "</FONT></DIV></BODY></HTML>";
+
+            txtHTMLAltViewBody.Text = body;
+            tabControl1.SelectedTab = tabHTML;
         }
     }
 }

@@ -15,6 +15,7 @@ namespace NetMailSample
     {
         public string hdrName, hdrValue, msgSubject;
         DataTable inlineAttachmentsTable = new DataTable();
+        AlternateView plainView, htmlView, calView;
         bool continueTimerRun = false;
         bool formValidated = false;
         bool noErrFound = true;
@@ -154,9 +155,9 @@ namespace NetMailSample
                 // add HTML AltView
                 if (Properties.Settings.Default.AltViewHtml != "")
                 {
-                    ContentType sHtmlContentType = new ContentType("text/html");
-                    AlternateView htmlView = AlternateView.CreateAlternateViewFromString(Properties.Settings.Default.AltViewHtml, sHtmlContentType);
-
+                    ContentType ctHtml = new ContentType("text/html");
+                    htmlView = AlternateView.CreateAlternateViewFromString(Properties.Settings.Default.AltViewHtml, ctHtml);
+                    
                     // add inline attachments / linked resource
                     if (inlineAttachmentsTable.Rows.Count > 0)
                     {
@@ -172,30 +173,27 @@ namespace NetMailSample
 
                     // set transfer encoding
                     htmlView.TransferEncoding = MessageUtilities.GetTransferEncoding(Properties.Settings.Default.htmlBodyTransferEncoding);
-                    mail.AlternateViews.Add(htmlView);
-                    htmlView.Dispose();                   
+                    mail.AlternateViews.Add(htmlView);                   
                 }
 
                 // add Plain Text AltView
                 if (Properties.Settings.Default.AltViewPlain != "")
                 {
-                    ContentType sPlainContentType = new ContentType("text/plain");
-                    AlternateView plainView = AlternateView.CreateAlternateViewFromString(Properties.Settings.Default.AltViewPlain, sPlainContentType);
+                    ContentType ctPlain = new ContentType("text/plain");
+                    plainView = AlternateView.CreateAlternateViewFromString(Properties.Settings.Default.AltViewPlain, ctPlain);
                     plainView.TransferEncoding = MessageUtilities.GetTransferEncoding(Properties.Settings.Default.plainBodyTransferEncoding);
                     mail.AlternateViews.Add(plainView);
-                    plainView.Dispose();
                 }
 
                 // add vCal AltView
                 if (Properties.Settings.Default.AltViewCal != "")
                 {
-                    ContentType ct = new ContentType("text/calendar");
-                    ct.Parameters.Add("method", "REQUEST");
-                    ct.Parameters.Add("name", "meeting.ics");
-                    AlternateView calView = AlternateView.CreateAlternateViewFromString(Properties.Settings.Default.AltViewCal, ct);
+                    ContentType ctCal = new ContentType("text/calendar");
+                    ctCal.Parameters.Add("method", "REQUEST");
+                    ctCal.Parameters.Add("name", "meeting.ics");
+                    calView = AlternateView.CreateAlternateViewFromString(Properties.Settings.Default.AltViewCal, ctCal);
                     calView.TransferEncoding = MessageUtilities.GetTransferEncoding(Properties.Settings.Default.vCalBodyTransferEncoding);
                     mail.AlternateViews.Add(calView);
-                    calView.Dispose();
                 }
 
                 // add custom headers
@@ -602,26 +600,10 @@ namespace NetMailSample
         /// <param name="e"></param>
         private void btnAltView_Click(object sender, EventArgs e)
         {
-            Forms.frmAlternateView aAltViewForm = new Forms.frmAlternateView(txtBoxSubject.Text);
+            Forms.frmAlternateView aAltViewForm = new Forms.frmAlternateView();
             aAltViewForm.Owner = this;
             aAltViewForm.ShowDialog(this);
-            if (Properties.Settings.Default.AltViewCal != "")
-            {
-                richTxtBody.Text = "";
-            }
-            else
-            {
-                if (Properties.Settings.Default.AltViewHtml != "")
-                {
-                    richTxtBody.Text = Properties.Settings.Default.AltViewHtml;
-                    inlineAttachmentsTable = aAltViewForm.inlineTable;
-                }
-                else
-                {
-                    richTxtBody.Text = Properties.Settings.Default.AltViewPlain;
-                }
-            }
-
+            richTxtBody.Text = Properties.Settings.Default.AltViewPlain;
         }
 
         /// <summary>
@@ -929,6 +911,18 @@ namespace NetMailSample
             oConnectionSetting.SendByPort = this.rdoSendByPort.Checked;
             oConnectionSetting.CustomPickupLocation = this.chkBoxSpecificPickupFolder.Checked;
             oConnectionSetting.PickupLocation = this.txtPickupFolder.Text;
+        }
+
+        private void aboutToolStrip_Click(object sender, EventArgs e)
+        {
+            Forms.frmAbout frm = new Forms.frmAbout();
+            frm.ShowDialog(this);
+            frm.Dispose();
+        }
+
+        private void feedbackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://netmailsender.codeplex.com/discussions");
         }
     }
 }
