@@ -11,7 +11,6 @@ namespace NetMailSample.Forms
     {
         public string cid, cidPath, tempSubject;
         public DataTable inlineTable = new DataTable();
-        public AlternateView avCal;
 
         /// <summary>
         /// form constructor
@@ -255,9 +254,9 @@ namespace NetMailSample.Forms
         {
             try
             {
-                byte[] encodedBytes = Convert.FromBase64String(txtHTMLAltViewBody.Text);
+                byte[] encodedBytes = Convert.FromBase64String(txtCalendarAltViewBody.Text);
                 string result = Encoding.UTF8.GetString(encodedBytes);
-                txtHTMLAltViewBody.Text = result;
+                txtCalendarAltViewBody.Text = result;
             }
             catch (Exception)
             {
