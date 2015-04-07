@@ -354,7 +354,7 @@ namespace NetMailSample
                 mail = null;
                 smtp.Dispose();
                 smtp = null;
-
+                
                 // reset variables
                 formValidated = false;
                 noErrFound = true;

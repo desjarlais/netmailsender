@@ -13,9 +13,8 @@ namespace NetMailSample.Forms
         public DataTable inlineTable = new DataTable();
 
         /// <summary>
-        /// form constructor
+        /// form constructor, sets the initial tab control values
         /// </summary>
-        /// <param name="subject"></param>
         public frmAlternateView()
         {
             InitializeComponent();
@@ -26,36 +25,38 @@ namespace NetMailSample.Forms
         }
 
         /// <summary>
-        /// This button adds the html and plain text Alt Views to 
+        /// This button adds the html, vCal and plain text Alt Views to 
         /// the main forms string values, which will get added when the message is sent
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnAddAlternateViews_Click(object sender, EventArgs e)
         {
-            switch (cboAltViewContentType.Text)
+            if (txtCalendarAltViewBody.Text != null)
             {
-                case "vCalendar":
-                    StringBuilder sb = new StringBuilder();
-                    string[] lines = txtCalendarAltViewBody.Lines;
-                    
-                    for(int i = 0; i < lines.GetUpperBound(0); i++)
-                    {
-                        sb.AppendLine((lines[i]));
-                    }
+                StringBuilder sb = new StringBuilder();
+                string[] lines = txtCalendarAltViewBody.Lines;
 
-                    Properties.Settings.Default.AltViewCal = sb.ToString();                
-                    Properties.Settings.Default.vCalBodyTransferEncoding = cboTransferEncoding.Text;
-                    break;
-                case "PlainText":
-                    Properties.Settings.Default.AltViewPlain = txtHTMLAltViewBody.Text;
-                    Properties.Settings.Default.plainBodyTransferEncoding = cboTransferEncoding.Text;
-                    break;
-                default:
-                    Properties.Settings.Default.AltViewHtml = txtPlainAltViewBody.Text;
-                    Properties.Settings.Default.htmlBodyTransferEncoding = cboTransferEncoding.Text;
-                    AddInlineTableForAttachments();
-                    break;
+                for (int i = 0; i < lines.GetUpperBound(0); i++)
+                {
+                    sb.AppendLine((lines[i]));
+                }
+
+                Properties.Settings.Default.AltViewCal = sb.ToString();
+                Properties.Settings.Default.vCalBodyTransferEncoding = cboTransferEncoding.Text;
+            }
+
+            if (txtHTMLAltViewBody.Text != null)
+            {
+                Properties.Settings.Default.AltViewHtml = txtHTMLAltViewBody.Text;
+                Properties.Settings.Default.htmlBodyTransferEncoding = cboTransferEncoding.Text;
+                AddInlineTableForAttachments();
+            }
+
+            if (txtPlainAltViewBody.Text != null)
+            {
+                Properties.Settings.Default.AltViewPlain = txtPlainAltViewBody.Text;
+                Properties.Settings.Default.plainBodyTransferEncoding = cboTransferEncoding.Text;
             }
 
             this.Close();
@@ -246,21 +247,25 @@ namespace NetMailSample.Forms
         }
 
         /// <summary>
-        /// This button click will decode a base64 string
+        /// decode the alt view body 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnConvertEncoding_Click(object sender, EventArgs e)
         {
-            try
+            if (txtCalendarAltViewBody.Text != "" && tabControl1.SelectedTab == tabCalendar)
             {
-                byte[] encodedBytes = Convert.FromBase64String(txtCalendarAltViewBody.Text);
-                string result = Encoding.UTF8.GetString(encodedBytes);
-                txtCalendarAltViewBody.Text = result;
-            }
-            catch (Exception)
-            {
-                return;
+                try
+                {
+                    byte[] encodedBytes = Convert.FromBase64String(txtCalendarAltViewBody.Text);
+                    string result = Encoding.UTF8.GetString(encodedBytes);
+                    txtCalendarAltViewBody.Text = result;
+                    cboTransferEncoding.Text = "QuotedPrintable";
+                }
+                catch (Exception)
+                {
+                    return;
+                }
             }
         }
 
@@ -282,5 +287,52 @@ namespace NetMailSample.Forms
             txtHTMLAltViewBody.Text = body;
             tabControl1.SelectedTab = tabHTML;
         }
+
+        /// <summary>
+        /// adjust the content type dropdown based on the selected tab
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab.Text == "Plain")
+            {
+                cboAltViewContentType.Text = "Plain Text";
+            }
+            else if (tabControl1.SelectedTab.Text == "Calendar")
+            {
+                cboAltViewContentType.Text = "vCalendar";
+            }
+            else
+            {
+                cboAltViewContentType.Text = "HTML";
+            }
+        }
+
+        /// <summary>
+        /// Encode the altview body text
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnEncodeText_Click(object sender, EventArgs e)
+        {
+            if (txtCalendarAltViewBody.Text != "" && tabControl1.SelectedTab == tabCalendar)
+            {
+                txtCalendarAltViewBody.Text = EncodeBodyToBase64(txtCalendarAltViewBody.Text);
+                cboTransferEncoding.Text = "Base64";
+            }
+        }
+
+        /// <summary>
+        /// convert the body to a base64 encoded string
+        /// </summary>
+        /// <param name="sBodyToEncode"></param>
+        /// <returns></returns>
+        static public string EncodeBodyToBase64(string sBodyToEncode)
+        {
+            byte[] EncodedBody = ASCIIEncoding.ASCII.GetBytes(sBodyToEncode);
+            return Convert.ToBase64String(EncodedBody);
+        }
+
     }
 }

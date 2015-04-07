@@ -58,12 +58,13 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabHTML = new System.Windows.Forms.TabPage();
-            this.tabCalendar = new System.Windows.Forms.TabPage();
-            this.tabPlain = new System.Windows.Forms.TabPage();
-            this.btnInsertHTML = new System.Windows.Forms.Button();
             this.txtHTMLAltViewBody = new System.Windows.Forms.TextBox();
+            this.tabCalendar = new System.Windows.Forms.TabPage();
             this.txtCalendarAltViewBody = new System.Windows.Forms.TextBox();
+            this.tabPlain = new System.Windows.Forms.TabPage();
             this.txtPlainAltViewBody = new System.Windows.Forms.TextBox();
+            this.btnInsertHTML = new System.Windows.Forms.Button();
+            this.btnEncodeText = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGridInlineAttachments)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -260,11 +261,11 @@
             // 
             // btnConvertEncoding
             // 
-            this.btnConvertEncoding.Location = new System.Drawing.Point(6, 451);
+            this.btnConvertEncoding.Location = new System.Drawing.Point(104, 451);
             this.btnConvertEncoding.Name = "btnConvertEncoding";
-            this.btnConvertEncoding.Size = new System.Drawing.Size(130, 23);
+            this.btnConvertEncoding.Size = new System.Drawing.Size(91, 23);
             this.btnConvertEncoding.TabIndex = 1;
-            this.btnConvertEncoding.Text = "Convert Encoded Text";
+            this.btnConvertEncoding.Text = "Decode Text";
             this.btnConvertEncoding.UseVisualStyleBackColor = true;
             this.btnConvertEncoding.Click += new System.EventHandler(this.btnConvertEncoding_Click);
             // 
@@ -328,16 +329,17 @@
             // 
             // btnCalSample
             // 
-            this.btnCalSample.Location = new System.Drawing.Point(142, 451);
+            this.btnCalSample.Location = new System.Drawing.Point(201, 451);
             this.btnCalSample.Name = "btnCalSample";
-            this.btnCalSample.Size = new System.Drawing.Size(114, 23);
+            this.btnCalSample.Size = new System.Drawing.Size(85, 23);
             this.btnCalSample.TabIndex = 12;
-            this.btnCalSample.Text = "Insert vCal Sample";
+            this.btnCalSample.Text = "vCal Sample";
             this.btnCalSample.UseVisualStyleBackColor = true;
             this.btnCalSample.Click += new System.EventHandler(this.btnCalSample_Click);
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.btnEncodeText);
             this.groupBox5.Controls.Add(this.tabControl1);
             this.groupBox5.Controls.Add(this.btnInsertHTML);
             this.groupBox5.Controls.Add(this.btnCalSample);
@@ -359,6 +361,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(373, 422);
             this.tabControl1.TabIndex = 12;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabHTML
             // 
@@ -371,6 +374,15 @@
             this.tabHTML.Text = "HTML";
             this.tabHTML.UseVisualStyleBackColor = true;
             // 
+            // txtHTMLAltViewBody
+            // 
+            this.txtHTMLAltViewBody.Location = new System.Drawing.Point(6, 3);
+            this.txtHTMLAltViewBody.Multiline = true;
+            this.txtHTMLAltViewBody.Name = "txtHTMLAltViewBody";
+            this.txtHTMLAltViewBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtHTMLAltViewBody.Size = new System.Drawing.Size(352, 385);
+            this.txtHTMLAltViewBody.TabIndex = 0;
+            // 
             // tabCalendar
             // 
             this.tabCalendar.Controls.Add(this.txtCalendarAltViewBody);
@@ -382,6 +394,15 @@
             this.tabCalendar.Text = "Calendar";
             this.tabCalendar.UseVisualStyleBackColor = true;
             // 
+            // txtCalendarAltViewBody
+            // 
+            this.txtCalendarAltViewBody.Location = new System.Drawing.Point(7, 5);
+            this.txtCalendarAltViewBody.Multiline = true;
+            this.txtCalendarAltViewBody.Name = "txtCalendarAltViewBody";
+            this.txtCalendarAltViewBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtCalendarAltViewBody.Size = new System.Drawing.Size(352, 385);
+            this.txtCalendarAltViewBody.TabIndex = 0;
+            // 
             // tabPlain
             // 
             this.tabPlain.Controls.Add(this.txtPlainAltViewBody);
@@ -392,34 +413,6 @@
             this.tabPlain.Text = "Plain";
             this.tabPlain.UseVisualStyleBackColor = true;
             // 
-            // btnInsertHTML
-            // 
-            this.btnInsertHTML.Location = new System.Drawing.Point(262, 451);
-            this.btnInsertHTML.Name = "btnInsertHTML";
-            this.btnInsertHTML.Size = new System.Drawing.Size(117, 23);
-            this.btnInsertHTML.TabIndex = 12;
-            this.btnInsertHTML.Text = "Insert HTML Sample";
-            this.btnInsertHTML.UseVisualStyleBackColor = true;
-            this.btnInsertHTML.Click += new System.EventHandler(this.btnInsertHTML_Click);
-            // 
-            // txtHTMLAltViewBody
-            // 
-            this.txtHTMLAltViewBody.Location = new System.Drawing.Point(6, 3);
-            this.txtHTMLAltViewBody.Multiline = true;
-            this.txtHTMLAltViewBody.Name = "txtHTMLAltViewBody";
-            this.txtHTMLAltViewBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtHTMLAltViewBody.Size = new System.Drawing.Size(352, 385);
-            this.txtHTMLAltViewBody.TabIndex = 0;
-            // 
-            // txtCalendarAltViewBody
-            // 
-            this.txtCalendarAltViewBody.Location = new System.Drawing.Point(7, 5);
-            this.txtCalendarAltViewBody.Multiline = true;
-            this.txtCalendarAltViewBody.Name = "txtCalendarAltViewBody";
-            this.txtCalendarAltViewBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtCalendarAltViewBody.Size = new System.Drawing.Size(352, 385);
-            this.txtCalendarAltViewBody.TabIndex = 0;
-            // 
             // txtPlainAltViewBody
             // 
             this.txtPlainAltViewBody.Location = new System.Drawing.Point(4, 5);
@@ -428,6 +421,26 @@
             this.txtPlainAltViewBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtPlainAltViewBody.Size = new System.Drawing.Size(352, 385);
             this.txtPlainAltViewBody.TabIndex = 0;
+            // 
+            // btnInsertHTML
+            // 
+            this.btnInsertHTML.Location = new System.Drawing.Point(292, 451);
+            this.btnInsertHTML.Name = "btnInsertHTML";
+            this.btnInsertHTML.Size = new System.Drawing.Size(87, 23);
+            this.btnInsertHTML.TabIndex = 12;
+            this.btnInsertHTML.Text = "HTML Sample";
+            this.btnInsertHTML.UseVisualStyleBackColor = true;
+            this.btnInsertHTML.Click += new System.EventHandler(this.btnInsertHTML_Click);
+            // 
+            // btnEncodeText
+            // 
+            this.btnEncodeText.Location = new System.Drawing.Point(10, 451);
+            this.btnEncodeText.Name = "btnEncodeText";
+            this.btnEncodeText.Size = new System.Drawing.Size(88, 23);
+            this.btnEncodeText.TabIndex = 13;
+            this.btnEncodeText.Text = "Encode Text";
+            this.btnEncodeText.UseVisualStyleBackColor = true;
+            this.btnEncodeText.Click += new System.EventHandler(this.btnEncodeText_Click);
             // 
             // frmAlternateView
             // 
@@ -497,5 +510,6 @@
         private System.Windows.Forms.TabPage tabHTML;
         private System.Windows.Forms.TextBox txtCalendarAltViewBody;
         private System.Windows.Forms.TextBox txtPlainAltViewBody;
+        private System.Windows.Forms.Button btnEncodeText;
     }
 }
