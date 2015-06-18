@@ -9,7 +9,7 @@ namespace NetMailSample.Forms
 {
     public partial class frmAlternateView : Form
     {
-        public string cid, cidPath, tempSubject;
+        public string cid, cidPath, tempSubject, cellEdit;
         public DataTable inlineTable = new DataTable();
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace NetMailSample.Forms
                 int n = dGridInlineAttachments.Rows.Add();
                 dGridInlineAttachments.Rows[n].Cells[0].Value = txtLinkedResPath.Text;
                 dGridInlineAttachments.Rows[n].Cells[1].Value = txtCid.Text;
-                dGridInlineAttachments.Rows[n].Cells[2].Value = MediaTypeNames.Application.Octet;
+                dGridInlineAttachments.Rows[n].Cells[2].Value = "Octet";
                 txtLinkedResPath.Text = "";
                 txtCid.Text = "";
                 Properties.Settings.Default.BodyHtml = true;
@@ -141,60 +141,6 @@ namespace NetMailSample.Forms
                 if (dGridInlineAttachments.CurrentCell.ColumnIndex >= 0) 
                 { 
                     dGridInlineAttachments.Rows.RemoveAt(dGridInlineAttachments.Rows[cellRow].Index); 
-                }
-            }
-            catch (NullReferenceException)
-            {
-                return;
-            }
-        }
-
-        /// <summary>
-        /// display editcontenttype form and do some checks for the grid to make sure
-        /// we should be displaying the form
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnModifyContentType_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (dGridInlineAttachments.CurrentCell.ColumnIndex >= 0)
-                {
-                    int cellRow = dGridInlineAttachments.CurrentCellAddress.Y;
-                    string ctype, cid;
-
-                    // null column check
-                    if (dGridInlineAttachments.Rows[cellRow].Cells[1].Value != null)
-                    {
-                        ctype = dGridInlineAttachments.Rows[cellRow].Cells[1].Value.ToString();
-                    }
-                    else
-                    {
-                        ctype = "";
-                    }
-
-                    if (dGridInlineAttachments.Rows[cellRow].Cells[2].Value != null)
-                    {
-                        cid = dGridInlineAttachments.Rows[cellRow].Cells[2].Value.ToString();
-                    }
-                    else
-                    {
-                        cid = "";
-                    }
-                    
-                    Forms.frmEditContentType mEditContentType = new Forms.frmEditContentType(cid, ctype, "True");
-                    mEditContentType.Owner = this;
-                    mEditContentType.ShowDialog(this);
-                    if (mEditContentType.isCancelled == false)
-                    {
-                        dGridInlineAttachments.Rows[cellRow].Cells[2].Value = mEditContentType.newContentType;
-                        dGridInlineAttachments.Rows[cellRow].Cells[1].Value = mEditContentType.newCid;
-                        if (mEditContentType.isInline == true)
-                        {
-                            Properties.Settings.Default.BodyHtml = true;
-                        }
-                    }
                 }
             }
             catch (NullReferenceException)
@@ -334,5 +280,35 @@ namespace NetMailSample.Forms
             return Convert.ToBase64String(EncodedBody);
         }
 
+        private void editContentIDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int n = dGridInlineAttachments.CurrentCellAddress.Y;
+            dGridInlineAttachments.CurrentCell = dGridInlineAttachments.Rows[n].Cells[1];
+            dGridInlineAttachments.BeginEdit(true);
+        }
+        
+        private void deleteAttachmentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int n = dGridInlineAttachments.CurrentCellAddress.Y;
+            dGridInlineAttachments.Rows.RemoveAt(dGridInlineAttachments.Rows[n].Index);
+        }
+
+        private void dGridInlineAttachments_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                dGridInlineAttachments.CurrentCell = dGridInlineAttachments[e.ColumnIndex, e.RowIndex];
+            }
+        }
+
+        private void dGridInlineAttachments_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 2)
+            {
+                int n = dGridInlineAttachments.CurrentCellAddress.Y;
+                dGridInlineAttachments.CurrentCell = dGridInlineAttachments.Rows[n].Cells[2];
+                dGridInlineAttachments.BeginEdit(true);
+            }
+        }
     }
 }

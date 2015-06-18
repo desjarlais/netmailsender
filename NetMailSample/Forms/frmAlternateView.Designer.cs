@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -42,12 +43,13 @@
             this.btnLinkedResBrowse = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnModifyContentType = new System.Windows.Forms.Button();
-            this.btnDeleteAttachment = new System.Windows.Forms.Button();
             this.dGridInlineAttachments = new System.Windows.Forms.DataGridView();
             this.colFilePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colContentType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editContentIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteAttachmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.colContentType = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.btnConvertEncoding = new System.Windows.Forms.Button();
             this.cboTransferEncoding = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -56,6 +58,7 @@
             this.cboAltViewContentType = new System.Windows.Forms.ComboBox();
             this.btnCalSample = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnEncodeText = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabHTML = new System.Windows.Forms.TabPage();
             this.txtHTMLAltViewBody = new System.Windows.Forms.TextBox();
@@ -64,9 +67,9 @@
             this.tabPlain = new System.Windows.Forms.TabPage();
             this.txtPlainAltViewBody = new System.Windows.Forms.TextBox();
             this.btnInsertHTML = new System.Windows.Forms.Button();
-            this.btnEncodeText = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGridInlineAttachments)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -160,9 +163,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnAddLR);
-            this.groupBox2.Controls.Add(this.btnModifyContentType);
             this.groupBox2.Controls.Add(this.txtCid);
-            this.groupBox2.Controls.Add(this.btnDeleteAttachment);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.dGridInlineAttachments);
             this.groupBox2.Controls.Add(this.label3);
@@ -174,32 +175,6 @@
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Message Attachments";
-            // 
-            // btnModifyContentType
-            // 
-            this.btnModifyContentType.Image = global::NetMailSample.Properties.Resources.EditTitleString_357;
-            this.btnModifyContentType.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnModifyContentType.Location = new System.Drawing.Point(8, 371);
-            this.btnModifyContentType.Name = "btnModifyContentType";
-            this.btnModifyContentType.Size = new System.Drawing.Size(57, 23);
-            this.btnModifyContentType.TabIndex = 11;
-            this.btnModifyContentType.Text = "Edit";
-            this.btnModifyContentType.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnModifyContentType.UseVisualStyleBackColor = true;
-            this.btnModifyContentType.Click += new System.EventHandler(this.btnModifyContentType_Click);
-            // 
-            // btnDeleteAttachment
-            // 
-            this.btnDeleteAttachment.Image = global::NetMailSample.Properties.Resources.Clearallrequests_8816;
-            this.btnDeleteAttachment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDeleteAttachment.Location = new System.Drawing.Point(71, 371);
-            this.btnDeleteAttachment.Name = "btnDeleteAttachment";
-            this.btnDeleteAttachment.Size = new System.Drawing.Size(61, 23);
-            this.btnDeleteAttachment.TabIndex = 10;
-            this.btnDeleteAttachment.Text = "Delete";
-            this.btnDeleteAttachment.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDeleteAttachment.UseVisualStyleBackColor = true;
-            this.btnDeleteAttachment.Click += new System.EventHandler(this.btnDeleteAttachment_Click);
             // 
             // dGridInlineAttachments
             // 
@@ -226,10 +201,10 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dGridInlineAttachments.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dGridInlineAttachments.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dGridInlineAttachments.Location = new System.Drawing.Point(9, 76);
             this.dGridInlineAttachments.MultiSelect = false;
             this.dGridInlineAttachments.Name = "dGridInlineAttachments";
-            this.dGridInlineAttachments.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -238,26 +213,63 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dGridInlineAttachments.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dGridInlineAttachments.Size = new System.Drawing.Size(396, 289);
+            this.dGridInlineAttachments.Size = new System.Drawing.Size(396, 318);
             this.dGridInlineAttachments.TabIndex = 0;
+            this.dGridInlineAttachments.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridInlineAttachments_CellClick);
+            this.dGridInlineAttachments.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dGridInlineAttachments_CellMouseDown);
             // 
             // colFilePath
             // 
             this.colFilePath.HeaderText = "Path";
             this.colFilePath.Name = "colFilePath";
-            this.colFilePath.ReadOnly = true;
             // 
             // colCid
             // 
+            this.colCid.ContextMenuStrip = this.contextMenuStrip1;
             this.colCid.HeaderText = "Content Id";
             this.colCid.Name = "colCid";
-            this.colCid.ReadOnly = true;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editContentIDToolStripMenuItem,
+            this.deleteAttachmentToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(174, 48);
+            // 
+            // editContentIDToolStripMenuItem
+            // 
+            this.editContentIDToolStripMenuItem.Name = "editContentIDToolStripMenuItem";
+            this.editContentIDToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.editContentIDToolStripMenuItem.Text = "Edit Content ID";
+            this.editContentIDToolStripMenuItem.Click += new System.EventHandler(this.editContentIDToolStripMenuItem_Click);
+            // 
+            // deleteAttachmentToolStripMenuItem
+            // 
+            this.deleteAttachmentToolStripMenuItem.Name = "deleteAttachmentToolStripMenuItem";
+            this.deleteAttachmentToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.deleteAttachmentToolStripMenuItem.Text = "Delete Attachment";
+            this.deleteAttachmentToolStripMenuItem.Click += new System.EventHandler(this.deleteAttachmentToolStripMenuItem_Click);
             // 
             // colContentType
             // 
             this.colContentType.HeaderText = "Content Type";
+            this.colContentType.Items.AddRange(new object[] {
+            "Octet",
+            "Pdf",
+            "Rtf",
+            "Soap",
+            "Zip",
+            "Gif",
+            "Jpeg",
+            "Tiff",
+            "Html",
+            "Plain",
+            "RichText",
+            "Xml"});
             this.colContentType.Name = "colContentType";
-            this.colContentType.ReadOnly = true;
+            this.colContentType.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.colContentType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // btnConvertEncoding
             // 
@@ -351,6 +363,16 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Alt View Body";
             // 
+            // btnEncodeText
+            // 
+            this.btnEncodeText.Location = new System.Drawing.Point(10, 451);
+            this.btnEncodeText.Name = "btnEncodeText";
+            this.btnEncodeText.Size = new System.Drawing.Size(88, 23);
+            this.btnEncodeText.TabIndex = 13;
+            this.btnEncodeText.Text = "Encode Text";
+            this.btnEncodeText.UseVisualStyleBackColor = true;
+            this.btnEncodeText.Click += new System.EventHandler(this.btnEncodeText_Click);
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabHTML);
@@ -432,16 +454,6 @@
             this.btnInsertHTML.UseVisualStyleBackColor = true;
             this.btnInsertHTML.Click += new System.EventHandler(this.btnInsertHTML_Click);
             // 
-            // btnEncodeText
-            // 
-            this.btnEncodeText.Location = new System.Drawing.Point(10, 451);
-            this.btnEncodeText.Name = "btnEncodeText";
-            this.btnEncodeText.Size = new System.Drawing.Size(88, 23);
-            this.btnEncodeText.TabIndex = 13;
-            this.btnEncodeText.Text = "Encode Text";
-            this.btnEncodeText.UseVisualStyleBackColor = true;
-            this.btnEncodeText.Click += new System.EventHandler(this.btnEncodeText_Click);
-            // 
             // frmAlternateView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -462,6 +474,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGridInlineAttachments)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -488,12 +501,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnAddLR;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnModifyContentType;
-        private System.Windows.Forms.Button btnDeleteAttachment;
         private System.Windows.Forms.DataGridView dGridInlineAttachments;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colFilePath;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colContentType;
         private System.Windows.Forms.ComboBox cboTransferEncoding;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ComboBox cboAltViewContentType;
@@ -511,5 +519,11 @@
         private System.Windows.Forms.TextBox txtCalendarAltViewBody;
         private System.Windows.Forms.TextBox txtPlainAltViewBody;
         private System.Windows.Forms.Button btnEncodeText;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem editContentIDToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteAttachmentToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFilePath;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCid;
+        private System.Windows.Forms.DataGridViewComboBoxColumn colContentType;
     }
 }

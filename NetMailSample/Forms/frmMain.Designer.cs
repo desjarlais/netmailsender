@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.btnSendEmail = new System.Windows.Forms.Button();
             this.txtBoxDomain = new System.Windows.Forms.TextBox();
@@ -58,15 +59,17 @@
             this.cboServer = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnOpenLogFile = new System.Windows.Forms.Button();
             this.txtBoxErrorLog = new System.Windows.Forms.TextBox();
+            this.btnOpenLogFile = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnEditContentType = new System.Windows.Forms.Button();
             this.dGridAttachments = new System.Windows.Forms.DataGridView();
             this.colFilePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colContentType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colContentType = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.colFileSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colContentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStripAttachments = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editContentIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editInlineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colInline = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnInsertAttachment = new System.Windows.Forms.Button();
             this.btnDeleteAttachment = new System.Windows.Forms.Button();
@@ -74,6 +77,9 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dGridHeaders = new System.Windows.Forms.DataGridView();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStripHeaders = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editValueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnDeleteHeader = new System.Windows.Forms.Button();
             this.btnAddHeaders = new System.Windows.Forms.Button();
@@ -97,8 +103,10 @@
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGridAttachments)).BeginInit();
+            this.contextMenuStripAttachments.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGridHeaders)).BeginInit();
+            this.contextMenuStripHeaders.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDnSeconds)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -398,7 +406,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnOpenLogFile);
             this.groupBox1.Controls.Add(this.txtBoxErrorLog);
             this.groupBox1.Location = new System.Drawing.Point(548, 27);
             this.groupBox1.Name = "groupBox1";
@@ -407,17 +414,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Error Log";
             // 
-            // btnOpenLogFile
-            // 
-            this.btnOpenLogFile.Image = global::NetMailSample.Properties.Resources.OpenFileDialog_692;
-            this.btnOpenLogFile.Location = new System.Drawing.Point(362, 20);
-            this.btnOpenLogFile.Name = "btnOpenLogFile";
-            this.btnOpenLogFile.Size = new System.Drawing.Size(43, 23);
-            this.btnOpenLogFile.TabIndex = 1;
-            this.btnOpenLogFile.Tag = "";
-            this.btnOpenLogFile.UseVisualStyleBackColor = true;
-            this.btnOpenLogFile.Click += new System.EventHandler(this.btnOpenLogFile_Click);
-            // 
             // txtBoxErrorLog
             // 
             this.txtBoxErrorLog.BackColor = System.Drawing.SystemColors.Info;
@@ -425,12 +421,22 @@
             this.txtBoxErrorLog.Multiline = true;
             this.txtBoxErrorLog.Name = "txtBoxErrorLog";
             this.txtBoxErrorLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtBoxErrorLog.Size = new System.Drawing.Size(349, 143);
+            this.txtBoxErrorLog.Size = new System.Drawing.Size(398, 143);
             this.txtBoxErrorLog.TabIndex = 0;
+            // 
+            // btnOpenLogFile
+            // 
+            this.btnOpenLogFile.Location = new System.Drawing.Point(637, 546);
+            this.btnOpenLogFile.Name = "btnOpenLogFile";
+            this.btnOpenLogFile.Size = new System.Drawing.Size(105, 23);
+            this.btnOpenLogFile.TabIndex = 1;
+            this.btnOpenLogFile.Tag = "";
+            this.btnOpenLogFile.Text = "Open Error Log";
+            this.btnOpenLogFile.UseVisualStyleBackColor = true;
+            this.btnOpenLogFile.Click += new System.EventHandler(this.btnOpenLogFile_Click);
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.btnEditContentType);
             this.groupBox3.Controls.Add(this.dGridAttachments);
             this.groupBox3.Controls.Add(this.btnInsertAttachment);
             this.groupBox3.Controls.Add(this.btnDeleteAttachment);
@@ -440,16 +446,6 @@
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Message Attachments";
-            // 
-            // btnEditContentType
-            // 
-            this.btnEditContentType.Image = global::NetMailSample.Properties.Resources.EditTitleString_357;
-            this.btnEditContentType.Location = new System.Drawing.Point(362, 77);
-            this.btnEditContentType.Name = "btnEditContentType";
-            this.btnEditContentType.Size = new System.Drawing.Size(43, 23);
-            this.btnEditContentType.TabIndex = 29;
-            this.btnEditContentType.UseVisualStyleBackColor = true;
-            this.btnEditContentType.Click += new System.EventHandler(this.btnEditContentType_Click);
             // 
             // dGridAttachments
             // 
@@ -462,12 +458,14 @@
             this.colFileSize,
             this.colContentId,
             this.colInline});
+            this.dGridAttachments.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dGridAttachments.Location = new System.Drawing.Point(7, 19);
             this.dGridAttachments.MultiSelect = false;
             this.dGridAttachments.Name = "dGridAttachments";
-            this.dGridAttachments.ReadOnly = true;
             this.dGridAttachments.Size = new System.Drawing.Size(349, 155);
             this.dGridAttachments.TabIndex = 25;
+            this.dGridAttachments.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridAttachments_CellClick);
+            this.dGridAttachments.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dGridAttachments_CellMouseDown);
             // 
             // colFilePath
             // 
@@ -477,27 +475,64 @@
             // 
             // colContentType
             // 
+            this.colContentType.AutoComplete = false;
             this.colContentType.HeaderText = "Content Type";
+            this.colContentType.Items.AddRange(new object[] {
+            "Octet",
+            "Pdf",
+            "Rtf",
+            "Soap",
+            "Zip",
+            "Gif",
+            "Jpeg",
+            "Tiff",
+            "Html",
+            "Plain",
+            "RichText",
+            "Xml"});
             this.colContentType.Name = "colContentType";
-            this.colContentType.ReadOnly = true;
+            this.colContentType.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.colContentType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // colFileSize
             // 
             this.colFileSize.HeaderText = "Size";
             this.colFileSize.Name = "colFileSize";
-            this.colFileSize.ReadOnly = true;
             // 
             // colContentId
             // 
+            this.colContentId.ContextMenuStrip = this.contextMenuStripAttachments;
             this.colContentId.HeaderText = "Content Id";
             this.colContentId.Name = "colContentId";
-            this.colContentId.ReadOnly = true;
+            // 
+            // contextMenuStripAttachments
+            // 
+            this.contextMenuStripAttachments.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editContentIDToolStripMenuItem,
+            this.editInlineToolStripMenuItem});
+            this.contextMenuStripAttachments.Name = "contextMenuStripAttachments";
+            this.contextMenuStripAttachments.Size = new System.Drawing.Size(155, 48);
+            // 
+            // editContentIDToolStripMenuItem
+            // 
+            this.editContentIDToolStripMenuItem.Name = "editContentIDToolStripMenuItem";
+            this.editContentIDToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.editContentIDToolStripMenuItem.Text = "Edit Content ID";
+            this.editContentIDToolStripMenuItem.Click += new System.EventHandler(this.editContentIDToolStripMenuItem_Click);
+            // 
+            // editInlineToolStripMenuItem
+            // 
+            this.editInlineToolStripMenuItem.Name = "editInlineToolStripMenuItem";
+            this.editInlineToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.editInlineToolStripMenuItem.Text = "Edit Inline";
+            this.editInlineToolStripMenuItem.Click += new System.EventHandler(this.editInlineToolStripMenuItem_Click);
             // 
             // colInline
             // 
+            this.colInline.ContextMenuStrip = this.contextMenuStripAttachments;
             this.colInline.HeaderText = "Inline";
             this.colInline.Name = "colInline";
-            this.colInline.ReadOnly = true;
+            this.colInline.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // btnInsertAttachment
             // 
@@ -543,27 +578,50 @@
             this.dGridHeaders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colName,
             this.colValue});
+            this.dGridHeaders.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dGridHeaders.Location = new System.Drawing.Point(7, 16);
             this.dGridHeaders.MultiSelect = false;
             this.dGridHeaders.Name = "dGridHeaders";
-            this.dGridHeaders.ReadOnly = true;
             this.dGridHeaders.Size = new System.Drawing.Size(349, 115);
             this.dGridHeaders.TabIndex = 20;
+            this.dGridHeaders.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dGridHeaders_CellMouseDown);
             // 
             // colName
             // 
             this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.colName.ContextMenuStrip = this.contextMenuStripHeaders;
             this.colName.HeaderText = "Name";
             this.colName.Name = "colName";
-            this.colName.ReadOnly = true;
             this.colName.Width = 60;
+            // 
+            // contextMenuStripHeaders
+            // 
+            this.contextMenuStripHeaders.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editNameToolStripMenuItem,
+            this.editValueToolStripMenuItem});
+            this.contextMenuStripHeaders.Name = "contextMenuStripHeaders";
+            this.contextMenuStripHeaders.Size = new System.Drawing.Size(130, 48);
+            // 
+            // editNameToolStripMenuItem
+            // 
+            this.editNameToolStripMenuItem.Name = "editNameToolStripMenuItem";
+            this.editNameToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.editNameToolStripMenuItem.Text = "Edit Name";
+            this.editNameToolStripMenuItem.Click += new System.EventHandler(this.editNameToolStripMenuItem_Click);
+            // 
+            // editValueToolStripMenuItem
+            // 
+            this.editValueToolStripMenuItem.Name = "editValueToolStripMenuItem";
+            this.editValueToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.editValueToolStripMenuItem.Text = "Edit Value";
+            this.editValueToolStripMenuItem.Click += new System.EventHandler(this.editValueToolStripMenuItem_Click);
             // 
             // colValue
             // 
             this.colValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.colValue.ContextMenuStrip = this.contextMenuStripHeaders;
             this.colValue.HeaderText = "Value";
             this.colValue.Name = "colValue";
-            this.colValue.ReadOnly = true;
             this.colValue.Width = 59;
             // 
             // btnDeleteHeader
@@ -741,6 +799,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(974, 583);
+            this.Controls.Add(this.btnOpenLogFile);
             this.Controls.Add(this.btnAltView);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
@@ -766,8 +825,10 @@
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGridAttachments)).EndInit();
+            this.contextMenuStripAttachments.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGridHeaders)).EndInit();
+            this.contextMenuStripHeaders.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDnSeconds)).EndInit();
@@ -811,8 +872,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnDeleteHeader;
         private System.Windows.Forms.DataGridView dGridHeaders;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colValue;
         private System.Windows.Forms.TextBox txtBoxDomain;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtPickupFolder;
@@ -827,13 +886,7 @@
         private System.Windows.Forms.Button btnAltView;
         private System.Windows.Forms.CheckBox chkPasswordRequired;
         private System.Windows.Forms.DataGridView dGridAttachments;
-        private System.Windows.Forms.Button btnEditContentType;
         private System.Windows.Forms.CheckBox chkTimeBasedSend;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colFilePath;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colContentType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colFileSize;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colContentId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colInline;
         private System.Windows.Forms.Button btnOpenLogFile;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
@@ -843,6 +896,19 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStrip;
         private System.Windows.Forms.ToolStripMenuItem feedbackToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripHeaders;
+        private System.Windows.Forms.ToolStripMenuItem editNameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editValueToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripAttachments;
+        private System.Windows.Forms.ToolStripMenuItem editContentIDToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editInlineToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFilePath;
+        private System.Windows.Forms.DataGridViewComboBoxColumn colContentType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFileSize;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colContentId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colInline;
     }
 }
 

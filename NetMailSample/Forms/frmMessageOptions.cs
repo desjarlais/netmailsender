@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace NetMailSample.Forms
 {
     public partial class frmMessageOptions : Form
     {
         public string enBody, enBodyTransfer, enSubject, enHeaders;
-
+        
         public frmMessageOptions()
         {
             InitializeComponent();

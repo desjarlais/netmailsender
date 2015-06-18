@@ -46,8 +46,8 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cboMsgPriority = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.chkOnFailure = new System.Windows.Forms.CheckBox();
             this.chkOnSuccess = new System.Windows.Forms.CheckBox();
+            this.chkOnFailure = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDnSendTimeOut)).BeginInit();
@@ -65,7 +65,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(352, 93);
+            this.groupBox1.Size = new System.Drawing.Size(339, 93);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Encoding";
@@ -147,7 +147,7 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(208, 231);
+            this.btnOK.Location = new System.Drawing.Point(196, 227);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 8;
@@ -157,7 +157,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(289, 231);
+            this.btnCancel.Location = new System.Drawing.Point(276, 227);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 1;
@@ -173,7 +173,7 @@
             this.groupBox2.Controls.Add(this.chkBodyHtml);
             this.groupBox2.Location = new System.Drawing.Point(12, 111);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(352, 51);
+            this.groupBox2.Size = new System.Drawing.Size(339, 51);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Options";
@@ -229,7 +229,7 @@
             this.groupBox3.Controls.Add(this.cboMsgPriority);
             this.groupBox3.Location = new System.Drawing.Point(190, 173);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(174, 48);
+            this.groupBox3.Size = new System.Drawing.Size(161, 48);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Priority";
@@ -243,7 +243,7 @@
             "High"});
             this.cboMsgPriority.Location = new System.Drawing.Point(6, 17);
             this.cboMsgPriority.Name = "cboMsgPriority";
-            this.cboMsgPriority.Size = new System.Drawing.Size(150, 21);
+            this.cboMsgPriority.Size = new System.Drawing.Size(143, 21);
             this.cboMsgPriority.TabIndex = 0;
             this.cboMsgPriority.Text = "Normal";
             // 
@@ -258,16 +258,6 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Delivery Notifications";
             // 
-            // chkOnFailure
-            // 
-            this.chkOnFailure.AutoSize = true;
-            this.chkOnFailure.Location = new System.Drawing.Point(6, 19);
-            this.chkOnFailure.Name = "chkOnFailure";
-            this.chkOnFailure.Size = new System.Drawing.Size(71, 17);
-            this.chkOnFailure.TabIndex = 3;
-            this.chkOnFailure.Text = "OnFailure";
-            this.chkOnFailure.UseVisualStyleBackColor = true;
-            // 
             // chkOnSuccess
             // 
             this.chkOnSuccess.AutoSize = true;
@@ -278,11 +268,21 @@
             this.chkOnSuccess.Text = "OnSuccess";
             this.chkOnSuccess.UseVisualStyleBackColor = true;
             // 
+            // chkOnFailure
+            // 
+            this.chkOnFailure.AutoSize = true;
+            this.chkOnFailure.Location = new System.Drawing.Point(6, 19);
+            this.chkOnFailure.Name = "chkOnFailure";
+            this.chkOnFailure.Size = new System.Drawing.Size(71, 17);
+            this.chkOnFailure.TabIndex = 3;
+            this.chkOnFailure.Text = "OnFailure";
+            this.chkOnFailure.UseVisualStyleBackColor = true;
+            // 
             // frmMessageOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(376, 265);
+            this.ClientSize = new System.Drawing.Size(363, 262);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);

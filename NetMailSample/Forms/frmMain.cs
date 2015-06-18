@@ -8,12 +8,13 @@ using System.Windows.Forms;
 using NetMailSample.Common;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace NetMailSample
 {
     public partial class frmMain : Form
     {
-        public string hdrName, hdrValue, msgSubject;
+        public string hdrName, hdrValue, msgSubject, cellEdit;
         DataTable inlineAttachmentsTable = new DataTable();
         AlternateView plainView, htmlView, calView;
         bool continueTimerRun = false;
@@ -210,7 +211,7 @@ namespace NetMailSample
                 {
                     if (rowAtt.Cells[0].Value != null)
                     {
-                        Attachment data = new Attachment(rowAtt.Cells[0].Value.ToString(), rowAtt.Cells[1].Value.ToString());
+                        Attachment data = new Attachment(rowAtt.Cells[0].Value.ToString(), FileUtilities.GetContentType(rowAtt.Cells[1].Value.ToString()));
                         if (rowAtt.Cells[4].Value.ToString() == "True")
                         {
                             data.ContentDisposition.Inline = true;
@@ -295,7 +296,7 @@ namespace NetMailSample
                 smtp.Port = Int32.Parse(cboPort.Text.Trim());
                 smtp.Host = cboServer.Text;
                 smtp.Timeout = Properties.Settings.Default.SendSyncTimeout;
-                
+
                 // send email
                 smtp.Send(mail);
             }
@@ -397,7 +398,7 @@ namespace NetMailSample
                     int n = dGridAttachments.Rows.Add();
                     string size = FileUtilities.SizeSuffix(f.Length);
                     dGridAttachments.Rows[n].Cells[0].Value = file;
-                    dGridAttachments.Rows[n].Cells[1].Value = MediaTypeNames.Application.Octet;
+                    dGridAttachments.Rows[n].Cells[1].Value = "Octet";
                     dGridAttachments.Rows[n].Cells[2].Value = size;
                     dGridAttachments.Rows[n].Cells[3].Value = "";
                     dGridAttachments.Rows[n].Cells[4].Value = "False";
@@ -604,66 +605,6 @@ namespace NetMailSample
             aAltViewForm.Owner = this;
             aAltViewForm.ShowDialog(this);
             richTxtBody.Text = Properties.Settings.Default.AltViewPlain;
-        }
-
-        /// <summary>
-        /// display the edit content type form
-        /// the constructor for this form takes a string value which allows the previous value
-        /// to be returned if the user cancels the dialog
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnEditContentType_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (dGridAttachments.CurrentCell.ColumnIndex >= 0)
-                {
-                    int cellRow = dGridAttachments.CurrentCellAddress.Y;
-                    string ctype, cid;
-
-                    // null checks
-                    if (dGridAttachments.Rows[cellRow].Cells[1].Value != null)
-                    {
-                        ctype = dGridAttachments.Rows[cellRow].Cells[1].Value.ToString();
-                    }
-                    else
-                    {
-                        ctype = "";
-                    }
-
-                    if (dGridAttachments.Rows[cellRow].Cells[3].Value != null)
-                    {
-                        cid = dGridAttachments.Rows[cellRow].Cells[3].Value.ToString();
-                    }
-                    else
-                    {
-                        cid = "";
-                    }
-
-                    Forms.frmEditContentType mEditContentType = new Forms.frmEditContentType(ctype, cid, dGridAttachments.Rows[cellRow].Cells[4].Value.ToString());
-                    mEditContentType.Owner = this;
-                    mEditContentType.ShowDialog(this);
-                    if (mEditContentType.isCancelled == false)
-                    {
-                        dGridAttachments.Rows[cellRow].Cells[1].Value = mEditContentType.newContentType;
-                        if (mEditContentType.isInline == true)
-                        {
-                            dGridAttachments.Rows[cellRow].Cells[3].Value = mEditContentType.newCid;
-                            dGridAttachments.Rows[cellRow].Cells[4].Value = "True";
-                        }
-                        else
-                        {
-                            dGridAttachments.Rows[cellRow].Cells[3].Value = mEditContentType.newCid;
-                            dGridAttachments.Rows[cellRow].Cells[4].Value = "False";
-                        }
-                    }
-                }
-            }
-            catch (NullReferenceException)
-            {
-                return;
-            }
         }
 
         // toggle the time based send feature
@@ -923,6 +864,60 @@ namespace NetMailSample
         private void feedbackToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Process.Start("https://netmailsender.codeplex.com/discussions");
+        }
+
+        private void editNameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int n = dGridHeaders.CurrentCellAddress.Y;
+            dGridHeaders.CurrentCell = dGridHeaders.Rows[n].Cells[0];
+            dGridHeaders.BeginEdit(true);
+        }
+
+        private void editValueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int n = dGridHeaders.CurrentCellAddress.Y;
+            dGridHeaders.CurrentCell = dGridHeaders.Rows[n].Cells[1];
+            dGridHeaders.BeginEdit(true);
+        }
+
+        private void editContentIDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int n = dGridAttachments.CurrentCellAddress.Y;
+            dGridAttachments.CurrentCell = dGridAttachments.Rows[n].Cells[3];
+            dGridAttachments.BeginEdit(true);
+        }
+
+        private void editInlineToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int n = dGridAttachments.CurrentCellAddress.Y;
+            dGridAttachments.CurrentCell = dGridAttachments.Rows[n].Cells[4];
+            dGridAttachments.BeginEdit(true);
+        }
+
+        private void dGridHeaders_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                dGridHeaders.CurrentCell = dGridHeaders[e.ColumnIndex, e.RowIndex];
+            }
+        }
+
+        private void dGridAttachments_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                dGridAttachments.CurrentCell = dGridAttachments[e.ColumnIndex, e.RowIndex];
+            }
+        }
+
+        private void dGridAttachments_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 1)
+            {
+                int n = dGridAttachments.CurrentCellAddress.Y;
+                dGridAttachments.CurrentCell = dGridAttachments.Rows[n].Cells[1];
+                dGridAttachments.BeginEdit(true);
+            }
         }
     }
 }
