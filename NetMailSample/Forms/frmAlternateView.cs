@@ -75,7 +75,7 @@ namespace NetMailSample.Forms
             {
                 if (rowAtt.Cells[0].Value != null)
                 {
-                    inlineTable.Rows.Add(rowAtt.Cells[0].Value, rowAtt.Cells[1].Value, rowAtt.Cells[2].Value);
+                    inlineTable.Rows.Add(rowAtt.Cells[0].Value, rowAtt.Cells[1].Value, Common.FileUtilities.GetContentType(rowAtt.Cells[2].Value.ToString()));
                 }
             }
         }

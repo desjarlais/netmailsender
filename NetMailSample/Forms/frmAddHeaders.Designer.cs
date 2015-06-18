@@ -58,6 +58,7 @@
             this.txtValue.Name = "txtValue";
             this.txtValue.Size = new System.Drawing.Size(314, 20);
             this.txtValue.TabIndex = 3;
+            this.txtValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValue_KeyPress);
             // 
             // txtName
             // 
