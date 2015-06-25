@@ -63,14 +63,9 @@
             this.btnOpenLogFile = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dGridAttachments = new System.Windows.Forms.DataGridView();
-            this.colFilePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colContentType = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.colFileSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colContentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStripAttachments = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editContentIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editInlineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.colInline = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnInsertAttachment = new System.Windows.Forms.Button();
             this.btnDeleteAttachment = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -98,6 +93,11 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.feedbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.colFilePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colContentType = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.colFileSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colContentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colInline = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.grpMailMessage.SuspendLayout();
             this.grpSmtpSettings.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -467,44 +467,6 @@
             this.dGridAttachments.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridAttachments_CellClick);
             this.dGridAttachments.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dGridAttachments_CellMouseDown);
             // 
-            // colFilePath
-            // 
-            this.colFilePath.HeaderText = "File Path";
-            this.colFilePath.Name = "colFilePath";
-            this.colFilePath.ReadOnly = true;
-            // 
-            // colContentType
-            // 
-            this.colContentType.AutoComplete = false;
-            this.colContentType.HeaderText = "Content Type";
-            this.colContentType.Items.AddRange(new object[] {
-            "Octet",
-            "Pdf",
-            "Rtf",
-            "Soap",
-            "Zip",
-            "Gif",
-            "Jpeg",
-            "Tiff",
-            "Html",
-            "Plain",
-            "RichText",
-            "Xml"});
-            this.colContentType.Name = "colContentType";
-            this.colContentType.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.colContentType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // colFileSize
-            // 
-            this.colFileSize.HeaderText = "Size";
-            this.colFileSize.Name = "colFileSize";
-            // 
-            // colContentId
-            // 
-            this.colContentId.ContextMenuStrip = this.contextMenuStripAttachments;
-            this.colContentId.HeaderText = "Content Id";
-            this.colContentId.Name = "colContentId";
-            // 
             // contextMenuStripAttachments
             // 
             this.contextMenuStripAttachments.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -526,13 +488,6 @@
             this.editInlineToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.editInlineToolStripMenuItem.Text = "Edit Inline";
             this.editInlineToolStripMenuItem.Click += new System.EventHandler(this.editInlineToolStripMenuItem_Click);
-            // 
-            // colInline
-            // 
-            this.colInline.ContextMenuStrip = this.contextMenuStripAttachments;
-            this.colInline.HeaderText = "Inline";
-            this.colInline.Name = "colInline";
-            this.colInline.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // btnInsertAttachment
             // 
@@ -794,6 +749,55 @@
             this.feedbackToolStripMenuItem.Text = "F&eedback";
             this.feedbackToolStripMenuItem.Click += new System.EventHandler(this.feedbackToolStripMenuItem_Click);
             // 
+            // colFilePath
+            // 
+            this.colFilePath.HeaderText = "File Path";
+            this.colFilePath.Name = "colFilePath";
+            this.colFilePath.ReadOnly = true;
+            // 
+            // colContentType
+            // 
+            this.colContentType.AutoComplete = false;
+            this.colContentType.HeaderText = "Content Type";
+            this.colContentType.Items.AddRange(new object[] {
+            "Octet",
+            "Pdf",
+            "Rtf",
+            "Soap",
+            "Zip",
+            "Gif",
+            "Jpeg",
+            "Tiff",
+            "Html",
+            "Plain",
+            "RichText",
+            "Xml"});
+            this.colContentType.Name = "colContentType";
+            this.colContentType.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.colContentType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // colFileSize
+            // 
+            this.colFileSize.HeaderText = "Size";
+            this.colFileSize.Name = "colFileSize";
+            // 
+            // colContentId
+            // 
+            this.colContentId.ContextMenuStrip = this.contextMenuStripAttachments;
+            this.colContentId.HeaderText = "Content Id";
+            this.colContentId.Name = "colContentId";
+            // 
+            // colInline
+            // 
+            this.colInline.ContextMenuStrip = this.contextMenuStripAttachments;
+            this.colInline.HeaderText = "Inline";
+            this.colInline.Items.AddRange(new object[] {
+            "True",
+            "False"});
+            this.colInline.Name = "colInline";
+            this.colInline.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.colInline.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -908,7 +912,7 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn colContentType;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFileSize;
         private System.Windows.Forms.DataGridViewTextBoxColumn colContentId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colInline;
+        private System.Windows.Forms.DataGridViewComboBoxColumn colInline;
     }
 }
 

@@ -868,30 +868,22 @@ namespace NetMailSample
 
         private void editNameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int n = dGridHeaders.CurrentCellAddress.Y;
-            dGridHeaders.CurrentCell = dGridHeaders.Rows[n].Cells[0];
-            dGridHeaders.BeginEdit(true);
+            BeginEditDataGridView(0, 2);
         }
 
         private void editValueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int n = dGridHeaders.CurrentCellAddress.Y;
-            dGridHeaders.CurrentCell = dGridHeaders.Rows[n].Cells[1];
-            dGridHeaders.BeginEdit(true);
+            BeginEditDataGridView(1, 2);
         }
 
         private void editContentIDToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int n = dGridAttachments.CurrentCellAddress.Y;
-            dGridAttachments.CurrentCell = dGridAttachments.Rows[n].Cells[3];
-            dGridAttachments.BeginEdit(true);
+            BeginEditDataGridView(3, 1);
         }
 
         private void editInlineToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int n = dGridAttachments.CurrentCellAddress.Y;
-            dGridAttachments.CurrentCell = dGridAttachments.Rows[n].Cells[4];
-            dGridAttachments.BeginEdit(true);
+            BeginEditDataGridView(4, 1);
         }
 
         private void dGridHeaders_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
@@ -914,10 +906,34 @@ namespace NetMailSample
         {
             if (e.ColumnIndex == 1)
             {
+                BeginEditDataGridView(1, 1);
+            }
+            else if (e.ColumnIndex == 4)
+            {
+                BeginEditDataGridView(4, 1);
+            }
+        }
+
+        /// <summary>
+        /// function to cell edits in datagridview
+        /// </summary>
+        /// <param name="cell">the cell that needs to be edited</param>
+        /// <param name="dGrid">1 = attachments datagridview, 2 = header datagridview</param>
+        public void BeginEditDataGridView(int cell, int dGrid)
+        {
+            if (dGrid == 1)
+            {
                 int n = dGridAttachments.CurrentCellAddress.Y;
-                dGridAttachments.CurrentCell = dGridAttachments.Rows[n].Cells[1];
+                dGridAttachments.CurrentCell = dGridAttachments.Rows[n].Cells[cell];
                 dGridAttachments.BeginEdit(true);
             }
+            else
+            {
+                int n = dGridHeaders.CurrentCellAddress.Y;
+                dGridHeaders.CurrentCell = dGridHeaders.Rows[n].Cells[cell];
+                dGridHeaders.BeginEdit(true);
+            }
+
         }
     }
 }

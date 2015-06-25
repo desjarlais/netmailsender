@@ -295,10 +295,18 @@ namespace NetMailSample.Forms
 
         private void dGridInlineAttachments_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            try
             {
-                dGridInlineAttachments.CurrentCell = dGridInlineAttachments[e.ColumnIndex, e.RowIndex];
+                if (e.Button == MouseButtons.Right)
+                {
+                    dGridInlineAttachments.CurrentCell = dGridInlineAttachments[e.ColumnIndex, e.RowIndex];
+                }
             }
+            catch (ArgumentOutOfRangeException)
+            {
+                return;
+            }
+            
         }
 
         private void dGridInlineAttachments_CellClick(object sender, DataGridViewCellEventArgs e)
