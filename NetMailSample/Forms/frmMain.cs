@@ -71,7 +71,7 @@ namespace NetMailSample
                 if (DotNetVersion.GetDotNetVerFromRegistry() == "The .NET Framework version 4.5 or higher is NOT installed.")
                 {
                     _logger.Log("Installed versions of the .NET Framework that are:\n");
-                    _logger.Log(Common.DotNetVersion.GetPreV45FromRegistry());
+                    _logger.Log(DotNetVersion.GetPreV45FromRegistry());
                 }
             }
             catch (Exception ex)
@@ -225,7 +225,7 @@ namespace NetMailSample
                             data.ContentDisposition.DispositionType = DispositionTypeNames.Attachment;
                         }
                         mail.Attachments.Add(data);
-                        data.Dispose();
+                        //data.Dispose();
                     }
                 }
 
@@ -252,7 +252,6 @@ namespace NetMailSample
                     mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnSuccess;
                 }
 
-
                 // check for credentials
                 string sUser = txtBoxEmailAddress.Text.Trim();
                 string sPassword = mskPassword.Text.Trim();
@@ -273,7 +272,7 @@ namespace NetMailSample
                 // send by pickup folder?
                 if (rdoSendByPickupFolder.Checked)
                 {
-                    if (this.chkBoxSpecificPickupFolder.Checked)
+                    if (chkBoxSpecificPickupFolder.Checked)
                     {
                         if (Directory.Exists(txtPickupFolder.Text))
                         {
@@ -307,7 +306,7 @@ namespace NetMailSample
                 if (se.StatusCode == SmtpStatusCode.MailboxBusy || se.StatusCode == SmtpStatusCode.MailboxUnavailable)
                 {
                     _logger.Log("Delivery failed - retrying in 5 seconds.");
-                    System.Threading.Thread.Sleep(5000);
+                    Thread.Sleep(5000);
                     smtp.Send(mail);
                 }
                 else
@@ -316,6 +315,7 @@ namespace NetMailSample
                     _logger.Log("StackTrace: " + se.StackTrace);
                     _logger.Log("Status Code: " + se.StatusCode);
                     _logger.Log("Description:" + MessageUtilities.GetSmtpStatusCodeDescription(se.StatusCode.ToString()));
+                    _logger.Log("Inner Exception: " + se.InnerException);
                 }
             }
             catch (InvalidOperationException ioe)
@@ -325,6 +325,7 @@ namespace NetMailSample
                 noErrFound = false;
                 _logger.Log("Error: " + ioe.Message);
                 _logger.Log("StackTrace: " + ioe.StackTrace);
+                _logger.Log("Inner Exception: " + ioe.InnerException);
             }
             catch (FormatException fe)
             {
@@ -333,6 +334,7 @@ namespace NetMailSample
                 noErrFound = false;
                 _logger.Log("Error: " + fe.Message);
                 _logger.Log("StackTrace: " + fe.StackTrace);
+                _logger.Log("Inner Exception: " + fe.InnerException);
             }
             catch (Exception ex)
             {
@@ -340,6 +342,7 @@ namespace NetMailSample
                 noErrFound = false;
                 _logger.Log("Error: " + ex.Message);
                 _logger.Log("StackTrace: " + ex.StackTrace);
+                _logger.Log("Inner Exception: " + ex.InnerException);
             }
             finally
             {
@@ -457,9 +460,20 @@ namespace NetMailSample
                     dGridAttachments.Rows.RemoveAt(dGridAttachments.Rows[cellRow].Index);
                 }
             }
-            catch (NullReferenceException)
+            catch (NullReferenceException nre)
             {
-                return;
+                // if the attachment grid is empty, just return
+                if (dGridAttachments.CurrentCellAddress.Y < 1)
+                {
+                    return;
+                }
+                else
+                {
+                    // log any other null ref errors
+                    _logger.Log("Error: " + nre.Message);
+                    _logger.Log("StackTrace: " + nre.StackTrace);
+                    _logger.Log("Inner Exception: " + nre.InnerException);
+                }
             }
             catch (Exception ex)
             {
@@ -483,9 +497,20 @@ namespace NetMailSample
                     dGridHeaders.Rows.RemoveAt(dGridHeaders.Rows[cellRow].Index);
                 }
             }
-            catch (NullReferenceException)
+            catch (NullReferenceException nre)
             {
-                return;
+                // if the header grid is empty, just return
+                if (dGridHeaders.CurrentCellAddress.Y < 1)
+                {
+                    return;
+                }
+                else
+                {
+                    // log any other null ref errors
+                    _logger.Log("Error: " + nre.Message);
+                    _logger.Log("StackTrace: " + nre.StackTrace);
+                    _logger.Log("Inner Exception: " + nre.InnerException);
+                }
             }
             catch (Exception ex)
             {
@@ -765,7 +790,7 @@ namespace NetMailSample
                 {
                     try
                     {
-                        System.IO.File.WriteAllText(sFile, sConnectionSettings);
+                        File.WriteAllText(sFile, sConnectionSettings);
                     }
                     catch (Exception ex)
                     {
@@ -797,25 +822,25 @@ namespace NetMailSample
         {
             try
             {
-                this.txtBoxEmailAddress.Text = FixSetting(oConnectionSetting.User);
-                this.txtBoxDomain.Text = FixSetting(oConnectionSetting.Domain);
-                this.txtBoxSubject.Text = FixSetting(oConnectionSetting.MessageSubject);
-                this.txtBoxTo.Text = FixSetting(oConnectionSetting.MessageTo);
-                this.txtBoxCC.Text = FixSetting(oConnectionSetting.MessageCC);
-                this.txtBoxBCC.Text = FixSetting(oConnectionSetting.MessageBcc);
-                this.richTxtBody.Text = FixSetting(oConnectionSetting.MessageBody);
+                txtBoxEmailAddress.Text = FixSetting(oConnectionSetting.User);
+                txtBoxDomain.Text = FixSetting(oConnectionSetting.Domain);
+                txtBoxSubject.Text = FixSetting(oConnectionSetting.MessageSubject);
+                txtBoxTo.Text = FixSetting(oConnectionSetting.MessageTo);
+                txtBoxCC.Text = FixSetting(oConnectionSetting.MessageCC);
+                txtBoxBCC.Text = FixSetting(oConnectionSetting.MessageBcc);
+                richTxtBody.Text = FixSetting(oConnectionSetting.MessageBody);
 
                 if (oConnectionSetting.SendByPort == true)
                 {
-                    this.rdoSendByPort.Checked = true;
-                    this.cboPort.Text = oConnectionSetting.Port;
-                    this.cboServer.Text = oConnectionSetting.Server;
+                    rdoSendByPort.Checked = true;
+                    cboPort.Text = oConnectionSetting.Port;
+                    cboServer.Text = oConnectionSetting.Server;
                 }
                 else
                 {
-                    this.rdoSendByPickupFolder.Checked = true;
-                    this.chkBoxSpecificPickupFolder.Checked = oConnectionSetting.CustomPickupLocation;
-                    this.txtPickupFolder.Text = FixSetting(oConnectionSetting.PickupLocation);
+                    rdoSendByPickupFolder.Checked = true;
+                    chkBoxSpecificPickupFolder.Checked = oConnectionSetting.CustomPickupLocation;
+                    txtPickupFolder.Text = FixSetting(oConnectionSetting.PickupLocation);
                 }
             }
             catch (Exception ex)

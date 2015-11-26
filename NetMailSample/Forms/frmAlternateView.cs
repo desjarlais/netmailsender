@@ -59,7 +59,7 @@ namespace NetMailSample.Forms
                 Properties.Settings.Default.plainBodyTransferEncoding = cboTransferEncoding.Text;
             }
 
-            this.Close();
+            Close();
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace NetMailSample.Forms
         /// <param name="e"></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         /// <summary>
@@ -125,27 +125,6 @@ namespace NetMailSample.Forms
             {
                 MessageBox.Show("Path and Content Id are required to add a linked resource.",
                 "Invalid Linked Resource", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        /// <summary>
-        /// check for the current location in the grid and delete the row
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnDeleteAttachment_Click(object sender, EventArgs e)
-        {
-            try
-            { 
-                int cellRow = dGridInlineAttachments.CurrentCellAddress.Y;
-                if (dGridInlineAttachments.CurrentCell.ColumnIndex >= 0) 
-                { 
-                    dGridInlineAttachments.Rows.RemoveAt(dGridInlineAttachments.Rows[cellRow].Index); 
-                }
-            }
-            catch (NullReferenceException)
-            {
-                return;
             }
         }
 
@@ -286,7 +265,28 @@ namespace NetMailSample.Forms
             dGridInlineAttachments.CurrentCell = dGridInlineAttachments.Rows[n].Cells[1];
             dGridInlineAttachments.BeginEdit(true);
         }
-        
+
+        /// <summary>
+        /// check for the current location in the grid and delete the row
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDeleteAltViewAttachment_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int cellRow = dGridInlineAttachments.CurrentCellAddress.Y;
+                if (dGridInlineAttachments.CurrentCell.ColumnIndex >= 0)
+                {
+                    dGridInlineAttachments.Rows.RemoveAt(dGridInlineAttachments.Rows[cellRow].Index);
+                }
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
+
         private void deleteAttachmentToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int n = dGridInlineAttachments.CurrentCellAddress.Y;

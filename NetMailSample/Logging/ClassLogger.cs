@@ -14,11 +14,6 @@ namespace NetMailSample
             _logDetails = LogDetails;
         }
 
-        public DateTime LogTime
-        {
-            get { return _logTime; }
-        }
-
         public string LogDetails
         {
             get { return _logDetails; }
@@ -76,12 +71,6 @@ namespace NetMailSample
             }
         }
 
-        public bool LogDateAndTime
-        {
-            get { return _logDateAndTime; }
-            set { _logDateAndTime = value; }
-        }
-        
         public void Log(string Details, string Description = "", bool SuppressEvent = false)
         {
             try

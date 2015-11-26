@@ -67,6 +67,7 @@
             this.tabPlain = new System.Windows.Forms.TabPage();
             this.txtPlainAltViewBody = new System.Windows.Forms.TextBox();
             this.btnInsertHTML = new System.Windows.Forms.Button();
+            this.btnDeleteAltViewAttachment = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGridInlineAttachments)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -102,7 +103,7 @@
             // 
             this.btnAddLR.Image = global::NetMailSample.Properties.Resources.AddMark_10580;
             this.btnAddLR.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddLR.Location = new System.Drawing.Point(293, 47);
+            this.btnAddLR.Location = new System.Drawing.Point(298, 47);
             this.btnAddLR.Name = "btnAddLR";
             this.btnAddLR.Size = new System.Drawing.Size(112, 20);
             this.btnAddLR.TabIndex = 9;
@@ -115,7 +116,7 @@
             // 
             this.txtCid.Location = new System.Drawing.Point(71, 47);
             this.txtCid.Name = "txtCid";
-            this.txtCid.Size = new System.Drawing.Size(216, 20);
+            this.txtCid.Size = new System.Drawing.Size(221, 20);
             this.txtCid.TabIndex = 8;
             // 
             // label4
@@ -140,14 +141,14 @@
             // 
             this.txtLinkedResPath.Location = new System.Drawing.Point(71, 17);
             this.txtLinkedResPath.Name = "txtLinkedResPath";
-            this.txtLinkedResPath.Size = new System.Drawing.Size(216, 20);
+            this.txtLinkedResPath.Size = new System.Drawing.Size(221, 20);
             this.txtLinkedResPath.TabIndex = 1;
             // 
             // btnLinkedResBrowse
             // 
             this.btnLinkedResBrowse.Image = global::NetMailSample.Properties.Resources.OpenAttachment_13115;
             this.btnLinkedResBrowse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLinkedResBrowse.Location = new System.Drawing.Point(293, 16);
+            this.btnLinkedResBrowse.Location = new System.Drawing.Point(298, 15);
             this.btnLinkedResBrowse.Name = "btnLinkedResBrowse";
             this.btnLinkedResBrowse.Size = new System.Drawing.Size(112, 23);
             this.btnLinkedResBrowse.TabIndex = 0;
@@ -162,6 +163,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnDeleteAltViewAttachment);
             this.groupBox2.Controls.Add(this.btnAddLR);
             this.groupBox2.Controls.Add(this.txtCid);
             this.groupBox2.Controls.Add(this.label4);
@@ -213,7 +215,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dGridInlineAttachments.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dGridInlineAttachments.Size = new System.Drawing.Size(396, 318);
+            this.dGridInlineAttachments.Size = new System.Drawing.Size(352, 318);
             this.dGridInlineAttachments.TabIndex = 0;
             this.dGridInlineAttachments.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridInlineAttachments_CellClick);
             this.dGridInlineAttachments.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dGridInlineAttachments_CellMouseDown);
@@ -454,6 +456,16 @@
             this.btnInsertHTML.UseVisualStyleBackColor = true;
             this.btnInsertHTML.Click += new System.EventHandler(this.btnInsertHTML_Click);
             // 
+            // btnDeleteAltViewAttachment
+            // 
+            this.btnDeleteAltViewAttachment.Image = global::NetMailSample.Properties.Resources.Clearallrequests_8816;
+            this.btnDeleteAltViewAttachment.Location = new System.Drawing.Point(369, 76);
+            this.btnDeleteAltViewAttachment.Name = "btnDeleteAltViewAttachment";
+            this.btnDeleteAltViewAttachment.Size = new System.Drawing.Size(41, 23);
+            this.btnDeleteAltViewAttachment.TabIndex = 10;
+            this.btnDeleteAltViewAttachment.UseVisualStyleBackColor = true;
+            this.btnDeleteAltViewAttachment.Click += new System.EventHandler(this.btnDeleteAltViewAttachment_Click);
+            // 
             // frmAlternateView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -525,5 +537,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colFilePath;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCid;
         private System.Windows.Forms.DataGridViewComboBoxColumn colContentType;
+        private System.Windows.Forms.Button btnDeleteAltViewAttachment;
     }
 }

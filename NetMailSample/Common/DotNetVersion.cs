@@ -7,8 +7,14 @@ namespace NetMailSample.Common
     class DotNetVersion
     {
         /// <summary>
-        /// Find the installed .NET Framework versions by querying the registry (versions 4.5 and later)
-        /// Release key versions: (378389 = 4.5; 378675 = 4.5.1 on Win8.1 or Server 2012 R2; 378758 = 4.5.1 on Win8/Win7SP1/VistaSP2; 379893 = .NET Framework 4.5.2; 381029 .NET Framework 4.6 Preview )
+        /// Find the installed .NET Framework versions by querying the registry
+        /// Release key versions: 
+        ///     378389 = 4.5
+        ///     378675 = 4.5.1 on Win8.1 or Server 2012 R2
+        ///     378758 = 4.5.1 on Win8/Win7SP1/VistaSP2
+        ///     379893 = .NET Framework 4.5.2
+        ///     393295 = .NET Framework 4.6 on Win10
+        ///     393297 = .NET Framework 4.6 on Non-Win10
         /// </summary>
         public static string GetDotNetVerFromRegistry()
         {
@@ -37,18 +43,23 @@ namespace NetMailSample.Common
         // Checking the version using >= to enable forward compatibility
         public static string CheckFor45DotVersion(int releaseKey)
         {
-            if ((releaseKey >= 379893))
+            if (releaseKey >= 393295)
+            {
+                return "Installed .NET Framework = 4.6 or later - Version = ";
+            }
+            if (releaseKey >= 379893)
             {
                 return "Installed .NET Framework = 4.5.2 - Version = ";
             }
-            if ((releaseKey >= 378675))
+            if (releaseKey >= 378675)
             {
                 return "Installed .NET Framework = 4.5.1 - Version = ";
             }
-            if ((releaseKey >= 378389))
+            if (releaseKey >= 378389)
             {
                 return "Installed .NET Framework = 4.5 - Version = ";
             }
+        
             // This line should never execute. A non-null release key should mean 
             // that 4.5 or later is installed. 
             return "The .NET Framework 4.5 or later NOT detected";
