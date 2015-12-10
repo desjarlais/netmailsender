@@ -31,4 +31,4 @@ Features include:
 •	Error logging
 
 Minimum Requirements
-•	Microsoft .NET Framework Version 4
+•	Microsoft .NET Framework Version 4.6
