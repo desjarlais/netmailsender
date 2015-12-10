@@ -20,11 +20,11 @@ namespace NetMailSample.Forms
         {
             if (txtName.Text != "" && txtValue.Text != "")
             {
-                frmMain f = this.Owner as frmMain;
+                frmMain f = Owner as frmMain;
                 f.hdrName = txtName.Text;
                 f.hdrValue = txtValue.Text;
             }
-            this.Close();
+            Close();
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace NetMailSample.Forms
         /// <param name="e"></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void txtValue_KeyPress(object sender, KeyPressEventArgs e)

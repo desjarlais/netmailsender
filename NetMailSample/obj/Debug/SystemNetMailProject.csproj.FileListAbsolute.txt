@@ -51,3 +51,16 @@ D:\Code\GitHub\netmailsender\NetMailSample\obj\Debug\NetMailSample.Forms.frmMess
 D:\Code\GitHub\netmailsender\NetMailSample\obj\Debug\NetMailSample.frmMain.resources
 D:\Code\GitHub\netmailsender\NetMailSample\obj\Debug\NetMailSample.Properties.Resources.resources
 D:\Code\GitHub\netmailsender\NetMailSample\obj\Debug\SystemNetMailProject.csproj.GenerateResource.Cache
+F:\GitHub\netmailsender\NetMailSample\bin\Debug\NetMailSample.exe.config
+F:\GitHub\netmailsender\NetMailSample\obj\Debug\NetMailSample.exe
+F:\GitHub\netmailsender\NetMailSample\obj\Debug\NetMailSample.pdb
+F:\GitHub\netmailsender\NetMailSample\bin\Debug\NetMailSample.exe
+F:\GitHub\netmailsender\NetMailSample\bin\Debug\NetMailSample.pdb
+F:\GitHub\netmailsender\NetMailSample\obj\Debug\SystemNetMailProject.csprojResolveAssemblyReference.cache
+F:\GitHub\netmailsender\NetMailSample\obj\Debug\NetMailSample.Forms.frmAbout.resources
+F:\GitHub\netmailsender\NetMailSample\obj\Debug\NetMailSample.Forms.frmAddHeaders.resources
+F:\GitHub\netmailsender\NetMailSample\obj\Debug\NetMailSample.Forms.frmAlternateView.resources
+F:\GitHub\netmailsender\NetMailSample\obj\Debug\NetMailSample.Forms.frmMessageOptions.resources
+F:\GitHub\netmailsender\NetMailSample\obj\Debug\NetMailSample.frmMain.resources
+F:\GitHub\netmailsender\NetMailSample\obj\Debug\NetMailSample.Properties.Resources.resources
+F:\GitHub\netmailsender\NetMailSample\obj\Debug\SystemNetMailProject.csproj.GenerateResource.Cache

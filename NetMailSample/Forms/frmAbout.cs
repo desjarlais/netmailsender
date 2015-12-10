@@ -20,7 +20,7 @@ namespace NetMailSample.Forms
         {
             linkLabel1.Text = "NetMail Sender Website";
             linkLabel1.Links.Add(0, 22, "http://netmailsender.codeplex.com/");
-            this.lblVersion.Text = Application.ProductVersion.ToString();
+            lblVersion.Text = Application.ProductVersion.ToString();
         }
 
         /// <summary>

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Configuration;
 
 namespace NetMailSample.Forms
 {
@@ -58,12 +57,12 @@ namespace NetMailSample.Forms
             Properties.Settings.Default.MsgPriority = cboMsgPriority.Text;
             Properties.Settings.Default.DelNotifOnFailure = chkOnFailure.Checked;
             Properties.Settings.Default.DelNotifOnSuccess = chkOnSuccess.Checked;
-            this.Close();
+            Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

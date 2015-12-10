@@ -7,7 +7,6 @@ using System.Net.Mime;
 using System.Windows.Forms;
 using NetMailSample.Common;
 using System.Diagnostics;
-using System.Threading.Tasks;
 using System.Threading;
 
 namespace NetMailSample
@@ -292,7 +291,7 @@ namespace NetMailSample
 
                 // smtp client setup
                 smtp.EnableSsl = chkEnableSSL.Checked;
-                smtp.Port = Int32.Parse(cboPort.Text.Trim());
+                smtp.Port = int.Parse(cboPort.Text.Trim());
                 smtp.Host = cboServer.Text;
                 smtp.Timeout = Properties.Settings.Default.SendSyncTimeout;
 
@@ -862,21 +861,21 @@ namespace NetMailSample
         // specifiy the connection settings
         private void SetConnectionSettingsFromForm(ref ConnectionSettings oConnectionSetting)
         {
-            oConnectionSetting.User = this.txtBoxEmailAddress.Text;
-            oConnectionSetting.Domain = this.txtBoxDomain.Text;
-            oConnectionSetting.UseSSL = this.chkEnableSSL.Checked;
-            oConnectionSetting.PasswordRequired = this.chkPasswordRequired.Checked;
-            oConnectionSetting.MessageTo = this.txtBoxTo.Text;
-            oConnectionSetting.MessageCC = this.txtBoxCC.Text;
-            oConnectionSetting.MessageBcc = this.txtBoxBCC.Text;
-            oConnectionSetting.MessageSubject = this.txtBoxSubject.Text;
-            oConnectionSetting.MessageBody = this.richTxtBody.Text;
+            oConnectionSetting.User = txtBoxEmailAddress.Text;
+            oConnectionSetting.Domain = txtBoxDomain.Text;
+            oConnectionSetting.UseSSL = chkEnableSSL.Checked;
+            oConnectionSetting.PasswordRequired = chkPasswordRequired.Checked;
+            oConnectionSetting.MessageTo = txtBoxTo.Text;
+            oConnectionSetting.MessageCC = txtBoxCC.Text;
+            oConnectionSetting.MessageBcc = txtBoxBCC.Text;
+            oConnectionSetting.MessageSubject = txtBoxSubject.Text;
+            oConnectionSetting.MessageBody = richTxtBody.Text;
             
-            oConnectionSetting.Port = this.cboPort.Text;
-            oConnectionSetting.Server = this.cboServer.Text;
-            oConnectionSetting.SendByPort = this.rdoSendByPort.Checked;
-            oConnectionSetting.CustomPickupLocation = this.chkBoxSpecificPickupFolder.Checked;
-            oConnectionSetting.PickupLocation = this.txtPickupFolder.Text;
+            oConnectionSetting.Port = cboPort.Text;
+            oConnectionSetting.Server = cboServer.Text;
+            oConnectionSetting.SendByPort = rdoSendByPort.Checked;
+            oConnectionSetting.CustomPickupLocation = chkBoxSpecificPickupFolder.Checked;
+            oConnectionSetting.PickupLocation = txtPickupFolder.Text;
         }
 
         private void aboutToolStrip_Click(object sender, EventArgs e)
