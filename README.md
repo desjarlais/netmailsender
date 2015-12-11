@@ -8,7 +8,7 @@ NetMail Sender is a tool to help test the System.Net.Mail API.  It is basically 
 
 ![ScreenShot](http://i.imgur.com/bOdaQoG.jpg)
 
-Download the application executable at the following link:
+Download the application executable in the Release section of this page or use the following link:
 http://github.com/desjarlais/netmailsender/releases/tag/1.4.0.15
 
 Features include:
