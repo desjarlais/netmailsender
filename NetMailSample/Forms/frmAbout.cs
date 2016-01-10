@@ -2,6 +2,9 @@
 using System.Windows.Forms;
 using System.Diagnostics;
 
+/// <summary>
+/// This form is the File | About dialog 
+/// </summary>
 namespace NetMailSample.Forms
 {
     public partial class frmAbout : Form

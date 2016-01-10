@@ -43,6 +43,7 @@
             this.btnLinkedResBrowse = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnDeleteAltViewAttachment = new System.Windows.Forms.Button();
             this.dGridInlineAttachments = new System.Windows.Forms.DataGridView();
             this.colFilePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCid = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,11 +52,11 @@
             this.deleteAttachmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colContentType = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.btnConvertEncoding = new System.Windows.Forms.Button();
-            this.cboTransferEncoding = new System.Windows.Forms.ComboBox();
+            this.cmbTransferEncoding = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cboAltViewContentType = new System.Windows.Forms.ComboBox();
+            this.cmbAltViewContentType = new System.Windows.Forms.ComboBox();
             this.btnCalSample = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnEncodeText = new System.Windows.Forms.Button();
@@ -67,7 +68,6 @@
             this.tabPlain = new System.Windows.Forms.TabPage();
             this.txtPlainAltViewBody = new System.Windows.Forms.TextBox();
             this.btnInsertHTML = new System.Windows.Forms.Button();
-            this.btnDeleteAltViewAttachment = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGridInlineAttachments)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -178,6 +178,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Message Attachments";
             // 
+            // btnDeleteAltViewAttachment
+            // 
+            this.btnDeleteAltViewAttachment.Image = global::NetMailSample.Properties.Resources.Clearallrequests_8816;
+            this.btnDeleteAltViewAttachment.Location = new System.Drawing.Point(369, 76);
+            this.btnDeleteAltViewAttachment.Name = "btnDeleteAltViewAttachment";
+            this.btnDeleteAltViewAttachment.Size = new System.Drawing.Size(41, 23);
+            this.btnDeleteAltViewAttachment.TabIndex = 10;
+            this.btnDeleteAltViewAttachment.UseVisualStyleBackColor = true;
+            this.btnDeleteAltViewAttachment.Click += new System.EventHandler(this.btnDeleteAltViewAttachment_Click);
+            // 
             // dGridInlineAttachments
             // 
             this.dGridInlineAttachments.AllowUserToAddRows = false;
@@ -283,26 +293,26 @@
             this.btnConvertEncoding.UseVisualStyleBackColor = true;
             this.btnConvertEncoding.Click += new System.EventHandler(this.btnConvertEncoding_Click);
             // 
-            // cboTransferEncoding
+            // cmbTransferEncoding
             // 
-            this.cboTransferEncoding.FormattingEnabled = true;
-            this.cboTransferEncoding.Items.AddRange(new object[] {
+            this.cmbTransferEncoding.FormattingEnabled = true;
+            this.cmbTransferEncoding.Items.AddRange(new object[] {
             "SevenBit",
             "Base64",
             "QuotedPrintable",
             "Unknown"});
-            this.cboTransferEncoding.Location = new System.Drawing.Point(157, 47);
-            this.cboTransferEncoding.Name = "cboTransferEncoding";
-            this.cboTransferEncoding.Size = new System.Drawing.Size(179, 21);
-            this.cboTransferEncoding.TabIndex = 0;
-            this.cboTransferEncoding.Text = "QuotedPrintable";
+            this.cmbTransferEncoding.Location = new System.Drawing.Point(157, 47);
+            this.cmbTransferEncoding.Name = "cmbTransferEncoding";
+            this.cmbTransferEncoding.Size = new System.Drawing.Size(179, 21);
+            this.cmbTransferEncoding.TabIndex = 0;
+            this.cmbTransferEncoding.Text = "QuotedPrintable";
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.cboTransferEncoding);
-            this.groupBox3.Controls.Add(this.cboAltViewContentType);
+            this.groupBox3.Controls.Add(this.cmbTransferEncoding);
+            this.groupBox3.Controls.Add(this.cmbAltViewContentType);
             this.groupBox3.Location = new System.Drawing.Point(403, 418);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(342, 74);
@@ -328,18 +338,18 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Content-Type:";
             // 
-            // cboAltViewContentType
+            // cmbAltViewContentType
             // 
-            this.cboAltViewContentType.FormattingEnabled = true;
-            this.cboAltViewContentType.Items.AddRange(new object[] {
+            this.cmbAltViewContentType.FormattingEnabled = true;
+            this.cmbAltViewContentType.Items.AddRange(new object[] {
             "HTML",
             "PlainText",
             "vCalendar"});
-            this.cboAltViewContentType.Location = new System.Drawing.Point(157, 19);
-            this.cboAltViewContentType.Name = "cboAltViewContentType";
-            this.cboAltViewContentType.Size = new System.Drawing.Size(179, 21);
-            this.cboAltViewContentType.TabIndex = 0;
-            this.cboAltViewContentType.Text = "HTML";
+            this.cmbAltViewContentType.Location = new System.Drawing.Point(157, 19);
+            this.cmbAltViewContentType.Name = "cmbAltViewContentType";
+            this.cmbAltViewContentType.Size = new System.Drawing.Size(179, 21);
+            this.cmbAltViewContentType.TabIndex = 0;
+            this.cmbAltViewContentType.Text = "HTML";
             // 
             // btnCalSample
             // 
@@ -456,16 +466,6 @@
             this.btnInsertHTML.UseVisualStyleBackColor = true;
             this.btnInsertHTML.Click += new System.EventHandler(this.btnInsertHTML_Click);
             // 
-            // btnDeleteAltViewAttachment
-            // 
-            this.btnDeleteAltViewAttachment.Image = global::NetMailSample.Properties.Resources.Clearallrequests_8816;
-            this.btnDeleteAltViewAttachment.Location = new System.Drawing.Point(369, 76);
-            this.btnDeleteAltViewAttachment.Name = "btnDeleteAltViewAttachment";
-            this.btnDeleteAltViewAttachment.Size = new System.Drawing.Size(41, 23);
-            this.btnDeleteAltViewAttachment.TabIndex = 10;
-            this.btnDeleteAltViewAttachment.UseVisualStyleBackColor = true;
-            this.btnDeleteAltViewAttachment.Click += new System.EventHandler(this.btnDeleteAltViewAttachment_Click);
-            // 
             // frmAlternateView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -514,9 +514,9 @@
         private System.Windows.Forms.Button btnAddLR;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dGridInlineAttachments;
-        private System.Windows.Forms.ComboBox cboTransferEncoding;
+        private System.Windows.Forms.ComboBox cmbTransferEncoding;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ComboBox cboAltViewContentType;
+        private System.Windows.Forms.ComboBox cmbAltViewContentType;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox txtHTMLAltViewBody;
         private System.Windows.Forms.Button btnCalSample;

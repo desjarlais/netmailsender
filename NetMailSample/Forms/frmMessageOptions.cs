@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Configuration;
 
+/// <summary>
+/// This displays the message options dialog/form
+/// </summary>
 namespace NetMailSample.Forms
 {
     public partial class frmMessageOptions : Form
@@ -22,19 +24,19 @@ namespace NetMailSample.Forms
                 switch (Properties.Settings.Default.MsgPriority)
                 {
                     case "High":
-                        cboMsgPriority.Text = "High";
+                        cmbMsgPriority.Text = "High";
                         break;
                     case "Low":
-                        cboMsgPriority.Text = "Low";
+                        cmbMsgPriority.Text = "Low";
                         break;
                     default:
-                        cboMsgPriority.Text = "Normal";
+                        cmbMsgPriority.Text = "Normal";
                         break;
                 }
 
-                cboBodyEncoding.Text = Properties.Settings.Default.BodyEncoding;
-                cboHeaderEncoding.Text = Properties.Settings.Default.HeaderEncoding;
-                cboSubjectEncoding.Text = Properties.Settings.Default.SubjectEncoding;
+                cmbBodyEncoding.Text = Properties.Settings.Default.BodyEncoding;
+                cmbHeaderEncoding.Text = Properties.Settings.Default.HeaderEncoding;
+                cmbSubjectEncoding.Text = Properties.Settings.Default.SubjectEncoding;
             }
             catch (Exception)
             {
@@ -50,12 +52,12 @@ namespace NetMailSample.Forms
         /// <param name="e"></param>
         private void btnOK_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.BodyEncoding = cboBodyEncoding.Text;
-            Properties.Settings.Default.HeaderEncoding = cboHeaderEncoding.Text;
-            Properties.Settings.Default.SubjectEncoding = cboSubjectEncoding.Text;
+            Properties.Settings.Default.BodyEncoding = cmbBodyEncoding.Text;
+            Properties.Settings.Default.HeaderEncoding = cmbHeaderEncoding.Text;
+            Properties.Settings.Default.SubjectEncoding = cmbSubjectEncoding.Text;
             Properties.Settings.Default.BodyHtml = chkBodyHtml.Checked;
             Properties.Settings.Default.ReadRcpt = chkReadRcpt.Checked;
-            Properties.Settings.Default.MsgPriority = cboMsgPriority.Text;
+            Properties.Settings.Default.MsgPriority = cmbMsgPriority.Text;
             Properties.Settings.Default.DelNotifOnFailure = chkOnFailure.Checked;
             Properties.Settings.Default.DelNotifOnSuccess = chkOnSuccess.Checked;
             this.Close();

@@ -7,9 +7,11 @@ using System.Net.Mime;
 using System.Windows.Forms;
 using NetMailSample.Common;
 using System.Diagnostics;
-using System.Threading.Tasks;
 using System.Threading;
 
+/// <summary>
+/// The main netmailsample form window
+/// </summary>
 namespace NetMailSample
 {
     public partial class frmMain : Form
@@ -20,15 +22,15 @@ namespace NetMailSample
         bool continueTimerRun = false;
         bool formValidated = false;
         bool noErrFound = true;
-        ClassLogger _logger = null;
+        ClassLogger logger = null;
 
         public frmMain()
         {
             InitializeComponent();
 
             // create the logger
-            _logger = new ClassLogger("NetMailErrors.log");
-            _logger.LogAdded += new ClassLogger.LoggerEventHandler(_logger_LogAdded);
+            logger = new ClassLogger("NetMailErrors.log");
+            logger.LogAdded += new ClassLogger.LoggerEventHandler(_logger_LogAdded);
 
             // log the .net version
             CheckDotNetVersion();
@@ -66,18 +68,18 @@ namespace NetMailSample
             try
             {
                 // check for the installed .NET versions
-                _logger.Log("The .NET Runtime = " + DotNetVersion.GetRuntimeVersionFromEnvironment());
-                _logger.Log(DotNetVersion.GetDotNetVerFromRegistry());
+                logger.Log("The .NET Runtime = " + DotNetVersion.GetRuntimeVersionFromEnvironment());
+                logger.Log(DotNetVersion.GetDotNetVerFromRegistry());
                 if (DotNetVersion.GetDotNetVerFromRegistry() == "The .NET Framework version 4.5 or higher is NOT installed.")
                 {
-                    _logger.Log("Installed versions of the .NET Framework that are:\n");
-                    _logger.Log(DotNetVersion.GetPreV45FromRegistry());
+                    logger.Log("Installed versions of the .NET Framework that are:\n");
+                    logger.Log(DotNetVersion.GetPreV45FromRegistry());
                 }
             }
             catch (Exception ex)
             {
-                _logger.Log("Error:" + ex.Message);
-                _logger.Log("Stack Trace: " + ex.StackTrace);
+                logger.Log("Error:" + ex.Message);
+                logger.Log("Stack Trace: " + ex.StackTrace);
             }
         }
 
@@ -104,7 +106,7 @@ namespace NetMailSample
 
                 // set the To email address information
                 mailAddrCol.Clear();
-                _logger.Log("Adding To addresses: " + txtBoxTo.Text);
+                logger.Log("Adding To addresses: " + txtBoxTo.Text);
                 mailAddrCol.Add(txtBoxTo.Text);
                 MessageUtilities.AddSmtpToMailAddressCollection(mail, mailAddrCol, MessageUtilities.addressType.To);
 
@@ -112,7 +114,7 @@ namespace NetMailSample
                 if (txtBoxCC.Text.Trim() != "")
                 {
                     mailAddrCol.Clear();
-                    _logger.Log("Adding Cc addresses: " + txtBoxCC.Text);
+                    logger.Log("Adding Cc addresses: " + txtBoxCC.Text);
                     mailAddrCol.Add(txtBoxCC.Text);
                     MessageUtilities.AddSmtpToMailAddressCollection(mail, mailAddrCol, MessageUtilities.addressType.Cc);
                 }
@@ -120,7 +122,7 @@ namespace NetMailSample
                 if (txtBoxBCC.Text.Trim() != "")
                 {
                     mailAddrCol.Clear();
-                    _logger.Log("Adding Bcc addresses: " + txtBoxBCC.Text);
+                    logger.Log("Adding Bcc addresses: " + txtBoxBCC.Text);
                     mailAddrCol.Add(txtBoxBCC.Text);
                     MessageUtilities.AddSmtpToMailAddressCollection(mail, mailAddrCol, MessageUtilities.addressType.Bcc);
                 }
@@ -198,7 +200,7 @@ namespace NetMailSample
                 }
 
                 // add custom headers
-                foreach (DataGridViewRow rowHdr in dGridHeaders.Rows)
+                foreach (DataGridViewRow rowHdr in dgGridHeaders.Rows)
                 {
                     if (rowHdr.Cells[0].Value != null)
                     {
@@ -207,7 +209,7 @@ namespace NetMailSample
                 }
 
                 // add attachements
-                foreach (DataGridViewRow rowAtt in dGridAttachments.Rows)
+                foreach (DataGridViewRow rowAtt in dgGridAttachments.Rows)
                 {
                     if (rowAtt.Cells[0].Value != null)
                     {
@@ -292,8 +294,8 @@ namespace NetMailSample
 
                 // smtp client setup
                 smtp.EnableSsl = chkEnableSSL.Checked;
-                smtp.Port = Int32.Parse(cboPort.Text.Trim());
-                smtp.Host = cboServer.Text;
+                smtp.Port = Int32.Parse(cmbPort.Text.Trim());
+                smtp.Host = cmbServer.Text;
                 smtp.Timeout = Properties.Settings.Default.SendSyncTimeout;
 
                 // send email
@@ -305,17 +307,17 @@ namespace NetMailSample
                 noErrFound = false;
                 if (se.StatusCode == SmtpStatusCode.MailboxBusy || se.StatusCode == SmtpStatusCode.MailboxUnavailable)
                 {
-                    _logger.Log("Delivery failed - retrying in 5 seconds.");
+                    logger.Log("Delivery failed - retrying in 5 seconds.");
                     Thread.Sleep(5000);
                     smtp.Send(mail);
                 }
                 else
                 {
-                    _logger.Log("Error: " + se.Message);
-                    _logger.Log("StackTrace: " + se.StackTrace);
-                    _logger.Log("Status Code: " + se.StatusCode);
-                    _logger.Log("Description:" + MessageUtilities.GetSmtpStatusCodeDescription(se.StatusCode.ToString()));
-                    _logger.Log("Inner Exception: " + se.InnerException);
+                    logger.Log("Error: " + se.Message);
+                    logger.Log("StackTrace: " + se.StackTrace);
+                    logger.Log("Status Code: " + se.StatusCode);
+                    logger.Log("Description:" + MessageUtilities.GetSmtpStatusCodeDescription(se.StatusCode.ToString()));
+                    logger.Log("Inner Exception: " + se.InnerException);
                 }
             }
             catch (InvalidOperationException ioe)
@@ -323,34 +325,34 @@ namespace NetMailSample
                 // invalid smtp address used
                 txtBoxErrorLog.Clear();
                 noErrFound = false;
-                _logger.Log("Error: " + ioe.Message);
-                _logger.Log("StackTrace: " + ioe.StackTrace);
-                _logger.Log("Inner Exception: " + ioe.InnerException);
+                logger.Log("Error: " + ioe.Message);
+                logger.Log("StackTrace: " + ioe.StackTrace);
+                logger.Log("Inner Exception: " + ioe.InnerException);
             }
             catch (FormatException fe)
             {
                 // invalid smtp address used
                 txtBoxErrorLog.Clear();
                 noErrFound = false;
-                _logger.Log("Error: " + fe.Message);
-                _logger.Log("StackTrace: " + fe.StackTrace);
-                _logger.Log("Inner Exception: " + fe.InnerException);
+                logger.Log("Error: " + fe.Message);
+                logger.Log("StackTrace: " + fe.StackTrace);
+                logger.Log("Inner Exception: " + fe.InnerException);
             }
             catch (Exception ex)
             {
                 txtBoxErrorLog.Clear();
                 noErrFound = false;
-                _logger.Log("Error: " + ex.Message);
-                _logger.Log("StackTrace: " + ex.StackTrace);
-                _logger.Log("Inner Exception: " + ex.InnerException);
+                logger.Log("Error: " + ex.Message);
+                logger.Log("StackTrace: " + ex.StackTrace);
+                logger.Log("Inner Exception: " + ex.InnerException);
             }
             finally
             {
                 // log success
                 if (formValidated == true && noErrFound == true)
                 {
-                    _logger.Log("Message subject = " + msgSubject);
-                    _logger.Log("Message send = SUCCESS");
+                    logger.Log("Message subject = " + msgSubject);
+                    logger.Log("Message send = SUCCESS");
                 }
 
                 // cleanup resources
@@ -398,23 +400,23 @@ namespace NetMailSample
 
                 try
                 {
-                    int n = dGridAttachments.Rows.Add();
+                    int n = dgGridAttachments.Rows.Add();
                     string size = FileUtilities.SizeSuffix(f.Length);
-                    dGridAttachments.Rows[n].Cells[0].Value = file;
-                    dGridAttachments.Rows[n].Cells[1].Value = "Octet";
-                    dGridAttachments.Rows[n].Cells[2].Value = size;
-                    dGridAttachments.Rows[n].Cells[3].Value = "";
-                    dGridAttachments.Rows[n].Cells[4].Value = "False";
+                    dgGridAttachments.Rows[n].Cells[0].Value = file;
+                    dgGridAttachments.Rows[n].Cells[1].Value = "Octet";
+                    dgGridAttachments.Rows[n].Cells[2].Value = size;
+                    dgGridAttachments.Rows[n].Cells[3].Value = "";
+                    dgGridAttachments.Rows[n].Cells[4].Value = "False";
                 }
                 catch (IOException ioe)
                 {
-                    _logger.Log("Error: " + ioe.Message);
-                    _logger.Log("StackTrace: " + ioe.StackTrace);
+                    logger.Log("Error: " + ioe.Message);
+                    logger.Log("StackTrace: " + ioe.StackTrace);
                 }
                 catch (Exception ex)
                 {
-                    _logger.Log("Error: " + ex.Message);
-                    _logger.Log("StackTrace: " + ex.StackTrace);
+                    logger.Log("Error: " + ex.Message);
+                    logger.Log("StackTrace: " + ex.StackTrace);
                 }
             }
         }
@@ -433,15 +435,15 @@ namespace NetMailSample
                 aHdrForm.ShowDialog(this);
                 if (hdrName != null && hdrValue != null)
                 {
-                    int n = dGridHeaders.Rows.Add();
-                    dGridHeaders.Rows[n].Cells[0].Value = hdrName;
-                    dGridHeaders.Rows[n].Cells[1].Value = hdrValue;
+                    int n = dgGridHeaders.Rows.Add();
+                    dgGridHeaders.Rows[n].Cells[0].Value = hdrName;
+                    dgGridHeaders.Rows[n].Cells[1].Value = hdrValue;
                 }
             }
             catch (Exception ex)
             {
-                _logger.Log("Error: " + ex.Message);
-                _logger.Log("StackTrace: " + ex.StackTrace);
+                logger.Log("Error: " + ex.Message);
+                logger.Log("StackTrace: " + ex.StackTrace);
             }
         }
 
@@ -454,31 +456,31 @@ namespace NetMailSample
         {
             try
             {
-                int cellRow = dGridAttachments.CurrentCellAddress.Y;
-                if (dGridAttachments.CurrentCell.ColumnIndex >= 0)
+                int cellRow = dgGridAttachments.CurrentCellAddress.Y;
+                if (dgGridAttachments.CurrentCell.ColumnIndex >= 0)
                 {
-                    dGridAttachments.Rows.RemoveAt(dGridAttachments.Rows[cellRow].Index);
+                    dgGridAttachments.Rows.RemoveAt(dgGridAttachments.Rows[cellRow].Index);
                 }
             }
             catch (NullReferenceException nre)
             {
                 // if the attachment grid is empty, just return
-                if (dGridAttachments.CurrentCellAddress.Y < 1)
+                if (dgGridAttachments.CurrentCellAddress.Y< 1)
                 {
                     return;
                 }
                 else
                 {
                     // log any other null ref errors
-                    _logger.Log("Error: " + nre.Message);
-                    _logger.Log("StackTrace: " + nre.StackTrace);
-                    _logger.Log("Inner Exception: " + nre.InnerException);
+                    logger.Log("Error: " + nre.Message);
+                    logger.Log("StackTrace: " + nre.StackTrace);
+                    logger.Log("Inner Exception: " + nre.InnerException);
                 }
-            }
+}
             catch (Exception ex)
             {
-                _logger.Log("Error: " + ex.Message);
-                _logger.Log("StackTrace: " + ex.StackTrace);
+                logger.Log("Error: " + ex.Message);
+                logger.Log("StackTrace: " + ex.StackTrace);
             }
         }
 
@@ -491,31 +493,31 @@ namespace NetMailSample
         {
             try
             {
-                int cellRow = dGridHeaders.CurrentCellAddress.Y;
-                if (dGridHeaders.CurrentCell.ColumnIndex >= 0)
+                int cellRow = dgGridHeaders.CurrentCellAddress.Y;
+                if (dgGridHeaders.CurrentCell.ColumnIndex >= 0)
                 {
-                    dGridHeaders.Rows.RemoveAt(dGridHeaders.Rows[cellRow].Index);
+                    dgGridHeaders.Rows.RemoveAt(dgGridHeaders.Rows[cellRow].Index);
                 }
             }
             catch (NullReferenceException nre)
             {
                 // if the header grid is empty, just return
-                if (dGridHeaders.CurrentCellAddress.Y < 1)
+                if (dgGridHeaders.CurrentCellAddress.Y < 1)
                 {
                     return;
                 }
                 else
                 {
                     // log any other null ref errors
-                    _logger.Log("Error: " + nre.Message);
-                    _logger.Log("StackTrace: " + nre.StackTrace);
-                    _logger.Log("Inner Exception: " + nre.InnerException);
+                    logger.Log("Error: " + nre.Message);
+                    logger.Log("StackTrace: " + nre.StackTrace);
+                    logger.Log("Inner Exception: " + nre.InnerException);
                 }
             }
             catch (Exception ex)
             {
-                _logger.Log("Error: " + ex.Message);
-                _logger.Log("StackTrace: " + ex.StackTrace);
+                logger.Log("Error: " + ex.Message);
+                logger.Log("StackTrace: " + ex.StackTrace);
             }
         }
 
@@ -545,13 +547,13 @@ namespace NetMailSample
                 {
                     continueTimerRun = false;
                 }
-                _logger.Log(string.Format("Sending Message {0}...\r\n", msgCount));
+                logger.Log(string.Format("Sending Message {0}...\r\n", msgCount));
                 SendEmail();
                 txtBoxErrorLog.Text = "Sending message " + msgCount;
                 WaitLoop((int)numUpDnSeconds.Value);
             }
 
-            _logger.Log("Finished timer based email send.\r\n");
+            logger.Log("Finished timer based email send.\r\n");
             txtBoxErrorLog.Text = "Finished timer based email send.";
         }
 
@@ -563,7 +565,7 @@ namespace NetMailSample
         private void btnStopSendLoop_Click(object sender, EventArgs e)
         {
             continueTimerRun = false;
-            _logger.Log("User chose to stop email loop.\r\n");
+            logger.Log("User chose to stop email loop.\r\n");
         }
 
         /// <summary>
@@ -598,19 +600,19 @@ namespace NetMailSample
 
             if (txtBoxEmailAddress.Text.Trim() == "")
             {
-                _logger.Log("User is required.");
+                logger.Log("User is required.");
                 bRet = false;
             }
 
             if (chkPasswordRequired.Checked && mskPassword.Text.Trim() == "")
             {
-                _logger.Log("Password is required.");
+                logger.Log("Password is required.");
                 bRet = false;
             }
 
             if (txtBoxTo.Text.Trim() == "")
             {
-                _logger.Log("To address is required.");
+                logger.Log("To address is required.");
                 bRet = false;
             }
 
@@ -686,7 +688,7 @@ namespace NetMailSample
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             // clean up resources on exit
-            _logger.Dispose();
+            logger.Dispose();
         }
 
         // enable ssl checkbox when port radio is clicked
@@ -698,17 +700,17 @@ namespace NetMailSample
         // when the user changes the dropdown for server, automatically change the port number to a recommended value
         private void cboServer_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboServer.Text == "smtp.gmail.com" || cboServer.Text == "smtp.mail.yahoo.com" || cboServer.Text == "plus.smtp.mail.yahoo.com")
+            if (cmbServer.Text == "smtp.gmail.com" || cmbServer.Text == "smtp.mail.yahoo.com" || cmbServer.Text == "plus.smtp.mail.yahoo.com")
             {
-                cboPort.Text = "465";
+                cmbPort.Text = "465";
             }
-            else if (cboServer.Text == "smtp.live.com")
+            else if (cmbServer.Text == "smtp.live.com" || cmbServer.Text == "smtp.office365.com")
             {
-                cboPort.Text = "587";
+                cmbPort.Text = "587";
             }
             else
             {
-                cboPort.Text = "25";
+                cmbPort.Text = "25";
             }
         }
 
@@ -833,8 +835,8 @@ namespace NetMailSample
                 if (oConnectionSetting.SendByPort == true)
                 {
                     rdoSendByPort.Checked = true;
-                    cboPort.Text = oConnectionSetting.Port;
-                    cboServer.Text = oConnectionSetting.Server;
+                    cmbPort.Text = oConnectionSetting.Port;
+                    cmbServer.Text = oConnectionSetting.Server;
                 }
                 else
                 {
@@ -872,8 +874,8 @@ namespace NetMailSample
             oConnectionSetting.MessageSubject = this.txtBoxSubject.Text;
             oConnectionSetting.MessageBody = this.richTxtBody.Text;
             
-            oConnectionSetting.Port = this.cboPort.Text;
-            oConnectionSetting.Server = this.cboServer.Text;
+            oConnectionSetting.Port = this.cmbPort.Text;
+            oConnectionSetting.Server = this.cmbServer.Text;
             oConnectionSetting.SendByPort = this.rdoSendByPort.Checked;
             oConnectionSetting.CustomPickupLocation = this.chkBoxSpecificPickupFolder.Checked;
             oConnectionSetting.PickupLocation = this.txtPickupFolder.Text;
@@ -915,7 +917,7 @@ namespace NetMailSample
         {
             if (e.Button == MouseButtons.Right)
             {
-                dGridHeaders.CurrentCell = dGridHeaders[e.ColumnIndex, e.RowIndex];
+                dgGridHeaders.CurrentCell = dgGridHeaders[e.ColumnIndex, e.RowIndex];
             }
         }
 
@@ -923,7 +925,7 @@ namespace NetMailSample
         {
             if (e.Button == MouseButtons.Right)
             {
-                dGridAttachments.CurrentCell = dGridAttachments[e.ColumnIndex, e.RowIndex];
+                dgGridAttachments.CurrentCell = dgGridAttachments[e.ColumnIndex, e.RowIndex];
             }
         }
 
@@ -948,15 +950,15 @@ namespace NetMailSample
         {
             if (dGrid == 1)
             {
-                int n = dGridAttachments.CurrentCellAddress.Y;
-                dGridAttachments.CurrentCell = dGridAttachments.Rows[n].Cells[cell];
-                dGridAttachments.BeginEdit(true);
+                int n = dgGridAttachments.CurrentCellAddress.Y;
+                dgGridAttachments.CurrentCell = dgGridAttachments.Rows[n].Cells[cell];
+                dgGridAttachments.BeginEdit(true);
             }
             else
             {
-                int n = dGridHeaders.CurrentCellAddress.Y;
-                dGridHeaders.CurrentCell = dGridHeaders.Rows[n].Cells[cell];
-                dGridHeaders.BeginEdit(true);
+                int n = dgGridHeaders.CurrentCellAddress.Y;
+                dgGridHeaders.CurrentCell = dgGridHeaders.Rows[n].Cells[cell];
+                dgGridHeaders.BeginEdit(true);
             }
 
         }

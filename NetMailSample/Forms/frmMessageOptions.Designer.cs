@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMessageOptions));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cboSubjectEncoding = new System.Windows.Forms.ComboBox();
-            this.cboHeaderEncoding = new System.Windows.Forms.ComboBox();
-            this.cboBodyEncoding = new System.Windows.Forms.ComboBox();
+            this.cmbSubjectEncoding = new System.Windows.Forms.ComboBox();
+            this.cmbHeaderEncoding = new System.Windows.Forms.ComboBox();
+            this.cmbBodyEncoding = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,7 +44,7 @@
             this.chkReadRcpt = new System.Windows.Forms.CheckBox();
             this.chkBodyHtml = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.cboMsgPriority = new System.Windows.Forms.ComboBox();
+            this.cmbMsgPriority = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.chkOnSuccess = new System.Windows.Forms.CheckBox();
             this.chkOnFailure = new System.Windows.Forms.CheckBox();
@@ -57,9 +57,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cboSubjectEncoding);
-            this.groupBox1.Controls.Add(this.cboHeaderEncoding);
-            this.groupBox1.Controls.Add(this.cboBodyEncoding);
+            this.groupBox1.Controls.Add(this.cmbSubjectEncoding);
+            this.groupBox1.Controls.Add(this.cmbHeaderEncoding);
+            this.groupBox1.Controls.Add(this.cmbBodyEncoding);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
@@ -70,53 +70,53 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Encoding";
             // 
-            // cboSubjectEncoding
+            // cmbSubjectEncoding
             // 
-            this.cboSubjectEncoding.FormattingEnabled = true;
-            this.cboSubjectEncoding.Items.AddRange(new object[] {
+            this.cmbSubjectEncoding.FormattingEnabled = true;
+            this.cmbSubjectEncoding.Items.AddRange(new object[] {
             "ACSII",
             "Unicode",
             "UTF32",
             "UTF7",
             "UTF8",
             "Default"});
-            this.cboSubjectEncoding.Location = new System.Drawing.Point(126, 63);
-            this.cboSubjectEncoding.Name = "cboSubjectEncoding";
-            this.cboSubjectEncoding.Size = new System.Drawing.Size(201, 21);
-            this.cboSubjectEncoding.TabIndex = 7;
-            this.cboSubjectEncoding.Text = "ASCII";
+            this.cmbSubjectEncoding.Location = new System.Drawing.Point(126, 63);
+            this.cmbSubjectEncoding.Name = "cmbSubjectEncoding";
+            this.cmbSubjectEncoding.Size = new System.Drawing.Size(201, 21);
+            this.cmbSubjectEncoding.TabIndex = 7;
+            this.cmbSubjectEncoding.Text = "ASCII";
             // 
-            // cboHeaderEncoding
+            // cmbHeaderEncoding
             // 
-            this.cboHeaderEncoding.FormattingEnabled = true;
-            this.cboHeaderEncoding.Items.AddRange(new object[] {
+            this.cmbHeaderEncoding.FormattingEnabled = true;
+            this.cmbHeaderEncoding.Items.AddRange(new object[] {
             "ACSII",
             "Unicode",
             "UTF32",
             "UTF7",
             "UTF8",
             "Default"});
-            this.cboHeaderEncoding.Location = new System.Drawing.Point(126, 37);
-            this.cboHeaderEncoding.Name = "cboHeaderEncoding";
-            this.cboHeaderEncoding.Size = new System.Drawing.Size(201, 21);
-            this.cboHeaderEncoding.TabIndex = 6;
-            this.cboHeaderEncoding.Text = "ASCII";
+            this.cmbHeaderEncoding.Location = new System.Drawing.Point(126, 37);
+            this.cmbHeaderEncoding.Name = "cmbHeaderEncoding";
+            this.cmbHeaderEncoding.Size = new System.Drawing.Size(201, 21);
+            this.cmbHeaderEncoding.TabIndex = 6;
+            this.cmbHeaderEncoding.Text = "ASCII";
             // 
-            // cboBodyEncoding
+            // cmbBodyEncoding
             // 
-            this.cboBodyEncoding.FormattingEnabled = true;
-            this.cboBodyEncoding.Items.AddRange(new object[] {
+            this.cmbBodyEncoding.FormattingEnabled = true;
+            this.cmbBodyEncoding.Items.AddRange(new object[] {
             "ACSII",
             "Unicode",
             "UTF32",
             "UTF7",
             "UTF8",
             "Default"});
-            this.cboBodyEncoding.Location = new System.Drawing.Point(126, 13);
-            this.cboBodyEncoding.Name = "cboBodyEncoding";
-            this.cboBodyEncoding.Size = new System.Drawing.Size(201, 21);
-            this.cboBodyEncoding.TabIndex = 4;
-            this.cboBodyEncoding.Text = "ASCII";
+            this.cmbBodyEncoding.Location = new System.Drawing.Point(126, 13);
+            this.cmbBodyEncoding.Name = "cmbBodyEncoding";
+            this.cmbBodyEncoding.Size = new System.Drawing.Size(201, 21);
+            this.cmbBodyEncoding.TabIndex = 4;
+            this.cmbBodyEncoding.Text = "ASCII";
             // 
             // label4
             // 
@@ -226,7 +226,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.cboMsgPriority);
+            this.groupBox3.Controls.Add(this.cmbMsgPriority);
             this.groupBox3.Location = new System.Drawing.Point(190, 173);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(161, 48);
@@ -234,18 +234,18 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Priority";
             // 
-            // cboMsgPriority
+            // cmbMsgPriority
             // 
-            this.cboMsgPriority.FormattingEnabled = true;
-            this.cboMsgPriority.Items.AddRange(new object[] {
+            this.cmbMsgPriority.FormattingEnabled = true;
+            this.cmbMsgPriority.Items.AddRange(new object[] {
             "Low",
             "Normal",
             "High"});
-            this.cboMsgPriority.Location = new System.Drawing.Point(6, 17);
-            this.cboMsgPriority.Name = "cboMsgPriority";
-            this.cboMsgPriority.Size = new System.Drawing.Size(143, 21);
-            this.cboMsgPriority.TabIndex = 0;
-            this.cboMsgPriority.Text = "Normal";
+            this.cmbMsgPriority.Location = new System.Drawing.Point(6, 17);
+            this.cmbMsgPriority.Name = "cmbMsgPriority";
+            this.cmbMsgPriority.Size = new System.Drawing.Size(143, 21);
+            this.cmbMsgPriority.TabIndex = 0;
+            this.cmbMsgPriority.Text = "Normal";
             // 
             // groupBox4
             // 
@@ -313,9 +313,9 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.ComboBox cboSubjectEncoding;
-        private System.Windows.Forms.ComboBox cboHeaderEncoding;
-        private System.Windows.Forms.ComboBox cboBodyEncoding;
+        private System.Windows.Forms.ComboBox cmbSubjectEncoding;
+        private System.Windows.Forms.ComboBox cmbHeaderEncoding;
+        private System.Windows.Forms.ComboBox cmbBodyEncoding;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
@@ -323,7 +323,7 @@
         private System.Windows.Forms.CheckBox chkReadRcpt;
         private System.Windows.Forms.CheckBox chkBodyHtml;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ComboBox cboMsgPriority;
+        private System.Windows.Forms.ComboBox cmbMsgPriority;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numUpDnSendTimeOut;
         private System.Windows.Forms.GroupBox groupBox4;

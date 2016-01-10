@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 
+/// <summary>
+/// This form allows adding message headers to the message
+/// </summary>
 namespace NetMailSample.Forms
 {
     public partial class frmAddHeaders : Form

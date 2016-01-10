@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Net.Mail;
-using System.Net.Mime;
 using System.Text;
 using System.Windows.Forms;
 
+/// <summary>
+/// Use this form to handle adding alt views to the message
+/// </summary>
 namespace NetMailSample.Forms
 {
     public partial class frmAlternateView : Form
@@ -18,7 +19,7 @@ namespace NetMailSample.Forms
         public frmAlternateView()
         {
             InitializeComponent();
-            cboTransferEncoding.Text = Properties.Settings.Default.htmlBodyTransferEncoding;
+            cmbTransferEncoding.Text = Properties.Settings.Default.htmlBodyTransferEncoding;
             txtCalendarAltViewBody.Text = Properties.Settings.Default.AltViewCal;
             txtHTMLAltViewBody.Text = Properties.Settings.Default.AltViewHtml;
             txtPlainAltViewBody.Text = Properties.Settings.Default.AltViewPlain;
@@ -43,20 +44,20 @@ namespace NetMailSample.Forms
                 }
 
                 Properties.Settings.Default.AltViewCal = sb.ToString();
-                Properties.Settings.Default.vCalBodyTransferEncoding = cboTransferEncoding.Text;
+                Properties.Settings.Default.vCalBodyTransferEncoding = cmbTransferEncoding.Text;
             }
 
             if (txtHTMLAltViewBody.Text != null)
             {
                 Properties.Settings.Default.AltViewHtml = txtHTMLAltViewBody.Text;
-                Properties.Settings.Default.htmlBodyTransferEncoding = cboTransferEncoding.Text;
+                Properties.Settings.Default.htmlBodyTransferEncoding = cmbTransferEncoding.Text;
                 AddInlineTableForAttachments();
             }
 
             if (txtPlainAltViewBody.Text != null)
             {
                 Properties.Settings.Default.AltViewPlain = txtPlainAltViewBody.Text;
-                Properties.Settings.Default.plainBodyTransferEncoding = cboTransferEncoding.Text;
+                Properties.Settings.Default.plainBodyTransferEncoding = cmbTransferEncoding.Text;
             }
 
             Close();
@@ -135,8 +136,8 @@ namespace NetMailSample.Forms
         /// <param name="e"></param>
         private void btnCalSample_Click(object sender, EventArgs e)
         {
-            cboAltViewContentType.Text = "vCalendar";
-            cboTransferEncoding.Text = "QuotedPrintable";
+            cmbAltViewContentType.Text = "vCalendar";
+            cmbTransferEncoding.Text = "QuotedPrintable";
 
             DateTime dtStart = DateTime.Now.AddHours(1);
             DateTime dtEnd = DateTime.Now.AddHours(2);
@@ -185,7 +186,7 @@ namespace NetMailSample.Forms
                     byte[] encodedBytes = Convert.FromBase64String(txtCalendarAltViewBody.Text);
                     string result = Encoding.UTF8.GetString(encodedBytes);
                     txtCalendarAltViewBody.Text = result;
-                    cboTransferEncoding.Text = "QuotedPrintable";
+                    cmbTransferEncoding.Text = "QuotedPrintable";
                 }
                 catch (Exception)
                 {
@@ -201,8 +202,8 @@ namespace NetMailSample.Forms
         /// <param name="e"></param>
         private void btnInsertHTML_Click(object sender, EventArgs e)
         {
-            cboAltViewContentType.Text = "HTML";
-            cboTransferEncoding.Text = "QuotedPrintable";
+            cmbAltViewContentType.Text = "HTML";
+            cmbTransferEncoding.Text = "QuotedPrintable";
 
             string body = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">";
             body += "<HTML><HEAD><META http-equiv=Content-Type content=\"text/html; charset=iso-8859-1\">";
@@ -222,15 +223,15 @@ namespace NetMailSample.Forms
         {
             if (tabControl1.SelectedTab.Text == "Plain")
             {
-                cboAltViewContentType.Text = "Plain Text";
+                cmbAltViewContentType.Text = "Plain Text";
             }
             else if (tabControl1.SelectedTab.Text == "Calendar")
             {
-                cboAltViewContentType.Text = "vCalendar";
+                cmbAltViewContentType.Text = "vCalendar";
             }
             else
             {
-                cboAltViewContentType.Text = "HTML";
+                cmbAltViewContentType.Text = "HTML";
             }
         }
 
@@ -244,7 +245,7 @@ namespace NetMailSample.Forms
             if (txtCalendarAltViewBody.Text != "" && tabControl1.SelectedTab == tabCalendar)
             {
                 txtCalendarAltViewBody.Text = EncodeBodyToBase64(txtCalendarAltViewBody.Text);
-                cboTransferEncoding.Text = "Base64";
+                cmbTransferEncoding.Text = "Base64";
             }
         }
 
