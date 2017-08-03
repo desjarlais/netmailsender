@@ -86,6 +86,8 @@ namespace NetMailSample.Common
                     return Encoding.UTF7;
                 case "ASCII":
                     return Encoding.ASCII;
+                case "BigEndianUnicode":
+                    return Encoding.BigEndianUnicode;
                 default:
                     return Encoding.Default;
             }
@@ -104,6 +106,8 @@ namespace NetMailSample.Common
                     return TransferEncoding.QuotedPrintable;
                 case "SevenBit":
                     return TransferEncoding.SevenBit;
+                case "EightBit":
+                    return TransferEncoding.EightBit;
                 case "Base64":
                     return TransferEncoding.Base64;
                 default:
@@ -168,8 +172,10 @@ namespace NetMailSample.Common
                     return "The user mailbox is not located on the receiving server. You should resend using the supplied address information.";
                 case "UserNotLocalWillForward":
                     return "The user mailbox is not located on the receiving server; the server forwards the e-mail.";
-                default:
+                case "Ok":
                     return "The email was successfully sent to the SMTP service.";
+                default:
+                    return "Undefined status code.";
             }
         }
     }

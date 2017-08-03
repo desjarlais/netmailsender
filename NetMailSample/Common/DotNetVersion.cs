@@ -37,17 +37,11 @@ namespace NetMailSample.Common
     {
         /// <summary>
         /// Find the installed .NET Framework versions by querying the registry
-        /// Release key versions: 
-        ///     378389 = 4.5
-        ///     378675 = 4.5.1 on Win8.1 / Server 2012 R2
-        ///     378758 = 4.5.1 on Win8 / Win7SP1 / VistaSP2
-        ///     379893 = .NET Framework 4.5.2
-        ///     393295 = .NET Framework 4.6 on Win10
-        ///     393297 = .NET Framework 4.6 on Non-Win10
         /// </summary>
         public static string GetDotNetVerFromRegistry()
         {
             string dotNET45;
+
             using (RegistryKey ndpKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine,
                RegistryView.Registry32).OpenSubKey(@"SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\"))
             {
@@ -72,28 +66,37 @@ namespace NetMailSample.Common
         // Checking the version using >= to enable forward compatibility
         public static string CheckFor45DotVersion(int releaseKey)
         {
-            if (releaseKey >= 393295)
+            switch (releaseKey)
             {
-                return "Installed .NET Framework = 4.6 or later - Version = ";
+                case 378389:
+                    return "Installed .NET Framework = 4.5 - Version = ";
+                case 378675:
+                    return "Installed .NET Framework = 4.5.1 on Win8.1 or Win Server 2012 R2 - Version = ";
+                case 378758:
+                    return "Installed .NET Framework = 4.5.1 on Win8, Win7 SP1 or Vista SP2 - Version = ";
+                case 379893:
+                    return "Installed .NET Framework = 4.5.2 - Version = ";
+                case 393295:
+                    return "Installed .NET Framework = 4.6 on Win10 - Version = ";
+                case 393297:
+                    return "Installed .NET Framework = 4.6 on Non-Windows OS - Version = ";
+                case 394254:
+                    return "Installed .NET Framework = 4.6.1 on Win10 November Update - Version = ";
+                case 394271:
+                    return "Installed .NET Framework = 4.6.1 on Non-Windows OS - Version = ";
+                case 394802:
+                    return "Installed .NET Framework = 4.6.2 on Win10 Anniversary Update - Version = ";
+                case 394806:
+                    return "Installed .NET Framework = 4.6.2 on Non-Windows OS - Version = ";
+                case 460798:
+                    return "Installed .NET Framework = 4.7 on Win10 Creators Update - Version = ";
+                case 460805:
+                    return "Installed .NET Framework = 4.7 on Non-Windows OS - Version = ";
+                default:
+                    return "The .NET Framework 4.5 or later NOT detected";
             }
-            if (releaseKey >= 379893)
-            {
-                return "Installed .NET Framework = 4.5.2 - Version = ";
-            }
-            if (releaseKey >= 378675)
-            {
-                return "Installed .NET Framework = 4.5.1 - Version = ";
-            }
-            if (releaseKey >= 378389)
-            {
-                return "Installed .NET Framework = 4.5 - Version = ";
-            }
-        
-            // This line should never execute. A non-null release key should mean 
-            // that 4.5 or later is installed. 
-            return "The .NET Framework 4.5 or later NOT detected";
         }
-
+        
         /// <summary>
         ///  return the current runtime version by querying the Environment class in code
         /// </summary>

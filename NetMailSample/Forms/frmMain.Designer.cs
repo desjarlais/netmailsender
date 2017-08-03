@@ -382,17 +382,15 @@
             this.cmbServer.FormattingEnabled = true;
             this.cmbServer.Items.AddRange(new object[] {
             "smtp-mail.outlook.com ",
-            "smtp.live.com",
             "smtp.office365.com",
             "smtp.gmail.com",
             "smtp.zoho.com",
-            "smtp.mail.yahoo.com",
-            "plus.smtp.mail.yahoo.com"});
+            "smtp.mail.yahoo.com"});
             this.cmbServer.Location = new System.Drawing.Point(327, 37);
             this.cmbServer.Name = "cmbServer";
             this.cmbServer.Size = new System.Drawing.Size(191, 21);
             this.cmbServer.TabIndex = 5;
-            this.cmbServer.Text = "smtp.live.com";
+            this.cmbServer.Text = "smtp.office365.com";
             this.cmbServer.SelectedIndexChanged += new System.EventHandler(this.cboServer_SelectedIndexChanged);
             // 
             // label1

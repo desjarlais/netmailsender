@@ -70,7 +70,7 @@ namespace NetMailSample
                 // check for the installed .NET versions
                 logger.Log("The .NET Runtime = " + DotNetVersion.GetRuntimeVersionFromEnvironment());
                 logger.Log(DotNetVersion.GetDotNetVerFromRegistry());
-                if (DotNetVersion.GetDotNetVerFromRegistry() == "The .NET Framework version 4.5 or higher is NOT installed.")
+                if (DotNetVersion.GetDotNetVerFromRegistry() == "The .NET Framework 4.5 or later NOT detected")
                 {
                     logger.Log("Installed versions of the .NET Framework that are:\n");
                     logger.Log(DotNetVersion.GetPreV45FromRegistry());
@@ -227,7 +227,6 @@ namespace NetMailSample
                             data.ContentDisposition.DispositionType = DispositionTypeNames.Attachment;
                         }
                         mail.Attachments.Add(data);
-                        //data.Dispose();
                     }
                 }
 
@@ -700,11 +699,11 @@ namespace NetMailSample
         // when the user changes the dropdown for server, automatically change the port number to a recommended value
         private void cboServer_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbServer.Text == "smtp.gmail.com" || cmbServer.Text == "smtp.mail.yahoo.com" || cmbServer.Text == "plus.smtp.mail.yahoo.com")
+            if (cmbServer.Text == "smtp.gmail.com" || cmbServer.Text == "smtp.mail.yahoo.com")
             {
                 cmbPort.Text = "465";
             }
-            else if (cmbServer.Text == "smtp.live.com" || cmbServer.Text == "smtp.office365.com")
+            else if (cmbServer.Text == "smtp.office365.com")
             {
                 cmbPort.Text = "587";
             }
