@@ -32,6 +32,6 @@ Features include:
 Minimum Requirements
 •	Microsoft .NET Framework Version 4.5.2
 
-Since this tool is just a mail sender, if you are looking for a tool that will retrieve information from a Microsoft Exchange mailbox it would be worth checking out [EWSEditor](http://ewseditor.codeplex.com/).
+Since this tool is just a mail sender, if you are looking for a tool that will retrieve information from a Microsoft Exchange mailbox it would be worth checking out [EWSEditor](https://github.com/dseph/EwsEditor).
 
 If you are looking for a tool that provides access to MAPI stores to facilitate investigation of Microsoft Exchange and Microsoft Outlook issues, I would recommend [MFCMAPI](https://github.com/stephenegriffin/mfcmapi).
