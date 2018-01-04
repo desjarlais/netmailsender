@@ -253,23 +253,6 @@ namespace NetMailSample
                     mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnSuccess;
                 }
 
-                // check for credentials
-                string sUser = txtBoxEmailAddress.Text.Trim();
-                string sPassword = mskPassword.Text.Trim();
-                string sDomain = txtBoxDomain.Text.Trim();
-
-                if (sUser.Length != 0)
-                {
-                    if (sDomain.Length != 0)
-                    {
-                        smtp.Credentials = new NetworkCredential(sUser, sPassword, sDomain);
-                    }
-                    else
-                    {
-                        smtp.Credentials = new NetworkCredential(sUser, sPassword);
-                    }
-                }
-
                 // send by pickup folder?
                 if (rdoSendByPickupFolder.Checked)
                 {
@@ -292,13 +275,49 @@ namespace NetMailSample
                 }
 
                 // smtp client setup
+
+                // this is for TLS enforcement -- is its true
+                // STARTTLS will be utilized
                 smtp.EnableSsl = chkEnableSSL.Checked;
+                // we are avoiding to carry out default logon credentials to smtp session
+                smtp.UseDefaultCredentials = false;
+                
                 smtp.Port = Int32.Parse(cmbPort.Text.Trim());
                 smtp.Host = cmbServer.Text;
+                
                 smtp.Timeout = Properties.Settings.Default.SendSyncTimeout;
 
+                // we are checking, if its office365.com or not because of specific settings on receive connectors 
+                // for on premise exchange servers can cause exception
+                if (smtp.Host == "smtp.office365.com")
+                {
+                    string targetname = "SMTPSVC/" + smtp.Host;
+                    smtp.TargetName = targetname;
+                }
+                else {
+                    smtp.TargetName = null;
+                }
+                
+                
+                // check for credentials
+                // moved credential a bit low in the code flow becuase of I've seen a credential removal somehow
+                string sUser = txtBoxEmailAddress.Text.Trim();
+                string sPassword = mskPassword.Text.Trim();
+                string sDomain = txtBoxDomain.Text.Trim();
+
+                if (sUser.Length != 0)
+                {
+                    if (sDomain.Length != 0)
+                    {
+                        smtp.Credentials = new NetworkCredential(sUser, sPassword, sDomain);
+                    }
+                    else
+                    {
+                        smtp.Credentials = new NetworkCredential(sUser, sPassword);
+                    }
+                }
                 // send email
-                smtp.Send(mail);
+                smtp.Send(mail);             
             }
             catch (SmtpException se)
             {
