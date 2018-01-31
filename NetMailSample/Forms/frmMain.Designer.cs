@@ -410,7 +410,7 @@
             this.groupBox1.Size = new System.Drawing.Size(414, 169);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Error Log";
+            this.groupBox1.Text = "Operational Result Logs";
             // 
             // txtBoxErrorLog
             // 
@@ -755,21 +755,21 @@
             // mnuFileLoadSettings
             // 
             this.mnuFileLoadSettings.Name = "mnuFileLoadSettings";
-            this.mnuFileLoadSettings.Size = new System.Drawing.Size(145, 22);
+            this.mnuFileLoadSettings.Size = new System.Drawing.Size(152, 22);
             this.mnuFileLoadSettings.Text = "&Load Settings";
             this.mnuFileLoadSettings.Click += new System.EventHandler(this.mnuFileLoadSettings_Click);
             // 
             // mnuFileSaveSettings
             // 
             this.mnuFileSaveSettings.Name = "mnuFileSaveSettings";
-            this.mnuFileSaveSettings.Size = new System.Drawing.Size(145, 22);
+            this.mnuFileSaveSettings.Size = new System.Drawing.Size(152, 22);
             this.mnuFileSaveSettings.Text = "&Save Settings";
             this.mnuFileSaveSettings.Click += new System.EventHandler(this.mnuFileSaveSettings_Click);
             // 
             // mnuFileOptions
             // 
             this.mnuFileOptions.Name = "mnuFileOptions";
-            this.mnuFileOptions.Size = new System.Drawing.Size(145, 22);
+            this.mnuFileOptions.Size = new System.Drawing.Size(152, 22);
             this.mnuFileOptions.Text = "&Options";
             this.mnuFileOptions.Click += new System.EventHandler(this.mnuFileOptions_Click);
             // 
