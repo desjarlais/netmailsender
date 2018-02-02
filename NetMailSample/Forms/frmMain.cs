@@ -421,7 +421,37 @@ namespace NetMailSample
                     int n = dgGridAttachments.Rows.Add();
                     string size = FileUtilities.SizeSuffix(f.Length);
                     dgGridAttachments.Rows[n].Cells[0].Value = file;
-                    dgGridAttachments.Rows[n].Cells[1].Value = "Octet";
+
+                    switch (f.Extension)
+                    {
+                        case ".pdf":
+                            dgGridAttachments.Rows[n].Cells[1].Value = "Pdf";
+                            break;
+                        case ".txt":
+                            dgGridAttachments.Rows[n].Cells[1].Value = "Txt";
+                            break;
+                        case ".zip":
+                            dgGridAttachments.Rows[n].Cells[1].Value = "Zip";
+                            break;
+                        case ".html":
+                            dgGridAttachments.Rows[n].Cells[1].Value = "Html";
+                            break;
+                        case ".tiff":
+                            dgGridAttachments.Rows[n].Cells[1].Value = "Tiff";
+                            break;
+                        case ".gif":
+                            dgGridAttachments.Rows[n].Cells[1].Value = "Gif";
+                            break;
+                        case ".jpeg":
+                            dgGridAttachments.Rows[n].Cells[1].Value = "Jpeg";
+                            break;
+                        case ".rtf":
+                            dgGridAttachments.Rows[n].Cells[1].Value = "Rtf";
+                            break;
+                        default:
+                            dgGridAttachments.Rows[n].Cells[1].Value = "Octet";
+                            break;
+                    }
                     dgGridAttachments.Rows[n].Cells[2].Value = size;
                     dgGridAttachments.Rows[n].Cells[3].Value = "";
                     dgGridAttachments.Rows[n].Cells[4].Value = "False";

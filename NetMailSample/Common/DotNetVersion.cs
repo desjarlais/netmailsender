@@ -66,35 +66,43 @@ namespace NetMailSample.Common
         // Checking the version using >= to enable forward compatibility
         public static string CheckFor45DotVersion(int releaseKey)
         {
-            switch (releaseKey)
+            const string output = "Installed .NET Framework = ";
+
+            if (releaseKey >= 461308)
             {
-                case 378389:
-                    return "Installed .NET Framework = 4.5 - Version = ";
-                case 378675:
-                    return "Installed .NET Framework = 4.5.1 on Win8.1 or Win Server 2012 R2 - Version = ";
-                case 378758:
-                    return "Installed .NET Framework = 4.5.1 on Win8, Win7 SP1 or Vista SP2 - Version = ";
-                case 379893:
-                    return "Installed .NET Framework = 4.5.2 - Version = ";
-                case 393295:
-                    return "Installed .NET Framework = 4.6 on Win10 - Version = ";
-                case 393297:
-                    return "Installed .NET Framework = 4.6 on Non-Windows OS - Version = ";
-                case 394254:
-                    return "Installed .NET Framework = 4.6.1 on Win10 November Update - Version = ";
-                case 394271:
-                    return "Installed .NET Framework = 4.6.1 on Non-Windows OS - Version = ";
-                case 394802:
-                    return "Installed .NET Framework = 4.6.2 on Win10 Anniversary Update - Version = ";
-                case 394806:
-                    return "Installed .NET Framework = 4.6.2 on Non-Windows OS - Version = ";
-                case 460798:
-                    return "Installed .NET Framework = 4.7 on Win10 Creators Update - Version = ";
-                case 460805:
-                    return "Installed .NET Framework = 4.7 on Non-Windows OS - Version = ";
-                default:
-                    return "The .NET Framework 4.5 or later NOT detected";
+                return output + "4.7.1 or later ";
             }
+            if (releaseKey >= 460798)
+            {
+                return output + "4.7 ";
+            }
+            if (releaseKey >= 394802)
+            {
+                return output + "4.6.2 ";
+            }
+            if (releaseKey >= 394254)
+            {
+                return output + "4.6.1 ";
+            }
+            if (releaseKey >= 393295)
+            {
+                return output + "4.6 ";
+            }
+            if ((releaseKey >= 379893))
+            {
+                return output + "4.5.2 ";
+            }
+            if ((releaseKey >= 378675))
+            {
+                return output + "4.5.1 ";
+            }
+            if ((releaseKey >= 378389))
+            {
+                return output + "4.5 ";
+            }
+            // This code should never execute. A non-null release key should mean
+            // that 4.5 or later is installed.
+            return "No 4.5 or later version detected. ";
         }
         
         /// <summary>
