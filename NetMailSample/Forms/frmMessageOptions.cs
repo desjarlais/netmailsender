@@ -6,11 +6,11 @@ using System.Windows.Forms;
 /// </summary>
 namespace NetMailSample.Forms
 {
-    public partial class frmMessageOptions : Form
+    public partial class FrmMessageOptions : Form
     {
         public string enBody, enBodyTransfer, enSubject, enHeaders;
         
-        public frmMessageOptions()
+        public FrmMessageOptions()
         {
             InitializeComponent();
             try
@@ -50,7 +50,7 @@ namespace NetMailSample.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnOK_Click(object sender, EventArgs e)
+        private void BtnOK_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.BodyEncoding = cmbBodyEncoding.Text;
             Properties.Settings.Default.HeaderEncoding = cmbHeaderEncoding.Text;
@@ -60,12 +60,12 @@ namespace NetMailSample.Forms
             Properties.Settings.Default.MsgPriority = cmbMsgPriority.Text;
             Properties.Settings.Default.DelNotifOnFailure = chkOnFailure.Checked;
             Properties.Settings.Default.DelNotifOnSuccess = chkOnSuccess.Checked;
-            this.Close();
+            Close();
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void BtnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

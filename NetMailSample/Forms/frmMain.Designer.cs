@@ -1,6 +1,6 @@
 ﻿namespace NetMailSample
 {
-    partial class frmMain
+    partial class FrmMain
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.btnSendEmail = new System.Windows.Forms.Button();
             this.txtBoxDomain = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -120,7 +120,7 @@
             this.btnSendEmail.TabIndex = 20;
             this.btnSendEmail.Text = "Send Email";
             this.btnSendEmail.UseVisualStyleBackColor = true;
-            this.btnSendEmail.Click += new System.EventHandler(this.btnSendEmail_Click);
+            this.btnSendEmail.Click += new System.EventHandler(this.BtnSendEmail_Click);
             // 
             // txtBoxDomain
             // 
@@ -316,7 +316,7 @@
             this.chkBoxSpecificPickupFolder.TabIndex = 8;
             this.chkBoxSpecificPickupFolder.Text = "Specify a custom pickup folder:";
             this.chkBoxSpecificPickupFolder.UseVisualStyleBackColor = true;
-            this.chkBoxSpecificPickupFolder.CheckedChanged += new System.EventHandler(this.chkBoxSpecificPickupFolder_CheckedChanged);
+            this.chkBoxSpecificPickupFolder.CheckedChanged += new System.EventHandler(this.ChkBoxSpecificPickupFolder_CheckedChanged);
             // 
             // rdoSendByPickupFolder
             // 
@@ -327,7 +327,7 @@
             this.rdoSendByPickupFolder.TabIndex = 7;
             this.rdoSendByPickupFolder.Text = "Send By Pickup Folder:";
             this.rdoSendByPickupFolder.UseVisualStyleBackColor = true;
-            this.rdoSendByPickupFolder.CheckedChanged += new System.EventHandler(this.rdoSendByPickupFolder_CheckedChanged);
+            this.rdoSendByPickupFolder.CheckedChanged += new System.EventHandler(this.RdoSendByPickupFolder_CheckedChanged);
             // 
             // rdoSendByPort
             // 
@@ -340,7 +340,7 @@
             this.rdoSendByPort.TabStop = true;
             this.rdoSendByPort.Text = "Send By Port:";
             this.rdoSendByPort.UseVisualStyleBackColor = true;
-            this.rdoSendByPort.CheckedChanged += new System.EventHandler(this.rdoSendByPort_CheckedChanged);
+            this.rdoSendByPort.CheckedChanged += new System.EventHandler(this.RdoSendByPort_CheckedChanged);
             // 
             // label2
             // 
@@ -391,7 +391,7 @@
             this.cmbServer.Size = new System.Drawing.Size(191, 21);
             this.cmbServer.TabIndex = 5;
             this.cmbServer.Text = "smtp.office365.com";
-            this.cmbServer.SelectedIndexChanged += new System.EventHandler(this.cboServer_SelectedIndexChanged);
+            this.cmbServer.SelectedIndexChanged += new System.EventHandler(this.CboServer_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -431,7 +431,7 @@
             this.btnOpenLogFile.Tag = "";
             this.btnOpenLogFile.Text = "Open Error Log";
             this.btnOpenLogFile.UseVisualStyleBackColor = true;
-            this.btnOpenLogFile.Click += new System.EventHandler(this.btnOpenLogFile_Click);
+            this.btnOpenLogFile.Click += new System.EventHandler(this.BtnOpenLogFile_Click);
             // 
             // groupBox3
             // 
@@ -462,8 +462,8 @@
             this.dgGridAttachments.Name = "dgGridAttachments";
             this.dgGridAttachments.Size = new System.Drawing.Size(349, 155);
             this.dgGridAttachments.TabIndex = 25;
-            this.dgGridAttachments.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridAttachments_CellClick);
-            this.dgGridAttachments.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dGridAttachments_CellMouseDown);
+            this.dgGridAttachments.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGridAttachments_CellClick);
+            this.dgGridAttachments.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGridAttachments_CellMouseDown);
             // 
             // colFilePath
             // 
@@ -516,14 +516,14 @@
             this.editContentIDToolStripMenuItem.Name = "editContentIDToolStripMenuItem";
             this.editContentIDToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.editContentIDToolStripMenuItem.Text = "Edit Content ID";
-            this.editContentIDToolStripMenuItem.Click += new System.EventHandler(this.editContentIDToolStripMenuItem_Click);
+            this.editContentIDToolStripMenuItem.Click += new System.EventHandler(this.EditContentIDToolStripMenuItem_Click);
             // 
             // editInlineToolStripMenuItem
             // 
             this.editInlineToolStripMenuItem.Name = "editInlineToolStripMenuItem";
             this.editInlineToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.editInlineToolStripMenuItem.Text = "Edit Inline";
-            this.editInlineToolStripMenuItem.Click += new System.EventHandler(this.editInlineToolStripMenuItem_Click);
+            this.editInlineToolStripMenuItem.Click += new System.EventHandler(this.EditInlineToolStripMenuItem_Click);
             // 
             // colInline
             // 
@@ -544,7 +544,7 @@
             this.btnInsertAttachment.Size = new System.Drawing.Size(43, 23);
             this.btnInsertAttachment.TabIndex = 23;
             this.btnInsertAttachment.UseVisualStyleBackColor = true;
-            this.btnInsertAttachment.Click += new System.EventHandler(this.btnInsertAttachment_Click);
+            this.btnInsertAttachment.Click += new System.EventHandler(this.BtnInsertAttachment_Click);
             // 
             // btnDeleteAttachment
             // 
@@ -554,7 +554,7 @@
             this.btnDeleteAttachment.Size = new System.Drawing.Size(43, 23);
             this.btnDeleteAttachment.TabIndex = 24;
             this.btnDeleteAttachment.UseVisualStyleBackColor = true;
-            this.btnDeleteAttachment.Click += new System.EventHandler(this.btnDeleteAttachment_Click);
+            this.btnDeleteAttachment.Click += new System.EventHandler(this.BtnDeleteAttachment_Click);
             // 
             // openFileDialog1
             // 
@@ -586,7 +586,7 @@
             this.dgGridHeaders.Name = "dgGridHeaders";
             this.dgGridHeaders.Size = new System.Drawing.Size(349, 115);
             this.dgGridHeaders.TabIndex = 20;
-            this.dgGridHeaders.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dGridHeaders_CellMouseDown);
+            this.dgGridHeaders.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGridHeaders_CellMouseDown);
             // 
             // colName
             // 
@@ -609,14 +609,14 @@
             this.editNameToolStripMenuItem.Name = "editNameToolStripMenuItem";
             this.editNameToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.editNameToolStripMenuItem.Text = "Edit Name";
-            this.editNameToolStripMenuItem.Click += new System.EventHandler(this.editNameToolStripMenuItem_Click);
+            this.editNameToolStripMenuItem.Click += new System.EventHandler(this.EditNameToolStripMenuItem_Click);
             // 
             // editValueToolStripMenuItem
             // 
             this.editValueToolStripMenuItem.Name = "editValueToolStripMenuItem";
             this.editValueToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.editValueToolStripMenuItem.Text = "Edit Value";
-            this.editValueToolStripMenuItem.Click += new System.EventHandler(this.editValueToolStripMenuItem_Click);
+            this.editValueToolStripMenuItem.Click += new System.EventHandler(this.EditValueToolStripMenuItem_Click);
             // 
             // colValue
             // 
@@ -634,7 +634,7 @@
             this.btnDeleteHeader.Size = new System.Drawing.Size(43, 23);
             this.btnDeleteHeader.TabIndex = 22;
             this.btnDeleteHeader.UseVisualStyleBackColor = true;
-            this.btnDeleteHeader.Click += new System.EventHandler(this.btnDeleteHeader_Click);
+            this.btnDeleteHeader.Click += new System.EventHandler(this.BtnDeleteHeader_Click);
             // 
             // btnAddHeaders
             // 
@@ -644,7 +644,7 @@
             this.btnAddHeaders.Size = new System.Drawing.Size(43, 23);
             this.btnAddHeaders.TabIndex = 21;
             this.btnAddHeaders.UseVisualStyleBackColor = true;
-            this.btnAddHeaders.Click += new System.EventHandler(this.btnAddHeaders_Click);
+            this.btnAddHeaders.Click += new System.EventHandler(this.BtnAddHeaders_Click);
             // 
             // groupBox4
             // 
@@ -669,7 +669,7 @@
             this.chkTimeBasedSend.TabIndex = 29;
             this.chkTimeBasedSend.Text = "Enable Time Based Send :";
             this.chkTimeBasedSend.UseVisualStyleBackColor = true;
-            this.chkTimeBasedSend.CheckStateChanged += new System.EventHandler(this.chkTimeBasedSend_CheckStateChanged);
+            this.chkTimeBasedSend.CheckStateChanged += new System.EventHandler(this.ChkTimeBasedSend_CheckStateChanged);
             // 
             // btnStopSendLoop
             // 
@@ -680,7 +680,7 @@
             this.btnStopSendLoop.TabIndex = 27;
             this.btnStopSendLoop.Text = "Stop";
             this.btnStopSendLoop.UseVisualStyleBackColor = true;
-            this.btnStopSendLoop.Click += new System.EventHandler(this.btnStopSendLoop_Click);
+            this.btnStopSendLoop.Click += new System.EventHandler(this.BtnStopSendLoop_Click);
             // 
             // btnStartSendLoop
             // 
@@ -691,7 +691,7 @@
             this.btnStartSendLoop.TabIndex = 26;
             this.btnStartSendLoop.Text = "Start";
             this.btnStartSendLoop.UseVisualStyleBackColor = true;
-            this.btnStartSendLoop.Click += new System.EventHandler(this.btnStartSendLoop_Click);
+            this.btnStartSendLoop.Click += new System.EventHandler(this.BtnStartSendLoop_Click);
             // 
             // numUpDnSeconds
             // 
@@ -729,7 +729,7 @@
             this.btnAltView.TabIndex = 19;
             this.btnAltView.Text = "Add Alternate Views";
             this.btnAltView.UseVisualStyleBackColor = true;
-            this.btnAltView.Click += new System.EventHandler(this.btnAltView_Click);
+            this.btnAltView.Click += new System.EventHandler(this.BtnAltView_Click);
             // 
             // menuStrip1
             // 
@@ -757,21 +757,21 @@
             this.mnuFileLoadSettings.Name = "mnuFileLoadSettings";
             this.mnuFileLoadSettings.Size = new System.Drawing.Size(152, 22);
             this.mnuFileLoadSettings.Text = "&Load Settings";
-            this.mnuFileLoadSettings.Click += new System.EventHandler(this.mnuFileLoadSettings_Click);
+            this.mnuFileLoadSettings.Click += new System.EventHandler(this.MnuFileLoadSettings_Click);
             // 
             // mnuFileSaveSettings
             // 
             this.mnuFileSaveSettings.Name = "mnuFileSaveSettings";
             this.mnuFileSaveSettings.Size = new System.Drawing.Size(152, 22);
             this.mnuFileSaveSettings.Text = "&Save Settings";
-            this.mnuFileSaveSettings.Click += new System.EventHandler(this.mnuFileSaveSettings_Click);
+            this.mnuFileSaveSettings.Click += new System.EventHandler(this.MnuFileSaveSettings_Click);
             // 
             // mnuFileOptions
             // 
             this.mnuFileOptions.Name = "mnuFileOptions";
             this.mnuFileOptions.Size = new System.Drawing.Size(152, 22);
             this.mnuFileOptions.Text = "&Options";
-            this.mnuFileOptions.Click += new System.EventHandler(this.mnuFileOptions_Click);
+            this.mnuFileOptions.Click += new System.EventHandler(this.MnuFileOptions_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -787,14 +787,14 @@
             this.aboutToolStrip.Name = "aboutToolStrip";
             this.aboutToolStrip.Size = new System.Drawing.Size(124, 22);
             this.aboutToolStrip.Text = "&About";
-            this.aboutToolStrip.Click += new System.EventHandler(this.aboutToolStrip_Click);
+            this.aboutToolStrip.Click += new System.EventHandler(this.AboutToolStrip_Click);
             // 
             // feedbackToolStripMenuItem
             // 
             this.feedbackToolStripMenuItem.Name = "feedbackToolStripMenuItem";
             this.feedbackToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.feedbackToolStripMenuItem.Text = "F&eedback";
-            this.feedbackToolStripMenuItem.Click += new System.EventHandler(this.feedbackToolStripMenuItem_Click);
+            this.feedbackToolStripMenuItem.Click += new System.EventHandler(this.FeedbackToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -818,7 +818,7 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NetMail Sender";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.grpMailMessage.ResumeLayout(false);
             this.grpMailMessage.PerformLayout();
             this.grpSmtpSettings.ResumeLayout(false);

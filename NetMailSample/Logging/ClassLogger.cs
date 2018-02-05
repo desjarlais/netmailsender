@@ -78,7 +78,7 @@ namespace NetMailSample
         {
             if (disposed) return;
 
-            // Dispose of managed resources here. 
+            // Dispose of managed resources here.
             if (disposing)
             {
                 _logStream.Flush();
@@ -91,12 +91,7 @@ namespace NetMailSample
 
         protected virtual void OnLogAdded(LoggerEventArgs e)
         {
-            LoggerEventHandler handler = LogAdded;
-
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            LogAdded?.Invoke(this, e);
         }
 
         public void Log(string Details, string Description = "", bool SuppressEvent = false)

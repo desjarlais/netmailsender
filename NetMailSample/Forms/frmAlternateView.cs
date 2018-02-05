@@ -8,7 +8,7 @@ using System.Windows.Forms;
 /// </summary>
 namespace NetMailSample.Forms
 {
-    public partial class frmAlternateView : Form
+    public partial class FrmAlternateView : Form
     {
         public string cid, cidPath, tempSubject, cellEdit;
         public DataTable inlineTable = new DataTable();
@@ -16,7 +16,7 @@ namespace NetMailSample.Forms
         /// <summary>
         /// form constructor, sets the initial tab control values
         /// </summary>
-        public frmAlternateView()
+        public FrmAlternateView()
         {
             InitializeComponent();
             cmbTransferEncoding.Text = Properties.Settings.Default.htmlBodyTransferEncoding;
@@ -31,7 +31,7 @@ namespace NetMailSample.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnAddAlternateViews_Click(object sender, EventArgs e)
+        private void BtnAddAlternateViews_Click(object sender, EventArgs e)
         {
             if (txtCalendarAltViewBody.Text != null)
             {
@@ -86,7 +86,7 @@ namespace NetMailSample.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void BtnCancel_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -96,7 +96,7 @@ namespace NetMailSample.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnLinkedResBrowse_Click(object sender, EventArgs e)
+        private void BtnLinkedResBrowse_Click(object sender, EventArgs e)
         {
             DialogResult result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK)
@@ -110,7 +110,7 @@ namespace NetMailSample.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnAddLR_Click(object sender, EventArgs e)
+        private void BtnAddLR_Click(object sender, EventArgs e)
         {
             if (txtLinkedResPath.Text != "" && txtCid.Text != "")
             {
@@ -134,7 +134,7 @@ namespace NetMailSample.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnCalSample_Click(object sender, EventArgs e)
+        private void BtnCalSample_Click(object sender, EventArgs e)
         {
             cmbAltViewContentType.Text = "vCalendar";
             cmbTransferEncoding.Text = "QuotedPrintable";
@@ -177,7 +177,7 @@ namespace NetMailSample.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnConvertEncoding_Click(object sender, EventArgs e)
+        private void BtnConvertEncoding_Click(object sender, EventArgs e)
         {
             if (txtCalendarAltViewBody.Text != "" && tabControl1.SelectedTab == tabCalendar)
             {
@@ -200,7 +200,7 @@ namespace NetMailSample.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnInsertHTML_Click(object sender, EventArgs e)
+        private void BtnInsertHTML_Click(object sender, EventArgs e)
         {
             cmbAltViewContentType.Text = "HTML";
             cmbTransferEncoding.Text = "QuotedPrintable";
@@ -219,7 +219,7 @@ namespace NetMailSample.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        private void TabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControl1.SelectedTab.Text == "Plain")
             {
@@ -240,7 +240,7 @@ namespace NetMailSample.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnEncodeText_Click(object sender, EventArgs e)
+        private void BtnEncodeText_Click(object sender, EventArgs e)
         {
             if (txtCalendarAltViewBody.Text != "" && tabControl1.SelectedTab == tabCalendar)
             {
@@ -260,7 +260,7 @@ namespace NetMailSample.Forms
             return Convert.ToBase64String(EncodedBody);
         }
 
-        private void editContentIDToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EditContentIDToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int n = dGridInlineAttachments.CurrentCellAddress.Y;
             dGridInlineAttachments.CurrentCell = dGridInlineAttachments.Rows[n].Cells[1];
@@ -272,7 +272,7 @@ namespace NetMailSample.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnDeleteAltViewAttachment_Click(object sender, EventArgs e)
+        private void BtnDeleteAltViewAttachment_Click(object sender, EventArgs e)
         {
             try
             {
@@ -288,13 +288,13 @@ namespace NetMailSample.Forms
             }
         }
 
-        private void deleteAttachmentToolStripMenuItem_Click(object sender, EventArgs e)
+        private void DeleteAttachmentToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int n = dGridInlineAttachments.CurrentCellAddress.Y;
             dGridInlineAttachments.Rows.RemoveAt(dGridInlineAttachments.Rows[n].Index);
         }
 
-        private void dGridInlineAttachments_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        private void DGridInlineAttachments_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             try
             {
@@ -310,7 +310,7 @@ namespace NetMailSample.Forms
             
         }
 
-        private void dGridInlineAttachments_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DGridInlineAttachments_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 2)
             {

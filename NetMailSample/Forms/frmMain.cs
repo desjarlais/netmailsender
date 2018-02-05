@@ -14,7 +14,7 @@ using System.Threading;
 /// </summary>
 namespace NetMailSample
 {
-    public partial class frmMain : Form
+    public partial class FrmMain : Form
     {
         public string hdrName, hdrValue, msgSubject, cellEdit;
         DataTable inlineAttachmentsTable = new DataTable();
@@ -24,7 +24,7 @@ namespace NetMailSample
         bool noErrFound = true;
         ClassLogger logger = null;
 
-        public frmMain()
+        public FrmMain()
         {
             InitializeComponent();
 
@@ -166,8 +166,10 @@ namespace NetMailSample
                     {
                         foreach (DataRow rowInl in inlineAttachmentsTable.Rows)
                         {
-                            LinkedResource lr = new LinkedResource(rowInl.ItemArray[0].ToString());
-                            lr.ContentId = rowInl.ItemArray[1].ToString();
+                            LinkedResource lr = new LinkedResource(rowInl.ItemArray[0].ToString())
+                            {
+                                ContentId = rowInl.ItemArray[1].ToString()
+                            };
                             lr.ContentType.MediaType = rowInl.ItemArray[2].ToString();
                             htmlView.LinkedResources.Add(lr);
                             lr.Dispose();
@@ -394,7 +396,7 @@ namespace NetMailSample
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnSendEmail_Click(object sender, EventArgs e)
+        private void BtnSendEmail_Click(object sender, EventArgs e)
         {
             txtBoxErrorLog.Clear();
             SendEmail();
@@ -407,7 +409,7 @@ namespace NetMailSample
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnInsertAttachment_Click(object sender, EventArgs e)
+        private void BtnInsertAttachment_Click(object sender, EventArgs e)
         {
             DialogResult result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK)
@@ -474,12 +476,15 @@ namespace NetMailSample
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnAddHeaders_Click(object sender, EventArgs e)
+        private void BtnAddHeaders_Click(object sender, EventArgs e)
         {
             try
             {
-                Forms.frmAddHeaders aHdrForm = new Forms.frmAddHeaders();
-                aHdrForm.Owner = this;
+                Forms.FrmAddHeaders aHdrForm = new Forms.FrmAddHeaders
+                {
+                    Owner = this
+                };
+
                 aHdrForm.ShowDialog(this);
                 if (hdrName != null && hdrValue != null)
                 {
@@ -500,7 +505,7 @@ namespace NetMailSample
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnDeleteAttachment_Click(object sender, EventArgs e)
+        private void BtnDeleteAttachment_Click(object sender, EventArgs e)
         {
             try
             {
@@ -537,7 +542,7 @@ namespace NetMailSample
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnDeleteHeader_Click(object sender, EventArgs e)
+        private void BtnDeleteHeader_Click(object sender, EventArgs e)
         {
             try
             {
@@ -576,7 +581,7 @@ namespace NetMailSample
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnStartSendLoop_Click(object sender, EventArgs e)
+        private void BtnStartSendLoop_Click(object sender, EventArgs e)
         {
             decimal msgCount = 0;
             continueTimerRun = true;
@@ -610,7 +615,7 @@ namespace NetMailSample
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnStopSendLoop_Click(object sender, EventArgs e)
+        private void BtnStopSendLoop_Click(object sender, EventArgs e)
         {
             continueTimerRun = false;
             logger.Log("User chose to stop email loop.\r\n");
@@ -674,16 +679,19 @@ namespace NetMailSample
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnAltView_Click(object sender, EventArgs e)
+        private void BtnAltView_Click(object sender, EventArgs e)
         {
-            Forms.frmAlternateView aAltViewForm = new Forms.frmAlternateView();
-            aAltViewForm.Owner = this;
+            Forms.FrmAlternateView aAltViewForm = new Forms.FrmAlternateView
+            {
+                Owner = this
+            };
+
             aAltViewForm.ShowDialog(this);
             richTxtBody.Text = Properties.Settings.Default.AltViewPlain;
         }
 
         // toggle the time based send feature
-        private void chkTimeBasedSend_CheckStateChanged(object sender, EventArgs e)
+        private void ChkTimeBasedSend_CheckStateChanged(object sender, EventArgs e)
         {
             if (chkTimeBasedSend.Checked)
             {
@@ -704,7 +712,7 @@ namespace NetMailSample
         }
 
         // toggle the pickup folder textbox
-        private void chkBoxSpecificPickupFolder_CheckedChanged(object sender, EventArgs e)
+        private void ChkBoxSpecificPickupFolder_CheckedChanged(object sender, EventArgs e)
         {
             if (chkBoxSpecificPickupFolder.Checked)
             {
@@ -717,7 +725,7 @@ namespace NetMailSample
         }
 
         // toggle the send by pickup checkbox
-        private void rdoSendByPickupFolder_CheckedChanged(object sender, EventArgs e)
+        private void RdoSendByPickupFolder_CheckedChanged(object sender, EventArgs e)
         {
             chkEnableSSL.Checked = false;
             if (rdoSendByPickupFolder.Checked)
@@ -733,20 +741,20 @@ namespace NetMailSample
         }
 
         // form close event
-        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             // clean up resources on exit
             logger.Dispose();
         }
 
         // enable ssl checkbox when port radio is clicked
-        private void rdoSendByPort_CheckedChanged(object sender, EventArgs e)
+        private void RdoSendByPort_CheckedChanged(object sender, EventArgs e)
         {
             chkEnableSSL.Checked = true;
         }
 
         // when the user changes the dropdown for server, automatically change the port number to a recommended value
-        private void cboServer_SelectedIndexChanged(object sender, EventArgs e)
+        private void CboServer_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbServer.Text == "smtp.gmail.com" || cmbServer.Text == "smtp.mail.yahoo.com")
             {
@@ -767,7 +775,7 @@ namespace NetMailSample
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnOpenLogFile_Click(object sender, EventArgs e)
+        private void BtnOpenLogFile_Click(object sender, EventArgs e)
         {
             try
             {
@@ -786,7 +794,7 @@ namespace NetMailSample
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void mnuFileLoadSettings_Click(object sender, EventArgs e)
+        private void MnuFileLoadSettings_Click(object sender, EventArgs e)
         {
             string sFile = string.Empty;
             string sFilter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
@@ -823,7 +831,7 @@ namespace NetMailSample
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void mnuFileSaveSettings_Click(object sender, EventArgs e)
+        private void MnuFileSaveSettings_Click(object sender, EventArgs e)
         {
             string sFile = string.Empty;
             string sFilter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
@@ -852,17 +860,19 @@ namespace NetMailSample
         }
 
         // display File Options dialog
-        private void mnuFileOptions_Click(object sender, EventArgs e)
+        private void MnuFileOptions_Click(object sender, EventArgs e)
         {
-            Forms.frmMessageOptions mEncoding = new Forms.frmMessageOptions();
-            mEncoding.Owner = this;
+            Forms.FrmMessageOptions mEncoding = new Forms.FrmMessageOptions
+            {
+                Owner = this
+            };
             mEncoding.ShowDialog(this);
         }
 
         // display File About dialog
-        private void mnuFileAbout_Click(object sender, EventArgs e)
+        private void MnuFileAbout_Click(object sender, EventArgs e)
         {
-            Forms.frmAbout frm = new Forms.frmAbout();
+            Forms.FrmAbout frm = new Forms.FrmAbout();
             frm.ShowDialog(this);
             frm.Dispose();
         }
@@ -912,56 +922,56 @@ namespace NetMailSample
         // specifiy the connection settings
         private void SetConnectionSettingsFromForm(ref ConnectionSettings oConnectionSetting)
         {
-            oConnectionSetting.User = this.txtBoxEmailAddress.Text;
-            oConnectionSetting.Domain = this.txtBoxDomain.Text;
-            oConnectionSetting.UseSSL = this.chkEnableSSL.Checked;
-            oConnectionSetting.PasswordRequired = this.chkPasswordRequired.Checked;
-            oConnectionSetting.MessageTo = this.txtBoxTo.Text;
-            oConnectionSetting.MessageCC = this.txtBoxCC.Text;
-            oConnectionSetting.MessageBcc = this.txtBoxBCC.Text;
-            oConnectionSetting.MessageSubject = this.txtBoxSubject.Text;
-            oConnectionSetting.MessageBody = this.richTxtBody.Text;
+            oConnectionSetting.User = txtBoxEmailAddress.Text;
+            oConnectionSetting.Domain = txtBoxDomain.Text;
+            oConnectionSetting.UseSSL = chkEnableSSL.Checked;
+            oConnectionSetting.PasswordRequired = chkPasswordRequired.Checked;
+            oConnectionSetting.MessageTo = txtBoxTo.Text;
+            oConnectionSetting.MessageCC = txtBoxCC.Text;
+            oConnectionSetting.MessageBcc = txtBoxBCC.Text;
+            oConnectionSetting.MessageSubject = txtBoxSubject.Text;
+            oConnectionSetting.MessageBody = richTxtBody.Text;
             
-            oConnectionSetting.Port = this.cmbPort.Text;
-            oConnectionSetting.Server = this.cmbServer.Text;
-            oConnectionSetting.SendByPort = this.rdoSendByPort.Checked;
-            oConnectionSetting.CustomPickupLocation = this.chkBoxSpecificPickupFolder.Checked;
-            oConnectionSetting.PickupLocation = this.txtPickupFolder.Text;
+            oConnectionSetting.Port = cmbPort.Text;
+            oConnectionSetting.Server = cmbServer.Text;
+            oConnectionSetting.SendByPort = rdoSendByPort.Checked;
+            oConnectionSetting.CustomPickupLocation = chkBoxSpecificPickupFolder.Checked;
+            oConnectionSetting.PickupLocation = txtPickupFolder.Text;
         }
 
-        private void aboutToolStrip_Click(object sender, EventArgs e)
+        private void AboutToolStrip_Click(object sender, EventArgs e)
         {
-            Forms.frmAbout frm = new Forms.frmAbout();
+            Forms.FrmAbout frm = new Forms.FrmAbout();
             frm.ShowDialog(this);
             frm.Dispose();
         }
 
-        private void feedbackToolStripMenuItem_Click(object sender, EventArgs e)
+        private void FeedbackToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start("https://netmailsender.codeplex.com/discussions");
+            Process.Start("http://github.com/desjarlais/netmailsender/issues");
         }
 
-        private void editNameToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EditNameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BeginEditDataGridView(0, 2);
         }
 
-        private void editValueToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EditValueToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BeginEditDataGridView(1, 2);
         }
 
-        private void editContentIDToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EditContentIDToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BeginEditDataGridView(3, 1);
         }
 
-        private void editInlineToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EditInlineToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BeginEditDataGridView(4, 1);
         }
 
-        private void dGridHeaders_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        private void DGridHeaders_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
@@ -969,7 +979,7 @@ namespace NetMailSample
             }
         }
 
-        private void dGridAttachments_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        private void DGridAttachments_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
@@ -977,7 +987,7 @@ namespace NetMailSample
             }
         }
 
-        private void dGridAttachments_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DGridAttachments_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 1)
             {

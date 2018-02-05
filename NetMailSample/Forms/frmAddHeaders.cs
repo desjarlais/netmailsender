@@ -6,9 +6,9 @@ using System.Windows.Forms;
 /// </summary>
 namespace NetMailSample.Forms
 {
-    public partial class frmAddHeaders : Form
+    public partial class FrmAddHeaders : Form
     {
-        public frmAddHeaders()
+        public FrmAddHeaders()
         {
             InitializeComponent();
         }
@@ -19,15 +19,15 @@ namespace NetMailSample.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnSave_Click(object sender, EventArgs e)
+        private void BtnSave_Click(object sender, EventArgs e)
         {
             if (txtName.Text != "" && txtValue.Text != "")
             {
-                frmMain f = this.Owner as frmMain;
+                FrmMain f = Owner as FrmMain;
                 f.hdrName = txtName.Text;
                 f.hdrValue = txtValue.Text;
             }
-            this.Close();
+            Close();
         }
 
         /// <summary>
@@ -35,12 +35,12 @@ namespace NetMailSample.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void BtnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
-        private void txtValue_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtValue_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)13)
             {

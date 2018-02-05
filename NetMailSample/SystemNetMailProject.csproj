@@ -78,54 +78,54 @@
     <Compile Include="Common\FileUtilities.cs" />
     <Compile Include="Common\SerialHelper.cs" />
     <Compile Include="Common\UserIoHelper.cs" />
-    <Compile Include="Forms\frmAbout.cs">
+    <Compile Include="Forms\FrmAbout.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmAbout.Designer.cs">
-      <DependentUpon>frmAbout.cs</DependentUpon>
+    <Compile Include="Forms\FrmAbout.Designer.cs">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmAddHeaders.cs">
+    <Compile Include="Forms\FrmAddHeaders.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmAddHeaders.Designer.cs">
-      <DependentUpon>frmAddHeaders.cs</DependentUpon>
+    <Compile Include="Forms\FrmAddHeaders.Designer.cs">
+      <DependentUpon>FrmAddHeaders.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmAlternateView.cs">
+    <Compile Include="Forms\FrmAlternateView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmAlternateView.Designer.cs">
-      <DependentUpon>frmAlternateView.cs</DependentUpon>
+    <Compile Include="Forms\FrmAlternateView.Designer.cs">
+      <DependentUpon>FrmAlternateView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmMessageOptions.cs">
+    <Compile Include="Forms\FrmMessageOptions.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmMessageOptions.Designer.cs">
-      <DependentUpon>frmMessageOptions.cs</DependentUpon>
+    <Compile Include="Forms\FrmMessageOptions.Designer.cs">
+      <DependentUpon>FrmMessageOptions.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmMain.cs">
+    <Compile Include="Forms\FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmMain.Designer.cs">
-      <DependentUpon>frmMain.cs</DependentUpon>
+    <Compile Include="Forms\FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Logging\ClassLogger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\MessageUtilities.cs" />
-    <EmbeddedResource Include="Forms\frmAbout.resx">
-      <DependentUpon>frmAbout.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmAbout.resx">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmAddHeaders.resx">
-      <DependentUpon>frmAddHeaders.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmAddHeaders.resx">
+      <DependentUpon>FrmAddHeaders.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmAlternateView.resx">
-      <DependentUpon>frmAlternateView.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmAlternateView.resx">
+      <DependentUpon>FrmAlternateView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmMessageOptions.resx">
-      <DependentUpon>frmMessageOptions.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmMessageOptions.resx">
+      <DependentUpon>FrmMessageOptions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmMain.resx">
-      <DependentUpon>frmMain.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

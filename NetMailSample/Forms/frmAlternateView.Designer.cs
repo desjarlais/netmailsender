@@ -1,6 +1,6 @@
 ﻿namespace NetMailSample.Forms
 {
-    partial class frmAlternateView
+    partial class FrmAlternateView
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAlternateView));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAlternateView));
             this.btnAddAlternateViews = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAddLR = new System.Windows.Forms.Button();
@@ -87,7 +87,7 @@
             this.btnAddAlternateViews.TabIndex = 4;
             this.btnAddAlternateViews.Text = "OK";
             this.btnAddAlternateViews.UseVisualStyleBackColor = true;
-            this.btnAddAlternateViews.Click += new System.EventHandler(this.btnAddAlternateViews_Click);
+            this.btnAddAlternateViews.Click += new System.EventHandler(this.BtnAddAlternateViews_Click);
             // 
             // btnCancel
             // 
@@ -97,7 +97,7 @@
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // btnAddLR
             // 
@@ -110,7 +110,7 @@
             this.btnAddLR.Text = "Add Attachment";
             this.btnAddLR.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAddLR.UseVisualStyleBackColor = true;
-            this.btnAddLR.Click += new System.EventHandler(this.btnAddLR_Click);
+            this.btnAddLR.Click += new System.EventHandler(this.BtnAddLR_Click);
             // 
             // txtCid
             // 
@@ -155,7 +155,7 @@
             this.btnLinkedResBrowse.Text = "Open Attachment";
             this.btnLinkedResBrowse.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLinkedResBrowse.UseVisualStyleBackColor = true;
-            this.btnLinkedResBrowse.Click += new System.EventHandler(this.btnLinkedResBrowse_Click);
+            this.btnLinkedResBrowse.Click += new System.EventHandler(this.BtnLinkedResBrowse_Click);
             // 
             // openFileDialog1
             // 
@@ -186,7 +186,7 @@
             this.btnDeleteAltViewAttachment.Size = new System.Drawing.Size(41, 23);
             this.btnDeleteAltViewAttachment.TabIndex = 10;
             this.btnDeleteAltViewAttachment.UseVisualStyleBackColor = true;
-            this.btnDeleteAltViewAttachment.Click += new System.EventHandler(this.btnDeleteAltViewAttachment_Click);
+            this.btnDeleteAltViewAttachment.Click += new System.EventHandler(this.BtnDeleteAltViewAttachment_Click);
             // 
             // dGridInlineAttachments
             // 
@@ -227,8 +227,8 @@
             this.dGridInlineAttachments.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dGridInlineAttachments.Size = new System.Drawing.Size(352, 318);
             this.dGridInlineAttachments.TabIndex = 0;
-            this.dGridInlineAttachments.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridInlineAttachments_CellClick);
-            this.dGridInlineAttachments.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dGridInlineAttachments_CellMouseDown);
+            this.dGridInlineAttachments.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGridInlineAttachments_CellClick);
+            this.dGridInlineAttachments.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGridInlineAttachments_CellMouseDown);
             // 
             // colFilePath
             // 
@@ -254,14 +254,14 @@
             this.editContentIDToolStripMenuItem.Name = "editContentIDToolStripMenuItem";
             this.editContentIDToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.editContentIDToolStripMenuItem.Text = "Edit Content ID";
-            this.editContentIDToolStripMenuItem.Click += new System.EventHandler(this.editContentIDToolStripMenuItem_Click);
+            this.editContentIDToolStripMenuItem.Click += new System.EventHandler(this.EditContentIDToolStripMenuItem_Click);
             // 
             // deleteAttachmentToolStripMenuItem
             // 
             this.deleteAttachmentToolStripMenuItem.Name = "deleteAttachmentToolStripMenuItem";
             this.deleteAttachmentToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.deleteAttachmentToolStripMenuItem.Text = "Delete Attachment";
-            this.deleteAttachmentToolStripMenuItem.Click += new System.EventHandler(this.deleteAttachmentToolStripMenuItem_Click);
+            this.deleteAttachmentToolStripMenuItem.Click += new System.EventHandler(this.DeleteAttachmentToolStripMenuItem_Click);
             // 
             // colContentType
             // 
@@ -291,7 +291,7 @@
             this.btnConvertEncoding.TabIndex = 1;
             this.btnConvertEncoding.Text = "Decode Text";
             this.btnConvertEncoding.UseVisualStyleBackColor = true;
-            this.btnConvertEncoding.Click += new System.EventHandler(this.btnConvertEncoding_Click);
+            this.btnConvertEncoding.Click += new System.EventHandler(this.BtnConvertEncoding_Click);
             // 
             // cmbTransferEncoding
             // 
@@ -359,7 +359,7 @@
             this.btnCalSample.TabIndex = 12;
             this.btnCalSample.Text = "vCal Sample";
             this.btnCalSample.UseVisualStyleBackColor = true;
-            this.btnCalSample.Click += new System.EventHandler(this.btnCalSample_Click);
+            this.btnCalSample.Click += new System.EventHandler(this.BtnCalSample_Click);
             // 
             // groupBox5
             // 
@@ -383,7 +383,7 @@
             this.btnEncodeText.TabIndex = 13;
             this.btnEncodeText.Text = "Encode Text";
             this.btnEncodeText.UseVisualStyleBackColor = true;
-            this.btnEncodeText.Click += new System.EventHandler(this.btnEncodeText_Click);
+            this.btnEncodeText.Click += new System.EventHandler(this.BtnEncodeText_Click);
             // 
             // tabControl1
             // 
@@ -395,7 +395,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(373, 422);
             this.tabControl1.TabIndex = 12;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.TabControl1_SelectedIndexChanged);
             // 
             // tabHTML
             // 
@@ -464,7 +464,7 @@
             this.btnInsertHTML.TabIndex = 12;
             this.btnInsertHTML.Text = "HTML Sample";
             this.btnInsertHTML.UseVisualStyleBackColor = true;
-            this.btnInsertHTML.Click += new System.EventHandler(this.btnInsertHTML_Click);
+            this.btnInsertHTML.Click += new System.EventHandler(this.BtnInsertHTML_Click);
             // 
             // frmAlternateView
             // 
