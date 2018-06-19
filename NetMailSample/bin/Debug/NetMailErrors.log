@@ -61,3 +61,7 @@
 02/05/18 3:59:57 PM ==> Status Code: GeneralFailure
 02/05/18 3:59:57 PM ==> Description:The transaction could not occur. You receive this error when the specified SMTP host cannot be found.
 02/05/18 3:59:57 PM ==> Inner Exception: 
+06/18/18 9:51:45 PM ==> The .NET Runtime = 4.0.30319.42000
+06/18/18 9:51:45 PM ==> Installed .NET Framework = 4.7.1 or later 4.7.03056
+06/18/18 9:54:37 PM ==> The .NET Runtime = 4.0.30319.42000
+06/18/18 9:54:37 PM ==> Installed .NET Framework = 4.7.1 or later 4.7.03056

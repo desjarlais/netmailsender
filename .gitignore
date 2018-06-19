@@ -7,3 +7,16 @@
 /.vs/NetMailSample/v15/Server/sqlite3
 /.vs/slnx.sqlite
 /.vs/VSWorkspaceState.json
+NetMailSample/bin/Debug/NetMailErrors.log
+.vs/NetMailSample/v15/.suo
+.vs/NetMailSample/DesignTimeBuild/.dtbcache
+.vs/NetMailSample/v15/.suo
+NetMailSample/obj/Debug/NetMailSample.exe
+NetMailSample/obj/Debug/NetMailSample.pdb
+NetMailSample/obj/Debug/SystemNetMailProject.csproj.FileListAbsolute.txt
+NetMailSample/obj/Debug/SystemNetMailProject.csproj.GenerateResource.Cache
+NetMailSample/obj/Debug/SystemNetMailProject.csprojAssemblyReference.cache
+NetMailSample/obj/Debug/SystemNetMailProject.csprojResolveAssemblyReference.cache
+NetMailSample/SystemNetMailProject.csproj
+NetMailSample/bin/Debug/NetMailSample.pdb
+NetMailSample/bin/Debug/NetMailSample.exe

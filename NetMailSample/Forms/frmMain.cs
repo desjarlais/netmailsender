@@ -1,4 +1,32 @@
-﻿using System;
+﻿/****************************** Module Header ******************************\
+Module Name:  FrmMain.cs
+Project:      NetMailSample
+Copyright (c) 2014 desjarlais
+
+This contains functions for dealing with the file attachments
+
+The MIT License (MIT)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+\***************************************************************************/
+
+using System;
 using System.Data;
 using System.IO;
 using System.Net;
@@ -72,7 +100,7 @@ namespace NetMailSample
                 logger.Log(DotNetVersion.GetDotNetVerFromRegistry());
                 if (DotNetVersion.GetDotNetVerFromRegistry() == "The .NET Framework 4.5 or later NOT detected")
                 {
-                    logger.Log("Installed versions of the .NET Framework that are:\n");
+                    logger.Log("Installed versions of the .NET Framework that are: \n");
                     logger.Log(DotNetVersion.GetPreV45FromRegistry());
                 }
             }
@@ -108,7 +136,7 @@ namespace NetMailSample
                 mailAddrCol.Clear();
                 logger.Log("Adding To addresses: " + txtBoxTo.Text);
                 mailAddrCol.Add(txtBoxTo.Text);
-                MessageUtilities.AddSmtpToMailAddressCollection(mail, mailAddrCol, MessageUtilities.addressType.To);
+                MessageUtilities.AddSmtpToMailAddressCollection(mail, mailAddrCol, MessageUtilities.AddressType.To);
 
                 // check for Cc and Bcc, which can be empty so we only need to add when the textbox contains a value
                 if (txtBoxCC.Text.Trim() != "")
@@ -116,7 +144,7 @@ namespace NetMailSample
                     mailAddrCol.Clear();
                     logger.Log("Adding Cc addresses: " + txtBoxCC.Text);
                     mailAddrCol.Add(txtBoxCC.Text);
-                    MessageUtilities.AddSmtpToMailAddressCollection(mail, mailAddrCol, MessageUtilities.addressType.Cc);
+                    MessageUtilities.AddSmtpToMailAddressCollection(mail, mailAddrCol, MessageUtilities.AddressType.Cc);
                 }
 
                 if (txtBoxBCC.Text.Trim() != "")
@@ -124,7 +152,7 @@ namespace NetMailSample
                     mailAddrCol.Clear();
                     logger.Log("Adding Bcc addresses: " + txtBoxBCC.Text);
                     mailAddrCol.Add(txtBoxBCC.Text);
-                    MessageUtilities.AddSmtpToMailAddressCollection(mail, mailAddrCol, MessageUtilities.addressType.Bcc);
+                    MessageUtilities.AddSmtpToMailAddressCollection(mail, mailAddrCol, MessageUtilities.AddressType.Bcc);
                 }
 
                 // set encoding for message
@@ -296,7 +324,8 @@ namespace NetMailSample
                     string targetname = "SMTPSVC/" + smtp.Host;
                     smtp.TargetName = targetname;
                 }
-                else {
+                else
+                {
                     smtp.TargetName = null;
                 }
                 
@@ -318,8 +347,9 @@ namespace NetMailSample
                         smtp.Credentials = new NetworkCredential(sUser, sPassword);
                     }
                 }
+
                 // send email
-                smtp.Send(mail);             
+                smtp.Send(mail);
             }
             catch (SmtpException se)
             {

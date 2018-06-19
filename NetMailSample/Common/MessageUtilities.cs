@@ -35,7 +35,7 @@ namespace NetMailSample.Common
     public static class MessageUtilities
     {
         // mail address message type enum
-        public enum addressType
+        public enum AddressType
         {
             To,
             Cc,
@@ -48,15 +48,15 @@ namespace NetMailSample.Common
         /// <param name="mail">This is the MailMessage object from the main form</param>
         /// <param name="mailAddrCol">This is the Collection of addresses that need to be added</param>
         /// <param name="mailAddressType">type of mail address to be added</param>
-        public static void AddSmtpToMailAddressCollection(MailMessage mail, MailAddressCollection mailAddrCol, addressType mailAddressType)
+        public static void AddSmtpToMailAddressCollection(MailMessage mail, MailAddressCollection mailAddrCol, AddressType mailAddressType)
         {
             foreach (MailAddress ma in mailAddrCol)
             {
-                if (mailAddressType == addressType.To)
+                if (mailAddressType == AddressType.To)
                 {
                     mail.To.Add(ma.Address);
                 }
-                else if (mailAddressType == addressType.Cc)
+                else if (mailAddressType == AddressType.Cc)
                 {
                     mail.CC.Add(ma.Address);
                 }

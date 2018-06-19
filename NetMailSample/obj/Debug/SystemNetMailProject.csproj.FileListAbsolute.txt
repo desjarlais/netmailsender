@@ -30,7 +30,6 @@ C:\Users\Brandon\Documents\GitHub\netmailsender\NetMailSample\obj\Debug\NetMailS
 C:\Users\Brandon\Documents\GitHub\netmailsender\NetMailSample\obj\Debug\NetMailSample.pdb
 C:\Users\Brandon\Documents\GitHub\netmailsender\NetMailSample\bin\Debug\NetMailSample.exe
 C:\Users\Brandon\Documents\GitHub\netmailsender\NetMailSample\bin\Debug\NetMailSample.pdb
-C:\Users\Brandon\Documents\GitHub\netmailsender\NetMailSample\obj\Debug\SystemNetMailProject.csprojResolveAssemblyReference.cache
 C:\Users\Brandon\Documents\GitHub\netmailsender\NetMailSample\obj\Debug\NetMailSample.Forms.frmAbout.resources
 C:\Users\Brandon\Documents\GitHub\netmailsender\NetMailSample\obj\Debug\NetMailSample.Forms.frmAddHeaders.resources
 C:\Users\Brandon\Documents\GitHub\netmailsender\NetMailSample\obj\Debug\NetMailSample.Forms.frmAlternateView.resources
@@ -65,3 +64,5 @@ C:\Users\Brandon\Source\Repos\netmailsender\NetMailSample\obj\Debug\SystemNetMai
 C:\Users\Brandon\Source\Repos\netmailsender\NetMailSample\obj\Debug\SystemNetMailProject.csproj.CoreCompileInputs.cache
 C:\Users\Brandon\Source\Repos\netmailsender\NetMailSample\obj\Debug\NetMailSample.exe
 C:\Users\Brandon\Source\Repos\netmailsender\NetMailSample\obj\Debug\NetMailSample.pdb
+C:\Users\Brandon\Documents\GitHub\netmailsender\NetMailSample\obj\Debug\SystemNetMailProject.csprojAssemblyReference.cache
+C:\Users\Brandon\Documents\GitHub\netmailsender\NetMailSample\obj\Debug\SystemNetMailProject.csproj.CoreCompileInputs.cache

@@ -33,8 +33,8 @@ namespace NetMailSample
 {
     public class LoggerEventArgs : EventArgs
     {
-        private DateTime _logTime;
-        private string _logDetails;
+        private readonly DateTime _logTime;
+        private readonly string _logDetails;
 
         public LoggerEventArgs(DateTime LogTime, string LogDetails)
         {
@@ -51,8 +51,8 @@ namespace NetMailSample
     public class ClassLogger : IDisposable
     {
         private StreamWriter _logStream = null;
-        private string _logPath = "";
-        private bool _logDateAndTime = true;
+        private readonly string _logPath = "";
+        private readonly bool _logDateAndTime = true;
         private bool disposed = false;
 
         public delegate void LoggerEventHandler(object sender, LoggerEventArgs a);
