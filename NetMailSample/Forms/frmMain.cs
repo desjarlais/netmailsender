@@ -315,7 +315,9 @@ namespace NetMailSample
                 smtp.Port = Int32.Parse(cmbPort.Text.Trim());
                 smtp.Host = cmbServer.Text;
                 
-                smtp.Timeout = Properties.Settings.Default.SendSyncTimeout;
+                // settings is second, we have to translate milliseconds
+
+                smtp.Timeout = Properties.Settings.Default.SendSyncTimeout * 1000;
 
                 // we are checking, if its office365.com or not because of specific settings on receive connectors 
                 // for on premise exchange servers can cause exception
@@ -429,6 +431,7 @@ namespace NetMailSample
         private void BtnSendEmail_Click(object sender, EventArgs e)
         {
             txtBoxErrorLog.Clear();
+            txtBoxErrorLog.Refresh();
             SendEmail();
         }
 
@@ -994,6 +997,13 @@ namespace NetMailSample
         private void EditContentIDToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BeginEditDataGridView(3, 1);
+        }
+
+        private void BtnTextToHeader_Click(object sender, EventArgs e)
+        {
+            Forms.FrmTextToHeader aTextToHeaderForm = new Forms.FrmTextToHeader();
+            aTextToHeaderForm.Owner = this;
+            aTextToHeaderForm.ShowDialog(this);
         }
 
         private void EditInlineToolStripMenuItem_Click(object sender, EventArgs e)

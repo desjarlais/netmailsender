@@ -65,3 +65,64 @@
 06/18/18 9:51:45 PM ==> Installed .NET Framework = 4.7.1 or later 4.7.03056
 06/18/18 9:54:37 PM ==> The .NET Runtime = 4.0.30319.42000
 06/18/18 9:54:37 PM ==> Installed .NET Framework = 4.7.1 or later 4.7.03056
+11/29/22 2:43:45 PM ==> The .NET Runtime = 4.0.30319.42000
+11/29/22 2:43:45 PM ==> Installed .NET Framework = 4.7.1 or later 4.8.09032
+11/29/22 3:13:40 PM ==> The .NET Runtime = 4.0.30319.42000
+11/29/22 3:13:40 PM ==> Installed .NET Framework = 4.7.1 or later 4.8.09032
+11/29/22 3:34:15 PM ==> The .NET Runtime = 4.0.30319.42000
+11/29/22 3:34:15 PM ==> Installed .NET Framework = 4.7.1 or later 4.8.09032
+11/29/22 3:48:07 PM ==> The .NET Runtime = 4.0.30319.42000
+11/29/22 3:48:07 PM ==> Installed .NET Framework = 4.7.1 or later 4.8.09032
+11/29/22 3:50:31 PM ==> Adding To addresses: u16@fabrikam.com
+11/29/22 3:50:31 PM ==> Error: The operation has timed out.
+11/29/22 3:50:31 PM ==> StackTrace:    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at NetMailSample.FrmMain.SendEmail() in E:\Repositories\netmail sender\netmailsender\NetMailSample\Forms\FrmMain.cs:line 352
+11/29/22 3:50:31 PM ==> Status Code: GeneralFailure
+11/29/22 3:50:31 PM ==> Description:The transaction could not occur. You receive this error when the specified SMTP host cannot be found.
+11/29/22 3:50:31 PM ==> Inner Exception: 
+11/29/22 3:53:51 PM ==> The .NET Runtime = 4.0.30319.42000
+11/29/22 3:53:51 PM ==> Installed .NET Framework = 4.7.1 or later 4.8.09032
+11/29/22 3:55:21 PM ==> Password is required.
+11/29/22 3:56:59 PM ==> Adding To addresses: u16@fabrikam.com
+11/29/22 3:59:55 PM ==> Error: The operation has timed out.
+11/29/22 3:59:55 PM ==> StackTrace:    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at NetMailSample.FrmMain.SendEmail() in E:\Repositories\netmail sender\netmailsender\NetMailSample\Forms\FrmMain.cs:line 352
+11/29/22 3:59:55 PM ==> Status Code: GeneralFailure
+11/29/22 3:59:55 PM ==> Description:The transaction could not occur. You receive this error when the specified SMTP host cannot be found.
+11/29/22 3:59:55 PM ==> Inner Exception: 
+11/29/22 4:01:56 PM ==> The .NET Runtime = 4.0.30319.42000
+11/29/22 4:01:56 PM ==> Installed .NET Framework = 4.7.1 or later 4.8.09032
+11/29/22 4:02:30 PM ==> Adding To addresses: u16@fabrikam.com
+11/29/22 4:02:31 PM ==> Error: The operation has timed out.
+11/29/22 4:02:31 PM ==> StackTrace:    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at NetMailSample.FrmMain.SendEmail() in E:\Repositories\netmail sender\netmailsender\NetMailSample\Forms\FrmMain.cs:line 352
+11/29/22 4:02:31 PM ==> Status Code: GeneralFailure
+11/29/22 4:02:31 PM ==> Description:The transaction could not occur. You receive this error when the specified SMTP host cannot be found.
+11/29/22 4:02:31 PM ==> Inner Exception: 
+11/29/22 4:06:54 PM ==> The .NET Runtime = 4.0.30319.42000
+11/29/22 4:06:54 PM ==> Installed .NET Framework = 4.7.1 or later 4.8.09032
+11/29/22 4:07:32 PM ==> Adding To addresses: u16@fabrikam.com
+11/29/22 4:10:16 PM ==> Error: Server does not support secure connections.
+11/29/22 4:10:16 PM ==> StackTrace:    at System.Net.Mail.SmtpConnection.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpClient.GetConnection()
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at NetMailSample.FrmMain.SendEmail() in E:\Repositories\netmail sender\netmailsender\NetMailSample\Forms\FrmMain.cs:line 352
+11/29/22 4:10:16 PM ==> Status Code: GeneralFailure
+11/29/22 4:10:16 PM ==> Description:The transaction could not occur. You receive this error when the specified SMTP host cannot be found.
+11/29/22 4:10:16 PM ==> Inner Exception: 
+11/29/22 4:10:23 PM ==> Adding To addresses: u16@fabrikam.com
+11/29/22 4:12:23 PM ==> The .NET Runtime = 4.0.30319.42000
+11/29/22 4:12:23 PM ==> Installed .NET Framework = 4.7.1 or later 4.8.09032
+11/29/22 4:12:40 PM ==> Adding To addresses: u16@fabrikam.com
+11/29/22 4:12:51 PM ==> Message subject = test
+11/29/22 4:12:51 PM ==> Message send = SUCCESS
+11/29/22 4:21:34 PM ==> The .NET Runtime = 4.0.30319.42000
+11/29/22 4:21:34 PM ==> Installed .NET Framework = 4.7.1 or later 4.8.09032
+11/29/22 4:22:41 PM ==> Adding To addresses: u16@fabrikam.com
+11/29/22 4:22:49 PM ==> Message subject = test
+11/29/22 4:22:49 PM ==> Message send = SUCCESS
+11/29/22 4:26:57 PM ==> The .NET Runtime = 4.0.30319.42000
+11/29/22 4:26:57 PM ==> Installed .NET Framework = 4.7.1 or later 4.8.09032
+11/29/22 4:27:21 PM ==> Adding To addresses: u16@fabrikam.com
+11/29/22 4:27:32 PM ==> Message subject = test
+11/29/22 4:27:32 PM ==> Message send = SUCCESS

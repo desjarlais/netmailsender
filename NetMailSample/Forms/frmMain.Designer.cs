@@ -98,6 +98,7 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.feedbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BtnTextToHeader = new System.Windows.Forms.Button();
             this.grpMailMessage.SuspendLayout();
             this.grpSmtpSettings.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -114,7 +115,7 @@
             // 
             // btnSendEmail
             // 
-            this.btnSendEmail.Location = new System.Drawing.Point(873, 545);
+            this.btnSendEmail.Location = new System.Drawing.Point(818, 525);
             this.btnSendEmail.Name = "btnSendEmail";
             this.btnSendEmail.Size = new System.Drawing.Size(88, 23);
             this.btnSendEmail.TabIndex = 20;
@@ -424,7 +425,7 @@
             // 
             // btnOpenLogFile
             // 
-            this.btnOpenLogFile.Location = new System.Drawing.Point(637, 546);
+            this.btnOpenLogFile.Location = new System.Drawing.Point(582, 525);
             this.btnOpenLogFile.Name = "btnOpenLogFile";
             this.btnOpenLogFile.Size = new System.Drawing.Size(105, 23);
             this.btnOpenLogFile.TabIndex = 1;
@@ -723,7 +724,7 @@
             // 
             // btnAltView
             // 
-            this.btnAltView.Location = new System.Drawing.Point(748, 545);
+            this.btnAltView.Location = new System.Drawing.Point(693, 525);
             this.btnAltView.Name = "btnAltView";
             this.btnAltView.Size = new System.Drawing.Size(119, 23);
             this.btnAltView.TabIndex = 19;
@@ -755,21 +756,21 @@
             // mnuFileLoadSettings
             // 
             this.mnuFileLoadSettings.Name = "mnuFileLoadSettings";
-            this.mnuFileLoadSettings.Size = new System.Drawing.Size(152, 22);
+            this.mnuFileLoadSettings.Size = new System.Drawing.Size(145, 22);
             this.mnuFileLoadSettings.Text = "&Load Settings";
             this.mnuFileLoadSettings.Click += new System.EventHandler(this.MnuFileLoadSettings_Click);
             // 
             // mnuFileSaveSettings
             // 
             this.mnuFileSaveSettings.Name = "mnuFileSaveSettings";
-            this.mnuFileSaveSettings.Size = new System.Drawing.Size(152, 22);
+            this.mnuFileSaveSettings.Size = new System.Drawing.Size(145, 22);
             this.mnuFileSaveSettings.Text = "&Save Settings";
             this.mnuFileSaveSettings.Click += new System.EventHandler(this.MnuFileSaveSettings_Click);
             // 
             // mnuFileOptions
             // 
             this.mnuFileOptions.Name = "mnuFileOptions";
-            this.mnuFileOptions.Size = new System.Drawing.Size(152, 22);
+            this.mnuFileOptions.Size = new System.Drawing.Size(145, 22);
             this.mnuFileOptions.Text = "&Options";
             this.mnuFileOptions.Click += new System.EventHandler(this.MnuFileOptions_Click);
             // 
@@ -796,11 +797,22 @@
             this.feedbackToolStripMenuItem.Text = "F&eedback";
             this.feedbackToolStripMenuItem.Click += new System.EventHandler(this.FeedbackToolStripMenuItem_Click);
             // 
-            // frmMain
+            // BtnTextToHeader
+            // 
+            this.BtnTextToHeader.Location = new System.Drawing.Point(583, 552);
+            this.BtnTextToHeader.Name = "BtnTextToHeader";
+            this.BtnTextToHeader.Size = new System.Drawing.Size(104, 23);
+            this.BtnTextToHeader.TabIndex = 31;
+            this.BtnTextToHeader.Text = "Text To Header";
+            this.BtnTextToHeader.UseVisualStyleBackColor = true;
+            this.BtnTextToHeader.Click += new System.EventHandler(this.BtnTextToHeader_Click);
+            // 
+            // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(974, 583);
+            this.Controls.Add(this.BtnTextToHeader);
             this.Controls.Add(this.btnOpenLogFile);
             this.Controls.Add(this.btnAltView);
             this.Controls.Add(this.groupBox4);
@@ -815,7 +827,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.Name = "frmMain";
+            this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NetMail Sender";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
@@ -873,7 +885,6 @@
         private System.Windows.Forms.Button btnDeleteAttachment;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnDeleteHeader;
-        private System.Windows.Forms.DataGridView dgGridHeaders;
         private System.Windows.Forms.TextBox txtBoxDomain;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtPickupFolder;
@@ -911,6 +922,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colFileSize;
         private System.Windows.Forms.DataGridViewTextBoxColumn colContentId;
         private System.Windows.Forms.DataGridViewComboBoxColumn colInline;
+        public System.Windows.Forms.DataGridView dgGridHeaders;
+        private System.Windows.Forms.Button BtnTextToHeader;
     }
 }
 

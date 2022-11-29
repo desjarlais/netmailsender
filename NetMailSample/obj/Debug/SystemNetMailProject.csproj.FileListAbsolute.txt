@@ -66,3 +66,19 @@ C:\Users\Brandon\Source\Repos\netmailsender\NetMailSample\obj\Debug\NetMailSampl
 C:\Users\Brandon\Source\Repos\netmailsender\NetMailSample\obj\Debug\NetMailSample.pdb
 C:\Users\Brandon\Documents\GitHub\netmailsender\NetMailSample\obj\Debug\SystemNetMailProject.csprojAssemblyReference.cache
 C:\Users\Brandon\Documents\GitHub\netmailsender\NetMailSample\obj\Debug\SystemNetMailProject.csproj.CoreCompileInputs.cache
+E:\Repositories\netmail sender\netmailsender\NetMailSample\bin\Debug\NetMailSample.exe.config
+E:\Repositories\netmail sender\netmailsender\NetMailSample\bin\Debug\NetMailSample.exe
+E:\Repositories\netmail sender\netmailsender\NetMailSample\bin\Debug\NetMailSample.pdb
+E:\Repositories\netmail sender\netmailsender\NetMailSample\obj\Debug\SystemNetMailProject.csproj.AssemblyReference.cache
+E:\Repositories\netmail sender\netmailsender\NetMailSample\obj\Debug\SystemNetMailProject.csproj.SuggestedBindingRedirects.cache
+E:\Repositories\netmail sender\netmailsender\NetMailSample\obj\Debug\NetMailSample.Forms.FrmAbout.resources
+E:\Repositories\netmail sender\netmailsender\NetMailSample\obj\Debug\NetMailSample.Forms.FrmAddHeaders.resources
+E:\Repositories\netmail sender\netmailsender\NetMailSample\obj\Debug\NetMailSample.Forms.FrmAlternateView.resources
+E:\Repositories\netmail sender\netmailsender\NetMailSample\obj\Debug\NetMailSample.Forms.FrmMessageOptions.resources
+E:\Repositories\netmail sender\netmailsender\NetMailSample\obj\Debug\NetMailSample.FrmMain.resources
+E:\Repositories\netmail sender\netmailsender\NetMailSample\obj\Debug\NetMailSample.Properties.Resources.resources
+E:\Repositories\netmail sender\netmailsender\NetMailSample\obj\Debug\SystemNetMailProject.csproj.GenerateResource.cache
+E:\Repositories\netmail sender\netmailsender\NetMailSample\obj\Debug\SystemNetMailProject.csproj.CoreCompileInputs.cache
+E:\Repositories\netmail sender\netmailsender\NetMailSample\obj\Debug\NetMailSample.exe
+E:\Repositories\netmail sender\netmailsender\NetMailSample\obj\Debug\NetMailSample.pdb
+E:\Repositories\netmail sender\netmailsender\NetMailSample\obj\Debug\NetMailSample.Forms.FrmTextToHeader.resources

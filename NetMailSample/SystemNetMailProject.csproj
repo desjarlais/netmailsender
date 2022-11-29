@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NetMailSample</RootNamespace>
     <AssemblyName>NetMailSample</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <SccProjectName>SAK</SccProjectName>
@@ -75,6 +75,7 @@
   <ItemGroup>
     <Compile Include="Common\ConnectionSettings.cs" />
     <Compile Include="Common\DotNetVersion.cs" />
+    <Compile Include="Common\ExtensionMethods.cs" />
     <Compile Include="Common\FileUtilities.cs" />
     <Compile Include="Common\SerialHelper.cs" />
     <Compile Include="Common\UserIoHelper.cs" />
@@ -108,6 +109,12 @@
     <Compile Include="Forms\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmTextToHeader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmTextToHeader.designer.cs">
+      <DependentUpon>FrmTextToHeader.cs</DependentUpon>
+    </Compile>
     <Compile Include="Logging\ClassLogger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -126,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmTextToHeader.resx">
+      <DependentUpon>FrmTextToHeader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
