@@ -432,6 +432,11 @@ namespace NetMailSample
         {
             txtBoxErrorLog.Clear();
             txtBoxErrorLog.Refresh();
+            // Adding Server address to combobox temp list
+            if (!cmbServer.Items.Contains(cmbServer.Text)) 
+                    { 
+                    cmbServer.Items.Add(cmbServer.Text);
+                    }
             SendEmail();
         }
 
