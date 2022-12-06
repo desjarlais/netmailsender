@@ -317,7 +317,7 @@ namespace NetMailSample
                 
                 // settings is second, we have to translate milliseconds
 
-                smtp.Timeout = Properties.Settings.Default.SendSyncTimeout * 1000;
+                smtp.Timeout = Properties.Settings.Default.SendTimeout * 1000;
 
                 // we are checking, if its office365.com or not because of specific settings on receive connectors 
                 // for on premise exchange servers can cause exception
@@ -1009,6 +1009,11 @@ namespace NetMailSample
             Forms.FrmTextToHeader aTextToHeaderForm = new Forms.FrmTextToHeader();
             aTextToHeaderForm.Owner = this;
             aTextToHeaderForm.ShowDialog(this);
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit(); 
         }
 
         private void EditInlineToolStripMenuItem_Click(object sender, EventArgs e)

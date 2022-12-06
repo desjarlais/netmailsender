@@ -169,18 +169,6 @@ namespace NetMailSample.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100")]
-        public int SendSyncTimeout {
-            get {
-                return ((int)(this["SendSyncTimeout"]));
-            }
-            set {
-                this["SendSyncTimeout"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool DelNotifOnFailure {
             get {
@@ -200,6 +188,18 @@ namespace NetMailSample.Properties {
             }
             set {
                 this["DelNotifOnSuccess"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public int SendTimeout {
+            get {
+                return ((int)(this["SendTimeout"]));
+            }
+            set {
+                this["SendTimeout"] = value;
             }
         }
     }
