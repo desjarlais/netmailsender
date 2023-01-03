@@ -64,9 +64,9 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(16, 15);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(452, 114);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -83,7 +83,7 @@
             "UTF8",
             "Default"});
             this.cmbSubjectEncoding.Location = new System.Drawing.Point(168, 78);
-            this.cmbSubjectEncoding.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbSubjectEncoding.Margin = new System.Windows.Forms.Padding(4);
             this.cmbSubjectEncoding.Name = "cmbSubjectEncoding";
             this.cmbSubjectEncoding.Size = new System.Drawing.Size(267, 24);
             this.cmbSubjectEncoding.TabIndex = 7;
@@ -100,7 +100,7 @@
             "UTF8",
             "Default"});
             this.cmbHeaderEncoding.Location = new System.Drawing.Point(168, 46);
-            this.cmbHeaderEncoding.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbHeaderEncoding.Margin = new System.Windows.Forms.Padding(4);
             this.cmbHeaderEncoding.Name = "cmbHeaderEncoding";
             this.cmbHeaderEncoding.Size = new System.Drawing.Size(267, 24);
             this.cmbHeaderEncoding.TabIndex = 6;
@@ -117,7 +117,7 @@
             "UTF8",
             "Default"});
             this.cmbBodyEncoding.Location = new System.Drawing.Point(168, 16);
-            this.cmbBodyEncoding.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbBodyEncoding.Margin = new System.Windows.Forms.Padding(4);
             this.cmbBodyEncoding.Name = "cmbBodyEncoding";
             this.cmbBodyEncoding.Size = new System.Drawing.Size(267, 24);
             this.cmbBodyEncoding.TabIndex = 4;
@@ -156,7 +156,7 @@
             // btnOK
             // 
             this.btnOK.Location = new System.Drawing.Point(261, 279);
-            this.btnOK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(4);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(100, 28);
             this.btnOK.TabIndex = 8;
@@ -167,7 +167,7 @@
             // btnCancel
             // 
             this.btnCancel.Location = new System.Drawing.Point(368, 279);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 28);
             this.btnCancel.TabIndex = 1;
@@ -182,9 +182,9 @@
             this.groupBox2.Controls.Add(this.chkReadRcpt);
             this.groupBox2.Controls.Add(this.chkBodyHtml);
             this.groupBox2.Location = new System.Drawing.Point(16, 137);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(452, 63);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
@@ -203,7 +203,7 @@
             // numUpDnSendTimeOut
             // 
             this.numUpDnSendTimeOut.Location = new System.Drawing.Point(360, 22);
-            this.numUpDnSendTimeOut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUpDnSendTimeOut.Margin = new System.Windows.Forms.Padding(4);
             this.numUpDnSendTimeOut.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -222,7 +222,7 @@
             // 
             this.chkReadRcpt.AutoSize = true;
             this.chkReadRcpt.Location = new System.Drawing.Point(127, 23);
-            this.chkReadRcpt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkReadRcpt.Margin = new System.Windows.Forms.Padding(4);
             this.chkReadRcpt.Name = "chkReadRcpt";
             this.chkReadRcpt.Size = new System.Drawing.Size(110, 20);
             this.chkReadRcpt.TabIndex = 1;
@@ -233,7 +233,7 @@
             // 
             this.chkBodyHtml.AutoSize = true;
             this.chkBodyHtml.Location = new System.Drawing.Point(8, 23);
-            this.chkBodyHtml.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkBodyHtml.Margin = new System.Windows.Forms.Padding(4);
             this.chkBodyHtml.Name = "chkBodyHtml";
             this.chkBodyHtml.Size = new System.Drawing.Size(98, 20);
             this.chkBodyHtml.TabIndex = 0;
@@ -244,9 +244,9 @@
             // 
             this.groupBox3.Controls.Add(this.cmbMsgPriority);
             this.groupBox3.Location = new System.Drawing.Point(253, 213);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(215, 59);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
@@ -260,7 +260,7 @@
             "Normal",
             "High"});
             this.cmbMsgPriority.Location = new System.Drawing.Point(8, 21);
-            this.cmbMsgPriority.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbMsgPriority.Margin = new System.Windows.Forms.Padding(4);
             this.cmbMsgPriority.Name = "cmbMsgPriority";
             this.cmbMsgPriority.Size = new System.Drawing.Size(189, 24);
             this.cmbMsgPriority.TabIndex = 0;
@@ -271,9 +271,9 @@
             this.groupBox4.Controls.Add(this.chkOnSuccess);
             this.groupBox4.Controls.Add(this.chkOnFailure);
             this.groupBox4.Location = new System.Drawing.Point(16, 213);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox4.Size = new System.Drawing.Size(229, 59);
             this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
@@ -283,7 +283,7 @@
             // 
             this.chkOnSuccess.AutoSize = true;
             this.chkOnSuccess.Location = new System.Drawing.Point(111, 23);
-            this.chkOnSuccess.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkOnSuccess.Margin = new System.Windows.Forms.Padding(4);
             this.chkOnSuccess.Name = "chkOnSuccess";
             this.chkOnSuccess.Size = new System.Drawing.Size(95, 20);
             this.chkOnSuccess.TabIndex = 4;
@@ -294,7 +294,7 @@
             // 
             this.chkOnFailure.AutoSize = true;
             this.chkOnFailure.Location = new System.Drawing.Point(8, 23);
-            this.chkOnFailure.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkOnFailure.Margin = new System.Windows.Forms.Padding(4);
             this.chkOnFailure.Name = "chkOnFailure";
             this.chkOnFailure.Size = new System.Drawing.Size(84, 20);
             this.chkOnFailure.TabIndex = 3;
@@ -314,7 +314,7 @@
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmMessageOptions";

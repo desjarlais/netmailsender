@@ -29,6 +29,8 @@ SOFTWARE.
 using System.Net.Mail;
 using System.Net.Mime;
 using System.Text;
+using MimeKit;
+using MailKit;
 
 namespace NetMailSample.Common
 {
@@ -66,9 +68,32 @@ namespace NetMailSample.Common
                 }
             }
         }
-
         /// <summary>
-        /// this function converts the Encoding type for the message
+        /// Depending on the mail address type, add each mail address from the collection to the mail message
+        /// </summary>
+        /// <param name="mail">This is the MailMessage object from the main form</param>
+        /// <param name="mailAddrCol">This is the Collection of addresses that need to be added</param>
+        /// <param name="mailAddressType">type of mail address to be added</param>
+        public static void AddSmtpToMailAddressCollectionM(MimeMessage mail, MailAddressCollection mailAddrCol, AddressType mailAddressType)
+        {
+            foreach (MailboxAddress ma in mailAddrCol)
+            {
+                if (mailAddressType == AddressType.To)
+                {
+                    mail.To.Add(MimeKit.MailboxAddress.Parse(ma.Address));
+                }
+                else if (mailAddressType == AddressType.Cc)
+                {
+                    mail.Cc.Add(MimeKit.MailboxAddress.Parse(ma.Address));
+                }
+                else
+                {
+                    mail.Bcc.Add(MimeKit.MailboxAddress.Parse(ma.Address));
+                }
+            }
+        }
+        /// <summary>
+        /// this function converts the Encoding type for the mail message
         /// </summary>
         /// <param name="encodingVal">string value to be converted</param>
         /// <returns></returns>
@@ -92,6 +117,16 @@ namespace NetMailSample.Common
                     return Encoding.Default;
             }
         }
+
+
+        public static DeliveryStatusNotification? GetDeliveryStatusNotifications(MimeMessage message, MailboxAddress mailbox)
+        {
+            // In this example, we only want to be notified of failures to deliver to a mailbox.
+            // If you also want to be notified of delays or successful deliveries, simply bitwise-or
+            // whatever combination of flags you want to be notified about.
+            return DeliveryStatusNotification.Success | DeliveryStatusNotification.Delay | DeliveryStatusNotification.Failure;
+        }
+
 
         /// <summary>
         /// this function will convert the string value to the corresponding TransferEncoding type

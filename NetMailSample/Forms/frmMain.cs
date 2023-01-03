@@ -36,12 +36,24 @@ using System.Windows.Forms;
 using NetMailSample.Common;
 using System.Diagnostics;
 using System.Threading;
+using System.ComponentModel;
+using System.Threading.Tasks;
+using System.Windows.Threading;
+using MailKit;
+using Microsoft.Identity.Client;
+using MailKit.Security;
+using MimeKit;
+using MailKit.Net.Smtp;
+using System.Security.Authentication;
+using MimeKit.Utils;
+using MimeKit.Text;
 
 /// <summary>
 /// The main netmailsample form window
 /// </summary>
 namespace NetMailSample
 {
+    
     public partial class FrmMain : Form
     {
         public string hdrName, hdrValue, msgSubject, cellEdit;
@@ -50,7 +62,17 @@ namespace NetMailSample
         bool continueTimerRun = false;
         bool formValidated = false;
         bool noErrFound = true;
+        public AuthenticationResult oauthToken = null;
         ClassLogger logger = null;
+        public System.Windows.Forms.ToolStripProgressBar ToolStripProgressBar { get { return this.toolStripProgressBar1; } }
+
+        public void RunAsync(Action action)
+        {
+            Task.Run(action);
+        }
+
+
+
 
         public FrmMain()
         {
@@ -74,17 +96,17 @@ namespace NetMailSample
                     // Need to invoke
                     txtBoxErrorLog.Invoke(new MethodInvoker(delegate()
                     {
-                        txtBoxErrorLog.Text = a.LogDetails;
+                        txtBoxErrorLog.Text += "\r\n" + a.LogDetails;
                     }));
                 }
                 else
                 {
-                    txtBoxErrorLog.Text = a.LogDetails;
+                    txtBoxErrorLog.Text += "\r\n" + a.LogDetails;
                 }
             }
             catch (Exception ex)
             {
-                txtBoxErrorLog.Text = ex.Message;
+                txtBoxErrorLog.Text += "\r\n" + ex.Message;
             }
         }
 
@@ -114,8 +136,11 @@ namespace NetMailSample
         /// <summary>
         /// This method takes the input from the form, creates a mail message and sends it to the smtp server
         /// </summary>
+        
+
         private void SendEmail()
         {
+
             // make sure we have values in user, password and To
             if (ValidateForm() == false)
             {
@@ -124,13 +149,13 @@ namespace NetMailSample
 
             // create mail, smtp and mailaddress objects
             MailMessage mail = new MailMessage();
-            SmtpClient smtp = new SmtpClient();
+            System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient();
             MailAddressCollection mailAddrCol = new MailAddressCollection();
 
             try
             {
                 // set the From email address information
-                mail.From = new MailAddress(txtBoxEmailAddress.Text);
+                mail.From = new MailAddress(textBoxFrom.Text);
 
                 // set the To email address information
                 mailAddrCol.Clear();
@@ -156,6 +181,8 @@ namespace NetMailSample
                 }
 
                 // set encoding for message
+                // The value specified for the BodyEncoding property sets the character set field in the Content-Type header.
+                // The default character set is "us-ascii".
                 if (Properties.Settings.Default.BodyEncoding != "")
                 {
                     mail.BodyEncoding = MessageUtilities.GetEncodingValue(Properties.Settings.Default.BodyEncoding);
@@ -182,11 +209,11 @@ namespace NetMailSample
                         mail.Priority = MailPriority.Normal;
                         break;
                 }
-
+                
                 // add HTML AltView
                 if (Properties.Settings.Default.AltViewHtml != "")
                 {
-                    ContentType ctHtml = new ContentType("text/html");
+                    System.Net.Mime.ContentType ctHtml = new System.Net.Mime.ContentType("text/html");
                     htmlView = AlternateView.CreateAlternateViewFromString(Properties.Settings.Default.AltViewHtml, ctHtml);
                     
                     // add inline attachments / linked resource
@@ -203,32 +230,33 @@ namespace NetMailSample
                             lr.Dispose();
                         }
                     }
-
+                   
                     // set transfer encoding
                     htmlView.TransferEncoding = MessageUtilities.GetTransferEncoding(Properties.Settings.Default.htmlBodyTransferEncoding);
                     mail.AlternateViews.Add(htmlView);                   
                 }
-
+                
                 // add Plain Text AltView
                 if (Properties.Settings.Default.AltViewPlain != "")
                 {
-                    ContentType ctPlain = new ContentType("text/plain");
+                    System.Net.Mime.ContentType ctPlain = new System.Net.Mime.ContentType("text/plain");
                     plainView = AlternateView.CreateAlternateViewFromString(Properties.Settings.Default.AltViewPlain, ctPlain);
                     plainView.TransferEncoding = MessageUtilities.GetTransferEncoding(Properties.Settings.Default.plainBodyTransferEncoding);
                     mail.AlternateViews.Add(plainView);
                 }
-
+                
                 // add vCal AltView
+                
                 if (Properties.Settings.Default.AltViewCal != "")
                 {
-                    ContentType ctCal = new ContentType("text/calendar");
+                    System.Net.Mime.ContentType ctCal = new System.Net.Mime.ContentType("text/calendar");
                     ctCal.Parameters.Add("method", "REQUEST");
                     ctCal.Parameters.Add("name", "meeting.ics");
                     calView = AlternateView.CreateAlternateViewFromString(Properties.Settings.Default.AltViewCal, ctCal);
                     calView.TransferEncoding = MessageUtilities.GetTransferEncoding(Properties.Settings.Default.vCalBodyTransferEncoding);
                     mail.AlternateViews.Add(calView);
                 }
-
+                
                 // add custom headers
                 foreach (DataGridViewRow rowHdr in dgGridHeaders.Rows)
                 {
@@ -308,7 +336,26 @@ namespace NetMailSample
 
                 // this is for TLS enforcement -- is its true
                 // STARTTLS will be utilized
+                if (radioButtonTLS13.Checked && chkEnableSSL.Checked)
+                {
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls13;
+                }
+                else if (radioButtonTLS12.Checked && chkEnableSSL.Checked)
+                {
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                }
+                else if (radioButtonTLS11.Checked)
+                {
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls11;
+                }
+                else if (radioButtonTLS10.Checked) 
+                { 
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls; 
+                }
+
+                
                 smtp.EnableSsl = chkEnableSSL.Checked;
+
                 // we are avoiding to carry out default logon credentials to smtp session
                 smtp.UseDefaultCredentials = false;
                 
@@ -348,88 +395,713 @@ namespace NetMailSample
                     {
                         smtp.Credentials = new NetworkCredential(sUser, sPassword);
                     }
+                    
                 }
 
-                // send email
-                smtp.Send(mail);
+               //  var tcs = new TaskCompletionSource<bool>();
+
+                new Thread(() =>
+                   {
+                       try
+                       {
+                           smtp.Send(mail);
+                       }
+                       catch (SmtpException se)
+                       {
+                        if (InvokeRequired) 
+                           {
+                               this.Invoke((MethodInvoker)delegate { txtBoxErrorLog.Clear(); });
+                           }                                                   
+                           noErrFound = false;
+                           if (se.StatusCode == System.Net.Mail.SmtpStatusCode.MailboxBusy || se.StatusCode == System.Net.Mail.SmtpStatusCode.MailboxUnavailable)
+                           {
+                               logger.Log("Delivery failed - retrying in 5 seconds.");
+                               Thread.Sleep(5000);
+                               smtp.Send(mail);
+                           }
+                           else
+                           {
+                               logger.Log("Error: \r\n" + se.Message);
+                               logger.Log("StackTrace: \r\n" + se.StackTrace);
+                               logger.Log("Status Code: \r\n" + se.StatusCode);
+                               logger.Log("Description: \r\n" + MessageUtilities.GetSmtpStatusCodeDescription(se.StatusCode.ToString()));
+                               logger.Log("Inner Exception: \r\n" + se.InnerException);
+                           }
+                       }
+                       catch (InvalidOperationException ioe)
+                       {
+                           // invalid smtp address used
+                           if (InvokeRequired)
+                           {
+                               this.Invoke((MethodInvoker)delegate { txtBoxErrorLog.Clear(); });
+                           }
+                           noErrFound = false;
+                           logger.Log("Error: \r\n" + ioe.Message);
+                           logger.Log("StackTrace: \r\n" + ioe.StackTrace);
+                           logger.Log("Inner Exception: \r\n" + ioe.InnerException);
+                       }
+                       catch (FormatException fe)
+                       {
+                           // invalid smtp address used
+                           if (InvokeRequired)
+                           {
+                               this.Invoke((MethodInvoker)delegate { txtBoxErrorLog.Clear(); });
+                           }
+                           noErrFound = false;
+                           logger.Log("Error: \r\n" + fe.Message);
+                           logger.Log("StackTrace: \r\n" + fe.StackTrace);
+                           logger.Log("Inner Exception: \r\n" + fe.InnerException);
+                       }
+                       catch (Exception ex)
+                       {
+                           if (InvokeRequired)
+                           {
+                               this.Invoke((MethodInvoker)delegate { txtBoxErrorLog.Clear(); });
+                           }
+                           noErrFound = false;
+                           logger.Log("Error: \r\n" + ex.Message);
+                           logger.Log("StackTrace: \r\n" + ex.StackTrace);
+                           logger.Log("Inner Exception: \r\n" + ex.InnerException);
+                       }
+                       finally
+                       {
+                           // log success
+                           //if (formValidated == true && noErrFound == true)
+                           if (noErrFound == true)
+                           {
+                              logger.Log("Message subject = " + msgSubject);
+                              logger.Log("Message send = SUCCESS");
+                           }
+
+                           // cleanup resources
+                           mail.Dispose();
+                           mail = null;
+                           smtp.Dispose();
+                           smtp = null;
+
+                           // reset variables
+                           formValidated = false;
+                           noErrFound = true;
+                           if (InvokeRequired)
+                           {
+                               this.Invoke((MethodInvoker)delegate { inlineAttachmentsTable.Clear();  });
+                           }
+                           
+                           hdrName = null;
+                           hdrValue = null;
+                           msgSubject = null;
+
+                           this.Invoke((MethodInvoker)delegate { btnSendEmail.Enabled = true; });
+                           this.Invoke((MethodInvoker)delegate { btnStartSendLoop.Enabled = true; });
+                           this.Invoke((MethodInvoker)delegate { toolStripProgressBar1.ProgressBar.MarqueeAnimationSpeed = 0; });
+                           this.Invoke((MethodInvoker)delegate { toolStripProgressBar1.Style = ProgressBarStyle.Blocks; });
+
+                       }
+                   }).Start();
+
+                //if (tcs.Task.Result) { }
+
             }
-            catch (SmtpException se)
-            {
-                txtBoxErrorLog.Clear();
-                noErrFound = false;
-                if (se.StatusCode == SmtpStatusCode.MailboxBusy || se.StatusCode == SmtpStatusCode.MailboxUnavailable)
-                {
-                    logger.Log("Delivery failed - retrying in 5 seconds.");
-                    Thread.Sleep(5000);
-                    smtp.Send(mail);
-                }
-                else
-                {
-                    logger.Log("Error: " + se.Message);
-                    logger.Log("StackTrace: " + se.StackTrace);
-                    logger.Log("Status Code: " + se.StatusCode);
-                    logger.Log("Description:" + MessageUtilities.GetSmtpStatusCodeDescription(se.StatusCode.ToString()));
-                    logger.Log("Inner Exception: " + se.InnerException);
-                }
-            }
-            catch (InvalidOperationException ioe)
-            {
-                // invalid smtp address used
-                txtBoxErrorLog.Clear();
-                noErrFound = false;
-                logger.Log("Error: " + ioe.Message);
-                logger.Log("StackTrace: " + ioe.StackTrace);
-                logger.Log("Inner Exception: " + ioe.InnerException);
-            }
-            catch (FormatException fe)
-            {
-                // invalid smtp address used
-                txtBoxErrorLog.Clear();
-                noErrFound = false;
-                logger.Log("Error: " + fe.Message);
-                logger.Log("StackTrace: " + fe.StackTrace);
-                logger.Log("Inner Exception: " + fe.InnerException);
-            }
+            //*
             catch (Exception ex)
             {
-                txtBoxErrorLog.Clear();
+               // txtBoxErrorLog.Clear();
                 noErrFound = false;
-                logger.Log("Error: " + ex.Message);
-                logger.Log("StackTrace: " + ex.StackTrace);
-                logger.Log("Inner Exception: " + ex.InnerException);
+                logger.Log("Error: \r\n" + ex.Message);
+                logger.Log("StackTrace: \r\n" + ex.StackTrace);
+                logger.Log("Inner Exception: \r\n" + ex.InnerException);
             }
             finally
             {
-                // log success
-                if (formValidated == true && noErrFound == true)
+  
+            }
+
+        }
+
+
+        //
+        //
+        // Another copy SEndMail function for Oauth authentication specifically becuase we are using MailKit library for this specific auth.
+        // 
+
+
+        private async void SendEmailM()
+        {
+            // make sure we have values in user, password and To
+            if (ValidateForm() == false)
+            {
+                return;
+            }
+
+            // create mail, smtp and mailaddress objects
+            MimeKit.MimeMessage mail = new MimeKit.MimeMessage();
+            MailKit.Net.Smtp.SmtpClient smtp = new MailKit.Net.Smtp.SmtpClient();
+            MailAddressCollection mailAddrCol = new MailAddressCollection();
+           
+            
+            try
+            {
+                // set the From email address information
+                mail.From.Add(MimeKit.MailboxAddress.Parse(textBoxFrom.Text));
+                
+                // set the To email address information
+                mailAddrCol.Clear();
+                logger.Log("Adding To addresses: " + txtBoxTo.Text);
+                mailAddrCol.Add(txtBoxTo.Text);
+                MessageUtilities.AddSmtpToMailAddressCollectionM(mail, mailAddrCol, MessageUtilities.AddressType.To);
+
+                // check for Cc and Bcc, which can be empty so we only need to add when the textbox contains a value
+                if (txtBoxCC.Text.Trim() != "")
                 {
-                    logger.Log("Message subject = " + msgSubject);
-                    logger.Log("Message send = SUCCESS");
+                    mailAddrCol.Clear();
+                    logger.Log("Adding Cc addresses: " + txtBoxCC.Text);
+                    mailAddrCol.Add(txtBoxCC.Text);
+                    MessageUtilities.AddSmtpToMailAddressCollectionM(mail, mailAddrCol, MessageUtilities.AddressType.Cc);
                 }
 
-                // cleanup resources
-                mail.Dispose();
-                mail = null;
-                smtp.Dispose();
-                smtp = null;
+                if (txtBoxBCC.Text.Trim() != "")
+                {
+                    mailAddrCol.Clear();
+                    logger.Log("Adding Bcc addresses: " + txtBoxBCC.Text);
+                    mailAddrCol.Add(txtBoxBCC.Text);
+                    MessageUtilities.AddSmtpToMailAddressCollectionM(mail, mailAddrCol, MessageUtilities.AddressType.Bcc);
+                }
+
+                // set the content
+                var multipart = new Multipart("mixed");
+                mail.Subject = txtBoxSubject.Text;
+                msgSubject = txtBoxSubject.Text;
+
+                if (Properties.Settings.Default.BodyHtml == true && Properties.Settings.Default.htmlBodyTransferEncoding == "Base64")
+                {
+                    var textPart = new TextPart(TextFormat.Html)
+                    {
+                        Text = "<b>" + richTxtBody.Text + "</b>",
+                        ContentTransferEncoding = ContentEncoding.Base64,
+                    };
+                    multipart.Add(textPart);
+                    mail.Body = multipart;
+                }
+                if (Properties.Settings.Default.BodyHtml == false && Properties.Settings.Default.htmlBodyTransferEncoding == "Base64")
+                {
+                    //builder.TextBody = richTxtBody.Text;
+                    //mail.Body = builder.ToMessageBody();
+                    var textPart = new TextPart(TextFormat.Text)
+                    {
+                        Text = richTxtBody.Text,
+                        ContentTransferEncoding = ContentEncoding.Base64,
+                    };
+                    multipart.Add(textPart);
+                    mail.Body = multipart;
+                }
+                if (Properties.Settings.Default.BodyHtml == true && Properties.Settings.Default.htmlBodyTransferEncoding == "QuotedPrintable")
+                {
+                    var textPart = new TextPart(TextFormat.Html)
+                    {
+                        Text = "<b>" + richTxtBody.Text + "</b>",
+                        ContentTransferEncoding = ContentEncoding.QuotedPrintable,
+                    };
+                    multipart.Add(textPart);
+                    mail.Body = multipart;
+                }
+                if (Properties.Settings.Default.BodyHtml == false && Properties.Settings.Default.htmlBodyTransferEncoding == "QuotedPrintable")
+                {
+                    //builder.TextBody = richTxtBody.Text;
+                    //mail.Body = builder.ToMessageBody();
+                    var textPart = new TextPart(TextFormat.Text)
+                    {
+                        Text = richTxtBody.Text,
+                        ContentTransferEncoding = ContentEncoding.QuotedPrintable,
+                    };
+                    multipart.Add(textPart);
+                    mail.Body = multipart;
+                }
+                if (Properties.Settings.Default.BodyHtml == true && Properties.Settings.Default.htmlBodyTransferEncoding == "SevenBit")
+                {
+                    var textPart = new TextPart(TextFormat.Html)
+                    {
+                        Text = "<b>" + richTxtBody.Text + "</b>",
+                        ContentTransferEncoding = ContentEncoding.SevenBit,
+                    };
+                    multipart.Add(textPart);
+                    mail.Body = multipart;
+                }
+                if (Properties.Settings.Default.BodyHtml == false && Properties.Settings.Default.htmlBodyTransferEncoding == "SevenBit")
+                {
+                    //builder.TextBody = richTxtBody.Text;
+                    //mail.Body = builder.ToMessageBody();
+                    var textPart = new TextPart(TextFormat.Text)
+                    {
+                        Text = richTxtBody.Text,
+                        ContentTransferEncoding = ContentEncoding.SevenBit,
+                    };
+                    multipart.Add(textPart);
+                    mail.Body = multipart;
+                }
+                if (Properties.Settings.Default.BodyHtml == true && Properties.Settings.Default.htmlBodyTransferEncoding == "EightBit")
+                {
+                    var textPart = new TextPart(TextFormat.Html)
+                    {
+                        Text = "<b>" + richTxtBody.Text + "</b>",
+                        ContentTransferEncoding = ContentEncoding.EightBit,
+                    };
+                    multipart.Add(textPart);
+                    mail.Body = multipart;
+                }
+                if (Properties.Settings.Default.BodyHtml == false && Properties.Settings.Default.htmlBodyTransferEncoding == "EightBit")
+                {
+                    //builder.TextBody = richTxtBody.Text;
+                    //mail.Body = builder.ToMessageBody();
+                    var textPart = new TextPart(TextFormat.Text)
+                    {
+                        Text = richTxtBody.Text,
+                        ContentTransferEncoding = ContentEncoding.EightBit,
+                    };
+                    multipart.Add(textPart);
+                    
+                    mail.Body = multipart;
+                }
+
+                // set encoding for message
+                var options = FormatOptions.Default.Clone();
+                options.AllowMixedHeaderCharsets = false;
                 
-                // reset variables
-                formValidated = false;
-                noErrFound = true;
-                inlineAttachmentsTable.Clear();
-                hdrName = null;
-                hdrValue = null;
-                msgSubject = null;
+                // The value specified for the BodyEncoding property sets the character set field in the Content - Type header.
+                // The default character set is "us-ascii".
+
+                if (Properties.Settings.Default.BodyEncoding != "")
+                {
+                    int index = mail.Headers.IndexOf(HeaderId.ContentType);
+                    int headercount = mail.Headers.Count;
+                    if (index < 0) {
+
+                        string cs = MessageUtilities.GetEncodingValue(Properties.Settings.Default.BodyEncoding).EncodingName.ToLower();
+                        string mt = "";
+                        if (Properties.Settings.Default.BodyHtml) { mt = "text/html"; } else { mt = "text/plain"; }
+                        
+                        mail.Headers.Add(HeaderId.ContentType, mt + "; charset=" + cs );//
+
+                    }
+                    else
+                    {
+                        var header = mail.Headers[index];
+                        header.SetValue(options, MessageUtilities.GetEncodingValue(Properties.Settings.Default.BodyEncoding), mail.Body.ContentType.Charset);
+                    }
+                }
+                if (Properties.Settings.Default.SubjectEncoding != "")
+                {
+                    int index = mail.Headers.IndexOf(HeaderId.Subject);
+                    var header = mail.Headers[index];
+                    header.SetValue(options, MessageUtilities.GetEncodingValue(Properties.Settings.Default.SubjectEncoding), mail.Subject);
+                }
+                // for custom headers
+                // https://learn.microsoft.com/en-us/dotnet/api/system.net.mail.mailmessage.headersencoding?view=net-7.0
+
+                if (Properties.Settings.Default.HeaderEncoding != "")
+                {
+
+                    int index = mail.Headers.IndexOf(HeaderId.ContentType);
+                    var header = mail.Headers[index];
+                  //  header.SetValue(options, MessageUtilities.GetEncodingValue(Properties.Settings.Default.HeaderEncoding), mail);
+                    
+                 }
+                
+                // set priority for the message
+                switch (Properties.Settings.Default.MsgPriority)
+                {
+                    case "High":
+                        mail.Priority= MessagePriority.Urgent;
+                        break;
+                    case "Low":
+                        mail.Priority = MessagePriority.NonUrgent;
+                        break;
+                    default:
+                        mail.Priority = MessagePriority.Normal;
+                        break;
+                }
+                /*
+                // add HTML AltView
+                if (Properties.Settings.Default.AltViewHtml != "")
+                {
+                    ContentType ctHtml = new ContentType("text/html");
+                    htmlView = AlternateView.CreateAlternateViewFromString(Properties.Settings.Default.AltViewHtml, ctHtml);
+
+                    // add inline attachments / linked resource
+                    if (inlineAttachmentsTable.Rows.Count > 0)
+                    {
+                        foreach (DataRow rowInl in inlineAttachmentsTable.Rows)
+                        {
+                            LinkedResource lr = new LinkedResource(rowInl.ItemArray[0].ToString())
+                            {
+                                ContentId = rowInl.ItemArray[1].ToString()
+                            };
+                            lr.ContentType.MediaType = rowInl.ItemArray[2].ToString();
+                            htmlView.LinkedResources.Add(lr);
+                            lr.Dispose();
+                        }
+                    }
+
+                    // set transfer encoding
+                    htmlView.TransferEncoding = MessageUtilities.GetTransferEncoding(Properties.Settings.Default.htmlBodyTransferEncoding);
+                    mail.AlternateViews.Add(htmlView);
+                }
+
+                // add Plain Text AltView
+                if (Properties.Settings.Default.AltViewPlain != "")
+                {
+                    ContentType ctPlain = new ContentType("text/plain");
+                    plainView = AlternateView.CreateAlternateViewFromString(Properties.Settings.Default.AltViewPlain, ctPlain);
+                    plainView.TransferEncoding = MessageUtilities.GetTransferEncoding(Properties.Settings.Default.plainBodyTransferEncoding);
+                    mail.AlternateViews.Add(plainView);
+                }
+                */
+                
+                /*
+                // add vCal AltView
+                if (Properties.Settings.Default.AltViewCal != "")
+                {
+                    ContentType ctCal = new ContentType("text/calendar");
+                    ctCal.Parameters.Add("method", "REQUEST");
+                    ctCal.Parameters.Add("name", "meeting.ics");
+                    calView = AlternateView.CreateAlternateViewFromString(Properties.Settings.Default.AltViewCal, ctCal);
+                    calView.TransferEncoding = MessageUtilities.GetTransferEncoding(Properties.Settings.Default.vCalBodyTransferEncoding);
+                    mail.AlternateViews.Add(calView);
+                }
+                */
+                // add custom headers
+                foreach (DataGridViewRow rowHdr in dgGridHeaders.Rows)
+                {
+                    if (rowHdr.Cells[0].Value != null)
+                    {
+                        mail.Headers.Add(rowHdr.Cells[0].Value.ToString(), rowHdr.Cells[1].Value.ToString());
+                    }
+                }
+
+                // add attachements
+                foreach (DataGridViewRow rowAtt in dgGridAttachments.Rows)
+                {
+                    if (rowAtt.Cells[0].Value != null)
+                    {
+                        
+                        Attachment data = new Attachment(rowAtt.Cells[0].Value.ToString(), FileUtilities.GetContentType(rowAtt.Cells[1].Value.ToString()));
+                        if (rowAtt.Cells[4].Value.ToString() == "True")
+                        {
+                            data.ContentDisposition.Inline = true;
+                            data.ContentDisposition.DispositionType = DispositionTypeNames.Inline;
+                            data.ContentId = rowAtt.Cells[3].Value.ToString();
+                            Properties.Settings.Default.BodyHtml = true;
+                        }
+                        else
+                        {
+                            data.ContentDisposition.Inline = false;
+                            data.ContentDisposition.DispositionType = DispositionTypeNames.Attachment;
+                        }
+
+                        var attachmentPart = new MimePart(data.ContentType.MediaType)
+                        {
+                            Content = new MimeContent(data.ContentStream),
+                            //ContentDisposition = new ContentDisposition (ContentDisposition.),
+                            //ContentId = filename,
+                            ContentTransferEncoding = ContentEncoding.Base64,
+                            FileName = data.Name
+                        };
+                       
+                        multipart.Add(attachmentPart);
+                        mail.Body = multipart;
+                    }
+                }
+
+                // add read receipt
+                if (Properties.Settings.Default.ReadRcpt == true)
+                {
+                    mail.Headers.Add("Disposition-Notification-To", txtBoxEmailAddress.Text);
+                }
+                
+                MailAddress address = new MailAddress(txtBoxEmailAddress.Text);
+                mail.MessageId = MimeUtils.GenerateMessageId(address.Host);
+
+
+                // add delivery notifications
+                if (Properties.Settings.Default.DelNotifOnFailure == true)
+                {
+                 
+                }
+
+                if (Properties.Settings.Default.DelNotifOnSuccess == true)
+                {
+
+                    // smtp.DeliveryStatusNotificationType=MailKit.DeliveryStatusNotification.Success;
+                }
+
+                // send by pickup folder?
+                if (rdoSendByPickupFolder.Checked)
+                {
+                    if (chkBoxSpecificPickupFolder.Checked)
+                    {
+                        if (Directory.Exists(txtPickupFolder.Text))
+                        {
+                          //  smtp.DeliveryMethod = SmtpDeliveryMethod.SpecifiedPickupDirectory;
+                          //  smtp.PickupDirectoryLocation = txtPickupFolder.Text;
+                        }
+                        else
+                        {
+                            throw new DirectoryNotFoundException(@"The specified directory """ + txtPickupFolder.Text + @""" does not exist.");
+                        }
+                    }
+                    else
+                    {
+                      //  smtp.DeliveryMethod = SmtpDeliveryMethod.PickupDirectoryFromIis;
+                    }
+                }
+
+                // smtp client setup
+
+                // this is for TLS enforcement -- is its true
+                // STARTTLS will be utilized
+                var tlsLayer = new System.Security.Authentication.SslProtocols();
+                if (radioButtonTLS13.Checked && chkEnableSSL.Checked)
+                {
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls13;
+                    tlsLayer = SslProtocols.Tls13;
+                    smtp.SslProtocols = tlsLayer;
+                }
+                else if (radioButtonTLS12.Checked && chkEnableSSL.Checked)
+                {
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                    tlsLayer = SslProtocols.Tls12;
+                    smtp.SslProtocols = tlsLayer;
+                }
+                else if (radioButtonTLS11.Checked)
+                {
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls11;
+                    tlsLayer = SslProtocols.Tls11;
+                    smtp.SslProtocols = tlsLayer;
+                }
+                else if (radioButtonTLS10.Checked)
+                {
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
+                    tlsLayer = SslProtocols.Tls;
+                    smtp.SslProtocols = tlsLayer;
+                }
+            
+
+                // we are avoiding to carry out default logon credentials to smtp session
+                smtp.AuthenticationMechanisms.Remove(CredentialCache.DefaultCredentials.ToString());
+
+                var Port = Int32.Parse(cmbPort.Text.Trim());
+                var Host = cmbServer.Text;
+
+                //smtp.Connect(cmbServer.Text, Int32.Parse(cmbPort.Text.Trim()), chkEnableSSL);
+                // settings is second, we have to translate milliseconds
+                
+                smtp.Timeout = Properties.Settings.Default.SendTimeout * 1000;
+
+                // we are checking, if its office365.com or not because of specific settings on receive connectors 
+                // for on premise exchange servers can cause exception
+                               
+        /*
+                if (cmbServer.Text == "smtp.office365.com")
+                {
+                    string targetname = "SMTPSVC/" + smtp.Host;
+                    smtp.TargetName = targetname;
+                }
+                else
+                {
+                    smtp.TargetName = null;
+                }
+          */      
+
+                // check for credentials
+                // moved credential a bit low in the code flow becuase of I've seen a credential removal somehow
+                string sUser = txtBoxEmailAddress.Text.Trim();
+                //string sPassword = mskPassword.Text.Trim();
+                //string sDomain = txtBoxDomain.Text.Trim();
+                
+                var oauth2 = new SaslMechanismOAuth2(oauthToken.Account.Username, oauthToken.AccessToken);
+
+                if (oauthToken.AccessToken != null)
+                {
+                    
+                        await smtp.ConnectAsync(Host, Port, SecureSocketOptions.StartTls);
+                        await smtp.AuthenticateAsync(oauth2);
+
+                 }
+                
+                new Thread(() =>
+                {
+                    try
+                    {
+                      
+                        smtp.Send(mail);
+                    }
+                    catch (SmtpCommandException sce)
+                    {
+                        if (InvokeRequired)
+                        {
+                            this.Invoke((MethodInvoker)delegate { txtBoxErrorLog.Clear(); });
+                            this.Invoke((MethodInvoker)delegate { btnSendEmail.Enabled = true; });
+                            this.Invoke((MethodInvoker)delegate { btnStartSendLoop.Enabled = true; });
+                            this.Invoke((MethodInvoker)delegate { toolStripProgressBar1.ProgressBar.MarqueeAnimationSpeed = 0; });
+                            this.Invoke((MethodInvoker)delegate { toolStripProgressBar1.Style = ProgressBarStyle.Blocks; });
+                        }
+                        noErrFound = false;
+                        if (sce.StatusCode == MailKit.Net.Smtp.SmtpStatusCode.MailboxBusy || sce.StatusCode == MailKit.Net.Smtp.SmtpStatusCode.MailboxUnavailable)
+                        {
+                            logger.Log("Delivery failed - retrying in 5 seconds.");
+                            Thread.Sleep(5000);
+                            smtp.Send(mail);
+                        }
+                        else
+                        {
+                            logger.Log("Error: \r\n" + sce.Message);
+                            logger.Log("StackTrace: \r\n" + sce.StackTrace);
+                            logger.Log("Status Code: \r\n" + sce.StatusCode);
+                            logger.Log("Description: \r\n" + MessageUtilities.GetSmtpStatusCodeDescription(sce.StatusCode.ToString()));
+                            logger.Log("Inner Exception: \r\n" + sce.InnerException);
+                        }
+                    }
+                    catch (SmtpProtocolException spe)
+                    {
+                        // invalid smtp address used
+                        if (InvokeRequired)
+                        {
+                            this.Invoke((MethodInvoker)delegate { txtBoxErrorLog.Clear(); });
+                            this.Invoke((MethodInvoker)delegate { btnSendEmail.Enabled = true; });
+                            this.Invoke((MethodInvoker)delegate { btnStartSendLoop.Enabled = true; });
+                            this.Invoke((MethodInvoker)delegate { toolStripProgressBar1.ProgressBar.MarqueeAnimationSpeed = 0; });
+                            this.Invoke((MethodInvoker)delegate { toolStripProgressBar1.Style = ProgressBarStyle.Blocks; });
+                        }
+                        
+                        noErrFound = false;
+                        logger.Log("Error: \r\n" + spe.Message);
+                        logger.Log("StackTrace: \r\n" + spe.StackTrace);
+                        logger.Log("Inner Exception: \r\n" + spe.InnerException);
+
+                    }
+                    catch (InvalidOperationException ioe)
+                    {
+                        // invalid smtp address used
+                        if (InvokeRequired)
+                        {
+                            this.Invoke((MethodInvoker)delegate { txtBoxErrorLog.Clear(); });
+                            this.Invoke((MethodInvoker)delegate { btnSendEmail.Enabled = true; });
+                            this.Invoke((MethodInvoker)delegate { btnStartSendLoop.Enabled = true; });
+                            this.Invoke((MethodInvoker)delegate { toolStripProgressBar1.ProgressBar.MarqueeAnimationSpeed = 0; });
+                            this.Invoke((MethodInvoker)delegate { toolStripProgressBar1.Style = ProgressBarStyle.Blocks; });
+                        }
+                        noErrFound = false;
+                        logger.Log("Error: \r\n" + ioe.Message);
+                        logger.Log("StackTrace: \r\n" + ioe.StackTrace);
+                        logger.Log("Inner Exception: \r\n" + ioe.InnerException);
+                    }
+                    catch (FormatException fe)
+                    {
+                        // invalid smtp address used
+                        if (InvokeRequired)
+                        {
+                            this.Invoke((MethodInvoker)delegate { txtBoxErrorLog.Clear(); });
+                            this.Invoke((MethodInvoker)delegate { btnSendEmail.Enabled = true; });
+                            this.Invoke((MethodInvoker)delegate { btnStartSendLoop.Enabled = true; });
+                            this.Invoke((MethodInvoker)delegate { toolStripProgressBar1.ProgressBar.MarqueeAnimationSpeed = 0; });
+                            this.Invoke((MethodInvoker)delegate { toolStripProgressBar1.Style = ProgressBarStyle.Blocks; });
+                        }
+                        noErrFound = false;
+                        logger.Log("Error: \r\n" + fe.Message);
+                        logger.Log("StackTrace: \r\n" + fe.StackTrace);
+                        logger.Log("Inner Exception: \r\n" + fe.InnerException);
+                    }
+                    catch (Exception ex)
+                    {
+                        if (InvokeRequired)
+                        {
+                            this.Invoke((MethodInvoker)delegate { txtBoxErrorLog.Clear();});
+                            this.Invoke((MethodInvoker)delegate { btnSendEmail.Enabled = true; });
+                            this.Invoke((MethodInvoker)delegate { btnStartSendLoop.Enabled = true; });
+                            this.Invoke((MethodInvoker)delegate { toolStripProgressBar1.ProgressBar.MarqueeAnimationSpeed = 0; });
+                            this.Invoke((MethodInvoker)delegate { toolStripProgressBar1.Style = ProgressBarStyle.Blocks; });
+                        }
+                        noErrFound = false;
+                        logger.Log("Error: \r\n" + ex.Message);
+                        logger.Log("StackTrace: \r\n" + ex.StackTrace);
+                        logger.Log("Inner Exception: \r\n" + ex.InnerException);
+                    }
+                    finally
+                    {
+                        // log success
+                        //if (formValidated == true && noErrFound == true)
+                        if (noErrFound == true)
+                        {
+                            logger.Log("Message subject = " + msgSubject);
+                            logger.Log("Message send = SUCCESS");
+                        }
+
+                        // cleanup resources
+                        mail.Dispose();
+                        mail = null;
+                        smtp.Dispose();
+                        smtp = null;
+
+                        // reset variables
+                        formValidated = false;
+                        noErrFound = true;
+                        if (InvokeRequired)
+                        {
+                            this.Invoke((MethodInvoker)delegate { inlineAttachmentsTable.Clear(); });
+                        }
+
+                        hdrName = null;
+                        hdrValue = null;
+                        msgSubject = null;
+
+                        this.Invoke((MethodInvoker)delegate { btnSendEmail.Enabled = true; });
+                        this.Invoke((MethodInvoker)delegate { btnStartSendLoop.Enabled = true; });
+                        this.Invoke((MethodInvoker)delegate { toolStripProgressBar1.ProgressBar.MarqueeAnimationSpeed = 0; });
+                        this.Invoke((MethodInvoker)delegate { toolStripProgressBar1.Style = ProgressBarStyle.Blocks; });
+
+                    }
+                }).Start();
+
+                //if (tcs.Task.Result) { }
+
             }
+            //*
+            catch (Exception ex)
+            {
+                btnSendEmail.Enabled = true;
+                btnStartSendLoop.Enabled = true;
+                toolStripProgressBar1.ProgressBar.MarqueeAnimationSpeed = 0;
+                toolStripProgressBar1.Style = ProgressBarStyle.Blocks;
+                noErrFound = false;
+                logger.Log("Error: \r\n" + ex.Message);
+                logger.Log("StackTrace: \r\n" + ex.StackTrace);
+                logger.Log("Inner Exception: \r\n" + ex.InnerException);
+            }
+            finally
+            {
+
+            }
+
+
         }
+
 
         /// <summary>
         /// This button calls the SendEmail method
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BtnSendEmail_Click(object sender, EventArgs e)
+        private async void BtnSendEmail_Click(object sender, EventArgs e)
         {
+            
+            toolStripProgressBar1.Value = 0;
+            toolStripProgressBar1.Maximum = 100;
+            toolStripProgressBar1.MarqueeAnimationSpeed = 1;
+            toolStripProgressBar1.Style= ProgressBarStyle.Marquee;
+
+            
+            //trying to disable send buttons from accidental multiple click as currently app is busy
+            btnSendEmail.Enabled = false;
+            btnStartSendLoop.Enabled = false;
             txtBoxErrorLog.Clear();
             txtBoxErrorLog.Refresh();
             // Adding Server address to combobox temp list
@@ -437,7 +1109,16 @@ namespace NetMailSample
                     { 
                     cmbServer.Items.Add(cmbServer.Text);
                     }
-            SendEmail();
+           //calling send email function
+            if (chkBoxOAuh.Checked)
+            {
+                this.SendEmailM();
+            }
+            else {
+                this.SendEmail();
+            }
+            
+           
         }
 
         /// <summary>
@@ -639,8 +1320,18 @@ namespace NetMailSample
                     continueTimerRun = false;
                 }
                 logger.Log(string.Format("Sending Message {0}...\r\n", msgCount));
-                SendEmail();
+                    
+                    if (chkBoxOAuh.Checked)
+                    {
+                        this.SendEmailM();
+                    }
+                    else
+                    {
+                        this.SendEmail();
+                    }
+
                 txtBoxErrorLog.Text = "Sending message " + msgCount;
+                
                 WaitLoop((int)numUpDnSeconds.Value);
             }
 
@@ -693,18 +1384,31 @@ namespace NetMailSample
             {
                 logger.Log("User is required.");
                 bRet = false;
+                btnSendEmail.Enabled = true;
+                btnStartSendLoop.Enabled = true;
+                toolStripProgressBar1.Value = 0;
+                toolStripProgressBar1.MarqueeAnimationSpeed = 0;
             }
 
-            if (chkPasswordRequired.Checked && mskPassword.Text.Trim() == "")
+            if ((chkPasswordRequired.Checked && mskPassword.Text.Trim() == "") && (!chkBoxOAuh.Checked))
             {
                 logger.Log("Password is required.");
                 bRet = false;
+                btnSendEmail.Enabled = true;
+                btnStartSendLoop.Enabled = true;
+                toolStripProgressBar1.Value = 0;
+                toolStripProgressBar1.MarqueeAnimationSpeed = 0;
             }
 
             if (txtBoxTo.Text.Trim() == "")
             {
                 logger.Log("To address is required.");
                 bRet = false;
+                btnSendEmail.Enabled = true;
+                btnStartSendLoop.Enabled = true;
+                toolStripProgressBar1.Value = 0;
+                toolStripProgressBar1.MarqueeAnimationSpeed = 0;
+
             }
 
             formValidated = bRet;
@@ -1014,6 +1718,89 @@ namespace NetMailSample
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit(); 
+        }
+
+        private void txtBoxEmailAddress_TextChanged(object sender, EventArgs e)
+        {
+            textBoxFrom.Text = txtBoxEmailAddress.Text;
+            mskPassword.Enabled = true;
+            txtBoxDomain.Enabled = true;
+        }
+
+        private void chkEnableSSL_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkEnableSSL.CheckState == 0) 
+            {
+                radioButtonTLS10.Enabled = false;
+                radioButtonTLS11.Enabled = false;
+                radioButtonTLS12.Enabled = false;
+                radioButtonTLS13.Enabled = false;
+                chkBoxOAuh.Enabled = false;
+            }
+            else
+            {
+                radioButtonTLS10.Enabled = true;
+                radioButtonTLS11.Enabled = true;
+                radioButtonTLS12.Enabled = true;
+                radioButtonTLS13.Enabled = true;
+                chkBoxOAuh.Enabled = true;
+            }
+        }
+
+
+        
+        private void txtBoxEmailAddress_DoubleClick(object sender, EventArgs e)
+        {
+            mskPassword.Enabled = true;
+            txtBoxDomain.Enabled = true;
+        }
+        // below varialble will be used for Oauth authentication in smtp send..
+        // we will populate oauth token by calling another form
+        // we will need to seperate variable
+        private void chkBoxOAuh_CheckStateChanged(object sender, EventArgs e)
+        {
+            txtBoxErrorLog.Clear(); 
+            if (chkBoxOAuh.Checked)
+            {
+                Forms.FrmOAuth oauthForm = new Forms.FrmOAuth();
+                oauthForm.Owner = this;
+
+                try
+                {
+                    oauthForm.ShowDialog(this);
+                    if (oauthToken != null)
+                    {
+                        txtBoxEmailAddress.Text = oauthToken.Account.Username.ToString();
+                        txtBoxDomain.Enabled = false;
+                        mskPassword.Enabled = false;
+                        chkEnableSSL.Enabled = true;
+                    }
+                    else
+                    {
+                        
+                        txtBoxErrorLog.Text = "Unable to get OAuth token.";
+                        //as we did not get any token we have to enable classical auth ability
+                        txtBoxDomain.Enabled = true;
+                        mskPassword.Enabled = true;
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    txtBoxErrorLog.Text = "Unable to get OAuth token." + "\r\n" + ex.Message;
+                    //as we did not get any token we have to enable classical auth ability
+                    txtBoxDomain.Enabled = true;
+                    mskPassword.Enabled = true;
+
+                }
+                            
+            }
+            else {
+                //we have to enable classical auth ability
+                txtBoxDomain.Enabled = true;
+                mskPassword.Enabled = true;
+            }
+
         }
 
         private void EditInlineToolStripMenuItem_Click(object sender, EventArgs e)
