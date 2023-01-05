@@ -30,7 +30,7 @@ Features include:
 •	Error logging
 
 Minimum Requirements
-•	Microsoft .NET Framework Version 4.5.2
+•	Microsoft .NET Framework Version 4.8
 
 Since this tool is just a mail sender, if you are looking for a tool that will retrieve information from a Microsoft Exchange mailbox it would be worth checking out [EWSEditor](https://github.com/dseph/EwsEditor).
 
