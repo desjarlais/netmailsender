@@ -8,7 +8,7 @@ NetMail Sender is a tool to help test the System.Net.Mail API.  It is basically 
 
 ![ScreenShot](http://i.imgur.com/bOdaQoG.jpg)
 
-Download the application executable [here](https://github.com/desjarlais/netmailsender/releases/tag/1.4.0.15).
+Download the application executable [here](https://github.com/kekici/netmailsender/releases/download/1.1.0.3/NetMailSample.exe.1.1.0.3.zip).
 
 Features include:
 
@@ -30,7 +30,7 @@ Features include:
 •	Error logging
 
 Minimum Requirements
-•	Microsoft .NET Framework Version 4.5.2
+•	Microsoft .NET Framework Version 4.8
 
 Since this tool is just a mail sender, if you are looking for a tool that will retrieve information from a Microsoft Exchange mailbox it would be worth checking out [EWSEditor](https://github.com/dseph/EwsEditor).
 
