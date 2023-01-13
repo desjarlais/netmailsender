@@ -209,13 +209,13 @@ namespace NetMailSample
                         mail.Priority = MailPriority.Normal;
                         break;
                 }
-                
+
                 // add HTML AltView
                 if (Properties.Settings.Default.AltViewHtml != "")
                 {
                     System.Net.Mime.ContentType ctHtml = new System.Net.Mime.ContentType("text/html");
                     htmlView = AlternateView.CreateAlternateViewFromString(Properties.Settings.Default.AltViewHtml, ctHtml);
-                    
+
                     // add inline attachments / linked resource
                     if (inlineAttachmentsTable.Rows.Count > 0)
                     {
@@ -230,12 +230,12 @@ namespace NetMailSample
                             lr.Dispose();
                         }
                     }
-                   
+
                     // set transfer encoding
                     htmlView.TransferEncoding = MessageUtilities.GetTransferEncoding(Properties.Settings.Default.htmlBodyTransferEncoding);
-                    mail.AlternateViews.Add(htmlView);                   
+                    mail.AlternateViews.Add(htmlView);
                 }
-                
+
                 // add Plain Text AltView
                 if (Properties.Settings.Default.AltViewPlain != "")
                 {
@@ -244,9 +244,9 @@ namespace NetMailSample
                     plainView.TransferEncoding = MessageUtilities.GetTransferEncoding(Properties.Settings.Default.plainBodyTransferEncoding);
                     mail.AlternateViews.Add(plainView);
                 }
-                
+
                 // add vCal AltView
-                
+
                 if (Properties.Settings.Default.AltViewCal != "")
                 {
                     System.Net.Mime.ContentType ctCal = new System.Net.Mime.ContentType("text/calendar");
@@ -256,7 +256,7 @@ namespace NetMailSample
                     calView.TransferEncoding = MessageUtilities.GetTransferEncoding(Properties.Settings.Default.vCalBodyTransferEncoding);
                     mail.AlternateViews.Add(calView);
                 }
-                
+
                 // add custom headers
                 foreach (DataGridViewRow rowHdr in dgGridHeaders.Rows)
                 {
@@ -295,8 +295,15 @@ namespace NetMailSample
                 }
 
                 // set the content
-                mail.Subject = txtBoxSubject.Text;
-                msgSubject = txtBoxSubject.Text;
+                if (chkAutoSubjectAdd.Checked) {
+                    DateTime serverTime = DateTime.Now;
+                    msgSubject = txtBoxSubject.Text + " - " + serverTime.ToString("HH':'mm':'ss' 'dd'-'MM'-'yyyy");
+                }
+                else { 
+                    msgSubject = txtBoxSubject.Text; 
+                }
+
+                mail.Subject = msgSubject;
                 mail.Body = richTxtBody.Text;
                 mail.IsBodyHtml = Properties.Settings.Default.BodyHtml;
                 
@@ -415,9 +422,21 @@ namespace NetMailSample
                            noErrFound = false;
                            if (se.StatusCode == System.Net.Mail.SmtpStatusCode.MailboxBusy || se.StatusCode == System.Net.Mail.SmtpStatusCode.MailboxUnavailable)
                            {
-                               logger.Log("Delivery failed - retrying in 5 seconds.");
-                               Thread.Sleep(5000);
-                               smtp.Send(mail);
+                               /*
+                                   logger.Log("Delivery failed - retrying in 5 seconds.");
+                                   Thread.Sleep(5000);
+                                   // cleanup resources
+                                   mail.Dispose();
+                                   mail = null;
+                                   smtp.Dispose();
+                                   smtp = null;
+                                   this.SendEmail();
+                                   */
+                               logger.Log("Error: \r\n" + se.Message);
+                               logger.Log("StackTrace: \r\n" + se.StackTrace);
+                               logger.Log("Status Code: \r\n" + se.StatusCode);
+                               logger.Log("Description: \r\n" + MessageUtilities.GetSmtpStatusCodeDescription(se.StatusCode.ToString()));
+                               logger.Log("Inner Exception: \r\n" + se.InnerException);
                            }
                            else
                            {
@@ -568,9 +587,18 @@ namespace NetMailSample
                 }
 
                 // set the content
+                if (chkAutoSubjectAdd.Checked)
+                {
+                    DateTime serverTime = DateTime.Now;
+                    msgSubject = txtBoxSubject.Text + " - " + serverTime.ToString("HH':'mm':'ss' 'dd'-'MM'-'yyyy");
+                }
+                else
+                {
+                    msgSubject = txtBoxSubject.Text;
+                }
                 var multipart = new Multipart("mixed");
-                mail.Subject = txtBoxSubject.Text;
-                msgSubject = txtBoxSubject.Text;
+                mail.Subject = msgSubject;
+                
 
                 if (Properties.Settings.Default.BodyHtml == true && Properties.Settings.Default.htmlBodyTransferEncoding == "Base64")
                 {
@@ -947,9 +975,23 @@ namespace NetMailSample
                         noErrFound = false;
                         if (sce.StatusCode == MailKit.Net.Smtp.SmtpStatusCode.MailboxBusy || sce.StatusCode == MailKit.Net.Smtp.SmtpStatusCode.MailboxUnavailable)
                         {
+                            /*
                             logger.Log("Delivery failed - retrying in 5 seconds.");
                             Thread.Sleep(5000);
-                            smtp.Send(mail);
+                            
+                            // cleanup resources
+                            mail.Dispose();
+                            mail = null;
+                            smtp.Dispose();
+                            smtp = null;
+                            this.SendEmailM();
+                            Thread.ResetAbort();
+                            */
+                            logger.Log("Error: \r\n" + sce.Message);
+                            logger.Log("StackTrace: \r\n" + sce.StackTrace);
+                            logger.Log("Status Code: \r\n" + sce.StatusCode);
+                            logger.Log("Description: \r\n" + MessageUtilities.GetSmtpStatusCodeDescription(sce.StatusCode.ToString()));
+                            logger.Log("Inner Exception: \r\n" + sce.InnerException);
                         }
                         else
                         {
@@ -1104,13 +1146,18 @@ namespace NetMailSample
             btnStartSendLoop.Enabled = false;
             txtBoxErrorLog.Clear();
             txtBoxErrorLog.Refresh();
-            // Adding Server address to combobox temp list
+            // Adding Server name/fqdn to combobox temp list
             if (!cmbServer.Items.Contains(cmbServer.Text)) 
                     { 
                     cmbServer.Items.Add(cmbServer.Text);
                     }
-           //calling send email function
-            if (chkBoxOAuh.Checked)
+            // Adding Server port to combobox temp list
+            if (!cmbPort.Items.Contains(cmbPort.Text))
+            {
+                cmbPort.Items.Add(cmbPort.Text);
+            }
+            //calling send email function depends on the OAuth checkbox
+            if (chkOAuth.Checked)
             {
                 this.SendEmailM();
             }
@@ -1321,7 +1368,7 @@ namespace NetMailSample
                 }
                 logger.Log(string.Format("Sending Message {0}...\r\n", msgCount));
                     
-                    if (chkBoxOAuh.Checked)
+                    if (chkOAuth.Checked)
                     {
                         this.SendEmailM();
                     }
@@ -1390,7 +1437,7 @@ namespace NetMailSample
                 toolStripProgressBar1.MarqueeAnimationSpeed = 0;
             }
 
-            if ((chkPasswordRequired.Checked && mskPassword.Text.Trim() == "") && (!chkBoxOAuh.Checked))
+            if ((chkPasswordRequired.Checked && mskPassword.Text.Trim() == "") && (!chkOAuth.Checked))
             {
                 logger.Log("Password is required.");
                 bRet = false;
@@ -1735,7 +1782,7 @@ namespace NetMailSample
                 radioButtonTLS11.Enabled = false;
                 radioButtonTLS12.Enabled = false;
                 radioButtonTLS13.Enabled = false;
-                chkBoxOAuh.Enabled = false;
+                chkOAuth.Enabled = false;
             }
             else
             {
@@ -1743,7 +1790,7 @@ namespace NetMailSample
                 radioButtonTLS11.Enabled = true;
                 radioButtonTLS12.Enabled = true;
                 radioButtonTLS13.Enabled = true;
-                chkBoxOAuh.Enabled = true;
+                chkOAuth.Enabled = true;
             }
         }
 
@@ -1760,7 +1807,7 @@ namespace NetMailSample
         private void chkBoxOAuh_CheckStateChanged(object sender, EventArgs e)
         {
             txtBoxErrorLog.Clear(); 
-            if (chkBoxOAuh.Checked)
+            if (chkOAuth.Checked)
             {
                 Forms.FrmOAuth oauthForm = new Forms.FrmOAuth();
                 oauthForm.Owner = this;

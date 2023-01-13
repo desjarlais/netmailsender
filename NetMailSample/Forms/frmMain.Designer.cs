@@ -38,6 +38,7 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblUserSmtp = new System.Windows.Forms.Label();
             this.grpMailMessage = new System.Windows.Forms.GroupBox();
+            this.chkAutoSubjectAdd = new System.Windows.Forms.CheckBox();
             this.textBoxFrom = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.richTxtBody = new System.Windows.Forms.RichTextBox();
@@ -50,7 +51,7 @@
             this.txtBoxTo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.grpSmtpSettings = new System.Windows.Forms.GroupBox();
-            this.chkBoxOAuh = new System.Windows.Forms.CheckBox();
+            this.chkOAuth = new System.Windows.Forms.CheckBox();
             this.groupBoxTLSVersion = new System.Windows.Forms.GroupBox();
             this.radioButtonTLS13 = new System.Windows.Forms.RadioButton();
             this.radioButtonTLS10 = new System.Windows.Forms.RadioButton();
@@ -129,10 +130,11 @@
             // 
             // btnSendEmail
             // 
-            this.btnSendEmail.Location = new System.Drawing.Point(818, 525);
+            this.btnSendEmail.Location = new System.Drawing.Point(693, 554);
             this.btnSendEmail.Name = "btnSendEmail";
-            this.btnSendEmail.Size = new System.Drawing.Size(88, 23);
-            this.btnSendEmail.TabIndex = 20;
+            this.btnSendEmail.Size = new System.Drawing.Size(119, 23);
+            this.btnSendEmail.TabIndex = 75;
+            this.btnSendEmail.TabStop = true;
             this.btnSendEmail.Text = "Send Email";
             this.btnSendEmail.UseVisualStyleBackColor = true;
             this.btnSendEmail.Click += new System.EventHandler(this.BtnSendEmail_Click);
@@ -143,6 +145,7 @@
             this.txtBoxDomain.Name = "txtBoxDomain";
             this.txtBoxDomain.Size = new System.Drawing.Size(178, 20);
             this.txtBoxDomain.TabIndex = 3;
+            this.txtBoxDomain.TabStop = true;
             // 
             // label7
             // 
@@ -159,6 +162,7 @@
             this.txtBoxEmailAddress.Name = "txtBoxEmailAddress";
             this.txtBoxEmailAddress.Size = new System.Drawing.Size(178, 20);
             this.txtBoxEmailAddress.TabIndex = 1;
+            this.txtBoxEmailAddress.TabStop = true;
             this.txtBoxEmailAddress.TextChanged += new System.EventHandler(this.txtBoxEmailAddress_TextChanged);
             this.txtBoxEmailAddress.DoubleClick += new System.EventHandler(this.txtBoxEmailAddress_DoubleClick);
             // 
@@ -168,6 +172,7 @@
             this.mskPassword.Name = "mskPassword";
             this.mskPassword.Size = new System.Drawing.Size(178, 20);
             this.mskPassword.TabIndex = 2;
+            this.mskPassword.TabStop = true;
             this.mskPassword.UseSystemPasswordChar = true;
             // 
             // lblPassword
@@ -190,6 +195,7 @@
             // 
             // grpMailMessage
             // 
+            this.grpMailMessage.Controls.Add(this.chkAutoSubjectAdd);
             this.grpMailMessage.Controls.Add(this.textBoxFrom);
             this.grpMailMessage.Controls.Add(this.label8);
             this.grpMailMessage.Controls.Add(this.richTxtBody);
@@ -204,9 +210,22 @@
             this.grpMailMessage.Location = new System.Drawing.Point(12, 202);
             this.grpMailMessage.Name = "grpMailMessage";
             this.grpMailMessage.Size = new System.Drawing.Size(530, 323);
-            this.grpMailMessage.TabIndex = 3;
-            this.grpMailMessage.TabStop = false;
+            this.grpMailMessage.TabIndex = 20;
+            this.grpMailMessage.TabStop = true;
             this.grpMailMessage.Text = "Mail Message - separate multiple addresses with comma";
+            // 
+            // chkAutoSubjectAdd
+            // 
+            this.chkAutoSubjectAdd.AutoSize = true;
+            this.chkAutoSubjectAdd.Checked = true;
+            this.chkAutoSubjectAdd.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAutoSubjectAdd.Location = new System.Drawing.Point(61, 141);
+            this.chkAutoSubjectAdd.Name = "chkAutoSubjectAdd";
+            this.chkAutoSubjectAdd.Size = new System.Drawing.Size(103, 9);
+            this.chkAutoSubjectAdd.TabIndex = 26;
+            this.chkAutoSubjectAdd.TabStop = true;
+            this.chkAutoSubjectAdd.Text = "Add local time to subject automatically";
+            this.chkAutoSubjectAdd.UseVisualStyleBackColor = true;
             // 
             // textBoxFrom
             // 
@@ -214,7 +233,8 @@
             this.textBoxFrom.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxFrom.Name = "textBoxFrom";
             this.textBoxFrom.Size = new System.Drawing.Size(456, 20);
-            this.textBoxFrom.TabIndex = 12;
+            this.textBoxFrom.TabIndex = 21;
+            this.textBoxFrom.TabStop = true;
             // 
             // label8
             // 
@@ -228,10 +248,11 @@
             // 
             // richTxtBody
             // 
-            this.richTxtBody.Location = new System.Drawing.Point(6, 133);
+            this.richTxtBody.Location = new System.Drawing.Point(6, 162);
             this.richTxtBody.Name = "richTxtBody";
-            this.richTxtBody.Size = new System.Drawing.Size(516, 184);
-            this.richTxtBody.TabIndex = 16;
+            this.richTxtBody.Size = new System.Drawing.Size(516, 155);
+            this.richTxtBody.TabIndex = 27;
+            this.richTxtBody.TabStop = true;
             this.richTxtBody.Text = "";
             // 
             // txtBoxSubject
@@ -239,22 +260,24 @@
             this.txtBoxSubject.Location = new System.Drawing.Point(62, 114);
             this.txtBoxSubject.Name = "txtBoxSubject";
             this.txtBoxSubject.Size = new System.Drawing.Size(456, 20);
-            this.txtBoxSubject.TabIndex = 15;
+            this.txtBoxSubject.TabIndex = 25;
+            this.txtBoxSubject.TabStop = true;
             // 
             // txtBoxBCC
             // 
             this.txtBoxBCC.Location = new System.Drawing.Point(62, 89);
             this.txtBoxBCC.Name = "txtBoxBCC";
             this.txtBoxBCC.Size = new System.Drawing.Size(456, 20);
-            this.txtBoxBCC.TabIndex = 14;
-            this.txtBoxBCC.Text = "                        ";
+            this.txtBoxBCC.TabIndex = 24;
+            this.txtBoxBCC.TabStop = true;
             // 
             // txtBoxCC
             // 
             this.txtBoxCC.Location = new System.Drawing.Point(62, 65);
             this.txtBoxCC.Name = "txtBoxCC";
             this.txtBoxCC.Size = new System.Drawing.Size(456, 20);
-            this.txtBoxCC.TabIndex = 13;
+            this.txtBoxCC.TabIndex = 23;
+            this.txtBoxCC.TabStop = true;
             // 
             // label6
             // 
@@ -288,7 +311,8 @@
             this.txtBoxTo.Location = new System.Drawing.Point(62, 41);
             this.txtBoxTo.Name = "txtBoxTo";
             this.txtBoxTo.Size = new System.Drawing.Size(456, 20);
-            this.txtBoxTo.TabIndex = 12;
+            this.txtBoxTo.TabIndex = 22;
+            this.txtBoxTo.TabStop = true;
             // 
             // label3
             // 
@@ -301,7 +325,7 @@
             // 
             // grpSmtpSettings
             // 
-            this.grpSmtpSettings.Controls.Add(this.chkBoxOAuh);
+            this.grpSmtpSettings.Controls.Add(this.chkOAuth);
             this.grpSmtpSettings.Controls.Add(this.groupBoxTLSVersion);
             this.grpSmtpSettings.Controls.Add(this.chkPasswordRequired);
             this.grpSmtpSettings.Controls.Add(this.txtBoxDomain);
@@ -322,20 +346,21 @@
             this.grpSmtpSettings.Location = new System.Drawing.Point(12, 27);
             this.grpSmtpSettings.Name = "grpSmtpSettings";
             this.grpSmtpSettings.Size = new System.Drawing.Size(530, 169);
-            this.grpSmtpSettings.TabIndex = 4;
-            this.grpSmtpSettings.TabStop = false;
+            this.grpSmtpSettings.TabIndex = 0;
+            this.grpSmtpSettings.TabStop = true;
             this.grpSmtpSettings.Text = "SMTP Settings";
             // 
-            // chkBoxOAuh
+            // chkOAuth
             // 
-            this.chkBoxOAuh.AutoSize = true;
-            this.chkBoxOAuh.Location = new System.Drawing.Point(189, 102);
-            this.chkBoxOAuh.Name = "chkBoxOAuh";
-            this.chkBoxOAuh.Size = new System.Drawing.Size(56, 17);
-            this.chkBoxOAuh.TabIndex = 14;
-            this.chkBoxOAuh.Text = "OAuth";
-            this.chkBoxOAuh.UseVisualStyleBackColor = true;
-            this.chkBoxOAuh.CheckStateChanged += new System.EventHandler(this.chkBoxOAuh_CheckStateChanged);
+            this.chkOAuth.AutoSize = true;
+            this.chkOAuth.Location = new System.Drawing.Point(189, 102);
+            this.chkOAuth.Name = "chkOAuth";
+            this.chkOAuth.Size = new System.Drawing.Size(56, 17);
+            this.chkOAuth.TabIndex = 9;
+            this.chkOAuth.TabStop = true;
+            this.chkOAuth.Text = "OAuth";
+            this.chkOAuth.UseVisualStyleBackColor = true;
+            this.chkOAuth.CheckStateChanged += new System.EventHandler(this.chkBoxOAuh_CheckStateChanged);
             // 
             // groupBoxTLSVersion
             // 
@@ -346,8 +371,8 @@
             this.groupBoxTLSVersion.Location = new System.Drawing.Point(9, 134);
             this.groupBoxTLSVersion.Name = "groupBoxTLSVersion";
             this.groupBoxTLSVersion.Size = new System.Drawing.Size(198, 35);
-            this.groupBoxTLSVersion.TabIndex = 12;
-            this.groupBoxTLSVersion.TabStop = false;
+            this.groupBoxTLSVersion.TabIndex = 13;
+            this.groupBoxTLSVersion.TabStop = true;
             this.groupBoxTLSVersion.Text = "TLS version";
             // 
             // radioButtonTLS13
@@ -356,7 +381,7 @@
             this.radioButtonTLS13.Location = new System.Drawing.Point(144, 13);
             this.radioButtonTLS13.Name = "radioButtonTLS13";
             this.radioButtonTLS13.Size = new System.Drawing.Size(40, 17);
-            this.radioButtonTLS13.TabIndex = 3;
+            this.radioButtonTLS13.TabIndex = 17;
             this.radioButtonTLS13.Text = "1.3";
             this.radioButtonTLS13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.radioButtonTLS13.UseVisualStyleBackColor = true;
@@ -367,7 +392,7 @@
             this.radioButtonTLS10.Location = new System.Drawing.Point(6, 13);
             this.radioButtonTLS10.Name = "radioButtonTLS10";
             this.radioButtonTLS10.Size = new System.Drawing.Size(40, 17);
-            this.radioButtonTLS10.TabIndex = 2;
+            this.radioButtonTLS10.TabIndex = 14;
             this.radioButtonTLS10.Text = "1.0";
             this.radioButtonTLS10.UseVisualStyleBackColor = true;
             // 
@@ -378,8 +403,7 @@
             this.radioButtonTLS12.Location = new System.Drawing.Point(98, 13);
             this.radioButtonTLS12.Name = "radioButtonTLS12";
             this.radioButtonTLS12.Size = new System.Drawing.Size(40, 17);
-            this.radioButtonTLS12.TabIndex = 1;
-            this.radioButtonTLS12.TabStop = true;
+            this.radioButtonTLS12.TabIndex = 16;
             this.radioButtonTLS12.Text = "1.2";
             this.radioButtonTLS12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.radioButtonTLS12.UseVisualStyleBackColor = true;
@@ -390,7 +414,7 @@
             this.radioButtonTLS11.Location = new System.Drawing.Point(52, 13);
             this.radioButtonTLS11.Name = "radioButtonTLS11";
             this.radioButtonTLS11.Size = new System.Drawing.Size(40, 17);
-            this.radioButtonTLS11.TabIndex = 0;
+            this.radioButtonTLS11.TabIndex = 15;
             this.radioButtonTLS11.Text = "1.1";
             this.radioButtonTLS11.UseVisualStyleBackColor = true;
             // 
@@ -402,7 +426,8 @@
             this.chkPasswordRequired.Location = new System.Drawing.Point(9, 100);
             this.chkPasswordRequired.Name = "chkPasswordRequired";
             this.chkPasswordRequired.Size = new System.Drawing.Size(118, 17);
-            this.chkPasswordRequired.TabIndex = 10;
+            this.chkPasswordRequired.TabIndex = 7;
+            this.chkPasswordRequired.TabStop = true;
             this.chkPasswordRequired.Text = "Password Required";
             this.chkPasswordRequired.UseVisualStyleBackColor = true;
             // 
@@ -412,7 +437,8 @@
             this.txtPickupFolder.Location = new System.Drawing.Point(302, 138);
             this.txtPickupFolder.Name = "txtPickupFolder";
             this.txtPickupFolder.Size = new System.Drawing.Size(216, 20);
-            this.txtPickupFolder.TabIndex = 9;
+            this.txtPickupFolder.TabIndex = 12;
+            this.txtPickupFolder.TabStop = true;
             // 
             // chkBoxSpecificPickupFolder
             // 
@@ -421,7 +447,8 @@
             this.chkBoxSpecificPickupFolder.Location = new System.Drawing.Point(286, 117);
             this.chkBoxSpecificPickupFolder.Name = "chkBoxSpecificPickupFolder";
             this.chkBoxSpecificPickupFolder.Size = new System.Drawing.Size(174, 17);
-            this.chkBoxSpecificPickupFolder.TabIndex = 8;
+            this.chkBoxSpecificPickupFolder.TabIndex = 11;
+            this.chkBoxSpecificPickupFolder.TabStop = true;
             this.chkBoxSpecificPickupFolder.Text = "Specify a custom pickup folder:";
             this.chkBoxSpecificPickupFolder.UseVisualStyleBackColor = true;
             this.chkBoxSpecificPickupFolder.CheckedChanged += new System.EventHandler(this.ChkBoxSpecificPickupFolder_CheckedChanged);
@@ -432,7 +459,7 @@
             this.rdoSendByPickupFolder.Location = new System.Drawing.Point(263, 94);
             this.rdoSendByPickupFolder.Name = "rdoSendByPickupFolder";
             this.rdoSendByPickupFolder.Size = new System.Drawing.Size(136, 17);
-            this.rdoSendByPickupFolder.TabIndex = 7;
+            this.rdoSendByPickupFolder.TabIndex = 10;
             this.rdoSendByPickupFolder.Text = "Send By Pickup Folder:";
             this.rdoSendByPickupFolder.UseVisualStyleBackColor = true;
             this.rdoSendByPickupFolder.CheckedChanged += new System.EventHandler(this.RdoSendByPickupFolder_CheckedChanged);
@@ -445,7 +472,6 @@
             this.rdoSendByPort.Name = "rdoSendByPort";
             this.rdoSendByPort.Size = new System.Drawing.Size(90, 17);
             this.rdoSendByPort.TabIndex = 4;
-            this.rdoSendByPort.TabStop = true;
             this.rdoSendByPort.Text = "Send By Port:";
             this.rdoSendByPort.UseVisualStyleBackColor = true;
             this.rdoSendByPort.CheckedChanged += new System.EventHandler(this.RdoSendByPort_CheckedChanged);
@@ -467,7 +493,8 @@
             this.chkEnableSSL.Location = new System.Drawing.Point(9, 117);
             this.chkEnableSSL.Name = "chkEnableSSL";
             this.chkEnableSSL.Size = new System.Drawing.Size(82, 17);
-            this.chkEnableSSL.TabIndex = 11;
+            this.chkEnableSSL.TabIndex = 8;
+            this.chkEnableSSL.TabStop = true;
             this.chkEnableSSL.Text = "Enable TLS";
             this.chkEnableSSL.UseVisualStyleBackColor = true;
             this.chkEnableSSL.CheckedChanged += new System.EventHandler(this.chkEnableSSL_CheckedChanged);
@@ -484,6 +511,7 @@
             this.cmbPort.Name = "cmbPort";
             this.cmbPort.Size = new System.Drawing.Size(55, 21);
             this.cmbPort.TabIndex = 6;
+            this.cmbPort.TabStop = true;
             this.cmbPort.Text = "587";
             // 
             // cmbServer
@@ -499,6 +527,7 @@
             this.cmbServer.Name = "cmbServer";
             this.cmbServer.Size = new System.Drawing.Size(191, 21);
             this.cmbServer.TabIndex = 5;
+            this.cmbServer.TabStop = true;
             this.cmbServer.Text = "smtp.office365.com";
             this.cmbServer.SelectedIndexChanged += new System.EventHandler(this.CboServer_SelectedIndexChanged);
             // 
@@ -517,8 +546,8 @@
             this.groupBox1.Location = new System.Drawing.Point(548, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(414, 169);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
+            this.groupBox1.TabIndex = 30;
+            this.groupBox1.TabStop = true;
             this.groupBox1.Text = "Operational Result Logs";
             // 
             // txtBoxErrorLog
@@ -529,14 +558,16 @@
             this.txtBoxErrorLog.Name = "txtBoxErrorLog";
             this.txtBoxErrorLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtBoxErrorLog.Size = new System.Drawing.Size(398, 143);
-            this.txtBoxErrorLog.TabIndex = 0;
+            this.txtBoxErrorLog.TabIndex = 31;
+            this.txtBoxErrorLog.TabStop = true;
             // 
             // btnOpenLogFile
             // 
             this.btnOpenLogFile.Location = new System.Drawing.Point(582, 525);
             this.btnOpenLogFile.Name = "btnOpenLogFile";
             this.btnOpenLogFile.Size = new System.Drawing.Size(105, 23);
-            this.btnOpenLogFile.TabIndex = 1;
+            this.btnOpenLogFile.TabIndex = 70;
+            this.btnOpenLogFile.TabStop = true;
             this.btnOpenLogFile.Tag = "";
             this.btnOpenLogFile.Text = "Open Error Log";
             this.btnOpenLogFile.UseVisualStyleBackColor = true;
@@ -550,8 +581,8 @@
             this.groupBox3.Location = new System.Drawing.Point(548, 345);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(414, 180);
-            this.groupBox3.TabIndex = 0;
-            this.groupBox3.TabStop = false;
+            this.groupBox3.TabIndex = 50;
+            this.groupBox3.TabStop = true;
             this.groupBox3.Text = "Message Attachments";
             // 
             // dgGridAttachments
@@ -571,7 +602,8 @@
             this.dgGridAttachments.Name = "dgGridAttachments";
             this.dgGridAttachments.RowHeadersWidth = 82;
             this.dgGridAttachments.Size = new System.Drawing.Size(349, 155);
-            this.dgGridAttachments.TabIndex = 25;
+            this.dgGridAttachments.TabIndex = 53;
+            this.dgGridAttachments.TabStop = true;
             this.dgGridAttachments.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGridAttachments_CellClick);
             this.dgGridAttachments.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGridAttachments_CellMouseDown);
             // 
@@ -663,7 +695,8 @@
             this.btnInsertAttachment.Location = new System.Drawing.Point(362, 19);
             this.btnInsertAttachment.Name = "btnInsertAttachment";
             this.btnInsertAttachment.Size = new System.Drawing.Size(43, 23);
-            this.btnInsertAttachment.TabIndex = 23;
+            this.btnInsertAttachment.TabIndex = 51;
+            this.btnInsertAttachment.TabStop = true;
             this.btnInsertAttachment.UseVisualStyleBackColor = true;
             this.btnInsertAttachment.Click += new System.EventHandler(this.BtnInsertAttachment_Click);
             // 
@@ -673,7 +706,8 @@
             this.btnDeleteAttachment.Location = new System.Drawing.Point(362, 48);
             this.btnDeleteAttachment.Name = "btnDeleteAttachment";
             this.btnDeleteAttachment.Size = new System.Drawing.Size(43, 23);
-            this.btnDeleteAttachment.TabIndex = 24;
+            this.btnDeleteAttachment.TabIndex = 52;
+            this.btnDeleteAttachment.TabStop = true;
             this.btnDeleteAttachment.UseVisualStyleBackColor = true;
             this.btnDeleteAttachment.Click += new System.EventHandler(this.BtnDeleteAttachment_Click);
             // 
@@ -689,8 +723,8 @@
             this.groupBox2.Location = new System.Drawing.Point(548, 202);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(414, 137);
-            this.groupBox2.TabIndex = 17;
-            this.groupBox2.TabStop = false;
+            this.groupBox2.TabIndex = 40;
+            this.groupBox2.TabStop = true;
             this.groupBox2.Text = "Custom Headers";
             // 
             // dgGridHeaders
@@ -707,7 +741,8 @@
             this.dgGridHeaders.Name = "dgGridHeaders";
             this.dgGridHeaders.RowHeadersWidth = 82;
             this.dgGridHeaders.Size = new System.Drawing.Size(349, 115);
-            this.dgGridHeaders.TabIndex = 20;
+            this.dgGridHeaders.TabIndex = 43;
+            this.dgGridHeaders.TabStop = true;
             this.dgGridHeaders.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGridHeaders_CellMouseDown);
             // 
             // colName
@@ -757,7 +792,8 @@
             this.btnDeleteHeader.Location = new System.Drawing.Point(362, 44);
             this.btnDeleteHeader.Name = "btnDeleteHeader";
             this.btnDeleteHeader.Size = new System.Drawing.Size(43, 23);
-            this.btnDeleteHeader.TabIndex = 22;
+            this.btnDeleteHeader.TabIndex = 42;
+            this.btnDeleteHeader.TabStop = true;
             this.btnDeleteHeader.UseVisualStyleBackColor = true;
             this.btnDeleteHeader.Click += new System.EventHandler(this.BtnDeleteHeader_Click);
             // 
@@ -767,7 +803,8 @@
             this.btnAddHeaders.Location = new System.Drawing.Point(362, 15);
             this.btnAddHeaders.Name = "btnAddHeaders";
             this.btnAddHeaders.Size = new System.Drawing.Size(43, 23);
-            this.btnAddHeaders.TabIndex = 21;
+            this.btnAddHeaders.TabIndex = 41;
+            this.btnAddHeaders.TabStop = true;
             this.btnAddHeaders.UseVisualStyleBackColor = true;
             this.btnAddHeaders.Click += new System.EventHandler(this.BtnAddHeaders_Click);
             // 
@@ -781,8 +818,8 @@
             this.groupBox4.Location = new System.Drawing.Point(12, 532);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(564, 43);
-            this.groupBox4.TabIndex = 18;
-            this.groupBox4.TabStop = false;
+            this.groupBox4.TabIndex = 60;
+            this.groupBox4.TabStop = true;
             this.groupBox4.Text = "Sending Loop";
             // 
             // chkTimeBasedSend
@@ -791,7 +828,8 @@
             this.chkTimeBasedSend.Location = new System.Drawing.Point(11, 17);
             this.chkTimeBasedSend.Name = "chkTimeBasedSend";
             this.chkTimeBasedSend.Size = new System.Drawing.Size(152, 17);
-            this.chkTimeBasedSend.TabIndex = 29;
+            this.chkTimeBasedSend.TabIndex = 61;
+            this.chkTimeBasedSend.TabStop = true;
             this.chkTimeBasedSend.Text = "Enable Time Based Send :";
             this.chkTimeBasedSend.UseVisualStyleBackColor = true;
             this.chkTimeBasedSend.CheckStateChanged += new System.EventHandler(this.ChkTimeBasedSend_CheckStateChanged);
@@ -802,7 +840,8 @@
             this.btnStopSendLoop.Location = new System.Drawing.Point(490, 14);
             this.btnStopSendLoop.Name = "btnStopSendLoop";
             this.btnStopSendLoop.Size = new System.Drawing.Size(64, 23);
-            this.btnStopSendLoop.TabIndex = 27;
+            this.btnStopSendLoop.TabIndex = 64;
+            this.btnStopSendLoop.TabStop = true;
             this.btnStopSendLoop.Text = "Stop";
             this.btnStopSendLoop.UseVisualStyleBackColor = true;
             this.btnStopSendLoop.Click += new System.EventHandler(this.BtnStopSendLoop_Click);
@@ -813,7 +852,8 @@
             this.btnStartSendLoop.Location = new System.Drawing.Point(420, 14);
             this.btnStartSendLoop.Name = "btnStartSendLoop";
             this.btnStartSendLoop.Size = new System.Drawing.Size(64, 23);
-            this.btnStartSendLoop.TabIndex = 26;
+            this.btnStartSendLoop.TabIndex = 63;
+            this.btnStartSendLoop.TabStop = true;
             this.btnStartSendLoop.Text = "Start";
             this.btnStartSendLoop.UseVisualStyleBackColor = true;
             this.btnStartSendLoop.Click += new System.EventHandler(this.BtnStartSendLoop_Click);
@@ -834,7 +874,8 @@
             0});
             this.numUpDnSeconds.Name = "numUpDnSeconds";
             this.numUpDnSeconds.Size = new System.Drawing.Size(43, 20);
-            this.numUpDnSeconds.TabIndex = 25;
+            this.numUpDnSeconds.TabIndex = 61;
+            this.numUpDnSeconds.TabStop = true;
             this.numUpDnSeconds.Value = new decimal(new int[] {
             10,
             0,
@@ -856,7 +897,8 @@
             this.btnAltView.Location = new System.Drawing.Point(693, 525);
             this.btnAltView.Name = "btnAltView";
             this.btnAltView.Size = new System.Drawing.Size(119, 23);
-            this.btnAltView.TabIndex = 19;
+            this.btnAltView.TabIndex = 71;
+            this.btnAltView.TabStop = true;
             this.btnAltView.Text = "Add Alternate Views";
             this.btnAltView.UseVisualStyleBackColor = true;
             this.btnAltView.Click += new System.EventHandler(this.BtnAltView_Click);
@@ -937,10 +979,11 @@
             // 
             // BtnTextToHeader
             // 
-            this.BtnTextToHeader.Location = new System.Drawing.Point(583, 552);
+            this.BtnTextToHeader.Location = new System.Drawing.Point(818, 525);
             this.BtnTextToHeader.Name = "BtnTextToHeader";
             this.BtnTextToHeader.Size = new System.Drawing.Size(104, 23);
-            this.BtnTextToHeader.TabIndex = 31;
+            this.BtnTextToHeader.TabIndex = 72;
+            this.BtnTextToHeader.TabStop = true;
             this.BtnTextToHeader.Text = "Text To Header";
             this.BtnTextToHeader.UseVisualStyleBackColor = true;
             this.BtnTextToHeader.Click += new System.EventHandler(this.BtnTextToHeader_Click);
@@ -1104,7 +1147,8 @@
         private System.Windows.Forms.RadioButton radioButtonTLS11;
         private System.Windows.Forms.RadioButton radioButtonTLS13;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
-        private System.Windows.Forms.CheckBox chkBoxOAuh;
+        private System.Windows.Forms.CheckBox chkOAuth;
+        private System.Windows.Forms.CheckBox chkAutoSubjectAdd;
     }
 }
 
