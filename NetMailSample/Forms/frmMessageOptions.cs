@@ -37,7 +37,12 @@ namespace NetMailSample.Forms
     public partial class FrmMessageOptions : Form
     {
         public string enBody, enBodyTransfer, enSubject, enHeaders;
-        
+
+        private void FrmMessageOptions_Load(object sender, EventArgs e)
+        {
+
+        }
+
         public FrmMessageOptions()
         {
             InitializeComponent();
@@ -65,6 +70,7 @@ namespace NetMailSample.Forms
                 cmbBodyEncoding.Text = Properties.Settings.Default.BodyEncoding;
                 cmbHeaderEncoding.Text = Properties.Settings.Default.HeaderEncoding;
                 cmbSubjectEncoding.Text = Properties.Settings.Default.SubjectEncoding;
+                numUpDnSendTimeOut.Value = Properties.Settings.Default.SendTimeout;
             }
             catch (Exception)
             {
@@ -88,6 +94,8 @@ namespace NetMailSample.Forms
             Properties.Settings.Default.MsgPriority = cmbMsgPriority.Text;
             Properties.Settings.Default.DelNotifOnFailure = chkOnFailure.Checked;
             Properties.Settings.Default.DelNotifOnSuccess = chkOnSuccess.Checked;
+            Properties.Settings.Default.SendTimeout = ((int)numUpDnSendTimeOut.Value);
+            Properties.Settings.Default.Save();
             Close();
         }
 

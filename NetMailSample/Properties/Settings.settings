@@ -38,14 +38,14 @@
     <Setting Name="vCalBodyTransferEncoding" Type="System.String" Scope="User">
       <Value Profile="(Default)">QuotedPrintable</Value>
     </Setting>
-    <Setting Name="SendSyncTimeout" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">100</Value>
-    </Setting>
     <Setting Name="DelNotifOnFailure" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="DelNotifOnSuccess" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SendTimeout" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
     </Setting>
   </Settings>
 </SettingsFile>

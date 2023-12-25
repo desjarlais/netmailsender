@@ -63,9 +63,11 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(16, 15);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(339, 93);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(452, 114);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Encoding";
@@ -80,9 +82,10 @@
             "UTF7",
             "UTF8",
             "Default"});
-            this.cmbSubjectEncoding.Location = new System.Drawing.Point(126, 63);
+            this.cmbSubjectEncoding.Location = new System.Drawing.Point(168, 78);
+            this.cmbSubjectEncoding.Margin = new System.Windows.Forms.Padding(4);
             this.cmbSubjectEncoding.Name = "cmbSubjectEncoding";
-            this.cmbSubjectEncoding.Size = new System.Drawing.Size(201, 21);
+            this.cmbSubjectEncoding.Size = new System.Drawing.Size(267, 24);
             this.cmbSubjectEncoding.TabIndex = 7;
             this.cmbSubjectEncoding.Text = "ASCII";
             // 
@@ -96,9 +99,10 @@
             "UTF7",
             "UTF8",
             "Default"});
-            this.cmbHeaderEncoding.Location = new System.Drawing.Point(126, 37);
+            this.cmbHeaderEncoding.Location = new System.Drawing.Point(168, 46);
+            this.cmbHeaderEncoding.Margin = new System.Windows.Forms.Padding(4);
             this.cmbHeaderEncoding.Name = "cmbHeaderEncoding";
-            this.cmbHeaderEncoding.Size = new System.Drawing.Size(201, 21);
+            this.cmbHeaderEncoding.Size = new System.Drawing.Size(267, 24);
             this.cmbHeaderEncoding.TabIndex = 6;
             this.cmbHeaderEncoding.Text = "ASCII";
             // 
@@ -112,44 +116,49 @@
             "UTF7",
             "UTF8",
             "Default"});
-            this.cmbBodyEncoding.Location = new System.Drawing.Point(126, 13);
+            this.cmbBodyEncoding.Location = new System.Drawing.Point(168, 16);
+            this.cmbBodyEncoding.Margin = new System.Windows.Forms.Padding(4);
             this.cmbBodyEncoding.Name = "cmbBodyEncoding";
-            this.cmbBodyEncoding.Size = new System.Drawing.Size(201, 21);
+            this.cmbBodyEncoding.Size = new System.Drawing.Size(267, 24);
             this.cmbBodyEncoding.TabIndex = 4;
             this.cmbBodyEncoding.Text = "ASCII";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 66);
+            this.label4.Location = new System.Drawing.Point(16, 81);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 13);
+            this.label4.Size = new System.Drawing.Size(115, 16);
             this.label4.TabIndex = 3;
             this.label4.Text = "Subject Encoding:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 40);
+            this.label3.Location = new System.Drawing.Point(16, 49);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 13);
+            this.label3.Size = new System.Drawing.Size(123, 16);
             this.label3.TabIndex = 2;
             this.label3.Text = "Headers Encoding:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 16);
+            this.label1.Location = new System.Drawing.Point(16, 20);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 13);
+            this.label1.Size = new System.Drawing.Size(102, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Body Encoding:";
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(196, 227);
+            this.btnOK.Location = new System.Drawing.Point(261, 279);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(4);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.Size = new System.Drawing.Size(100, 28);
             this.btnOK.TabIndex = 8;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
@@ -157,9 +166,10 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(276, 227);
+            this.btnCancel.Location = new System.Drawing.Point(368, 279);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(100, 28);
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -171,9 +181,11 @@
             this.groupBox2.Controls.Add(this.numUpDnSendTimeOut);
             this.groupBox2.Controls.Add(this.chkReadRcpt);
             this.groupBox2.Controls.Add(this.chkBodyHtml);
-            this.groupBox2.Location = new System.Drawing.Point(12, 111);
+            this.groupBox2.Location = new System.Drawing.Point(16, 137);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(339, 51);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(452, 63);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Options";
@@ -181,22 +193,24 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(193, 20);
+            this.label2.Location = new System.Drawing.Point(257, 25);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 13);
+            this.label2.Size = new System.Drawing.Size(91, 16);
             this.label2.TabIndex = 4;
             this.label2.Text = "Send Timeout";
             // 
             // numUpDnSendTimeOut
             // 
-            this.numUpDnSendTimeOut.Location = new System.Drawing.Point(270, 18);
+            this.numUpDnSendTimeOut.Location = new System.Drawing.Point(360, 22);
+            this.numUpDnSendTimeOut.Margin = new System.Windows.Forms.Padding(4);
             this.numUpDnSendTimeOut.Maximum = new decimal(new int[] {
-            200,
+            9999,
             0,
             0,
             0});
             this.numUpDnSendTimeOut.Name = "numUpDnSendTimeOut";
-            this.numUpDnSendTimeOut.Size = new System.Drawing.Size(57, 20);
+            this.numUpDnSendTimeOut.Size = new System.Drawing.Size(76, 22);
             this.numUpDnSendTimeOut.TabIndex = 3;
             this.numUpDnSendTimeOut.Value = new decimal(new int[] {
             100,
@@ -207,9 +221,10 @@
             // chkReadRcpt
             // 
             this.chkReadRcpt.AutoSize = true;
-            this.chkReadRcpt.Location = new System.Drawing.Point(95, 19);
+            this.chkReadRcpt.Location = new System.Drawing.Point(127, 23);
+            this.chkReadRcpt.Margin = new System.Windows.Forms.Padding(4);
             this.chkReadRcpt.Name = "chkReadRcpt";
-            this.chkReadRcpt.Size = new System.Drawing.Size(92, 17);
+            this.chkReadRcpt.Size = new System.Drawing.Size(110, 20);
             this.chkReadRcpt.TabIndex = 1;
             this.chkReadRcpt.Text = "Read Receipt";
             this.chkReadRcpt.UseVisualStyleBackColor = true;
@@ -217,9 +232,10 @@
             // chkBodyHtml
             // 
             this.chkBodyHtml.AutoSize = true;
-            this.chkBodyHtml.Location = new System.Drawing.Point(6, 19);
+            this.chkBodyHtml.Location = new System.Drawing.Point(8, 23);
+            this.chkBodyHtml.Margin = new System.Windows.Forms.Padding(4);
             this.chkBodyHtml.Name = "chkBodyHtml";
-            this.chkBodyHtml.Size = new System.Drawing.Size(83, 17);
+            this.chkBodyHtml.Size = new System.Drawing.Size(98, 20);
             this.chkBodyHtml.TabIndex = 0;
             this.chkBodyHtml.Text = "Body HTML";
             this.chkBodyHtml.UseVisualStyleBackColor = true;
@@ -227,9 +243,11 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.cmbMsgPriority);
-            this.groupBox3.Location = new System.Drawing.Point(190, 173);
+            this.groupBox3.Location = new System.Drawing.Point(253, 213);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(161, 48);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Size = new System.Drawing.Size(215, 59);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Priority";
@@ -241,9 +259,10 @@
             "Low",
             "Normal",
             "High"});
-            this.cmbMsgPriority.Location = new System.Drawing.Point(6, 17);
+            this.cmbMsgPriority.Location = new System.Drawing.Point(8, 21);
+            this.cmbMsgPriority.Margin = new System.Windows.Forms.Padding(4);
             this.cmbMsgPriority.Name = "cmbMsgPriority";
-            this.cmbMsgPriority.Size = new System.Drawing.Size(143, 21);
+            this.cmbMsgPriority.Size = new System.Drawing.Size(189, 24);
             this.cmbMsgPriority.TabIndex = 0;
             this.cmbMsgPriority.Text = "Normal";
             // 
@@ -251,9 +270,11 @@
             // 
             this.groupBox4.Controls.Add(this.chkOnSuccess);
             this.groupBox4.Controls.Add(this.chkOnFailure);
-            this.groupBox4.Location = new System.Drawing.Point(12, 173);
+            this.groupBox4.Location = new System.Drawing.Point(16, 213);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(172, 48);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Size = new System.Drawing.Size(229, 59);
             this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Delivery Notifications";
@@ -261,9 +282,10 @@
             // chkOnSuccess
             // 
             this.chkOnSuccess.AutoSize = true;
-            this.chkOnSuccess.Location = new System.Drawing.Point(83, 19);
+            this.chkOnSuccess.Location = new System.Drawing.Point(111, 23);
+            this.chkOnSuccess.Margin = new System.Windows.Forms.Padding(4);
             this.chkOnSuccess.Name = "chkOnSuccess";
-            this.chkOnSuccess.Size = new System.Drawing.Size(81, 17);
+            this.chkOnSuccess.Size = new System.Drawing.Size(95, 20);
             this.chkOnSuccess.TabIndex = 4;
             this.chkOnSuccess.Text = "OnSuccess";
             this.chkOnSuccess.UseVisualStyleBackColor = true;
@@ -271,18 +293,19 @@
             // chkOnFailure
             // 
             this.chkOnFailure.AutoSize = true;
-            this.chkOnFailure.Location = new System.Drawing.Point(6, 19);
+            this.chkOnFailure.Location = new System.Drawing.Point(8, 23);
+            this.chkOnFailure.Margin = new System.Windows.Forms.Padding(4);
             this.chkOnFailure.Name = "chkOnFailure";
-            this.chkOnFailure.Size = new System.Drawing.Size(71, 17);
+            this.chkOnFailure.Size = new System.Drawing.Size(84, 20);
             this.chkOnFailure.TabIndex = 3;
             this.chkOnFailure.Text = "OnFailure";
             this.chkOnFailure.UseVisualStyleBackColor = true;
             // 
-            // frmMessageOptions
+            // FrmMessageOptions
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(363, 262);
+            this.ClientSize = new System.Drawing.Size(484, 322);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -291,11 +314,13 @@
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmMessageOptions";
+            this.Name = "FrmMessageOptions";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Message Options";
+            this.Load += new System.EventHandler(this.FrmMessageOptions_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

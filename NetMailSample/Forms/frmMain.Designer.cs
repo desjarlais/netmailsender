@@ -38,6 +38,9 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblUserSmtp = new System.Windows.Forms.Label();
             this.grpMailMessage = new System.Windows.Forms.GroupBox();
+            this.chkAutoSubjectAdd = new System.Windows.Forms.CheckBox();
+            this.textBoxFrom = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.richTxtBody = new System.Windows.Forms.RichTextBox();
             this.txtBoxSubject = new System.Windows.Forms.TextBox();
             this.txtBoxBCC = new System.Windows.Forms.TextBox();
@@ -48,6 +51,12 @@
             this.txtBoxTo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.grpSmtpSettings = new System.Windows.Forms.GroupBox();
+            this.chkOAuth = new System.Windows.Forms.CheckBox();
+            this.groupBoxTLSVersion = new System.Windows.Forms.GroupBox();
+            this.radioButtonTLS13 = new System.Windows.Forms.RadioButton();
+            this.radioButtonTLS10 = new System.Windows.Forms.RadioButton();
+            this.radioButtonTLS12 = new System.Windows.Forms.RadioButton();
+            this.radioButtonTLS11 = new System.Windows.Forms.RadioButton();
             this.chkPasswordRequired = new System.Windows.Forms.CheckBox();
             this.txtPickupFolder = new System.Windows.Forms.TextBox();
             this.chkBoxSpecificPickupFolder = new System.Windows.Forms.CheckBox();
@@ -95,11 +104,17 @@
             this.mnuFileLoadSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFileSaveSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFileOptions = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.feedbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BtnTextToHeader = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.grpMailMessage.SuspendLayout();
             this.grpSmtpSettings.SuspendLayout();
+            this.groupBoxTLSVersion.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgGridAttachments)).BeginInit();
@@ -110,14 +125,16 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDnSeconds)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSendEmail
             // 
-            this.btnSendEmail.Location = new System.Drawing.Point(873, 545);
+            this.btnSendEmail.Location = new System.Drawing.Point(693, 554);
             this.btnSendEmail.Name = "btnSendEmail";
-            this.btnSendEmail.Size = new System.Drawing.Size(88, 23);
-            this.btnSendEmail.TabIndex = 20;
+            this.btnSendEmail.Size = new System.Drawing.Size(119, 23);
+            this.btnSendEmail.TabIndex = 75;
+            this.btnSendEmail.TabStop = true;
             this.btnSendEmail.Text = "Send Email";
             this.btnSendEmail.UseVisualStyleBackColor = true;
             this.btnSendEmail.Click += new System.EventHandler(this.BtnSendEmail_Click);
@@ -128,6 +145,7 @@
             this.txtBoxDomain.Name = "txtBoxDomain";
             this.txtBoxDomain.Size = new System.Drawing.Size(178, 20);
             this.txtBoxDomain.TabIndex = 3;
+            this.txtBoxDomain.TabStop = true;
             // 
             // label7
             // 
@@ -144,6 +162,9 @@
             this.txtBoxEmailAddress.Name = "txtBoxEmailAddress";
             this.txtBoxEmailAddress.Size = new System.Drawing.Size(178, 20);
             this.txtBoxEmailAddress.TabIndex = 1;
+            this.txtBoxEmailAddress.TabStop = true;
+            this.txtBoxEmailAddress.TextChanged += new System.EventHandler(this.txtBoxEmailAddress_TextChanged);
+            this.txtBoxEmailAddress.DoubleClick += new System.EventHandler(this.txtBoxEmailAddress_DoubleClick);
             // 
             // mskPassword
             // 
@@ -151,6 +172,7 @@
             this.mskPassword.Name = "mskPassword";
             this.mskPassword.Size = new System.Drawing.Size(178, 20);
             this.mskPassword.TabIndex = 2;
+            this.mskPassword.TabStop = true;
             this.mskPassword.UseSystemPasswordChar = true;
             // 
             // lblPassword
@@ -165,14 +187,17 @@
             // lblUserSmtp
             // 
             this.lblUserSmtp.AutoSize = true;
-            this.lblUserSmtp.Location = new System.Drawing.Point(6, 23);
+            this.lblUserSmtp.Location = new System.Drawing.Point(7, 23);
             this.lblUserSmtp.Name = "lblUserSmtp";
-            this.lblUserSmtp.Size = new System.Drawing.Size(35, 13);
+            this.lblUserSmtp.Size = new System.Drawing.Size(58, 13);
             this.lblUserSmtp.TabIndex = 0;
-            this.lblUserSmtp.Text = "Email:";
+            this.lblUserSmtp.Text = "Username:";
             // 
             // grpMailMessage
             // 
+            this.grpMailMessage.Controls.Add(this.chkAutoSubjectAdd);
+            this.grpMailMessage.Controls.Add(this.textBoxFrom);
+            this.grpMailMessage.Controls.Add(this.label8);
             this.grpMailMessage.Controls.Add(this.richTxtBody);
             this.grpMailMessage.Controls.Add(this.txtBoxSubject);
             this.grpMailMessage.Controls.Add(this.txtBoxBCC);
@@ -185,43 +210,79 @@
             this.grpMailMessage.Location = new System.Drawing.Point(12, 202);
             this.grpMailMessage.Name = "grpMailMessage";
             this.grpMailMessage.Size = new System.Drawing.Size(530, 323);
-            this.grpMailMessage.TabIndex = 3;
-            this.grpMailMessage.TabStop = false;
+            this.grpMailMessage.TabIndex = 20;
+            this.grpMailMessage.TabStop = true;
             this.grpMailMessage.Text = "Mail Message - separate multiple addresses with comma";
+            // 
+            // chkAutoSubjectAdd
+            // 
+            this.chkAutoSubjectAdd.AutoSize = true;
+            this.chkAutoSubjectAdd.Checked = true;
+            this.chkAutoSubjectAdd.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAutoSubjectAdd.Location = new System.Drawing.Point(61, 141);
+            this.chkAutoSubjectAdd.Name = "chkAutoSubjectAdd";
+            this.chkAutoSubjectAdd.Size = new System.Drawing.Size(103, 9);
+            this.chkAutoSubjectAdd.TabIndex = 26;
+            this.chkAutoSubjectAdd.TabStop = true;
+            this.chkAutoSubjectAdd.Text = "Add local time to subject automatically";
+            this.chkAutoSubjectAdd.UseVisualStyleBackColor = true;
+            // 
+            // textBoxFrom
+            // 
+            this.textBoxFrom.Location = new System.Drawing.Point(62, 17);
+            this.textBoxFrom.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxFrom.Name = "textBoxFrom";
+            this.textBoxFrom.Size = new System.Drawing.Size(456, 20);
+            this.textBoxFrom.TabIndex = 21;
+            this.textBoxFrom.TabStop = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(4, 22);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(33, 13);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "From:";
             // 
             // richTxtBody
             // 
-            this.richTxtBody.Location = new System.Drawing.Point(6, 133);
+            this.richTxtBody.Location = new System.Drawing.Point(6, 162);
             this.richTxtBody.Name = "richTxtBody";
-            this.richTxtBody.Size = new System.Drawing.Size(516, 184);
-            this.richTxtBody.TabIndex = 16;
+            this.richTxtBody.Size = new System.Drawing.Size(516, 155);
+            this.richTxtBody.TabIndex = 27;
+            this.richTxtBody.TabStop = true;
             this.richTxtBody.Text = "";
             // 
             // txtBoxSubject
             // 
-            this.txtBoxSubject.Location = new System.Drawing.Point(62, 101);
+            this.txtBoxSubject.Location = new System.Drawing.Point(62, 114);
             this.txtBoxSubject.Name = "txtBoxSubject";
             this.txtBoxSubject.Size = new System.Drawing.Size(456, 20);
-            this.txtBoxSubject.TabIndex = 15;
+            this.txtBoxSubject.TabIndex = 25;
+            this.txtBoxSubject.TabStop = true;
             // 
             // txtBoxBCC
             // 
-            this.txtBoxBCC.Location = new System.Drawing.Point(62, 74);
+            this.txtBoxBCC.Location = new System.Drawing.Point(62, 89);
             this.txtBoxBCC.Name = "txtBoxBCC";
             this.txtBoxBCC.Size = new System.Drawing.Size(456, 20);
-            this.txtBoxBCC.TabIndex = 14;
+            this.txtBoxBCC.TabIndex = 24;
+            this.txtBoxBCC.TabStop = true;
             // 
             // txtBoxCC
             // 
-            this.txtBoxCC.Location = new System.Drawing.Point(62, 48);
+            this.txtBoxCC.Location = new System.Drawing.Point(62, 65);
             this.txtBoxCC.Name = "txtBoxCC";
             this.txtBoxCC.Size = new System.Drawing.Size(456, 20);
-            this.txtBoxCC.TabIndex = 13;
+            this.txtBoxCC.TabIndex = 23;
+            this.txtBoxCC.TabStop = true;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 104);
+            this.label6.Location = new System.Drawing.Point(7, 117);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 13);
             this.label6.TabIndex = 4;
@@ -230,7 +291,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 77);
+            this.label5.Location = new System.Drawing.Point(6, 94);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 13);
             this.label5.TabIndex = 3;
@@ -239,7 +300,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 51);
+            this.label4.Location = new System.Drawing.Point(4, 70);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(23, 13);
             this.label4.TabIndex = 2;
@@ -247,15 +308,16 @@
             // 
             // txtBoxTo
             // 
-            this.txtBoxTo.Location = new System.Drawing.Point(62, 22);
+            this.txtBoxTo.Location = new System.Drawing.Point(62, 41);
             this.txtBoxTo.Name = "txtBoxTo";
             this.txtBoxTo.Size = new System.Drawing.Size(456, 20);
-            this.txtBoxTo.TabIndex = 12;
+            this.txtBoxTo.TabIndex = 22;
+            this.txtBoxTo.TabStop = true;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 25);
+            this.label3.Location = new System.Drawing.Point(4, 46);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(23, 13);
             this.label3.TabIndex = 0;
@@ -263,6 +325,8 @@
             // 
             // grpSmtpSettings
             // 
+            this.grpSmtpSettings.Controls.Add(this.chkOAuth);
+            this.grpSmtpSettings.Controls.Add(this.groupBoxTLSVersion);
             this.grpSmtpSettings.Controls.Add(this.chkPasswordRequired);
             this.grpSmtpSettings.Controls.Add(this.txtBoxDomain);
             this.grpSmtpSettings.Controls.Add(this.txtPickupFolder);
@@ -282,19 +346,88 @@
             this.grpSmtpSettings.Location = new System.Drawing.Point(12, 27);
             this.grpSmtpSettings.Name = "grpSmtpSettings";
             this.grpSmtpSettings.Size = new System.Drawing.Size(530, 169);
-            this.grpSmtpSettings.TabIndex = 4;
-            this.grpSmtpSettings.TabStop = false;
+            this.grpSmtpSettings.TabIndex = 0;
+            this.grpSmtpSettings.TabStop = true;
             this.grpSmtpSettings.Text = "SMTP Settings";
+            // 
+            // chkOAuth
+            // 
+            this.chkOAuth.AutoSize = true;
+            this.chkOAuth.Location = new System.Drawing.Point(189, 102);
+            this.chkOAuth.Name = "chkOAuth";
+            this.chkOAuth.Size = new System.Drawing.Size(56, 17);
+            this.chkOAuth.TabIndex = 9;
+            this.chkOAuth.TabStop = true;
+            this.chkOAuth.Text = "OAuth";
+            this.chkOAuth.UseVisualStyleBackColor = true;
+            this.chkOAuth.CheckStateChanged += new System.EventHandler(this.chkBoxOAuh_CheckStateChanged);
+            // 
+            // groupBoxTLSVersion
+            // 
+            this.groupBoxTLSVersion.Controls.Add(this.radioButtonTLS13);
+            this.groupBoxTLSVersion.Controls.Add(this.radioButtonTLS10);
+            this.groupBoxTLSVersion.Controls.Add(this.radioButtonTLS12);
+            this.groupBoxTLSVersion.Controls.Add(this.radioButtonTLS11);
+            this.groupBoxTLSVersion.Location = new System.Drawing.Point(9, 134);
+            this.groupBoxTLSVersion.Name = "groupBoxTLSVersion";
+            this.groupBoxTLSVersion.Size = new System.Drawing.Size(198, 35);
+            this.groupBoxTLSVersion.TabIndex = 13;
+            this.groupBoxTLSVersion.TabStop = true;
+            this.groupBoxTLSVersion.Text = "TLS version";
+            // 
+            // radioButtonTLS13
+            // 
+            this.radioButtonTLS13.AutoSize = true;
+            this.radioButtonTLS13.Location = new System.Drawing.Point(144, 13);
+            this.radioButtonTLS13.Name = "radioButtonTLS13";
+            this.radioButtonTLS13.Size = new System.Drawing.Size(40, 17);
+            this.radioButtonTLS13.TabIndex = 17;
+            this.radioButtonTLS13.Text = "1.3";
+            this.radioButtonTLS13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.radioButtonTLS13.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonTLS10
+            // 
+            this.radioButtonTLS10.AutoSize = true;
+            this.radioButtonTLS10.Location = new System.Drawing.Point(6, 13);
+            this.radioButtonTLS10.Name = "radioButtonTLS10";
+            this.radioButtonTLS10.Size = new System.Drawing.Size(40, 17);
+            this.radioButtonTLS10.TabIndex = 14;
+            this.radioButtonTLS10.Text = "1.0";
+            this.radioButtonTLS10.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonTLS12
+            // 
+            this.radioButtonTLS12.AutoSize = true;
+            this.radioButtonTLS12.Checked = true;
+            this.radioButtonTLS12.Location = new System.Drawing.Point(98, 13);
+            this.radioButtonTLS12.Name = "radioButtonTLS12";
+            this.radioButtonTLS12.Size = new System.Drawing.Size(40, 17);
+            this.radioButtonTLS12.TabIndex = 16;
+            this.radioButtonTLS12.Text = "1.2";
+            this.radioButtonTLS12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.radioButtonTLS12.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonTLS11
+            // 
+            this.radioButtonTLS11.AutoSize = true;
+            this.radioButtonTLS11.Location = new System.Drawing.Point(52, 13);
+            this.radioButtonTLS11.Name = "radioButtonTLS11";
+            this.radioButtonTLS11.Size = new System.Drawing.Size(40, 17);
+            this.radioButtonTLS11.TabIndex = 15;
+            this.radioButtonTLS11.Text = "1.1";
+            this.radioButtonTLS11.UseVisualStyleBackColor = true;
             // 
             // chkPasswordRequired
             // 
             this.chkPasswordRequired.AutoSize = true;
             this.chkPasswordRequired.Checked = true;
             this.chkPasswordRequired.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkPasswordRequired.Location = new System.Drawing.Point(11, 117);
+            this.chkPasswordRequired.Location = new System.Drawing.Point(9, 100);
             this.chkPasswordRequired.Name = "chkPasswordRequired";
             this.chkPasswordRequired.Size = new System.Drawing.Size(118, 17);
-            this.chkPasswordRequired.TabIndex = 10;
+            this.chkPasswordRequired.TabIndex = 7;
+            this.chkPasswordRequired.TabStop = true;
             this.chkPasswordRequired.Text = "Password Required";
             this.chkPasswordRequired.UseVisualStyleBackColor = true;
             // 
@@ -304,7 +437,8 @@
             this.txtPickupFolder.Location = new System.Drawing.Point(302, 138);
             this.txtPickupFolder.Name = "txtPickupFolder";
             this.txtPickupFolder.Size = new System.Drawing.Size(216, 20);
-            this.txtPickupFolder.TabIndex = 9;
+            this.txtPickupFolder.TabIndex = 12;
+            this.txtPickupFolder.TabStop = true;
             // 
             // chkBoxSpecificPickupFolder
             // 
@@ -313,7 +447,8 @@
             this.chkBoxSpecificPickupFolder.Location = new System.Drawing.Point(286, 117);
             this.chkBoxSpecificPickupFolder.Name = "chkBoxSpecificPickupFolder";
             this.chkBoxSpecificPickupFolder.Size = new System.Drawing.Size(174, 17);
-            this.chkBoxSpecificPickupFolder.TabIndex = 8;
+            this.chkBoxSpecificPickupFolder.TabIndex = 11;
+            this.chkBoxSpecificPickupFolder.TabStop = true;
             this.chkBoxSpecificPickupFolder.Text = "Specify a custom pickup folder:";
             this.chkBoxSpecificPickupFolder.UseVisualStyleBackColor = true;
             this.chkBoxSpecificPickupFolder.CheckedChanged += new System.EventHandler(this.ChkBoxSpecificPickupFolder_CheckedChanged);
@@ -324,7 +459,7 @@
             this.rdoSendByPickupFolder.Location = new System.Drawing.Point(263, 94);
             this.rdoSendByPickupFolder.Name = "rdoSendByPickupFolder";
             this.rdoSendByPickupFolder.Size = new System.Drawing.Size(136, 17);
-            this.rdoSendByPickupFolder.TabIndex = 7;
+            this.rdoSendByPickupFolder.TabIndex = 10;
             this.rdoSendByPickupFolder.Text = "Send By Pickup Folder:";
             this.rdoSendByPickupFolder.UseVisualStyleBackColor = true;
             this.rdoSendByPickupFolder.CheckedChanged += new System.EventHandler(this.RdoSendByPickupFolder_CheckedChanged);
@@ -337,7 +472,6 @@
             this.rdoSendByPort.Name = "rdoSendByPort";
             this.rdoSendByPort.Size = new System.Drawing.Size(90, 17);
             this.rdoSendByPort.TabIndex = 4;
-            this.rdoSendByPort.TabStop = true;
             this.rdoSendByPort.Text = "Send By Port:";
             this.rdoSendByPort.UseVisualStyleBackColor = true;
             this.rdoSendByPort.CheckedChanged += new System.EventHandler(this.RdoSendByPort_CheckedChanged);
@@ -356,12 +490,14 @@
             this.chkEnableSSL.AutoSize = true;
             this.chkEnableSSL.Checked = true;
             this.chkEnableSSL.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkEnableSSL.Location = new System.Drawing.Point(11, 138);
+            this.chkEnableSSL.Location = new System.Drawing.Point(9, 117);
             this.chkEnableSSL.Name = "chkEnableSSL";
             this.chkEnableSSL.Size = new System.Drawing.Size(82, 17);
-            this.chkEnableSSL.TabIndex = 11;
-            this.chkEnableSSL.Text = "Enable SSL";
+            this.chkEnableSSL.TabIndex = 8;
+            this.chkEnableSSL.TabStop = true;
+            this.chkEnableSSL.Text = "Enable TLS";
             this.chkEnableSSL.UseVisualStyleBackColor = true;
+            this.chkEnableSSL.CheckedChanged += new System.EventHandler(this.chkEnableSSL_CheckedChanged);
             // 
             // cmbPort
             // 
@@ -375,6 +511,7 @@
             this.cmbPort.Name = "cmbPort";
             this.cmbPort.Size = new System.Drawing.Size(55, 21);
             this.cmbPort.TabIndex = 6;
+            this.cmbPort.TabStop = true;
             this.cmbPort.Text = "587";
             // 
             // cmbServer
@@ -390,6 +527,7 @@
             this.cmbServer.Name = "cmbServer";
             this.cmbServer.Size = new System.Drawing.Size(191, 21);
             this.cmbServer.TabIndex = 5;
+            this.cmbServer.TabStop = true;
             this.cmbServer.Text = "smtp.office365.com";
             this.cmbServer.SelectedIndexChanged += new System.EventHandler(this.CboServer_SelectedIndexChanged);
             // 
@@ -408,8 +546,8 @@
             this.groupBox1.Location = new System.Drawing.Point(548, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(414, 169);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
+            this.groupBox1.TabIndex = 30;
+            this.groupBox1.TabStop = true;
             this.groupBox1.Text = "Operational Result Logs";
             // 
             // txtBoxErrorLog
@@ -420,14 +558,16 @@
             this.txtBoxErrorLog.Name = "txtBoxErrorLog";
             this.txtBoxErrorLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtBoxErrorLog.Size = new System.Drawing.Size(398, 143);
-            this.txtBoxErrorLog.TabIndex = 0;
+            this.txtBoxErrorLog.TabIndex = 31;
+            this.txtBoxErrorLog.TabStop = true;
             // 
             // btnOpenLogFile
             // 
-            this.btnOpenLogFile.Location = new System.Drawing.Point(637, 546);
+            this.btnOpenLogFile.Location = new System.Drawing.Point(582, 525);
             this.btnOpenLogFile.Name = "btnOpenLogFile";
             this.btnOpenLogFile.Size = new System.Drawing.Size(105, 23);
-            this.btnOpenLogFile.TabIndex = 1;
+            this.btnOpenLogFile.TabIndex = 70;
+            this.btnOpenLogFile.TabStop = true;
             this.btnOpenLogFile.Tag = "";
             this.btnOpenLogFile.Text = "Open Error Log";
             this.btnOpenLogFile.UseVisualStyleBackColor = true;
@@ -441,8 +581,8 @@
             this.groupBox3.Location = new System.Drawing.Point(548, 345);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(414, 180);
-            this.groupBox3.TabIndex = 0;
-            this.groupBox3.TabStop = false;
+            this.groupBox3.TabIndex = 50;
+            this.groupBox3.TabStop = true;
             this.groupBox3.Text = "Message Attachments";
             // 
             // dgGridAttachments
@@ -460,16 +600,20 @@
             this.dgGridAttachments.Location = new System.Drawing.Point(7, 19);
             this.dgGridAttachments.MultiSelect = false;
             this.dgGridAttachments.Name = "dgGridAttachments";
+            this.dgGridAttachments.RowHeadersWidth = 82;
             this.dgGridAttachments.Size = new System.Drawing.Size(349, 155);
-            this.dgGridAttachments.TabIndex = 25;
+            this.dgGridAttachments.TabIndex = 53;
+            this.dgGridAttachments.TabStop = true;
             this.dgGridAttachments.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGridAttachments_CellClick);
             this.dgGridAttachments.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGridAttachments_CellMouseDown);
             // 
             // colFilePath
             // 
             this.colFilePath.HeaderText = "File Path";
+            this.colFilePath.MinimumWidth = 10;
             this.colFilePath.Name = "colFilePath";
             this.colFilePath.ReadOnly = true;
+            this.colFilePath.Width = 200;
             // 
             // colContentType
             // 
@@ -488,23 +632,30 @@
             "Plain",
             "RichText",
             "Xml"});
+            this.colContentType.MinimumWidth = 10;
             this.colContentType.Name = "colContentType";
             this.colContentType.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.colContentType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colContentType.Width = 200;
             // 
             // colFileSize
             // 
             this.colFileSize.HeaderText = "Size";
+            this.colFileSize.MinimumWidth = 10;
             this.colFileSize.Name = "colFileSize";
+            this.colFileSize.Width = 200;
             // 
             // colContentId
             // 
             this.colContentId.ContextMenuStrip = this.contextMenuStripAttachments;
             this.colContentId.HeaderText = "Content Id";
+            this.colContentId.MinimumWidth = 10;
             this.colContentId.Name = "colContentId";
+            this.colContentId.Width = 200;
             // 
             // contextMenuStripAttachments
             // 
+            this.contextMenuStripAttachments.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.contextMenuStripAttachments.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editContentIDToolStripMenuItem,
             this.editInlineToolStripMenuItem});
@@ -532,9 +683,11 @@
             this.colInline.Items.AddRange(new object[] {
             "True",
             "False"});
+            this.colInline.MinimumWidth = 10;
             this.colInline.Name = "colInline";
             this.colInline.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.colInline.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colInline.Width = 200;
             // 
             // btnInsertAttachment
             // 
@@ -542,7 +695,8 @@
             this.btnInsertAttachment.Location = new System.Drawing.Point(362, 19);
             this.btnInsertAttachment.Name = "btnInsertAttachment";
             this.btnInsertAttachment.Size = new System.Drawing.Size(43, 23);
-            this.btnInsertAttachment.TabIndex = 23;
+            this.btnInsertAttachment.TabIndex = 51;
+            this.btnInsertAttachment.TabStop = true;
             this.btnInsertAttachment.UseVisualStyleBackColor = true;
             this.btnInsertAttachment.Click += new System.EventHandler(this.BtnInsertAttachment_Click);
             // 
@@ -552,7 +706,8 @@
             this.btnDeleteAttachment.Location = new System.Drawing.Point(362, 48);
             this.btnDeleteAttachment.Name = "btnDeleteAttachment";
             this.btnDeleteAttachment.Size = new System.Drawing.Size(43, 23);
-            this.btnDeleteAttachment.TabIndex = 24;
+            this.btnDeleteAttachment.TabIndex = 52;
+            this.btnDeleteAttachment.TabStop = true;
             this.btnDeleteAttachment.UseVisualStyleBackColor = true;
             this.btnDeleteAttachment.Click += new System.EventHandler(this.BtnDeleteAttachment_Click);
             // 
@@ -568,8 +723,8 @@
             this.groupBox2.Location = new System.Drawing.Point(548, 202);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(414, 137);
-            this.groupBox2.TabIndex = 17;
-            this.groupBox2.TabStop = false;
+            this.groupBox2.TabIndex = 40;
+            this.groupBox2.TabStop = true;
             this.groupBox2.Text = "Custom Headers";
             // 
             // dgGridHeaders
@@ -584,8 +739,10 @@
             this.dgGridHeaders.Location = new System.Drawing.Point(7, 16);
             this.dgGridHeaders.MultiSelect = false;
             this.dgGridHeaders.Name = "dgGridHeaders";
+            this.dgGridHeaders.RowHeadersWidth = 82;
             this.dgGridHeaders.Size = new System.Drawing.Size(349, 115);
-            this.dgGridHeaders.TabIndex = 20;
+            this.dgGridHeaders.TabIndex = 43;
+            this.dgGridHeaders.TabStop = true;
             this.dgGridHeaders.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGridHeaders_CellMouseDown);
             // 
             // colName
@@ -593,11 +750,13 @@
             this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.colName.ContextMenuStrip = this.contextMenuStripHeaders;
             this.colName.HeaderText = "Name";
+            this.colName.MinimumWidth = 10;
             this.colName.Name = "colName";
             this.colName.Width = 60;
             // 
             // contextMenuStripHeaders
             // 
+            this.contextMenuStripHeaders.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.contextMenuStripHeaders.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editNameToolStripMenuItem,
             this.editValueToolStripMenuItem});
@@ -623,6 +782,7 @@
             this.colValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.colValue.ContextMenuStrip = this.contextMenuStripHeaders;
             this.colValue.HeaderText = "Value";
+            this.colValue.MinimumWidth = 10;
             this.colValue.Name = "colValue";
             this.colValue.Width = 59;
             // 
@@ -632,7 +792,8 @@
             this.btnDeleteHeader.Location = new System.Drawing.Point(362, 44);
             this.btnDeleteHeader.Name = "btnDeleteHeader";
             this.btnDeleteHeader.Size = new System.Drawing.Size(43, 23);
-            this.btnDeleteHeader.TabIndex = 22;
+            this.btnDeleteHeader.TabIndex = 42;
+            this.btnDeleteHeader.TabStop = true;
             this.btnDeleteHeader.UseVisualStyleBackColor = true;
             this.btnDeleteHeader.Click += new System.EventHandler(this.BtnDeleteHeader_Click);
             // 
@@ -642,7 +803,8 @@
             this.btnAddHeaders.Location = new System.Drawing.Point(362, 15);
             this.btnAddHeaders.Name = "btnAddHeaders";
             this.btnAddHeaders.Size = new System.Drawing.Size(43, 23);
-            this.btnAddHeaders.TabIndex = 21;
+            this.btnAddHeaders.TabIndex = 41;
+            this.btnAddHeaders.TabStop = true;
             this.btnAddHeaders.UseVisualStyleBackColor = true;
             this.btnAddHeaders.Click += new System.EventHandler(this.BtnAddHeaders_Click);
             // 
@@ -656,8 +818,8 @@
             this.groupBox4.Location = new System.Drawing.Point(12, 532);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(564, 43);
-            this.groupBox4.TabIndex = 18;
-            this.groupBox4.TabStop = false;
+            this.groupBox4.TabIndex = 60;
+            this.groupBox4.TabStop = true;
             this.groupBox4.Text = "Sending Loop";
             // 
             // chkTimeBasedSend
@@ -666,7 +828,8 @@
             this.chkTimeBasedSend.Location = new System.Drawing.Point(11, 17);
             this.chkTimeBasedSend.Name = "chkTimeBasedSend";
             this.chkTimeBasedSend.Size = new System.Drawing.Size(152, 17);
-            this.chkTimeBasedSend.TabIndex = 29;
+            this.chkTimeBasedSend.TabIndex = 61;
+            this.chkTimeBasedSend.TabStop = true;
             this.chkTimeBasedSend.Text = "Enable Time Based Send :";
             this.chkTimeBasedSend.UseVisualStyleBackColor = true;
             this.chkTimeBasedSend.CheckStateChanged += new System.EventHandler(this.ChkTimeBasedSend_CheckStateChanged);
@@ -677,7 +840,8 @@
             this.btnStopSendLoop.Location = new System.Drawing.Point(490, 14);
             this.btnStopSendLoop.Name = "btnStopSendLoop";
             this.btnStopSendLoop.Size = new System.Drawing.Size(64, 23);
-            this.btnStopSendLoop.TabIndex = 27;
+            this.btnStopSendLoop.TabIndex = 64;
+            this.btnStopSendLoop.TabStop = true;
             this.btnStopSendLoop.Text = "Stop";
             this.btnStopSendLoop.UseVisualStyleBackColor = true;
             this.btnStopSendLoop.Click += new System.EventHandler(this.BtnStopSendLoop_Click);
@@ -688,7 +852,8 @@
             this.btnStartSendLoop.Location = new System.Drawing.Point(420, 14);
             this.btnStartSendLoop.Name = "btnStartSendLoop";
             this.btnStartSendLoop.Size = new System.Drawing.Size(64, 23);
-            this.btnStartSendLoop.TabIndex = 26;
+            this.btnStartSendLoop.TabIndex = 63;
+            this.btnStartSendLoop.TabStop = true;
             this.btnStartSendLoop.Text = "Start";
             this.btnStartSendLoop.UseVisualStyleBackColor = true;
             this.btnStartSendLoop.Click += new System.EventHandler(this.BtnStartSendLoop_Click);
@@ -698,13 +863,19 @@
             this.numUpDnSeconds.Enabled = false;
             this.numUpDnSeconds.Location = new System.Drawing.Point(371, 16);
             this.numUpDnSeconds.Maximum = new decimal(new int[] {
-            60,
+            1800,
+            0,
+            0,
+            0});
+            this.numUpDnSeconds.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
             this.numUpDnSeconds.Name = "numUpDnSeconds";
             this.numUpDnSeconds.Size = new System.Drawing.Size(43, 20);
-            this.numUpDnSeconds.TabIndex = 25;
+            this.numUpDnSeconds.TabIndex = 61;
+            this.numUpDnSeconds.TabStop = true;
             this.numUpDnSeconds.Value = new decimal(new int[] {
             10,
             0,
@@ -723,22 +894,24 @@
             // 
             // btnAltView
             // 
-            this.btnAltView.Location = new System.Drawing.Point(748, 545);
+            this.btnAltView.Location = new System.Drawing.Point(693, 525);
             this.btnAltView.Name = "btnAltView";
             this.btnAltView.Size = new System.Drawing.Size(119, 23);
-            this.btnAltView.TabIndex = 19;
+            this.btnAltView.TabIndex = 71;
+            this.btnAltView.TabStop = true;
             this.btnAltView.Text = "Add Alternate Views";
             this.btnAltView.UseVisualStyleBackColor = true;
             this.btnAltView.Click += new System.EventHandler(this.BtnAltView_Click);
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.toolStripMenuItem2});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(974, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(985, 24);
             this.menuStrip1.TabIndex = 30;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -747,7 +920,8 @@
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuFileLoadSettings,
             this.mnuFileSaveSettings,
-            this.mnuFileOptions});
+            this.mnuFileOptions,
+            this.exitToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
             this.toolStripMenuItem1.Text = "&File";
@@ -755,23 +929,30 @@
             // mnuFileLoadSettings
             // 
             this.mnuFileLoadSettings.Name = "mnuFileLoadSettings";
-            this.mnuFileLoadSettings.Size = new System.Drawing.Size(152, 22);
+            this.mnuFileLoadSettings.Size = new System.Drawing.Size(145, 22);
             this.mnuFileLoadSettings.Text = "&Load Settings";
             this.mnuFileLoadSettings.Click += new System.EventHandler(this.MnuFileLoadSettings_Click);
             // 
             // mnuFileSaveSettings
             // 
             this.mnuFileSaveSettings.Name = "mnuFileSaveSettings";
-            this.mnuFileSaveSettings.Size = new System.Drawing.Size(152, 22);
+            this.mnuFileSaveSettings.Size = new System.Drawing.Size(145, 22);
             this.mnuFileSaveSettings.Text = "&Save Settings";
             this.mnuFileSaveSettings.Click += new System.EventHandler(this.MnuFileSaveSettings_Click);
             // 
             // mnuFileOptions
             // 
             this.mnuFileOptions.Name = "mnuFileOptions";
-            this.mnuFileOptions.Size = new System.Drawing.Size(152, 22);
+            this.mnuFileOptions.Size = new System.Drawing.Size(145, 22);
             this.mnuFileOptions.Text = "&Options";
             this.mnuFileOptions.Click += new System.EventHandler(this.MnuFileOptions_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -796,11 +977,50 @@
             this.feedbackToolStripMenuItem.Text = "F&eedback";
             this.feedbackToolStripMenuItem.Click += new System.EventHandler(this.FeedbackToolStripMenuItem_Click);
             // 
-            // frmMain
+            // BtnTextToHeader
+            // 
+            this.BtnTextToHeader.Location = new System.Drawing.Point(818, 525);
+            this.BtnTextToHeader.Name = "BtnTextToHeader";
+            this.BtnTextToHeader.Size = new System.Drawing.Size(104, 23);
+            this.BtnTextToHeader.TabIndex = 72;
+            this.BtnTextToHeader.TabStop = true;
+            this.BtnTextToHeader.Text = "Text To Header";
+            this.BtnTextToHeader.UseVisualStyleBackColor = true;
+            this.BtnTextToHeader.Click += new System.EventHandler(this.BtnTextToHeader_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel,
+            this.toolStripProgressBar1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 583);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(985, 22);
+            this.statusStrip1.TabIndex = 32;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel
+            // 
+            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(48, 17);
+            this.toolStripStatusLabel.Text = "Status...";
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            this.toolStripProgressBar1.Step = 1;
+            // 
+            // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(974, 583);
+            this.ClientSize = new System.Drawing.Size(985, 605);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.BtnTextToHeader);
             this.Controls.Add(this.btnOpenLogFile);
             this.Controls.Add(this.btnAltView);
             this.Controls.Add(this.groupBox4);
@@ -815,7 +1035,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.Name = "frmMain";
+            this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NetMail Sender";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
@@ -823,6 +1043,8 @@
             this.grpMailMessage.PerformLayout();
             this.grpSmtpSettings.ResumeLayout(false);
             this.grpSmtpSettings.PerformLayout();
+            this.groupBoxTLSVersion.ResumeLayout(false);
+            this.groupBoxTLSVersion.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -836,6 +1058,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUpDnSeconds)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -873,7 +1097,6 @@
         private System.Windows.Forms.Button btnDeleteAttachment;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnDeleteHeader;
-        private System.Windows.Forms.DataGridView dgGridHeaders;
         private System.Windows.Forms.TextBox txtBoxDomain;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtPickupFolder;
@@ -911,6 +1134,21 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colFileSize;
         private System.Windows.Forms.DataGridViewTextBoxColumn colContentId;
         private System.Windows.Forms.DataGridViewComboBoxColumn colInline;
+        public System.Windows.Forms.DataGridView dgGridHeaders;
+        private System.Windows.Forms.Button BtnTextToHeader;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.TextBox textBoxFrom;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
+        private System.Windows.Forms.GroupBox groupBoxTLSVersion;
+        private System.Windows.Forms.RadioButton radioButtonTLS10;
+        private System.Windows.Forms.RadioButton radioButtonTLS12;
+        private System.Windows.Forms.RadioButton radioButtonTLS11;
+        private System.Windows.Forms.RadioButton radioButtonTLS13;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.CheckBox chkOAuth;
+        private System.Windows.Forms.CheckBox chkAutoSubjectAdd;
     }
 }
 
